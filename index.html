@@ -4,9 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Personal website of Java and R software developer, dog lover, and cool guy, Andrew Watson." />
 <link rel="manifest" href="manifest.json" />
-<script>
 <meta name="theme-color" content="#333333" />
 <title>awwsmm</title>
+
 <script>
 let CACHE_NAME = 'sw-v1'
 self.addEventListener('install', (event) => {
@@ -35,11 +35,13 @@ self.addEventListener('fetch', (event) => {
   return;
 });
 </script>
+
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
   }
 </script>
+
 </head>
 <body>
 Hello, World!
