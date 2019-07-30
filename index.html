@@ -3,7 +3,37 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="Personal website of Java and R software developer, dog lover, and cool guy, Andrew Watson." />
+<link rel="manifest" href="manifest.json">
+<meta name=”theme-color” content="#333333">
 <title>awwsmm</title>
+<script>
+let CACHE_NAME = 'sw-v1'
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+    .then(cache => cache.addAll('./404.html'))
+  )
+})
+self.addEventListener('fetch', (event) => {
+  if (event.request.method === 'GET') {
+    event.respondWith(
+      caches.match(event.request)
+      .then((cached) => {
+        var networked = fetch(event.request)
+          .then((response) => {
+            let cacheCopy = response.clone()
+            caches.open(CACHE_NAME)
+              .then(cache => cache.put(event.request, cacheCopy))
+            return response;
+          })
+          .catch(() => caches.match(offlinePage));
+        return cached || networked;
+      })
+    )
+  }
+  return;
+});
+</script>
 </head>
 <body>
 Hello, World!
