@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Personal website of Java and R software developer, dog lover, and cool guy, Andrew Watson." />
-<link rel="manifest" href="manifest.json" />
-<meta name="theme-color" content="#333333" />
-<title>awwsmm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal website of Java and R software developer, dog lover, and cool guy, Andrew Watson." />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#333333" />
+  <title>awwsmm</title>
 
-<script>
+  <script>
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-  .then((reg) => {
-    console.log('Registration successful, scope is:', reg.scope);
-  })
-  .catch((error) => {
-    console.log('Service worker registration failed, error:', error);
-  });
-}
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+    .then((reg) => {
+      console.log('Registration successful, scope is:', reg.scope);
+    })
+    .catch((error) => {
+      console.log('Service worker registration failed, error:', error);
+    });
+  }
 
-</script>
-
+  </script>
 </head>
+
 <body>
 Hello, World!
 </body>
+
 </html>

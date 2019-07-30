@@ -1,9 +1,14 @@
-let CACHE_NAME = 'sw-v1'
+let CACHE_NAME = 'MY_CACHE'
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-    .then(cache => cache.addAll(['./offline.html']))
+    .then(cache => cache.addAll([
+
+      // add pages to cache here, separated by commas
+      './offline.html'
+
+    ]))
   )
 })
 
