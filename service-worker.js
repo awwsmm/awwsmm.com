@@ -3,7 +3,7 @@ let CACHE_NAME = 'sw-v1'
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-    .then(cache => cache.addAll('./offline.html'))
+    .then(cache => cache.addAll(['./offline.html']))
   )
 })
 
