@@ -1,29 +1,19 @@
 {
-    "name": "My Sample Website",
-    "short_name": "MyWeb",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "#FEFEFE",
-    "theme_color": "#333333",
-    "icons": [{
-        "src": "./assets/icons/img/icon-128x128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-    }, {
-        "src": "./assets/icons/img/icon-152x152.png",
-        "sizes": "152x152",
-        "type": "image/png"
-    }, {
-        "src": "./assets/icons/img/icon-144x144.png",
-        "sizes": "144x144",
-        "type": "image/png"
-    }, {
-        "src": "./assets/icons/img/icon-144x144.png",
-        "sizes": "144x144",
-        "type": "image/png"
-    }, {
-        "src": "./assets/icons/img/icon-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-    }]
+    "name": "awwsmm",
+    "short_name": "awwsmm",
+    "icons": [
+        {
+            "src": "/favicons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#d1d7fa",
+    "background_color": "#d1d7fa",
+    "display": "standalone"
 }
