@@ -3,20 +3,13 @@
 <title>Search r/nearprog, r/progrockmusic, and r/progmetal</title>
 
 <script>
-
-  function search() {
+  function redirect() {
     let input = document.getElementById('user_input').value;
     let query = encodeURI(input);
     let base = 'https://www.reddit.com/r/progmetal+progrockmusic+nearprog/search?q='; 
-    window.location.href = base + query + '&restrict_sr=1';
+    alert(base + query + '&restrict_sr=1');
+    location.href = base + query + '&restrict_sr=1';
   }
-
-  function init(){
-    document.getElementById('form').onsubmit = search;
-  }
-
-  window.onload = init;
-
 </script>
 
 <style>
@@ -36,7 +29,7 @@
 <div class="body">
 
   <div style="width: 500px; min-width: 500px; text-align: center">
-    <form id="form">
+    <form onSubmit="return redirect();">
       <input type="text" id="user_input" name="user_input">
       <input type="submit" value="Search Reddit">
     </form>
