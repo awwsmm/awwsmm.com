@@ -1,61 +1,18 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<title>is it "near prog"?</title>
+<title>Search r/nearprog, r/progrockmusic, and r/progmetal</title>
 
 <script>
 
-  let songs = [
-    {
-      "artist": "Styx",
-      "song":   "Fooling Yourself"
-    }, {
-      "artist": "King Gizzard and the Lizard Wizard",
-      "song":   "Loyalty"
-    }, {
-      "artist": "Baroness",
-      "song":   "O'er Hell and Hide"
-    }, {
-      "artist": "The Mercury Tree",
-      "song":   "Exhume the Worst"
-    }, {
-      "artist": "The Mars Volta",
-      "song":   "Tetragrammaton"
-    }, {
-      "artist": "The Sound of Animals Fighting",
-      "song":   "Chasing Suns"
-    }, {
-      "artist": "Seth Angerer",
-      "song":   "THE BLIND IDIOT GOD"
-    }, {
-      "artist": "Tiberius",
-      "song":   "Swansong"
-    }, {
-      "artist": "Chicago",
-      "song":   "Ballet for a Girl in Buchannon"
-    }, {
-      "artist": "Sleepytime Gorilla Museum",
-      "song":   "Ambugaton"
-    }
-  ]
-
-  function validate() {
-    let input = document.getElementById('user_input').value.split(" - ");
-
-    const artist = input[0];
-    const song = input[1];
-
-    var found = false;
-    for (var i = 0; i < songs.length; i++) {
-        if (songs[i].artist == artist && songs[i].song == song) {
-            alert("definitely prog")
-            return;
-        }
-    }
-    alert("maybe not prog?");
+  function search() {
+    let input = document.getElementById('user_input').value;
+    let query = encodeURI(input);
+    let base = 'https://www.reddit.com/r/progmetal+progrockmusic+nearprog/search?q='; 
+    window.location.href = base + query + '&restrict_sr=1';
   }
 
   function init(){
-    document.getElementById('form').onsubmit = validate;
+    document.getElementById('form').onsubmit = search;
   }
 
   window.onload = init;
@@ -81,7 +38,7 @@
   <div style="width: 500px; min-width: 500px; text-align: center">
     <form id="form">
       <input type="text" id="user_input" name="user_input">
-      <input type="submit" value="Submit">
+      <input type="submit" value="Search Reddit">
     </form>
   </div>
 
