@@ -31,3 +31,60 @@ img {
 p {
   text-align: justify;
 }
+
+.hljs-string {
+  color: yellow;
+}
+
+.hljs-comment {
+  color: grey;
+}
+
+.hljs-keyword {
+  color: green;
+}
+
+.hljs-built_in {
+  color: lightgreen;
+}
+
+.hljs-title {
+  color: purple;
+}
+
+.hljs-class {
+  color: pink;
+}
+
+.hljs-function {
+  color: lightblue;
+}
+
+.hljs-params {
+  color: orange;
+}
+
+.hljs-number {
+  color: orangered;
+}
+
+.hljs-meta {
+  color: darkgrey;
+}
+
+.hljs-variable {
+  color: red;
+}
+
+.hljs-type {
+  color: blue;
+}
+
+pre {
+  overflow-x: scroll;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+  padding: 1rem;
+  font-size: smaller;
+  background-color: black;
+}

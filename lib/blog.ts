@@ -1,9 +1,16 @@
 import fs from 'fs';
-import html from 'remark-html';
 import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
 import path from 'path';
-import { remark } from 'remark';
+import {rehype} from 'rehype';
+import rehypeDocument from 'rehype-document';
+import rehypeFormat from 'rehype-format';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeStringify from 'rehype-stringify';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import scala from 'highlight.js/lib/languages/scala';
+import {unified} from 'unified';
 
 const blogDir = path.join(process.cwd(), 'blog');
 
@@ -75,15 +82,24 @@ export async function getPostData(id: string): Promise<Post> {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
+  // Use remark-rehype to convert markdown into HTML string
+  const html = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeDocument)
+    .use(rehypeFormat)
+    .use(rehypeStringify)
     .process(matterResult.content);
-  const contentHtml: string = processedContent.toString();
 
-  // Combine the data with the id and contentHtml
+  // Use rehype-highlight to generate language-specific AST
+  const ast = await rehype()
+    .data('settings', {fragment: true})
+    .use(rehypeHighlight, {languages: {scala}})
+    .process(String(html));
+
+  // Return all the data and metadata in a Post object
   const date: Date = parseISO(matterResult.data.date);
   const title: string = matterResult.data.title;
   const description: string = matterResult.data.description;
-  return new Post(date, title, description, id, contentHtml);
+  return new Post(date, title, description, id, String(ast));
 }
