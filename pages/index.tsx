@@ -53,7 +53,7 @@ export default function Home({
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date dateString={date} />
+                <Date startStr={date} endStr={date} />
               </small>
             </li>
           ))}
@@ -69,7 +69,7 @@ export default function Home({
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                Last Update: <Date dateString={lastUpdated} />
+                Last Update: <Date startStr={lastUpdated} endStr={lastUpdated} />
               </small>
             </li>
           ))}

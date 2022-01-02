@@ -37,7 +37,7 @@ export default function PostComponent({
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <h2 className={utilStyles.headingMd}>{postData.description}</h2>
         <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
+          <Date startStr={postData.date} endStr={postData.date} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>

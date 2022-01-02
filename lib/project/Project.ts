@@ -39,12 +39,12 @@ export default class Project {
     type CommitsResponse = Endpoints["GET /repos/{owner}/{repo}/commits"]["response"]["data"];
     const commits: Promise<CommitsResponse> = fetch(url).then(response => response.json());
 
-    return commits.then(all => all.map(each => {
+    return commits.then(all => { return all.map(each => {
       const committer = each.commit.committer;
       const date: Date | undefined = committer?.date ? parseISO(committer.date) : undefined;
       const link = `https://github.com/awwsmm/${this.name}/commit/${each.sha}`;
       return new Commit(date, each.commit.message, each.sha, link);
-    }));
+    });});
   }
 
   /**
