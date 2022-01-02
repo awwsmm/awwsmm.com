@@ -39,7 +39,7 @@ export default function Home({
           This website is{' '}
           <Link href="/blog/hello-world">a work in progress</Link>.
           Check out{' '}
-          <Link href="/projects/awwsmm.github.io">its project page</Link>{' '}
+          <Link href="/projects/awwsmm.com">its project page</Link>{' '}
           to see what's been happening lately.
         </p>
       </section>
