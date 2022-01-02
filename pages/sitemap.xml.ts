@@ -1,4 +1,4 @@
-import { getAllPostIds, getPostData, Post } from '../lib/posts';
+import { getAllPostIds, getPostData, Post } from '../lib/blog';
 import { GetServerSideProps } from 'next';
 
 const EXTERNAL_DATA_URL = 'http://localhost:3000/blog';
