@@ -1,0 +1,26 @@
+# To-Do
+
+- add "light mode" / "dark mode" switch
+- add social links (like on current site)
+- add post tags and dynamic routes for tag pages
+    - [like this](https://bionicjulia.com/blog/creating-dynamic-tag-page-nextjs-nested-routes)
+- add RSS feed (?)
+    - [like this](https://barhamon.com/feed.json)
+- add Disqus comment sections on each post (gives analytics, "share" buttons, too)
+    - [see here](https://barhamon.com/post/comments)
+- add /docs/cv page
+- (in progress) add /projects directory, with subpages
+    - projects sorted by "last updated" date
+        - "log" for each project?
+    - all projects have live demos online
+    - /projects/<primary-technology>/<title>
+    - /projects/scalajs/conway => conway.scalajs.projects.awwsmm.com (?)
+    - /projects/scalajs/cookies => etc.
+    - /projects/nextjs/this-website => describing how this web page was built
+- add linter rule to
+    - disallow trailing spaces on lines
+    - require types on all variables
+- automatically remove unused dependencies
+- render commit messages as markdown (?)
+- add JSDoc and figure out how to generate in VSCode
+    - [see here](https://jsdoc.app/about-getting-started.html)

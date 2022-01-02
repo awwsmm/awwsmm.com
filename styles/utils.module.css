@@ -1,0 +1,84 @@
+.heading2Xl {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+
+.headingXl {
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+
+.headingLg {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+
+.headingMd {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.borderCircle {
+  border-radius: 9999px;
+}
+
+.colorInherit {
+  color: inherit;
+}
+
+.padding1px {
+  padding-top: 1px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  margin: 0 0 1.25rem;
+}
+
+.lightText {
+  color: #666;
+}
+
+.commitMessage {
+  font-size: 0.8rem;
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sha {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* TODO move all component-specific styling into /component CSS files */
+.updateTimestamp {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.updateTitle {
+  font-size: 1.2rem;
+}
+
+.updateSubtitle {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.updateBody {
+  margin: 1rem 0 2rem 0;
+  font-size: 1.0rem;
+}

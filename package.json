@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --ext .ts --ext .tsx",
+    "lint-and-fix": "eslint . --ext .ts --ext .tsx --fix",
+    "dev": "npm run lint-and-fix && next dev"
+  },
+  "dependencies": {
+    "@octokit/core": "^3.5.1",
+    "@octokit/types": "^6.34.0",
+    "date-fns": "^2.27.0",
+    "gray-matter": "^4.0.3",
+    "next": "latest",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.5",
+    "@types/react": "^17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.5.0",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "typescript": "^4.5.4"
+  }
+}
