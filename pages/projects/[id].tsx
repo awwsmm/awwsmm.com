@@ -43,6 +43,7 @@ export default function ProjectUpdateComponent({
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{project.id}</h1>
+        <p>View source at <a href={"https://github.com/awwsmm/" + project.id}>{"https://github.com/awwsmm/" + project.id}</a></p>
         {/* <h2 className={utilStyles.headingMd}>{project.id}</h2> */}
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>Updates</h2>
