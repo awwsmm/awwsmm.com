@@ -28,7 +28,7 @@ export default class Project {
    * @returns the names of all projects in the /projects directory
    */
   static getAllNames(): string[] {
-    return fs.readdirSync(this.projectsDir);
+    return fs.readdirSync(Project.projectsDir);
   }
 
   /**
@@ -39,29 +39,45 @@ export default class Project {
     type CommitsResponse = Endpoints["GET /repos/{owner}/{repo}/commits"]["response"]["data"];
     const commits: Promise<CommitsResponse> = fetch(url).then(response => response.json());
 
-    return commits.then(all => { return all.map(each => {
+    // sometimes, we get rate limiting errors from GitHub (60 requests/hour unauthenticated)
+    // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
+    // TODO: figure out how to cache this data locally during development
 
-      const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
+    return commits.then(all => {
+      try {
+        const env = process.env.NODE_ENV;
+        if (env === "development") {
+          console.log("in development -- not querying GitHub"); // eslint-disable-line no-console
+          return [];
+        } else {
+          return all.map(each => {
+            const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
+            const link = `https://github.com/awwsmm/${this.name}/commit/${each.sha}`;
 
-      if (maybeDate) {
-        const date = parseISO(maybeDate);
-        const link = `https://github.com/awwsmm/${this.name}/commit/${each.sha}`;
-        return new Commit(date, each.commit.message, each.sha, link);
+            if (maybeDate) {
+              return new Commit(parseISO(maybeDate), each.commit.message, each.sha, link);
+            } else {
 
-      } else {
-        // The GitHub API can theoretically return commits with no date.
-        //   If that ever happens, figure out how to handle it.
-        //   see: https://docs.github.com/en/rest/reference/commits#list-commits
+              // The GitHub API can theoretically return commits with no date.
+              //   If that ever happens, figure out how to handle it.
+              //   see: https://docs.github.com/en/rest/reference/commits#list-commits
 
-        throw new Error("GitHub returned a commit with no date!")
+              throw new Error(`GitHub commit missing date: ${link}`);
+            }
+          });
+        }
+      } catch (error) {
+        throw new Error(JSON.stringify(all));
       }
-    });});
+    });
+
   }
 
   /**
    * @returns a Promise containing an array of all {@link LogEntry}s for this Project
    */
   async getLogEntries(): Promise<LogEntry[]> {
+    const name = this.name;
     const logDir: string = path.join(process.cwd(), `projects/${this.name}/log`);
     if (!fs.existsSync(logDir)) return Promise.resolve([]);
 
@@ -82,45 +98,68 @@ export default class Project {
       const date: Date = parseISO(matterResult.data.date);
       const title: string = matterResult.data.title;
       const description: string = matterResult.data.description;
-      return new LogEntry(fullPath, date, title, description, contentHtml);
+      return new LogEntry(name, fullPath, date, title, description, contentHtml);
     }
 
     const fileNames: string[] = fs.readdirSync(logDir);
     return Promise.all(fileNames.map(each => getLogData(each)));
   }
 
+  /**
+   * Returns all {ProjectUpdates}, ordered from most to least recent (by {@link ProjectUpdate#end()}).
+   *
+   * The most recent update will be the [0]th element of the array.
+   */
   async getAllUpdates(): Promise<ProjectUpdate[]> {
 
-      // get commits from GitHub for this project
-      const commits: Commit[] = await this.getCommits();
+    // get commits from GitHub for this project
+    const commits: Commit[] = await this.getCommits();
 
-      // group commits which are less than 36 hours apart
-      const threshold = 36 * 60 * 60 * 1000;
-      const commitGroups: CommitGroup[] = [new CommitGroup()];
-      let commitGroupIndex = 0;
+    // group commits which are less than 36 hours apart
+    const threshold = 36 * 60 * 60 * 1000;
 
-      commits.forEach(commit => {
+    let commitIndex = 0;
+    let commitGroupIndex = 0;
+    const commitGroups: CommitGroup[] = [];
+
+    commits.forEach(commit => {
+
+      // if this is the very first Commit
+      if (commitIndex === 0) {
+
+        // create the first CommitGroup and add this Commit to it
+        commitGroups.push(new CommitGroup(this.name, [commit]));
+
+      } else {
+
+        // otherwise, determine how many ms outside of the current CommitGroup this Commit sits
         const msOutsideGroup = commitGroups[commitGroupIndex].msOutside(commit);
 
-        if (msOutsideGroup && (Math.abs(msOutsideGroup) > threshold)) {
+        // if it's outside the threshold, create a new CommitGroup for this Commit
+        if (Math.abs(msOutsideGroup) > threshold) {
           commitGroupIndex += 1;
-          commitGroups.push(new CommitGroup());
+          commitGroups.push(new CommitGroup(this.name, [commit]));
         }
 
-        commitGroups[commitGroupIndex].add(commit);
-      });
+        // add the Commit to the CommitGroup
+        commitGroups[commitGroupIndex] = commitGroups[commitGroupIndex].add(commit);
+      }
 
-      // get log updates for this project
-      const entries: LogEntry[] = await this.getLogEntries();
+      // moving to the next Commit now...
+      commitIndex += 1;
+    })
 
-      // merge log entries and commit groups, and sort
-      const updates: ProjectUpdate[] = (commitGroups as ProjectUpdate[]).concat(entries).sort((a, b) => {
-        const ta = a.start();
-        const tb = b.start();
-        return ta && tb && ta < tb ? 1 : -1;
-      });
+    // get log updates for this project
+    const entries: LogEntry[] = await this.getLogEntries();
 
-      return updates;
+    // merge log entries and commit groups, and sort
+    const updates: ProjectUpdate[] = (commitGroups as ProjectUpdate[]).concat(entries).sort((a, b) => {
+      const ta = a.start;
+      const tb = b.start;
+      return ta && tb && ta < tb ? 1 : -1;
+    });
+
+    return updates;
   }
 
 }

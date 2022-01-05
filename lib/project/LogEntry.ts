@@ -6,37 +6,27 @@ import ProjectUpdate from "./ProjectUpdate";
 export default class LogEntry implements ProjectUpdate {
   readonly type: string = "LogEntry";
 
+  readonly project: string;
+
   readonly path: string; // unique identifier
   readonly date: Date;
-  readonly title: string;
-  readonly subtitle: string;
-  readonly body: string;
+  readonly htmlTitle: string;
+  readonly htmlSubtitle: string;
+  readonly htmlBody: string;
 
-  constructor(path: string, date: Date, title: string, subtitle: string, body: string) {
+  constructor(project: string, path: string, date: Date, htmlTitle: string, htmlSubtitle: string, htmlBody: string) {
+    this.project = project;
+
     this.path = path;
     this.date = date;
-    this.title = title;
-    this.subtitle = subtitle;
-    this.body = body;
+    this.htmlTitle = htmlTitle;
+    this.htmlSubtitle = htmlSubtitle;
+    this.htmlBody = htmlBody;
+
+    this.start = date;
+    this.end = date;
   }
 
-  start(): Date {
-    return this.date;
-  }
-
-  end(): Date {
-    return this.date;
-  }
-
-  htmlTitle(): string {
-    return this.title;
-  }
-
-  htmlSubtitle(): string {
-    return this.subtitle;
-  }
-
-  htmlBody(): string {
-    return this.body;
-  }
+  readonly start: Date;
+  readonly end: Date;
 }

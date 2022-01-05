@@ -3,11 +3,12 @@
  */
 interface ProjectUpdate {
   readonly type: string
-  start(): Date | undefined
-  end(): Date | undefined
-  htmlTitle(): string
-  htmlSubtitle(): string
-  htmlBody(): string
+  readonly project: string
+  readonly start: Date
+  readonly end: Date
+  readonly htmlTitle: string
+  readonly htmlSubtitle: string
+  readonly htmlBody: string
 }
 
 export default ProjectUpdate;

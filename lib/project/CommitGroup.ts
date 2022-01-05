@@ -8,55 +8,58 @@ import utilStyles from '../../styles/utils.module.css';
 export default class CommitGroup implements ProjectUpdate {
   readonly type: string = "CommitGroup";
 
-  commits: Commit[] = [];
+  readonly project: string;
 
-  // TODO make this class immutable (?)
-  // see: https://levelup.gitconnected.com/the-complete-guide-to-immutability-in-typescript-99154f859fdb
+  readonly commits: Commit[] = [];
 
-  start(): Date | undefined {
-    return this.commits.length > 0 ? this.commits[this.commits.length - 1].date : undefined;
-  }
-
-  end(): Date | undefined {
-    return this.commits.length > 0 ? this.commits[0].date : undefined;
-  }
-
-  htmlTitle(): string {
-    return "GitHub Commits";
-  }
-
-  htmlSubtitle(): string {
-    return "GitHub Commits";
-  }
-
-  htmlBody(): string {
-    function link(commit: Commit): string {
-      return `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">${commit.sha.slice(0, 7)}</a>`;
+  constructor(project: string, commits: Commit[]) {
+    if (commits.length < 1) {
+      throw new Error("CommitGroup must contain at least one Commit");
+    } else {
+      this.project = project;
+      this.commits = commits;
+      this.start = this.commits[this.commits.length - 1].date;
+      this.end = this.commits[0].date;
+      this.htmlBody =
+        `<ul>${CommitGroup.li}` +
+        this.commits.map(each => CommitGroup.link(each) + " | " + each.message).join(`\n${CommitGroup.li}`) +
+        `</ul>`;
     }
-    const li = `<li class="${utilStyles.commitMessage}">`;
-    return `<ul>${li}` + this.commits.map(each => link(each) + " | " + each.message).join(`\n${li}`) + `</ul>`;
   }
 
-  add(commit: Commit): void {
-    this.commits.push(commit);
-    this.commits.sort((a, b) => a.date < b.date ? 1 : -1);
+  add(commit: Commit): CommitGroup {
+    const project = this.project;
+    const newCommits = [...this.commits];
+    newCommits.push(commit);
+    newCommits.sort((a, b) => a.date < b.date ? 1 : -1);
+    return new CommitGroup(project, newCommits);
   }
 
-  msOutside(commit: Commit): number | undefined {
-    const earliest = this.start();
+  readonly start: Date
 
-    if (earliest) {
-      const msBefore = earliest.getTime() - commit.date.getTime();
-      if (msBefore >= 0) return -msBefore;
-    }
+  readonly end: Date;
 
-    const latest = this.end();
+  readonly htmlTitle: string = "GitHub Commits";
 
-    if (latest) {
-      const msAfter = commit.date.getTime() - latest.getTime();
-      if (msAfter >= 0) return msAfter;
-    }
+  readonly htmlSubtitle: string = "GitHub Commits";
 
-    return undefined;
+  private static li = `<li class="${utilStyles.commitMessage}">`;
+
+  private static link(commit: Commit): string {
+    return `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">${commit.sha.slice(0, 7)}</a>`;
+  }
+
+  readonly htmlBody: string;
+
+  msOutside(commit: Commit): number {
+    const commitTime = commit.date.getTime();
+
+    const msBefore = this.start.getTime() - commitTime;
+    if (msBefore >= 0) return -msBefore;
+
+    const msAfter = commitTime - this.end.getTime();
+    if (msAfter >= 0) return msAfter;
+
+    return 0;
   }
 }

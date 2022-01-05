@@ -80,6 +80,7 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+
   const allPostsData: PostMetadata[] = getSortedPostsData();
 
   const thing = allPostsData.map(each => { return {
@@ -88,22 +89,21 @@ export const getStaticProps: GetStaticProps = async () => {
     "title": each.title
   };});
 
-  const thing2 = await Promise.all(Project.getAllNames().map(name => {
-    return new Project(name).getAllUpdates().then(updates => {
-      
-      const lastUpdated = updates[0].end();
-      
-      return {
-        "name": name,
-        "lastUpdated": lastUpdated ? lastUpdated.toISOString() : "unknown"
-      };
-    });
+  const thing2a = await Promise.all(Project.getAllNames().map(name => {
+    return new Project(name).getAllUpdates()
   }));
+
+  const thing2b = thing2a.filter(updates => updates.length > 0).map(updates => {
+    return {
+      "name": updates[0].project,
+      "lastUpdated": updates[0].end.toISOString()
+    };
+  })
 
   return {
     props: {
       "allPostsData": thing,
-      "allProjectsData": thing2
+      "allProjectsData": thing2b
     }
   };
 };

@@ -84,15 +84,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         "project": {
           "id": id,
           "updates": updates.map(each => {
-            const start = each.start();
-            const end = each.end();
             return {
               "type": each.type,
-              "start": start ? start.toISOString() : "",
-              "end": end ? end.toISOString() : "",
-              "htmlTitle": each.htmlTitle(),
-              "htmlSubtitle": each.htmlSubtitle(),
-              "htmlBody": each.htmlBody()
+              "start": each.start.toISOString(),
+              "end": each.end.toISOString(),
+              "htmlTitle": each.htmlTitle,
+              "htmlSubtitle": each.htmlSubtitle,
+              "htmlBody": each.htmlBody
             };
           })
         }
