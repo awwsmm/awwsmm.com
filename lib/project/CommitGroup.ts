@@ -37,32 +37,26 @@ export default class CommitGroup implements ProjectUpdate {
     return `<ul>${li}` + this.commits.map(each => link(each) + " | " + each.message).join(`\n${li}`) + `</ul>`;
   }
 
-  // TODO start() and end() probably will not work properly when commits have undefined dates (unlikely?)
   add(commit: Commit): void {
     this.commits.push(commit);
-    this.commits.sort((a, b) => a?.date && b?.date && a.date < b.date ? 1 : -1);
+    this.commits.sort((a, b) => a.date < b.date ? 1 : -1);
   }
 
   msOutside(commit: Commit): number | undefined {
-    if (!commit.date) {
-      return undefined;
+    const earliest = this.start();
 
-    } else {
-      const earliest = this.start();
-
-      if (earliest) {
-        const msBefore = earliest.getTime() - commit.date.getTime();
-        if (msBefore >= 0) return -msBefore;
-      }
-
-      const latest = this.end();
-
-      if (latest) {
-        const msAfter = commit.date.getTime() - latest.getTime();
-        if (msAfter >= 0) return msAfter;
-      }
-
-      return undefined;
+    if (earliest) {
+      const msBefore = earliest.getTime() - commit.date.getTime();
+      if (msBefore >= 0) return -msBefore;
     }
+
+    const latest = this.end();
+
+    if (latest) {
+      const msAfter = commit.date.getTime() - latest.getTime();
+      if (msAfter >= 0) return msAfter;
+    }
+
+    return undefined;
   }
 }

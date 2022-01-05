@@ -19,7 +19,7 @@ export default class Project {
   static readonly projectsDir: string = path.join(process.cwd(), 'projects');
 
   readonly name: string;
-  
+
   constructor(name: string) {
     this.name = name;
   }
@@ -40,10 +40,21 @@ export default class Project {
     const commits: Promise<CommitsResponse> = fetch(url).then(response => response.json());
 
     return commits.then(all => { return all.map(each => {
-      const committer = each.commit.committer;
-      const date: Date | undefined = committer?.date ? parseISO(committer.date) : undefined;
-      const link = `https://github.com/awwsmm/${this.name}/commit/${each.sha}`;
-      return new Commit(date, each.commit.message, each.sha, link);
+
+      const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
+
+      if (maybeDate) {
+        const date = parseISO(maybeDate);
+        const link = `https://github.com/awwsmm/${this.name}/commit/${each.sha}`;
+        return new Commit(date, each.commit.message, each.sha, link);
+
+      } else {
+        // The GitHub API can theoretically return commits with no date.
+        //   If that ever happens, figure out how to handle it.
+        //   see: https://docs.github.com/en/rest/reference/commits#list-commits
+
+        throw new Error("GitHub returned a commit with no date!")
+      }
     });});
   }
 
@@ -57,16 +68,16 @@ export default class Project {
     async function getLogData(fileName: string): Promise<LogEntry> {
       const fullPath = path.join(logDir, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-  
+
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents);
-  
+
       // Use remark to convert markdown into HTML string
       const processedContent = await remark()
         .use(html)
         .process(matterResult.content);
       const contentHtml = processedContent.toString();
-  
+
       // Combine everything into a LogEntry
       const date: Date = parseISO(matterResult.data.date);
       const title: string = matterResult.data.title;
@@ -87,21 +98,21 @@ export default class Project {
       const threshold = 36 * 60 * 60 * 1000;
       const commitGroups: CommitGroup[] = [new CommitGroup()];
       let commitGroupIndex = 0;
-  
+
       commits.forEach(commit => {
         const msOutsideGroup = commitGroups[commitGroupIndex].msOutside(commit);
-  
+
         if (msOutsideGroup && (Math.abs(msOutsideGroup) > threshold)) {
           commitGroupIndex += 1;
           commitGroups.push(new CommitGroup());
         }
-  
+
         commitGroups[commitGroupIndex].add(commit);
       });
-  
+
       // get log updates for this project
       const entries: LogEntry[] = await this.getLogEntries();
-  
+
       // merge log entries and commit groups, and sort
       const updates: ProjectUpdate[] = (commitGroups as ProjectUpdate[]).concat(entries).sort((a, b) => {
         const ta = a.start();
