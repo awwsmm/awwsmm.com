@@ -14,7 +14,7 @@ export default function LogEntryComponent(
   // TODO can this if-else be more elegant?
   // see: https://reactjs.org/docs/conditional-rendering.html
   return (
-    <li className={utilStyles.listItem} key={start}>
+    <li className={utilStyles.listItem} key={`log-entry-${start}`}>
       <small className={utilStyles.updateTimestamp}>
         <Date startStr={start} endStr={end} />
       </small>

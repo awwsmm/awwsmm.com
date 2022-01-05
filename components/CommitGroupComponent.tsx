@@ -13,7 +13,7 @@ export default function CommitGroupComponent(
   }
 ) {
   return ( // TODO need a unique key here -- start and end are already rendered as strings
-    <li className={utilStyles.listItem}> {/* key={start}> */}
+    <li className={utilStyles.listItem} key={`github-commits-${start}-to-${end}`}>
       <small className={utilStyles.updateTimestamp}>
         <Date startStr={start} endStr={end} />
       </small>
