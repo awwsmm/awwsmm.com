@@ -82,3 +82,11 @@
   margin: 1rem 0 2rem 0;
   font-size: 1.0rem;
 }
+
+.updateBody p code {
+  color: lightgreen;
+}
+
+.updateBody h3 code {
+  color: lightgreen;
+}
