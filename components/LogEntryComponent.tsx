@@ -9,12 +9,9 @@ export default function LogEntryComponent(
     htmlSubtitle: string,
     htmlBody: string
   }
-) { // TODO need a unique key here... maybe a slug for blog posts and "commits_<start>_to_<end>" for commits
-
-  // TODO can this if-else be more elegant?
-  // see: https://reactjs.org/docs/conditional-rendering.html
+) {
   return (
-    <li className={utilStyles.listItem} key={`log-entry-${start}`}>
+    <li className={utilStyles.listItem}>
       <small className={utilStyles.updateTimestamp}>
         <Date startStr={start} endStr={end} />
       </small>

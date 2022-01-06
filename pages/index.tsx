@@ -1,4 +1,3 @@
-import { getSortedPostsData, PostMetadata } from '../lib/blog';
 import Date from '../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -7,6 +6,7 @@ import Link from 'next/link';
 import Project from '../lib/project/Project';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
+import { FrontMatter, Slug } from '../lib/blog/Post';
 
 export default function Home({
   allPostsData,
@@ -81,24 +81,26 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const allPostsData: PostMetadata[] = getSortedPostsData();
+  const allFrontMatter: FrontMatter[] = Slug.getAll().map(each => each.getFrontMatter())
 
-  const thing = allPostsData.map(each => { return {
-    "id": each.id,
-    "date": each.date.toISOString(),
+  const thing = allFrontMatter.map(each => { return {
+    "id": each.slugAsString,
+    "date": each.dateAsISOString,
     "title": each.title
-  };});
+  }})
 
-  const thing2a = await Promise.all(Project.getAllNames().map(name => {
+  const allProjectUpdates = await Promise.all(Project.getAllNames().map(name => {
     return new Project(name).getAllUpdates()
   }));
 
-  const thing2b = thing2a.filter(updates => updates.length > 0).map(updates => {
-    return {
-      "name": updates[0].project,
-      "lastUpdated": updates[0].end.toISOString()
-    };
-  })
+  const thing2b = allProjectUpdates
+    .filter(projectUpdates => projectUpdates.length > 0)
+    .map(projectUpdates => {
+      return {
+        "name": projectUpdates[0].project,
+        "lastUpdated": projectUpdates[0].end.toISOString()
+      };
+    })
 
   return {
     props: {

@@ -1,9 +1,9 @@
-import { getAllPostIds, getPostData, Post } from '../../lib/blog';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Date from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import utilStyles from '../../styles/utils.module.css';
+import { Post, Slug } from '../../lib/blog/Post';
 
 export default function PostComponent({
   postData
@@ -46,27 +46,25 @@ export default function PostComponent({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds().map(each => { return {
-    "params": {
-      "id": each
-    }
-  };});
   return {
-    paths,
+    paths: Slug.getAll(),
     fallback: false
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params) {
-    const postData: Post = await getPostData(params.id as string);
+
+    const postData: Post = await new Slug(params.slug as string).getFrontMatter().processContent()
+
+    // const postData: Post = await getPostData(params.slug as string);
     return {
       props: {
         "postData": {
           "title": postData.title,
           "description": postData.description,
-          "date": postData.date.toISOString(),
-          "id": postData.id,
+          "date": postData.dateAsISOString,
+          "id": postData.slugAsString,
           "contentHtml": postData.htmlContent
         }
       }

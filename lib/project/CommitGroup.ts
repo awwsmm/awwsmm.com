@@ -15,15 +15,13 @@ export default class CommitGroup implements ProjectUpdate {
   constructor(project: string, commits: Commit[]) {
     if (commits.length < 1) {
       throw new Error("CommitGroup must contain at least one Commit");
+
     } else {
       this.project = project;
       this.commits = commits;
       this.start = this.commits[this.commits.length - 1].date;
       this.end = this.commits[0].date;
-      this.htmlBody =
-        `<ul>${CommitGroup.li}` +
-        this.commits.map(each => CommitGroup.link(each) + " | " + each.message).join(`\n${CommitGroup.li}`) +
-        `</ul>`;
+      this.htmlBody = `<ul>${this.commits.map(each => CommitGroup.link(each)).join('\n')}</ul>`;
     }
   }
 
@@ -35,7 +33,7 @@ export default class CommitGroup implements ProjectUpdate {
     return new CommitGroup(project, newCommits);
   }
 
-  readonly start: Date
+  readonly start: Date;
 
   readonly end: Date;
 
@@ -43,10 +41,10 @@ export default class CommitGroup implements ProjectUpdate {
 
   readonly htmlSubtitle: string = "GitHub Commits";
 
-  private static li = `<li class="${utilStyles.commitMessage}">`;
-
   private static link(commit: Commit): string {
-    return `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">${commit.sha.slice(0, 7)}</a>`;
+    const li = `<li class="${utilStyles.commitMessage}">`;
+    const a = `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">`;
+    return `${li}${a}${commit.sha.slice(0, 7)}</a> | ${commit.message}</li>`;
   }
 
   readonly htmlBody: string;

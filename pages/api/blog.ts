@@ -1,13 +1,13 @@
-import { getAllPostIds, getPostData } from '../../lib/blog';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { Slug } from '../../lib/blog/Post';
 
 export default async (_: NextApiRequest, res: NextApiResponse) => {
-  const allPostData = getAllPostIds().map(each => getPostData(each));
+  const allFrontMatter = Slug.getAll().map(each => each.getFrontMatter());
 
   // TODO add routes to get individual blog posts
 
   return new Promise<void>((resolve, reject) => { // eslint-disable-line @typescript-eslint/no-unused-vars
-    Promise.all(allPostData)
+    Promise.all(allFrontMatter)
       .then(response => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');

@@ -52,9 +52,9 @@ export default function ProjectUpdateComponent({
               ({ type, start, end, htmlTitle, htmlSubtitle, htmlBody }) =>
               {
                 if (type == "CommitGroup") {
-                  return <CommitGroupComponent start={start} end={end} htmlSubtitle={htmlSubtitle} htmlBody={htmlBody} />;
+                  return <CommitGroupComponent key={`github-commits-${start}`} start={start} end={end} htmlSubtitle={htmlSubtitle} htmlBody={htmlBody} />;
                 } else if (type == "LogEntry") {
-                  return <LogEntryComponent start={start} end={end} htmlTitle={htmlTitle} htmlSubtitle={htmlSubtitle} htmlBody={htmlBody} />;
+                  return <LogEntryComponent key={`log-entry-${start}`} start={start} end={end} htmlTitle={htmlTitle} htmlSubtitle={htmlSubtitle} htmlBody={htmlBody} />;
                 } else {
                   throw new Error("unknown ProjectUpdate type");
                 }
