@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { Post, Slug } from '../../lib/blog/Post';
 import Date from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import utilStyles from '../../styles/utils.module.css';
-import { Post, Slug } from '../../lib/blog/Post';
 
 export default function PostComponent({
   postData
@@ -55,7 +55,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params) {
 
-    const postData: Post = await new Slug(params.slug as string).getFrontMatter().processContent()
+    const postData: Post = await new Slug(params.slug as string).getFrontMatter().processContent();
 
     // const postData: Post = await getPostData(params.slug as string);
     return {

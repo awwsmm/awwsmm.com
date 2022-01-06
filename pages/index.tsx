@@ -1,3 +1,4 @@
+import { FrontMatter, Slug } from '../lib/blog/Post';
 import Date from '../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -6,7 +7,6 @@ import Link from 'next/link';
 import Project from '../lib/project/Project';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
-import { FrontMatter, Slug } from '../lib/blog/Post';
 
 export default function Home({
   allPostsData,
@@ -81,16 +81,16 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const allFrontMatter: FrontMatter[] = Slug.getAll().map(each => each.getFrontMatter())
+  const allFrontMatter: FrontMatter[] = Slug.getAll().map(each => each.getFrontMatter());
 
   const thing = allFrontMatter.map(each => { return {
     "id": each.slugAsString,
     "date": each.dateAsISOString,
     "title": each.title
-  }})
+  };});
 
   const allProjectUpdates = await Promise.all(Project.getAllNames().map(name => {
-    return new Project(name).getAllUpdates()
+    return new Project(name).getAllUpdates();
   }));
 
   const thing2b = allProjectUpdates
@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps = async () => {
         "name": projectUpdates[0].project,
         "lastUpdated": projectUpdates[0].end.toISOString()
       };
-    })
+    });
 
   return {
     props: {

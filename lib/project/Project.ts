@@ -147,7 +147,7 @@ export default class Project {
 
       // moving to the next Commit now...
       commitIndex += 1;
-    })
+    });
 
     // get log updates for this project
     const entries: LogEntry[] = await this.getLogEntries();
