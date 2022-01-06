@@ -41,10 +41,16 @@ export default class CommitGroup implements ProjectUpdate {
 
   readonly htmlSubtitle: string = "GitHub Commits";
 
+  // add more here as necessary
+  private static htmlEscape(str: string): string {
+    return str.
+      replaceAll('<', '&lt;');
+  }
+
   private static link(commit: Commit): string {
     const li = `<li class="${utilStyles.commitMessage}">`;
     const a = `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">`;
-    return `${li}${a}${commit.sha.slice(0, 7)}</a> | ${commit.message}</li>`;
+    return `${li}${a}${commit.sha.slice(0, 7)}</a> | ${CommitGroup.htmlEscape(commit.message)}</li>`;
   }
 
   readonly htmlBody: string;
