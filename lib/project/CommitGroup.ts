@@ -43,7 +43,7 @@ export default class CommitGroup implements ProjectUpdate {
 
   // add more here as necessary
   private static htmlEscape(str: string): string {
-    return str.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   private static link(commit: Commit): string {
