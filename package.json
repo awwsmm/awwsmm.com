@@ -3,7 +3,8 @@
   "scripts": {
     "lint": "eslint . --ext .ts --ext .tsx",
     "lint-and-fix": "eslint . --ext .ts --ext .tsx --fix",
-    "dev": "next dev"
+    "dev": "next dev",
+    "build": "next build"
   },
   "dependencies": {
     "@octokit/core": "^3.5.1",

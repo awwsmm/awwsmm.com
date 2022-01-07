@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Slug } from '../../lib/blog/Post';
+import SlugFactory from '../../lib/blog/SlugFactory';
 
 export default async (_: NextApiRequest, res: NextApiResponse) => {
-  const allFrontMatter = Slug.getAll().map(each => each.getFrontMatter());
+  const allFrontMatter = SlugFactory.getAll().map(each => SlugFactory.getFrontMatter(each));
 
   // TODO add routes to get individual blog posts
 

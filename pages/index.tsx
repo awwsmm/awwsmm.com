@@ -1,11 +1,12 @@
-import { FrontMatter, Slug } from '../lib/blog/Post';
 import Date from '../components/DateComponent';
+import { FrontMatter } from '../lib/blog/FrontMatter';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
 import Project from '../lib/project/Project';
 import { siteTitle } from '../components/LayoutComponent';
+import SlugFactory from '../lib/blog/SlugFactory';
 import utilStyles from '../styles/utils.module.css';
 
 export default function Home({
@@ -81,7 +82,7 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const allFrontMatter: FrontMatter[] = Slug.getAll().map(each => each.getFrontMatter());
+  const allFrontMatter: FrontMatter[] = SlugFactory.getAll().map(each => SlugFactory.getFrontMatter(each));
 
   const thing = allFrontMatter.map(each => { return {
     "id": each.slugAsString,
