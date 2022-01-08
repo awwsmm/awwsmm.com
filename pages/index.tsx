@@ -94,9 +94,11 @@ export const getStaticProps: GetStaticProps = async () => {
     return new Project(name).getAllUpdates();
   }));
 
-  const thing2b = allProjectUpdates
-    .filter(projectUpdates => projectUpdates.length > 0)
-    .map(projectUpdates => {
+  const thing2a = allProjectUpdates.filter(projectUpdates => projectUpdates.length > 0);
+
+  thing2a.sort((a,b) => a[0].end < b[0].end ? 1 : -1);
+
+  const thing2b = thing2a.map(projectUpdates => {
       return {
         "name": projectUpdates[0].project,
         "lastUpdated": projectUpdates[0].end.toISOString()

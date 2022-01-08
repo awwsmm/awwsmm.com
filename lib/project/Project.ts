@@ -32,7 +32,9 @@ export default class Project {
   }
 
   /**
-   * @returns a Promise containing an array of all {@link Commit}s from this Project's GitHub repo
+   * @returns a Promise containing an array of all {@link Commit}s from this Project's GitHub repo.
+   *
+   * Commits are returned in reverse chronological order (newest first).
    */
   async getCommits(): Promise<Commit[]> {
     const url = `https://api.github.com/repos/awwsmm/${this.name}/commits`;
@@ -112,8 +114,11 @@ export default class Project {
    */
   async getAllUpdates(): Promise<ProjectUpdate[]> {
 
-    // get commits from GitHub for this project
+    // get commits (reverse chronological order) from GitHub for this project
     const commits: Commit[] = await this.getCommits();
+
+    // get log updates for this project
+    const entries: LogEntry[] = await this.getLogEntries();
 
     // group commits which are less than 36 hours apart
     const threshold = 36 * 60 * 60 * 1000;
@@ -132,11 +137,22 @@ export default class Project {
 
       } else {
 
-        // otherwise, determine how many ms outside of the current CommitGroup this Commit sits
+        // TODO instead of looping over all LogEntrys every time here, we should
+        //      concat the array of LogEntrys and the array of Commits and sort
+        //      (but then they would both have to implement some common interface)
+
+        // is there a log entry between the previous commit and this commit? (inefficient)
+        const discontiguous = entries.find(entry => {
+          const previousCommitDate = commitGroups[commitGroupIndex].end;
+          const thisCommitDate = commit.date;
+          return entry.date < previousCommitDate && entry.date > thisCommitDate;
+        });
+
+        // or, determine how many ms outside of the current CommitGroup this Commit sits...
         const msOutsideGroup = commitGroups[commitGroupIndex].msOutside(commit);
 
-        // if it's outside the threshold, create a new CommitGroup for this Commit
-        if (Math.abs(msOutsideGroup) > threshold) {
+        // ...and if it's outside the threshold, create a new CommitGroup for this Commit
+        if (discontiguous || Math.abs(msOutsideGroup) > threshold) {
           commitGroupIndex += 1;
           commitGroups.push(new CommitGroup(this.name, [commit]));
         }
@@ -148,9 +164,6 @@ export default class Project {
       // moving to the next Commit now...
       commitIndex += 1;
     });
-
-    // get log updates for this project
-    const entries: LogEntry[] = await this.getLogEntries();
 
     // merge log entries and commit groups, and sort
     const updates: ProjectUpdate[] = (commitGroups as ProjectUpdate[]).concat(entries).sort((a, b) => {

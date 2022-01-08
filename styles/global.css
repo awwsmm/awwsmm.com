@@ -28,10 +28,6 @@ img {
   display: block;
 }
 
-p {
-  text-align: justify;
-}
-
 .hljs-string {
   color: yellow;
 }
