@@ -90,6 +90,8 @@ export const getStaticProps: GetStaticProps = async () => {
     "title": each.title
   };});
 
+  thing.sort((a,b) => a.date < b.date ? 1 : -1);
+
   const allProjectUpdates = await Promise.all(Project.getAllNames().map(name => {
     return new Project(name).getAllUpdates();
   }));
