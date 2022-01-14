@@ -1,7 +1,6 @@
 ---
 title: "What's the Difference Between Nominal, Structural, and Duck Typing?"
 description: "Nominal, Structural, and Duck Typing in Java, TypeScript, and JavaScript"
-date: '2022-01-09'
 ---
 
 ## Nominal Typing

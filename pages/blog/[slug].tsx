@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.slug && typeof params.slug === "string") {
-    const postData: Post = await SlugFactory.getFrontMatter(new Slug(params.slug)).processContent();
+    const postData: Post = await SlugFactory.getFrontMatter(new Slug(params.slug)).then(fm => fm.processContent());
     return postData;
 
   } else {
