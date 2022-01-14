@@ -1,7 +1,6 @@
 ---
 title: 'Hello, World!'
 description: 'Rewriting My Personal Website in Next.js and TypeScript'
-date: '2022-01-01'
 ---
 
 New Year's Day is as good a time as any to roll out a new blog, I suppose.

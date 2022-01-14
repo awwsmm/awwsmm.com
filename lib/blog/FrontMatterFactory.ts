@@ -9,8 +9,9 @@ import SlugFactory from './SlugFactory';
  export class FrontMatterFactory {
 
   // Return all blog posts, sorted by date
-  static getAll(): FrontMatter[] {
-    const allFrontMatter = SlugFactory.getAll().map(slug => SlugFactory.getFrontMatter(slug));
-    return allFrontMatter.sort((a, b) => (a.dateAsISOString < b.dateAsISOString) ? 1 : -1);
+  static async getAll(): Promise<FrontMatter[]> {
+    const allFrontMatter = Promise.all(SlugFactory.getAll().map(slug => SlugFactory.getFrontMatter(slug)));
+    const thing = allFrontMatter.then(fms => fms.sort((a, b) => (a.dateAsISOString < b.dateAsISOString) ? 1 : -1));
+    return thing;
   }
 }

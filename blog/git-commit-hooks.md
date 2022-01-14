@@ -1,7 +1,6 @@
 ---
 title: 'Eliminate Unnecessary Builds With Git Hooks'
 description: 'Writing Git Commit Hooks in Bash, Java, and Scala'
-date: '2022-01-02'
 ---
 
 ## Writing a Git Hook in Bash

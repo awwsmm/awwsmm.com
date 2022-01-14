@@ -82,7 +82,7 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const allFrontMatter: FrontMatter[] = SlugFactory.getAll().map(each => SlugFactory.getFrontMatter(each));
+  const allFrontMatter: FrontMatter[] = await Promise.all(SlugFactory.getAll().map(each => SlugFactory.getFrontMatter(each)));
 
   const thing = allFrontMatter.map(each => { return {
     "id": each.slugAsString,
