@@ -49,7 +49,10 @@ export default class SlugFactory {
     const rawContent = matterResult.content;
 
     // Get all git history entries which mention this file
-    const dates: string[] = await SlugFactory.git.log({ file: `blog/${slug}.md` }).then(commits => commits.all.map(each => each.date));
+    //   'master' here so 'npm run dev' in development doesn't add blog posts
+    //   to cache which have only just been committed on the development branch
+
+    const dates: string[] = await SlugFactory.git.log([ 'master', `blog/${slug}.md` ]).then(commits => commits.all.map(each => each.date));
 
     // if a blog post has been previously committed, it will have one or more log lines when 'git log' is run
     const committed = dates.length > 0 ? { lastUpdated: dates[0], published: dates[dates.length - 1] } : undefined;
@@ -93,7 +96,7 @@ export default class SlugFactory {
     // if we're in production (building locally, or running on Vercel), we utilise the cache
     } else {
 
-      // if a blog post has a commit history
+      // if a blog post has a commit history on master
       if (committed) {
 
         // if it's not in the cache, the post must be brand-new
@@ -115,10 +118,10 @@ export default class SlugFactory {
 
           // Get rid of all this logging once this has had some time to bake
 
+          console.log(`oldest available commit time:  ${oldestAvailableCommit}`); // eslint-disable-line no-console
           console.log(`newest available commit time:  ${newestAvailableCommit}`); // eslint-disable-line no-console
           console.log(`published time from git log:   ${committed.published}`); // eslint-disable-line no-console
           console.log(`lastUpdated time from git log: ${committed.lastUpdated}`); // eslint-disable-line no-console
-          console.log(`oldest available commit time:  ${oldestAvailableCommit}`); // eslint-disable-line no-console
 
           const cached = cache[cacheIndex];
 
@@ -128,20 +131,33 @@ export default class SlugFactory {
           // use the lastUpdated time from git log only if it's the time of the newest available commit (if this post was updated _this commit_)
           const lastUpdated = (committed.lastUpdated === newestAvailableCommit) ? newestAvailableCommit : cached.lastUpdated;
 
+          // update the 'lastUpdated' time in the cache
+          cache[cacheIndex] = { slug: slug, lastUpdated, published: cached.published };
+          fs.writeFileSync(SlugFactory.cacheFile, JSON.stringify(cache, undefined, 2));
+
           console.log(`(3) Post '${slug}' published: ${cached.published}, last updated: ${lastUpdated}`); // eslint-disable-line no-console
           return new FrontMatter(slug, title, description, cached.published, rawContent);
         }
 
       } else {
 
+        const thisBranch = await SlugFactory.git.branch().then(summary => summary.current);
+        const now = new Date().toISOString();
+
         if (slug.startsWith('wip-')) {
-          const now = new Date().toISOString();
 
           // this is an uncommitted local WIP file which will not be pushed to production
           console.log(`(4) Post '${slug}' not committed`); // eslint-disable-line no-console
           return new FrontMatter(slug, title, description, now, rawContent);
 
+        } else if (thisBranch !== 'master') {
+
+          // this is a new blog post which hasn't yet been committed to master, and we are not on the master branch
+          console.log(`(5) Post '${slug}' committed to feature branch but not master`); // eslint-disable-line no-console
+          return new FrontMatter(slug, title, description, now, rawContent);
+
         } else {
+
           // shouldn't be possible to get here? (clean this up later)
           throw new Error("Should never see this -- uncommitted blog post in production");
         }

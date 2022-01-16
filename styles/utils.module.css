@@ -89,3 +89,14 @@
 .updateBody h3 code {
   color: lightgreen;
 }
+
+.blogPost img {
+  border: 1px solid white;
+}
+
+.blogPost blockquote {
+  font-style: italic;
+  border-left: 2px solid white;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
