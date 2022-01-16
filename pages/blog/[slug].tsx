@@ -28,7 +28,7 @@ export default function PostComponent(props: any) { // eslint-disable-line @type
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
-      <article>
+      <article className={utilStyles.blogPost}>
         <h1 className={utilStyles.headingXl}>{title}</h1>
         <h2 className={utilStyles.headingMd}>{description}</h2>
         <div className={utilStyles.lightText}>
