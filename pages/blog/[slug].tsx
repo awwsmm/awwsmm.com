@@ -9,7 +9,7 @@ import utilStyles from '../../styles/utils.module.css';
 
 export default function PostComponent(props: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
   const postData = Post.fromJSON(JSON.stringify(props));
-  const { title, description, dateAsISOString, slugAsString, htmlContent } = postData.props;
+  const { title, description, published, lastUpdated, slugAsString, htmlContent } = postData.props;
 
   return (
     <Layout>
@@ -32,7 +32,7 @@ export default function PostComponent(props: any) { // eslint-disable-line @type
         <h1 className={utilStyles.headingXl}>{title}</h1>
         <h2 className={utilStyles.headingMd}>{description}</h2>
         <div className={utilStyles.lightText}>
-          <Date startStr={dateAsISOString} endStr={dateAsISOString} />
+          <Date startStr={published} endStr={lastUpdated} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </article>

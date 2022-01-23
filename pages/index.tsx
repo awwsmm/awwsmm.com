@@ -14,7 +14,8 @@ export default function Home({
   allProjectsData
 }: {
   allPostsData: {
-    date: string
+    published: string
+    lastUpdated: string
     title: string
     id: string
   }[],
@@ -47,14 +48,14 @@ export default function Home({
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {allPostsData.map(({ id, published, lastUpdated, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/blog/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date startStr={date} endStr={date} />
+                <Date startStr={published} endStr={lastUpdated} />
               </small>
             </li>
           ))}
@@ -86,11 +87,15 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const thing = allFrontMatter.map(each => { return {
     "id": each.slugAsString,
-    "date": each.dateAsISOString,
+    "published": each.published,
+    "lastUpdated": each.lastUpdated,
     "title": each.title
   };});
 
-  thing.sort((a,b) => a.date < b.date ? 1 : -1);
+
+  console.log(`thing: ${JSON.stringify(thing)}`);
+
+  thing.sort((a,b) => a.published < b.published ? 1 : -1);
 
   const allProjectUpdates = await Promise.all(Project.getAllNames().map(name => {
     return new Project(name).getAllUpdates();
