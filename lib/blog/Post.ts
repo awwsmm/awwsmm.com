@@ -5,13 +5,14 @@ import path from 'path';
  */
 export class Post {
 
-  constructor(slugAsString: string, title: string, description: string, dateAsISOString: string, htmlContent: string) {
+  constructor(slugAsString: string, title: string, description: string, published: string, lastUpdated: string, htmlContent: string) {
     this.props = {
-      slugAsString: slugAsString,
-      title: title,
-      description: description,
-      dateAsISOString: dateAsISOString,
-      htmlContent: htmlContent
+      slugAsString,
+      title,
+      description,
+      published,
+      lastUpdated,
+      htmlContent
     };
   }
 
@@ -21,19 +22,20 @@ export class Post {
     readonly slugAsString: string;
     readonly title: string;
     readonly description: string;
-    readonly dateAsISOString: string;
+    readonly published: string;
+    readonly lastUpdated: string;
     readonly htmlContent: string;
   };
 
   toJSON(): string {
-    const { title, description, dateAsISOString, slugAsString, htmlContent } = this.props;
-    const obj = { title, description, dateAsISOString, slugAsString, htmlContent };
+    const { title, description, published, lastUpdated, slugAsString, htmlContent } = this.props;
+    const obj = { title, description, published, lastUpdated, slugAsString, htmlContent };
     return JSON.stringify(obj);
   }
 
   static fromJSON(json: string): Post {
-    const { slugAsString, title, description, dateAsISOString, htmlContent } = JSON.parse(json);
-    return new Post(slugAsString, title, description, dateAsISOString, htmlContent);
+    const { slugAsString, title, description, published, lastUpdated, htmlContent } = JSON.parse(json);
+    return new Post(slugAsString, title, description, published, lastUpdated, htmlContent);
   }
 
   instanceMethod(): string {

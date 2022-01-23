@@ -47,9 +47,9 @@ export default class Project {
 
     return commits.then(all => {
       try {
-        const env = process.env.NODE_ENV;
-        if (env === "development") {
-          console.log("in development -- not querying GitHub"); // eslint-disable-line no-console
+        const onVercel: boolean = process.env.VERCEL === '1' && process.env.VERCEL_GIT_REPO_SLUG === 'awwsmm.com';
+        if (!onVercel) {
+          console.log("running locally -- not querying GitHub"); // eslint-disable-line no-console
           return [];
         } else {
           return all.map(each => {

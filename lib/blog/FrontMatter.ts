@@ -18,15 +18,20 @@ import { unified } from 'unified';
   readonly slugAsString: string;
   readonly title: string;
   readonly description: string;
-  readonly dateAsISOString: string;
+  readonly published: string;
+  readonly lastUpdated: string;
   readonly rawContent: string;
 
-  constructor(slugAsString: string, title: string, description: string, dateAsISOString: string, rawContent: string) {
+  constructor(slugAsString: string, title: string, description: string, published: string, lastUpdated: string, rawContent: string) {
     this.slugAsString = slugAsString;
     this.title = title;
     this.description = description;
-    this.dateAsISOString = dateAsISOString;
+    this.published = published;
+    this.lastUpdated = lastUpdated;
     this.rawContent = rawContent;
+
+    // console.log(`front matter created with published: ${published}`)
+
   }
 
   async processContent(): Promise<Post> {
@@ -50,6 +55,6 @@ import { unified } from 'unified';
       .process(String(html));
 
     // Return all the data and metadata in a Post object
-    return new Post(this.slugAsString, this.title, this.description, this.dateAsISOString, String(ast));
+    return new Post(this.slugAsString, this.title, this.description, this.published, this.lastUpdated, String(ast));
   }
 }

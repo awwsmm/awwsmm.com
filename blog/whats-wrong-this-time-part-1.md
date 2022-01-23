@@ -3,7 +3,7 @@ title: "What's Wrong This Time? A Debugging Mystery in Three Parts"
 description: "Debugging a New Feature in a Vercel TypeScript GitHub Repo"
 ---
 
-# Part I: The Idea
+**Part I: The Idea**
 
 ## _"I have an idea"_*, I said to myself.
 
@@ -140,11 +140,13 @@ But then I pushed it to production.
 
 The first problem I hit was that all of my blog posts now had the same date (which at the time was the current date):
 
-![](https://i.imgur.com/C0WGWdp.png)
+![Screenshot of awwsmm.com showing multiple blog posts with the same date](https://i.imgur.com/C0WGWdp.png)
 
 Do you see any problems with [the code I wrote here?](https://github.com/awwsmm/awwsmm.com/commit/69e038a919e448251fa2211a9fcf3fda914812fe)
 
 What's going on here?
+
+Check out the answer in [the second part of this series](https://www.awwsmm.com/blog/whats-wrong-this-time-part-2).
 
 ---
 
