@@ -92,9 +92,6 @@ export const getStaticProps: GetStaticProps = async () => {
     "title": each.title
   };});
 
-
-  console.log(`thing: ${JSON.stringify(thing)}`);
-
   thing.sort((a,b) => a.published < b.published ? 1 : -1);
 
   const allProjectUpdates = await Promise.all(Project.getAllNames().map(name => {
