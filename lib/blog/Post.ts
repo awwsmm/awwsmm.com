@@ -5,6 +5,8 @@ import path from 'path';
  */
 export class Post {
 
+  static readonly directory = path.join(process.cwd(), "blog");
+
   constructor(slugAsString: string, title: string, description: string, published: string, lastUpdated: string, htmlContent: string) {
     this.props = {
       slugAsString,
@@ -45,7 +47,4 @@ export class Post {
   static staticMethod(): string {
     return "";
   }
-
-  // process.cwd() is the root directory of this project TODO move into util class
-  static readonly directory: string = path.join(process.cwd(), 'blog');
 }

@@ -1,0 +1,37 @@
+[
+  [
+    "whats-wrong-this-time-part-2",
+    {
+      "published": "2022-01-23T19:17:02+00:00",
+      "lastUpdated": "2022-01-23T19:17:02+00:00"
+    }
+  ],
+  [
+    "whats-wrong-this-time-part-1",
+    {
+      "published": "2022-01-16T17:28:39+00:00",
+      "lastUpdated": "2022-01-23T19:17:02+00:00"
+    }
+  ],
+  [
+    "nominal-vs-structural-vs-duck-typing",
+    {
+      "published": "2022-01-09T12:46:01+00:00",
+      "lastUpdated": "2022-01-14T18:54:39+00:00"
+    }
+  ],
+  [
+    "git-commit-hooks",
+    {
+      "published": "2022-01-02T20:54:35+00:00",
+      "lastUpdated": "2022-01-14T18:54:39+00:00"
+    }
+  ],
+  [
+    "hello-world",
+    {
+      "published": "2022-01-02T12:11:54+00:00",
+      "lastUpdated": "2022-01-14T18:54:39+00:00"
+    }
+  ]
+]

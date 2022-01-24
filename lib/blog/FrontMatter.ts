@@ -29,9 +29,6 @@ import { unified } from 'unified';
     this.published = published;
     this.lastUpdated = lastUpdated;
     this.rawContent = rawContent;
-
-    // console.log(`front matter created with published: ${published}`)
-
   }
 
   async processContent(): Promise<Post> {
