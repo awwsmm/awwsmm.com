@@ -1,0 +1,26 @@
+# pipe output (with colors) to .temp file
+RESULT=$(script -q .temp npm run lint)
+
+# if .temp file contains "error", fail
+if grep --quiet error .temp; then
+  printf "\n  !! Will not push -- found linting errors:\n"
+  sed '1,5d' .temp | cat
+  rm .temp
+  exit 1
+else
+  rm .temp
+fi
+
+RESULT=$(script -q .temp npm run build)
+
+# if .temp file contains "error", fail
+if grep --quiet error .temp; then
+  printf "\n  !! Will not push -- found build errors:\n"
+  sed '1,3d' .temp | cat
+  printf "\n\n"
+  rm .temp
+  exit 1
+else
+  rm .temp
+  exit 0
+fi
