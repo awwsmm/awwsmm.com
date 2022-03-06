@@ -113,4 +113,4 @@ Those two posts were both committed on January 2 ([Hello, World!](https://github
 
 That's right, it's another bug... Or is it?
 
-Find out in the _thrilling_ final installation of this debugging mystery! Stay tuned!
+Find out in [the _thrilling_ final installation of this debugging mystery!](https://www.awwsmm.com/blog/whats-wrong-this-time-part-3)

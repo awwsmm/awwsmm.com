@@ -36,13 +36,15 @@ Check out the available `"scripts"` in `package.json`:
 
 ```json
   "scripts": {
-    "lint": "eslint . --ext .ts --ext .tsx",
-    "lint-and-fix": "eslint . --ext .ts --ext .tsx --fix",
+    "build": "next build",
     "deplock": "ncu -u && npm install",
     "dev": "next dev",
-    "build": "next build",
+    "hook": "npm run unhook && find git-hooks -maxdepth 1 -type f -exec chmod +x {} \\; -exec ln -sf $(pwd)/{} .git/hooks \\;",
+    "lint": "eslint . --ext .ts --ext .tsx",
+    "lint-and-fix": "eslint . --ext .ts --ext .tsx --fix",
     "sandbox": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'sandbox.ts'",
-    "tests": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
+    "tests": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "unhook": "find .git/hooks -type l -exec unlink {} \\;"
   },
 ```
 

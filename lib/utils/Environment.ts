@@ -51,7 +51,11 @@ export default class Environment {
 
     this.git = simpleGit();
     this.branch = this.git.branch().then(branchSummary => branchSummary.current);
-    this.commits = this.git.log([ 'master' ]).then(commits => commits.all.filter(commit => commit.message != "Merge branch 'development'"));
+    this.commits = this.git.log([ 'master' ]).
+      then(commits => commits.all
+        .filter(commit => commit.message != "Merge branch 'development'")
+        .filter(commit => !commit.message.startsWith("Merge pull request "))
+      );
 
     this.frontierCommit = this.commits.then(commits => commits[0]);
     this.horizonCommit = this.commits.then(commits => commits[commits.length - 1]);
