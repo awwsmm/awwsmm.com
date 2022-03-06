@@ -25,7 +25,10 @@ export default class SlugFactory {
 
     // get all (non-merge) commits related to this post (master branch only, because that's all Vercel will know about)
     const postCommits: RichCommit[] = await env.git.log([ 'master', `blog/${slug}.md` ]).
-      then(commits => commits.all.filter(commit => commit.message != "Merge branch 'development'"));
+      then(commits => commits.all
+        .filter(commit => commit.message != "Merge branch 'development'")
+        .filter(commit => !commit.message.startsWith("Merge pull request "))
+      );
 
     // if there are no commits, these dates are undefined
     if (postCommits.length < 1) {
