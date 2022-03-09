@@ -5,6 +5,7 @@ import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
 import Project from '../lib/project/Project';
+import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
 import SlugFactory from '../lib/blog/SlugFactory';
 import utilStyles from '../styles/utils.module.css';
@@ -55,7 +56,7 @@ export default function Home({
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date startStr={published} endStr={lastUpdated} />
+                <PublicationDate published={published} lastUpdated={lastUpdated} />
               </small>
             </li>
           ))}

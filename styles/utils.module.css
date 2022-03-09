@@ -100,3 +100,22 @@
   margin-left: 1rem;
   padding-left: 1rem;
 }
+
+.published {
+  color: #CCC;
+  display: block;
+}
+
+/* .published:before {
+  content: "Published: ";
+} */
+
+.lastUpdated {
+  color: #666;
+  display: block;
+  font-size: 0.8rem;
+}
+
+.lastUpdated:before {
+  content: "Updated: ";
+}
