@@ -1,3 +1,4 @@
+import Cache from '../utils/Cache';
 import Commit from './Commit';
 import CommitGroup from './CommitGroup';
 import { Endpoints } from '@octokit/types';
@@ -37,42 +38,54 @@ export default class Project {
    * Commits are returned in reverse chronological order (newest first).
    */
   async getCommits(): Promise<Commit[]> {
-    const url = `https://api.github.com/repos/awwsmm/${this.name}/commits`;
+
+    // TODO: this will have to be adjusted when the repo has more than 100 commits,
+    //       because at that point, GitHub will start to paginate them
+
     type CommitsResponse = Endpoints["GET /repos/{owner}/{repo}/commits"]["response"]["data"];
-    const commits: Promise<CommitsResponse> = fetch(url).then(response => response.json());
+    const cacheFileName = `project/${this.name}.json`;
+    const cache = new Cache<string,CommitsResponse>(cacheFileName);
+    const cached: CommitsResponse | undefined = cache.get(this.name);
+
+    function mapCommits(commits: CommitsResponse, project: string): Commit[] {
+      return commits.map(each => {
+        const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
+        const link = `https://github.com/awwsmm/${project}/commit/${each.sha}`;
+
+        if (maybeDate) {
+          return new Commit(parseISO(maybeDate), each.commit.message, each.sha, link);
+        } else {
+
+          // The GitHub API can theoretically return commits with no date.
+          //   If that ever happens, figure out how to handle it.
+          //   see: https://docs.github.com/en/rest/reference/commits#list-commits
+
+          throw new Error(`GitHub commit missing date: ${link}`);
+        }
+      });
+    }
 
     // sometimes, we get rate limiting errors from GitHub (60 requests/hour unauthenticated)
     // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
-    // TODO: figure out how to cache this data locally during development
 
-    return commits.then(all => {
-      try {
-        const onVercel: boolean = process.env.VERCEL === '1' && process.env.VERCEL_GIT_REPO_SLUG === 'awwsmm.com';
-        if (!onVercel) {
-          console.log("running locally -- not querying GitHub"); // eslint-disable-line no-console
-          return [];
-        } else {
-          return all.map(each => {
-            const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
-            const link = `https://github.com/awwsmm/${this.name}/commit/${each.sha}`;
+    if (cached) {
+      console.log(`Using cached commits from caches/${cacheFileName} (delete this file to force an update)`); // eslint-disable-line no-console
+      return mapCommits(cached, this.name);
 
-            if (maybeDate) {
-              return new Commit(parseISO(maybeDate), each.commit.message, each.sha, link);
-            } else {
+    } else {
+      const url = `https://api.github.com/repos/awwsmm/${this.name}/commits`;
+      const commits: Promise<CommitsResponse> = fetch(url).then(response => response.json());
 
-              // The GitHub API can theoretically return commits with no date.
-              //   If that ever happens, figure out how to handle it.
-              //   see: https://docs.github.com/en/rest/reference/commits#list-commits
-
-              throw new Error(`GitHub commit missing date: ${link}`);
-            }
-          });
+      return commits.then(all => {
+        console.log(`Querying GitHub for commits for "${this.name}"`); // eslint-disable-line no-console
+        try {
+          cache.set(this.name, all);
+          return mapCommits(all, this.name);
+        } catch (error) {
+          throw new Error(JSON.stringify(all));
         }
-      } catch (error) {
-        throw new Error(JSON.stringify(all));
-      }
-    });
-
+      });
+    }
   }
 
   /**
@@ -113,6 +126,8 @@ export default class Project {
    * The most recent update will be the [0]th element of the array.
    */
   async getAllUpdates(): Promise<ProjectUpdate[]> {
+
+    // TODO: add ability to toggle showing / hiding Merge commits
 
     // get commits (reverse chronological order) from GitHub for this project
     const commits: Commit[] = await this.getCommits();
@@ -157,8 +172,10 @@ export default class Project {
           commitGroups.push(new CommitGroup(this.name, [commit]));
         }
 
-        // add the Commit to the CommitGroup
-        commitGroups[commitGroupIndex] = commitGroups[commitGroupIndex].add(commit);
+        // if it's within the threshold, just add the Commit to the current CommitGroup
+        else {
+          commitGroups[commitGroupIndex] = commitGroups[commitGroupIndex].add(commit);
+        }
       }
 
       // moving to the next Commit now...

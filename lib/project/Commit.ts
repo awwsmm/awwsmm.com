@@ -1,8 +1,6 @@
 /**
  * Represents a git commit.
  *
- * {date} is nullable because the GitHub API returns commits with a nullable author / committer (which contain the date)
- *
  * @see {@link https://docs.github.com/en/rest/reference/commits#list-commits}
  */
 export default class Commit {

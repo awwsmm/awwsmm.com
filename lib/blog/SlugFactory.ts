@@ -1,5 +1,5 @@
-import Environment, { RichCommit } from '../utils/Environment';
 import Cache from '../utils/Cache';
+import Environment from '../utils/Environment';
 import { FrontMatter } from './FrontMatter';
 import fs from 'fs';
 import matter from 'gray-matter';
@@ -19,45 +19,51 @@ export default class SlugFactory {
   }
 
   // get the published and lastUpdated dates for a given post
-  static async getDates(slugWrapper: Slug): Promise<{ published: string | undefined, lastUpdated: string | undefined }> {
-    const env = await Environment.get();
-    const { slug } = slugWrapper.params;
+  static async getDatesNew(slugWrapper: Slug): Promise<{ published: string, lastUpdated: string }> {
 
-    // get all (non-merge) commits related to this post (master branch only, because that's all Vercel will know about)
-    const postCommits: RichCommit[] = await env.git.log([ 'master', `blog/${slug}.md` ]).
-      then(commits => commits.all
-        .filter(commit => commit.message != "Merge branch 'development'")
-        .filter(commit => !commit.message.startsWith("Merge pull request "))
+    const { slug } = slugWrapper.params;
+    type C = { sha: string, message: string, date: string, link: string }
+    const fileName = `blog/${slug}.md`;
+    const cacheFileName = `blog/${slug}.json`;
+
+    const cache = new Cache<string,C[]>(cacheFileName);
+    const cached: C[] | undefined = cache.get(slug);
+
+    if (cached) {
+      console.log(`Using cached commits from caches/${cacheFileName} (delete this file to force an update)`); // eslint-disable-line no-console
+      cached.sort((a,b) => (a.date < b.date) ? 1 : -1);
+      const published = cached[cached.length - 1].date;
+      const lastUpdated = cached[0].date;
+      return { published, lastUpdated };
+
+    } else {
+      console.log(`Querying local git history for commits for ${fileName}`); // eslint-disable-line no-console
+      const env = await Environment.get();
+      const result = await env.git.log({ file: fileName }).then(commits =>
+        commits.all.map(commit =>
+          `      {
+          |        "sha":     "${commit.hash}",
+          |        "message": "${commit.message}",
+          |        "date":    "${commit.date}",
+          |        "link":    "https://github.com/awwsmm/awwsmm.com/commit/${commit.hash}"
+          |      }
+          `.replaceAll(/^[\r\t\n]*/g, '').replaceAll(/[\r\t\n ]*$/g, '').replaceAll(/[ ]*\|/g, '')
+        ).join(',\n')
       );
 
-    // if there are no commits, these dates are undefined
-    if (postCommits.length < 1) {
-      return { published: undefined, lastUpdated: undefined };
-    } else {
+      const prefix = `[\n  [\n    "${slug}",\n    [\n`;
+      const postfix = `\n    ]\n  ]\n]`;
 
-      const oldestCommit = postCommits[postCommits.length - 1];
-      const newestCommit = postCommits[0];
+      fs.writeFileSync(`caches/${cacheFileName}`, prefix + result + postfix);
 
-      // if running locally, always pull dates directly from git
-      if (env.vercel === undefined) {
-        return { published: oldestCommit.date, lastUpdated: newestCommit.date };
-      }
-
-      // if running on Vercel, use git unless a commit equals the "horizon commit", where we lose information; then, use cache
-      else {
-        const horizon = await env.horizonCommit;
-        const published = (oldestCommit == horizon) ? SlugFactory.cache.get(slug)?.published : oldestCommit.date;
-        const lastUpdated = (newestCommit == horizon) ? SlugFactory.cache.get(slug)?.lastUpdated : newestCommit.date;
-        return { published, lastUpdated };
-      }
+      // recursively call this function now that we've fixed the cache
+      return SlugFactory.getDatesNew(slugWrapper);
     }
   }
 
   private static cache = new Cache<CacheKey,CacheValue>("posts.json");
 
   static async getFrontMatter(slugWrapper: Slug): Promise<FrontMatter> {
-    const env = await Environment.get();
-
     const { slug } = slugWrapper.params;
     const fullPath = path.join(Post.directory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -70,62 +76,8 @@ export default class SlugFactory {
     const description: string = matterResult.data.description;
     const rawContent = matterResult.content;
 
-    const dates = await SlugFactory.getDates(slugWrapper);
-
-    // if running locally and dates are undefined:
-    // - file hasn't yet been committed to master
-    // - don't do anything with the cache
-
-    // when running locally
-    if (env.vercel === undefined) {
-
-      // if dates are undefined
-      // - file hasn't yet been committed to master
-      // - don't do anything with the cache
-
-      if (dates.lastUpdated === undefined || dates.published === undefined) {
-        if (dates.lastUpdated !== dates.published) throw Error("Expected both dates or neither to be defined, found one of each");
-        const now = new Date().toISOString();
-        return new FrontMatter(slug, title, description, now, now, rawContent);
-      }
-
-      // if dates are defined, use them, and keep the cache up-to-date
-      else {
-        const { published, lastUpdated } = dates;
-        this.cache.set(slug, { published, lastUpdated });
-        return new FrontMatter(slug, title, description, published, lastUpdated, rawContent);
-      }
-    }
-
-    // when running on Vercel, don't do anything with the cache
-    else {
-
-      // when running a "production" build (on "master"), we should never have files not committed to "master"
-      if (env.vercel == 'production') {
-        if (dates.lastUpdated === undefined || dates.published === undefined) {
-          if (dates.lastUpdated !== dates.published) throw Error("Expected both dates or neither to be defined, found one of each");
-          throw Error(`Running a production build on Vercel, expected all dates to be defined`);
-        } else {
-          return new FrontMatter(slug, title, description, dates.published, dates.lastUpdated, rawContent);
-        }
-      }
-
-      // when running a "preview" build, we could have files not yet committed to "master"
-      // do exactly the same as we do above when (env.vercel === undefined), but don't do anything with the cache
-      else {
-
-        if (dates.lastUpdated === undefined || dates.published === undefined) {
-          if (dates.lastUpdated !== dates.published) throw Error("Expected both dates or neither to be defined, found one of each");
-          const now = new Date().toISOString();
-          return new FrontMatter(slug, title, description, now, now, rawContent);
-        }
-
-        // if dates are defined, use them
-        else {
-          const { published, lastUpdated } = dates;
-          return new FrontMatter(slug, title, description, published, lastUpdated, rawContent);
-        }
-      }
-    }
+    const { published, lastUpdated } = await SlugFactory.getDatesNew(slugWrapper);
+    return new FrontMatter(slug, title, description, published, lastUpdated, rawContent);
   }
+
 }

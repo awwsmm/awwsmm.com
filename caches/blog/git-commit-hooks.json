@@ -1,0 +1,19 @@
+[
+  [
+    "git-commit-hooks",
+    [
+      {
+        "sha":     "bc222b37913ec2cdd7ff5f152dfaca06d33ec9f3",
+        "message": "automatically date blog posts using git history",
+        "date":    "2022-01-14T18:54:39+00:00",
+        "link":    "https://github.com/awwsmm/awwsmm.com/commit/bc222b37913ec2cdd7ff5f152dfaca06d33ec9f3"
+      },
+      {
+        "sha":     "b2e504f52e4df0ddf77c662903e39b4aaf12f242",
+        "message": "added Git Hooks blog post, plus very rough syntax highlighting",
+        "date":    "2022-01-02T20:54:35+00:00",
+        "link":    "https://github.com/awwsmm/awwsmm.com/commit/b2e504f52e4df0ddf77c662903e39b4aaf12f242"
+      }
+    ]
+  ]
+]

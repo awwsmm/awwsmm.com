@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # pipe output (with colors) to .temp file
 RESULT=$(script -q .temp npm run lint)
 
