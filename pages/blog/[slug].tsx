@@ -1,38 +1,43 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Date from '../../components/DateComponent';
+import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
-import { Post } from '../../lib/blog/Post';
-import Slug from '../../lib/blog/Slug';
-import SlugFactory from '../../lib/blog/SlugFactory';
+import PostData from '../../lib/model/PostData';
+import PostDates from '../../lib/model/PostDates';
+import Posts from '../../lib/blog/Posts';
 import utilStyles from '../../styles/utils.module.css';
 
-export default function PostComponent(props: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
-  const postData = Post.fromJSON(JSON.stringify(props));
-  const { title, description, published, lastUpdated, slugAsString, htmlContent } = postData.props;
+type PostWrapper = {
+  rawPost: PostData,
+  dates: PostDates,
+  htmlContent: string
+}
+
+export default function PostComponent(post: PostWrapper) {
+  const { rawPost, dates, htmlContent } = post;
 
   return (
     <Layout>
       <Head>
-        <title>{title}</title>
+        <title>{rawPost.title}</title>
         <link
           rel="canonical"
-          href={`https://localhost:3000/blog/${slugAsString}`}
+          href={`https://www.awwsmm.com/blog/${rawPost.slug}`}
           key="canonical"
         />
         <meta
           name="description"
-          content={description}
+          content={rawPost.description}
           key="desc"
         />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:title" content={rawPost.title} />
+        <meta property="og:description" content={rawPost.description} />
       </Head>
       <article className={utilStyles.blogPost}>
-        <h1 className={utilStyles.headingXl}>{title}</h1>
-        <h2 className={utilStyles.headingMd}>{description}</h2>
+        <h1 className={utilStyles.headingXl}>{rawPost.title}</h1>
+        <h2 className={utilStyles.headingMd}>{rawPost.description}</h2>
         <div className={utilStyles.lightText}>
-          <Date startStr={published} endStr={lastUpdated} />
+          <DateComponent startStr={dates.published} endStr={dates.lastUpdated} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </article>
@@ -41,16 +46,26 @@ export default function PostComponent(props: any) { // eslint-disable-line @type
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: SlugFactory.getAll(),
-    fallback: false
-  };
+  const paths = Posts.getSlugs().map(slug => { return { params: { slug } }; });
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.slug && typeof params.slug === "string") {
-    const postData: Post = await SlugFactory.getFrontMatter(new Slug(params.slug)).then(fm => fm.processContent());
-    return postData;
+
+    // get all the info about this blog post
+    const rawPost = Posts.getRaw(params.slug);
+    const dates = await Posts.getDates(params.slug);
+    const htmlContent = await Posts.process(rawPost);
+
+    // send the data to the PostComponent component, above
+    return {
+      props: {
+        rawPost: JSON.parse(JSON.stringify(rawPost)),
+        dates: JSON.parse(JSON.stringify(dates)),
+        htmlContent
+      }
+    };
 
   } else {
     throw new Error("f");
