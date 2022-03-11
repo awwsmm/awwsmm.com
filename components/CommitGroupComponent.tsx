@@ -1,25 +1,32 @@
-import Date from './DateComponent';
+import DateComponent from './DateComponent';
 import utilStyles from '../styles/utils.module.css';
 
-// TODO: CommitGroups and LogEntrys don't need to conform to a single interface if we're going to render
-//       them in different ways...
+// add more here as necessary
+function htmlEscape(str: string): string {
+  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function link(commit: { link: string, sha: string, message: string }): string {
+  const li = `<li class="${utilStyles.commitMessage}">`;
+  const a = `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">`;
+  return `${li}${a}${commit.sha.slice(0, 7)}</a> | ${htmlEscape(commit.message)}</li>`;
+}
 
 export default function CommitGroupComponent(
-{ start, end, htmlSubtitle, htmlBody }: {
-    start: string,
-    end: string,
-    htmlSubtitle: string,
-    htmlBody: string
-  }
-) {
+    { commits }: { commits: { sha: string, date: string, message: string, link: string }[] }
+  ) {
+
+  const newest = commits[0];
+  const oldest = commits[commits.length-1];
+
   return (
     <li className={utilStyles.listItem}>
       <small className={utilStyles.updateTimestamp}>
-        <Date startStr={start} endStr={end} />
+        <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>
       {/* <div className={utilStyles.updateTitle} dangerouslySetInnerHTML={{ __html: htmlTitle }} /> */}
-      <div className={utilStyles.updateSubtitle} dangerouslySetInnerHTML={{ __html: htmlSubtitle }} />
-      <div className={utilStyles.updateBody} dangerouslySetInnerHTML={{ __html: htmlBody }} />
+      <div className={utilStyles.updateSubtitle} dangerouslySetInnerHTML={{ __html: `Commits: ${oldest.sha.slice(0,7)} ... ${newest.sha.slice(0,7)}` }} />
+      <div className={utilStyles.updateBody} dangerouslySetInnerHTML={{ __html: `<ul>${commits.map(each => link(each)).join('\n')}</ul>` }} />
     </li>
   );
 }

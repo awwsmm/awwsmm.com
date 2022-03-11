@@ -1,30 +1,41 @@
-import Date from '../components/DateComponent';
-import { FrontMatter } from '../lib/blog/FrontMatter';
+
+import Commit from '../lib/model/Commit';
+import DateComponent from '../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
-import Project from '../lib/project/Project';
+import LogEntry from '../lib/model/LogEntry';
+import { parseISO } from 'date-fns';
+import PostData from '../lib/model/PostData';
+import PostDates from '../lib/model/PostDates';
+import Posts from '../lib/blog/Posts';
+import Projects from '../lib/projects/Projects';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
-import SlugFactory from '../lib/blog/SlugFactory';
 import utilStyles from '../styles/utils.module.css';
 
-export default function Home({
-  allPostsData,
-  allProjectsData
-}: {
-  allPostsData: {
-    published: string
-    lastUpdated: string
-    title: string
-    id: string
-  }[],
-  allProjectsData: {
-    lastUpdated: string
-    name: string
-  }[]
-}) {
+type PostWrapper = {
+  slug: string,
+  dates: PostDates,
+  post: PostData
+}
+
+type ProjectWrapper = {
+  name: string,
+  commits: Commit[],
+  entries: LogEntry[],
+  lastUpdated: string
+}
+
+type PropsWrapper = {
+  posts: PostWrapper[],
+  projects: ProjectWrapper[]
+}
+
+export default function HomeComponent(props: PropsWrapper) {
+  const { posts, projects } = props;
+
   return (
     <Layout home>
       <Head>
@@ -49,33 +60,41 @@ export default function Home({
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, published, lastUpdated, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/blog/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <PublicationDate published={published} lastUpdated={lastUpdated} />
-              </small>
-            </li>
-          ))}
+          {posts.map(wrapper => {
+            const { slug, dates, post } = wrapper;
+
+            return (
+              <li className={utilStyles.listItem} key={slug}>
+                <Link href={`/blog/${slug}`}>
+                  <a>{post.title}</a>
+                </Link>
+                <br />
+                <small className={utilStyles.lightText}>
+                  <PublicationDate published={dates.published} lastUpdated={dates.lastUpdated} />
+                </small>
+              </li>
+            );
+          })}
         </ul>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Projects</h2>
         <ul className={utilStyles.list}>
-          {allProjectsData.map(({ name, lastUpdated }) => (
-            <li className={utilStyles.listItem} key={name}>
-              <Link href={`/projects/${name}`}>
-                <a>{name}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                Last Update: <Date startStr={lastUpdated} endStr={lastUpdated} />
-              </small>
-            </li>
-          ))}
+          {projects.map(wrapper => {
+            const { name, lastUpdated } = wrapper;
+
+            return (
+              <li className={utilStyles.listItem} key={name}>
+                <Link href={`/projects/${name}`}>
+                  <a>{name}</a>
+                </Link>
+                <br />
+                <small className={utilStyles.lightText}>
+                  Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
+                </small>
+              </li>
+            );
+          })}
         </ul>
       </section>
     </Layout>
@@ -84,36 +103,68 @@ export default function Home({
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const allFrontMatter: FrontMatter[] = await Promise.all(SlugFactory.getAll().map(each => SlugFactory.getFrontMatter(each)));
+  // get all the info about all blog posts
+  const slugs = Posts.getSlugs();
+  const allDates = await Promise.all(slugs.map(slug => Posts.getDates(slug)));
+  const allPosts = slugs.map(slug => Posts.getRaw(slug));
 
-  const thing = allFrontMatter.map(each => { return {
-    "id": each.slugAsString,
-    "published": each.published,
-    "lastUpdated": each.lastUpdated,
-    "title": each.title
-  };});
+  // collect all post info into wrapper type
+  const posts: PostWrapper[] = slugs.map(slug => {
+    const dates = allDates.find(d => d.slug === slug);
+    const post = allPosts.find(p => p.slug === slug);
 
-  thing.sort((a,b) => a.published < b.published ? 1 : -1);
+    if (dates === undefined || post === undefined) throw new Error("!");
 
-  const allProjectUpdates = await Promise.all(Project.getAllNames().map(name => {
-    return new Project(name).getAllUpdates();
-  }));
+    return {
+      slug,
+      dates,
+      post
+    };
+  });
 
-  const thing2a = allProjectUpdates.filter(projectUpdates => projectUpdates.length > 0);
+  // sort post wrappers reverse chronologically
+  posts.sort((a,b) => (a.dates.published < b.dates.published) ? 1 : -1);
 
-  thing2a.sort((a,b) => a[0].end < b[0].end ? 1 : -1);
+  // get all the info about all projects
+  const names = Projects.getNames();
+  const allCommits = await Promise.all(names.map(name => Projects.getCommits(name)));
+  const allEntries = await Promise.all(names.map(name => Projects.getLogEntries(name)));
 
-  const thing2b = thing2a.map(projectUpdates => {
-      return {
-        "name": projectUpdates[0].project,
-        "lastUpdated": projectUpdates[0].end.toISOString()
-      };
-    });
+  // remove empty arrays, where a project might have no commits and/or no log entries
+  const allCommitsFiltered = allCommits.filter(arr => arr.length > 0);
+  const allEntriesFiltered = allEntries.filter(arr => arr.length > 0);
 
+  // collect all project info into wrapper type
+  const projects: ProjectWrapper[] = names.map(name => {
+    const commits = allCommitsFiltered.find(c => c[0].project === name) || [];
+    const entries = allEntriesFiltered.find(e => e[0].project === name) || [];
+
+    // sort commits and entries to find the last updated date
+    commits.sort((a,b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+    entries.sort((a,b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+
+    const newestCommit = commits[0]?.date;
+    const newestEntry = entries[0]?.date;
+
+    const epoch = (new Date(0)).toISOString(); // Jan 1, 1970
+    const lastUpdated = newestCommit ? (newestEntry ? ( parseISO(newestCommit) > parseISO(newestEntry) ? newestCommit : newestEntry ) : newestCommit) : (newestEntry ? newestEntry : epoch);
+
+    return {
+      name,
+      commits,
+      entries,
+      lastUpdated
+    };
+  });
+
+  // sort projects reverse chronologically by lastUpdated date
+  projects.sort((a,b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated)) ? 1 : -1);
+
+  // send the data to the Home component, above
   return {
     props: {
-      "allPostsData": thing,
-      "allProjectsData": thing2b
+      posts: JSON.parse(JSON.stringify(posts)),
+      projects: JSON.parse(JSON.stringify(projects))
     }
   };
 };

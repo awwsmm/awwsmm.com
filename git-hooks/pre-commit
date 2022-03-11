@@ -37,10 +37,10 @@ github_commits() {
 
 # format the commits as JSON
 commits_json() {
-  echo "Refreshing cache at caches/project/$1.json"
-  printf "[\n  [\n    \"$1\",\n" > caches/project/$1.json
-  github_commits $1 >> caches/project/$1.json
-  printf "\n  ]\n]" >> caches/project/$1.json
+  echo "Refreshing cache at caches/projects/$1.json"
+  printf "[\n  [\n    \"$1\",\n" > caches/projects/$1.json
+  github_commits $1 >> caches/projects/$1.json
+  printf "\n  ]\n]" >> caches/projects/$1.json
 }
 
 # for each project directory, cache all commits for that project
