@@ -1,4 +1,3 @@
-
 import Commit from '../lib/model/Commit';
 import DateComponent from '../components/DateComponent';
 import { GetStaticProps } from 'next';

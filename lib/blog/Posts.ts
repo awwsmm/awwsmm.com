@@ -54,19 +54,24 @@ export default abstract class Posts {
           |        "date":    "${commit.date}",
           |        "link":    "https://github.com/awwsmm/awwsmm.com/commit/${commit.hash}"
           |      }
-          `.replaceAll(/^[\r\t\n]*/g, '').replaceAll(/[\r\t\n ]*$/g, '').replaceAll(/[ ]*\|/g, '')
+          `.replace(/^[\r\t\n]*/g, '').replace(/[\r\t\n ]*$/g, '').replace(/[ ]*\|/g, '')
         ).join(',\n')
       );
 
-      // TODO: handle file DNE errors
+      // the file has not been committed yet, so do not create a cache file for it
+      if (result === "") {
+        return new Promise((resolve, reject) => { // eslint-disable-line @typescript-eslint/no-unused-vars
+          const now = new Date().toISOString();
+          resolve(new PostDates(slug, now, now));
+        });
 
-      const prefix = `[\n  [\n    "${slug}",\n    [\n`;
-      const postfix = `\n    ]\n  ]\n]`;
-
-      fs.writeFileSync(`caches/${cacheFileName}`, prefix + result + postfix);
-
-      // recursively call this function now that we've fixed the cache
-      return Posts.getDates(slug);
+      // fix the cache and then call this function again
+      } else {
+        const prefix = `[\n  [\n    "${slug}",\n    [\n`;
+        const postfix = `\n    ]\n  ]\n]`;
+        fs.writeFileSync(`caches/${cacheFileName}`, prefix + result + postfix);
+        return Posts.getDates(slug);
+      }
     }
   }
 

@@ -19,7 +19,7 @@ export default class Cache<K,V> {
       this.onDisk = new Map<K,V>(JSON.parse(fs.readFileSync(this.path, 'utf8')));
 
     } catch (error) {
-      console.log(`Error reading ${this.path}. Continuing with empty cache. Error: ${error}`); // eslint-disable-line no-console
+      console.log(`Error reading ${this.path}. Continuing with empty cache.\n  ${error}`); // eslint-disable-line no-console
       this.onDisk = new Map<K,V>();
     }
 

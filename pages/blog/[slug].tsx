@@ -32,6 +32,9 @@ export default function PostComponent(post: PostWrapper) {
         />
         <meta property="og:title" content={rawPost.title} />
         <meta property="og:description" content={rawPost.description} />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
       </Head>
       <article className={utilStyles.blogPost}>
         <h1 className={utilStyles.headingXl}>{rawPost.title}</h1>

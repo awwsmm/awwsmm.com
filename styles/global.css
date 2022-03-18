@@ -6,7 +6,9 @@ body {
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
-  background-color: hsla(231, 40%, 5%, 1);
+  --alpha: 1.0;
+  --hsl: 231, 40%, 5%;
+  background-color: hsla(var(--hsl), var(--alpha));
   color: #ccc;
 }
 
@@ -29,7 +31,7 @@ img {
 }
 
 .hljs-string {
-  color: yellow;
+  color:sandybrown;
 }
 
 .hljs-comment {
@@ -37,27 +39,27 @@ img {
 }
 
 .hljs-keyword {
-  color: green;
+  color: plum;
 }
 
 .hljs-built_in {
-  color: lightgreen;
+  color: mediumspringgreen;
 }
 
 .hljs-title {
-  color: purple;
+  color: mediumspringgreen;
 }
 
 .hljs-class {
-  color: pink;
+  color: mediumspringgreen;
 }
 
 .hljs-function {
-  color: lightblue;
+  color: khaki;
 }
 
 .hljs-params {
-  color: orange;
+  color: lightskyblue;
 }
 
 .hljs-number {
@@ -77,10 +79,16 @@ img {
 }
 
 pre {
+  border-radius: 0.5em;
+  padding: 1.4rem;
+  line-height: 1.1em;
+  --alpha: 0.05;
+  --hsl: 231, 40%, 100%;
+  background-color: hsla(var(--hsl), var(--alpha));
   overflow-x: scroll;
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
-  padding: 1rem;
-  font-size: smaller;
-  background-color: black;
+}
+
+code {
+  font-size: 0.75em;
+  font-family: 'Fira Code', monospace;
 }
