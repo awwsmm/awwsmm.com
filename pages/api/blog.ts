@@ -6,19 +6,18 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
 
   const slugs = Posts.getSlugs();
 
-  const allInfo = await Promise.all(slugs.map(slug => Posts.getDates(slug).then(publication => {
+  const allInfo = await Promise.all(slugs.map(slug => {
     return {
       slug: slug,
-      dates: publication,
       post: Posts.getRaw(slug)
     };
-  })));
+  }));
 
-  const info = allInfo.map(({ slug, dates, post }) => {
+  const info = allInfo.map(({ slug, post }) => {
     return {
       slug: slug,
-      published: dates.published,
-      lastUpdated: dates.lastUpdated,
+      published: post.published,
+      lastUpdated: post.lastUpdated,
       title: post.title,
       description: post.description,
       rawContent: post.rawContent

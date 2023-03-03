@@ -7,7 +7,6 @@ import Link from 'next/link';
 import LogEntry from '../lib/model/LogEntry';
 import { parseISO } from 'date-fns';
 import PostData from '../lib/model/PostData';
-import PostDates from '../lib/model/PostDates';
 import Posts from '../lib/blog/Posts';
 import Projects from '../lib/projects/Projects';
 import PublicationDate from '../components/PublicationDateComponent';
@@ -16,7 +15,6 @@ import utilStyles from '../styles/utils.module.css';
 
 type PostWrapper = {
   slug: string,
-  dates: PostDates,
   post: PostData
 }
 
@@ -42,11 +40,12 @@ export default function HomeComponent(props: PropsWrapper) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hi! I'm Andrew. Welcome to my corner of the Internet.</p>
+        <p>I'm a Scala developer who is learning Rust. This website is written in TypeScript using Next.js. Here's my <a href="/CV_Watson.pdf" target="_blank">CV.</a></p>
         <p>
           Check out my latest blog posts and recent project updates below.
           You can also say hi{' '}
           <a href="https://dev.to/awwsmm" target="_blank">at Dev.to</a> or {' '}
-          <a href="https://twitter.com/awwsmm_dot_com" target="_blank">on Twitter</a>.
+          <a href="https://mas.to/@awwsmm" target="_blank">on Mastodon</a> (though I'm pretty quiet on both).
         </p>
         <p>
           This website is{' '}
@@ -60,7 +59,7 @@ export default function HomeComponent(props: PropsWrapper) {
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {posts.map(wrapper => {
-            const { slug, dates, post } = wrapper;
+            const { slug, post } = wrapper;
 
             return (
               <li className={utilStyles.listItem} key={slug}>
@@ -69,7 +68,7 @@ export default function HomeComponent(props: PropsWrapper) {
                 </Link>
                 <br />
                 <small className={utilStyles.lightText}>
-                  <PublicationDate published={dates.published} lastUpdated={dates.lastUpdated} />
+                  <PublicationDate published={post.published} lastUpdated={post.lastUpdated} />
                 </small>
               </li>
             );
@@ -104,25 +103,22 @@ export const getStaticProps: GetStaticProps = async () => {
 
   // get all the info about all blog posts
   const slugs = Posts.getSlugs();
-  const allDates = await Promise.all(slugs.map(slug => Posts.getDates(slug)));
   const allPosts = slugs.map(slug => Posts.getRaw(slug));
 
   // collect all post info into wrapper type
   const posts: PostWrapper[] = slugs.map(slug => {
-    const dates = allDates.find(d => d.slug === slug);
     const post = allPosts.find(p => p.slug === slug);
 
-    if (dates === undefined || post === undefined) throw new Error("!");
+    if (post === undefined) throw new Error("!");
 
     return {
       slug,
-      dates,
       post
     };
   });
 
   // sort post wrappers reverse chronologically
-  posts.sort((a,b) => (a.dates.published < b.dates.published) ? 1 : -1);
+  posts.sort((a,b) => (a.post.published < b.post.published) ? 1 : -1);
 
   // get all the info about all projects
   const names = Projects.getNames();
