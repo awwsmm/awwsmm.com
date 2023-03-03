@@ -2,31 +2,6 @@
 set -e
 
 #===============================================================================
-#  update caches for blog posts
-#===============================================================================
-
-# search for any modified paths 
-# git diff --name-only --cached | grep -q "^blog/"
-
-# list all commits which modify a file and output as JSON
-commits_as_json() {
-  paste -sd ',' <(git log --date=iso-strict --pretty=format:'{"sha":     "%H",      "message": "%s",      "date":    "%aI",      "link":    "https://github.com/awwsmm/awwsmm.com/commit/%H"}' --follow -- blog/$1.md) |\
-    sed 's/",/",\n  /g' | sed 's/}$/\n      }\n    ]\n  ]\n]/g' | sed "s/^{/[\n  [\n    \"$1\",\n    [\n      {\n        /g" | sed 's/},{/\n      },\n      {\n        /g'
-}
-
-# for each blog post, cache commits which reference it
-cache_commits() {
-  echo "Refreshing cache at caches/blog/$1.json"
-  commits_as_json $1 > "caches/blog/$1.json"
-  git add "caches/blog/$1.json"
-}
-
-# for each blog post file, cache all commits which reference it
-for file in blog/*; do
-  cache_commits $(echo $file | sed 's@blog/@@g' | sed 's@.md@@g')
-done
-
-#===============================================================================
 #  update caches for projects
 #===============================================================================
 
