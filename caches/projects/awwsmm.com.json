@@ -3,6 +3,85 @@
     "awwsmm.com",
     [
       {
+        "sha": "5a1b5fb64489be3ee6cf9748b72c52c98a6372e0",
+        "node_id": "C_kwDOC97DZtoAKDVhMWI1ZmI2NDQ4OWJlM2VlNmNmOTc0OGI3MmM1MmM5OGE2MzcyZTA",
+        "commit": {
+          "author": {
+            "name": "Andrew",
+            "email": "aww@awwsmm.com",
+            "date": "2023-03-07T02:25:58Z"
+          },
+          "committer": {
+            "name": "GitHub",
+            "email": "noreply@github.com",
+            "date": "2023-03-07T02:25:58Z"
+          },
+          "message": "9 add linter rules (#38)\n\n* add no-trailing-spaces rule to eslint, set up prettier\r\n\r\n* configure prettier\r\n\r\n* reformat all .ts, .tsx files with prettier\r\n\r\n* configure prettier to run with eslint\r\n\r\n* resetting core.hooksPath in .git/config\r\n\r\n* testing pre-commit hook\r\n\r\n* testing pre-commit hook with git add",
+          "tree": {
+            "sha": "7b11f0b62e6b6a2df8bd086f4c07ffe176bab8c5",
+            "url": "https://api.github.com/repos/awwsmm/awwsmm.com/git/trees/7b11f0b62e6b6a2df8bd086f4c07ffe176bab8c5"
+          },
+          "url": "https://api.github.com/repos/awwsmm/awwsmm.com/git/commits/5a1b5fb64489be3ee6cf9748b72c52c98a6372e0",
+          "comment_count": 1,
+          "verification": {
+            "verified": true,
+            "reason": "valid",
+            "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJkBqC2CRBK7hj4Ov3rIwAAncoIACQs00zW9ZQUpDvwmQy1KJ15\n5n+SYDnVHxj9wC2b6UgK1BNCcwVOWeLpU97i7h1qH3oK2zqU0btdrb0wStoSXBH9\nJb064sBbA17mrgO8D97a3RLicbzjA3z5nP/ZPS2EsqVfvMJ/0j54LWUX1cH7htHG\nuOCrprynQStbi/1XIm71Nw4Mm8tzTnzXc/lKVmoPth/Pf/GRWTQt86NZnJ/YUwIl\n3n4lsENqCnvCN/UL8TenFniz7Xv0IV21Mr8MG2E6qHh3XMf6otdZ8NmVb0U+Frf2\nsgdg6NWT00KsWyHgGDo/pF6e73GrsL8lkFOkKs1Daqtj22F2AKPn9LzNOUjO+Qw=\n=8az9\n-----END PGP SIGNATURE-----\n",
+            "payload": "tree 7b11f0b62e6b6a2df8bd086f4c07ffe176bab8c5\nparent e451e6b7caf171cf12baa9a2b45139cbb96e6f5f\nauthor Andrew <aww@awwsmm.com> 1678155958 -0500\ncommitter GitHub <noreply@github.com> 1678155958 -0500\n\n9 add linter rules (#38)\n\n* add no-trailing-spaces rule to eslint, set up prettier\r\n\r\n* configure prettier\r\n\r\n* reformat all .ts, .tsx files with prettier\r\n\r\n* configure prettier to run with eslint\r\n\r\n* resetting core.hooksPath in .git/config\r\n\r\n* testing pre-commit hook\r\n\r\n* testing pre-commit hook with git add"
+          }
+        },
+        "url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/5a1b5fb64489be3ee6cf9748b72c52c98a6372e0",
+        "html_url": "https://github.com/awwsmm/awwsmm.com/commit/5a1b5fb64489be3ee6cf9748b72c52c98a6372e0",
+        "comments_url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/5a1b5fb64489be3ee6cf9748b72c52c98a6372e0/comments",
+        "author": {
+          "login": "awwsmm",
+          "id": 29188350,
+          "node_id": "MDQ6VXNlcjI5MTg4MzUw",
+          "avatar_url": "https://avatars.githubusercontent.com/u/29188350?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/awwsmm",
+          "html_url": "https://github.com/awwsmm",
+          "followers_url": "https://api.github.com/users/awwsmm/followers",
+          "following_url": "https://api.github.com/users/awwsmm/following{/other_user}",
+          "gists_url": "https://api.github.com/users/awwsmm/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/awwsmm/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/awwsmm/subscriptions",
+          "organizations_url": "https://api.github.com/users/awwsmm/orgs",
+          "repos_url": "https://api.github.com/users/awwsmm/repos",
+          "events_url": "https://api.github.com/users/awwsmm/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/awwsmm/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "committer": {
+          "login": "web-flow",
+          "id": 19864447,
+          "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+          "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/web-flow",
+          "html_url": "https://github.com/web-flow",
+          "followers_url": "https://api.github.com/users/web-flow/followers",
+          "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+          "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+          "organizations_url": "https://api.github.com/users/web-flow/orgs",
+          "repos_url": "https://api.github.com/users/web-flow/repos",
+          "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/web-flow/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "parents": [
+          {
+            "sha": "e451e6b7caf171cf12baa9a2b45139cbb96e6f5f",
+            "url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/e451e6b7caf171cf12baa9a2b45139cbb96e6f5f",
+            "html_url": "https://github.com/awwsmm/awwsmm.com/commit/e451e6b7caf171cf12baa9a2b45139cbb96e6f5f"
+          }
+        ]
+      },
+      {
         "sha": "e451e6b7caf171cf12baa9a2b45139cbb96e6f5f",
         "node_id": "C_kwDOC97DZtoAKGU0NTFlNmI3Y2FmMTcxY2YxMmJhYTlhMmI0NTEzOWNiYjk2ZTZmNWY",
         "commit": {
@@ -2351,90 +2430,6 @@
           "site_admin": false
         },
         "parents": [
-          {
-            "sha": "94130448ecd949839142eb65c5b32e4ef131503e",
-            "url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/94130448ecd949839142eb65c5b32e4ef131503e",
-            "html_url": "https://github.com/awwsmm/awwsmm.com/commit/94130448ecd949839142eb65c5b32e4ef131503e"
-          }
-        ]
-      },
-      {
-        "sha": "e69863aea271a4931ea9539ea427d27bb1faf7c1",
-        "node_id": "C_kwDOC97DZtoAKGU2OTg2M2FlYTI3MWE0OTMxZWE5NTM5ZWE0MjdkMjdiYjFmYWY3YzE",
-        "commit": {
-          "author": {
-            "name": "Andrew Watson",
-            "email": "aww@awwsmm.com",
-            "date": "2022-01-16T17:35:13Z"
-          },
-          "committer": {
-            "name": "Andrew Watson",
-            "email": "aww@awwsmm.com",
-            "date": "2022-01-16T17:35:13Z"
-          },
-          "message": "Merge branch 'development'",
-          "tree": {
-            "sha": "aeb8eff9435f4481ca65bc3ae4d0a5aee144f83f",
-            "url": "https://api.github.com/repos/awwsmm/awwsmm.com/git/trees/aeb8eff9435f4481ca65bc3ae4d0a5aee144f83f"
-          },
-          "url": "https://api.github.com/repos/awwsmm/awwsmm.com/git/commits/e69863aea271a4931ea9539ea427d27bb1faf7c1",
-          "comment_count": 1,
-          "verification": {
-            "verified": false,
-            "reason": "unsigned",
-            "signature": null,
-            "payload": null
-          }
-        },
-        "url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/e69863aea271a4931ea9539ea427d27bb1faf7c1",
-        "html_url": "https://github.com/awwsmm/awwsmm.com/commit/e69863aea271a4931ea9539ea427d27bb1faf7c1",
-        "comments_url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/e69863aea271a4931ea9539ea427d27bb1faf7c1/comments",
-        "author": {
-          "login": "awwsmm",
-          "id": 29188350,
-          "node_id": "MDQ6VXNlcjI5MTg4MzUw",
-          "avatar_url": "https://avatars.githubusercontent.com/u/29188350?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/awwsmm",
-          "html_url": "https://github.com/awwsmm",
-          "followers_url": "https://api.github.com/users/awwsmm/followers",
-          "following_url": "https://api.github.com/users/awwsmm/following{/other_user}",
-          "gists_url": "https://api.github.com/users/awwsmm/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/awwsmm/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/awwsmm/subscriptions",
-          "organizations_url": "https://api.github.com/users/awwsmm/orgs",
-          "repos_url": "https://api.github.com/users/awwsmm/repos",
-          "events_url": "https://api.github.com/users/awwsmm/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/awwsmm/received_events",
-          "type": "User",
-          "site_admin": false
-        },
-        "committer": {
-          "login": "awwsmm",
-          "id": 29188350,
-          "node_id": "MDQ6VXNlcjI5MTg4MzUw",
-          "avatar_url": "https://avatars.githubusercontent.com/u/29188350?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/awwsmm",
-          "html_url": "https://github.com/awwsmm",
-          "followers_url": "https://api.github.com/users/awwsmm/followers",
-          "following_url": "https://api.github.com/users/awwsmm/following{/other_user}",
-          "gists_url": "https://api.github.com/users/awwsmm/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/awwsmm/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/awwsmm/subscriptions",
-          "organizations_url": "https://api.github.com/users/awwsmm/orgs",
-          "repos_url": "https://api.github.com/users/awwsmm/repos",
-          "events_url": "https://api.github.com/users/awwsmm/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/awwsmm/received_events",
-          "type": "User",
-          "site_admin": false
-        },
-        "parents": [
-          {
-            "sha": "b6eea85256fe54f34013f17aca4e892aba0778dd",
-            "url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/b6eea85256fe54f34013f17aca4e892aba0778dd",
-            "html_url": "https://github.com/awwsmm/awwsmm.com/commit/b6eea85256fe54f34013f17aca4e892aba0778dd"
-          },
           {
             "sha": "94130448ecd949839142eb65c5b32e4ef131503e",
             "url": "https://api.github.com/repos/awwsmm/awwsmm.com/commits/94130448ecd949839142eb65c5b32e4ef131503e",
