@@ -37,7 +37,7 @@ Check out the available `"scripts"` in `package.json`:
 ```json
   "scripts": {
     "build": "next build",
-    "deplock": "ncu -u && npm install",
+    "deplock": "rm package-lock.json && rm -rf node_modules && npm install",
     "dev": "next dev",
     "hook": "npm run unhook && find git-hooks -maxdepth 1 -type f -exec chmod +x {} \\; -exec ln -sf $(pwd)/{} .git/hooks \\;",
     "lint": "eslint . --ext .ts --ext .tsx",
