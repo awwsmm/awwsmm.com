@@ -1,15 +1,17 @@
 import DateComponent from './DateComponent';
 import utilStyles from '../styles/utils.module.css';
 
-export default function LogEntryComponent(
-{ date, title, description, contentHtml }: {
-  date: string,
-    title: string,
-    description: string,
-    contentHtml: string
-  }
-) {
-
+export default function LogEntryComponent({
+  date,
+  title,
+  description,
+  contentHtml,
+}: {
+  date: string;
+  title: string;
+  description: string;
+  contentHtml: string;
+}) {
   return (
     <li className={utilStyles.listItem}>
       <small className={utilStyles.updateTimestamp}>

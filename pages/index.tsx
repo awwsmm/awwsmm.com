@@ -14,21 +14,21 @@ import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
 
 type PostWrapper = {
-  slug: string,
-  post: PostData
-}
+  slug: string;
+  post: PostData;
+};
 
 type ProjectWrapper = {
-  name: string,
-  commits: Commit[],
-  entries: LogEntry[],
-  lastUpdated: string
-}
+  name: string;
+  commits: Commit[];
+  entries: LogEntry[];
+  lastUpdated: string;
+};
 
 type PropsWrapper = {
-  posts: PostWrapper[],
-  projects: ProjectWrapper[]
-}
+  posts: PostWrapper[];
+  projects: ProjectWrapper[];
+};
 
 export default function HomeComponent(props: PropsWrapper) {
   const { posts, projects } = props;
@@ -40,32 +40,37 @@ export default function HomeComponent(props: PropsWrapper) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hi! I'm Andrew. Welcome to my corner of the Internet.</p>
-        <p>I'm a Scala developer who is learning Rust. This website is written in TypeScript using Next.js. Here's my <a href="/CV_Watson.pdf" target="_blank">CV.</a></p>
         <p>
-          Check out my latest blog posts and recent project updates below.
-          You can also say hi{' '}
-          <a href="https://dev.to/awwsmm" target="_blank">at Dev.to</a> or {' '}
-          <a href="https://mas.to/@awwsmm" target="_blank">on Mastodon</a> (though I'm pretty quiet on both).
+          I'm a Scala developer who is learning Rust. This website is written in TypeScript using Next.js. Here's my{' '}
+          <a href="/CV_Watson.pdf" target="_blank">
+            CV.
+          </a>
         </p>
         <p>
-          This website is{' '}
-          <Link href="/blog/hello-world">a work in progress</Link>.
-          Check out{' '}
-          <Link href="/projects/awwsmm.com">its project page</Link>{' '}
-          to see what's been happening lately.
+          Check out my latest blog posts and recent project updates below. You can also say hi{' '}
+          <a href="https://dev.to/awwsmm" target="_blank">
+            at Dev.to
+          </a>{' '}
+          or{' '}
+          <a href="https://mas.to/@awwsmm" target="_blank">
+            on Mastodon
+          </a>{' '}
+          (though I'm pretty quiet on both).
+        </p>
+        <p>
+          This website is <Link href="/blog/hello-world">a work in progress</Link>. Check out{' '}
+          <Link href="/projects/awwsmm.com">its project page</Link> to see what's been happening lately.
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map(wrapper => {
+          {posts.map((wrapper) => {
             const { slug, post } = wrapper;
 
             return (
               <li className={utilStyles.listItem} key={slug}>
-                <Link href={`/blog/${slug}`}>
-                  {post.title}
-                </Link>
+                <Link href={`/blog/${slug}`}>{post.title}</Link>
                 <br />
                 <small className={utilStyles.lightText}>
                   <PublicationDate published={post.published} lastUpdated={post.lastUpdated} />
@@ -78,14 +83,12 @@ export default function HomeComponent(props: PropsWrapper) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Projects</h2>
         <ul className={utilStyles.list}>
-          {projects.map(wrapper => {
+          {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;
 
             return (
               <li className={utilStyles.listItem} key={name}>
-                <Link href={`/projects/${name}`}>
-                  {name}
-                </Link>
+                <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
                 <small className={utilStyles.lightText}>
                   Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
@@ -100,66 +103,73 @@ export default function HomeComponent(props: PropsWrapper) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-
   // get all the info about all blog posts
   const slugs = Posts.getSlugs();
-  const allPosts = slugs.map(slug => Posts.getRaw(slug));
+  const allPosts = slugs.map((slug) => Posts.getRaw(slug));
 
   // collect all post info into wrapper type
-  const posts: PostWrapper[] = slugs.map(slug => {
-    const post = allPosts.find(p => p.slug === slug);
+  const posts: PostWrapper[] = slugs.map((slug) => {
+    const post = allPosts.find((p) => p.slug === slug);
 
-    if (post === undefined) throw new Error("!");
+    if (post === undefined) throw new Error('!');
 
     return {
       slug,
-      post
+      post,
     };
   });
 
   // sort post wrappers reverse chronologically
-  posts.sort((a,b) => (a.post.published < b.post.published) ? 1 : -1);
+  posts.sort((a, b) => (a.post.published < b.post.published ? 1 : -1));
 
   // get all the info about all projects
   const names = Projects.getNames();
-  const allCommits = await Promise.all(names.map(name => Projects.getCommits(name)));
-  const allEntries = await Promise.all(names.map(name => Projects.getLogEntries(name)));
+  const allCommits = await Promise.all(names.map((name) => Projects.getCommits(name)));
+  const allEntries = await Promise.all(names.map((name) => Projects.getLogEntries(name)));
 
   // remove empty arrays, where a project might have no commits and/or no log entries
-  const allCommitsFiltered = allCommits.filter(arr => arr.length > 0);
-  const allEntriesFiltered = allEntries.filter(arr => arr.length > 0);
+  const allCommitsFiltered = allCommits.filter((arr) => arr.length > 0);
+  const allEntriesFiltered = allEntries.filter((arr) => arr.length > 0);
 
   // collect all project info into wrapper type
-  const projects: ProjectWrapper[] = names.map(name => {
-    const commits = allCommitsFiltered.find(c => c[0].project === name) || [];
-    const entries = allEntriesFiltered.find(e => e[0].project === name) || [];
+  const projects: ProjectWrapper[] = names.map((name) => {
+    const commits = allCommitsFiltered.find((c) => c[0].project === name) || [];
+    const entries = allEntriesFiltered.find((e) => e[0].project === name) || [];
 
     // sort commits and entries to find the last updated date
-    commits.sort((a,b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
-    entries.sort((a,b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+    commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+    entries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
 
     const newestCommit = commits[0]?.date;
     const newestEntry = entries[0]?.date;
 
-    const epoch = (new Date(0)).toISOString(); // Jan 1, 1970
-    const lastUpdated = newestCommit ? (newestEntry ? ( parseISO(newestCommit) > parseISO(newestEntry) ? newestCommit : newestEntry ) : newestCommit) : (newestEntry ? newestEntry : epoch);
+    const epoch = new Date(0).toISOString(); // Jan 1, 1970
+    const lastUpdated = newestCommit
+      ? newestEntry
+        ? parseISO(newestCommit) > parseISO(newestEntry)
+          ? newestCommit
+          : newestEntry
+        : newestCommit
+      : newestEntry
+      ? newestEntry
+      : epoch;
 
     return {
       name,
       commits,
       entries,
-      lastUpdated
+      lastUpdated,
     };
   });
 
   // sort projects reverse chronologically by lastUpdated date
-  projects.sort((a,b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated)) ? 1 : -1);
+  projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));
 
   // send the data to the Home component, above
   return {
     props: {
       posts: JSON.parse(JSON.stringify(posts)),
-      projects: JSON.parse(JSON.stringify(projects))
-    }
+      projects: JSON.parse(JSON.stringify(projects)),
+    },
   };
 };

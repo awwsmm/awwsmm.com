@@ -11,7 +11,7 @@ function generateSiteMap(slugs: string[]): string {
        <loc>http://localhost:3000</loc>
      </url>
      ${slugs // TODO should also include all project pages
-       .map(slug => {
+       .map((slug) => {
          return `
        <url>
            <loc>${`${EXTERNAL_DATA_URL}/${slug}`}</loc>
@@ -28,7 +28,6 @@ function SiteMap(): void {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-
   // We generate the XML sitemap with the slug data
   const sitemap = generateSiteMap(Posts.getSlugs());
 
@@ -38,7 +37,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   res.end();
 
   return {
-    props: {}
+    props: {},
   };
 };
 

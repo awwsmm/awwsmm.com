@@ -1,6 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import path from "path";
+import path from 'path';
 import PostData from '../model/PostData';
 import { rehype } from 'rehype';
 import rehypeDocument from 'rehype-document';
@@ -13,13 +13,12 @@ import scala from 'highlight.js/lib/languages/scala';
 import { unified } from 'unified';
 
 export default abstract class Posts {
-
-  static readonly dir = path.join(process.cwd(), "blog");
+  static readonly dir = path.join(process.cwd(), 'blog');
 
   // get all blog post slugs
   static getSlugs(): string[] {
     const fileNames: string[] = fs.readdirSync(Posts.dir);
-    return fileNames.filter(name => name.endsWith('.md')).map(name => name.replace(/\.md$/, ''));
+    return fileNames.filter((name) => name.endsWith('.md')).map((name) => name.replace(/\.md$/, ''));
   }
 
   // read a post, given its slug, but do no processing
@@ -55,11 +54,10 @@ export default abstract class Posts {
 
     // Use rehype-highlight to generate language-specific AST
     const ast = await rehype()
-      .data('settings', {fragment: true})
-      .use(rehypeHighlight, {languages: {scala}})
+      .data('settings', { fragment: true })
+      .use(rehypeHighlight, { languages: { scala } })
       .process(String(html));
 
     return String(ast);
   }
-
 }
