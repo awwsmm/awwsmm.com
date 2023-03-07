@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next';
-import Posts from '../lib/blog/Posts';
+import { Posts } from '../lib/blog/Posts';
 
 const EXTERNAL_DATA_URL = 'http://localhost:3000/blog';
 
