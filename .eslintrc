@@ -3,19 +3,23 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
-    "no-loops"
+    "no-loops",
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": 2, // require explicit function return types
-    "semi": ["error", "always"], // requires semicolons at the end of statements
-    "no-console": 2,             // disallow console.log() statements
-    "no-loops/no-loops": 2,      // disallow for and while loops
-    "no-inner-declarations": 0,  // allow functions inside of functions
+    "semi": ["error", "always"],   // requires semicolons at the end of statements
+    "no-console": 2,               // disallow console.log() statements
+    "no-loops/no-loops": 2,        // disallow for and while loops
+    "no-inner-declarations": 0,    // allow functions inside of functions
+    "no-trailing-spaces": "error", // disallow trailing spaces at the end of lines
+    "prettier/prettier": 2,        // turn prettier warnings into errors
     "@typescript-eslint/no-unused-vars": 2, // disallow unused variables
 
     // sort imports

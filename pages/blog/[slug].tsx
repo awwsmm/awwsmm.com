@@ -7,9 +7,9 @@ import Posts from '../../lib/blog/Posts';
 import utilStyles from '../../styles/utils.module.css';
 
 type PostWrapper = {
-  rawPost: PostData,
-  htmlContent: string
-}
+  rawPost: PostData;
+  htmlContent: string;
+};
 
 export default function PostComponent(post: PostWrapper) {
   const { rawPost, htmlContent } = post;
@@ -18,21 +18,13 @@ export default function PostComponent(post: PostWrapper) {
     <Layout>
       <Head>
         <title>{rawPost.title}</title>
-        <link
-          rel="canonical"
-          href={`https://www.awwsmm.com/blog/${rawPost.slug}`}
-          key="canonical"
-        />
-        <meta
-          name="description"
-          content={rawPost.description}
-          key="desc"
-        />
+        <link rel="canonical" href={`https://www.awwsmm.com/blog/${rawPost.slug}`} key="canonical" />
+        <meta name="description" content={rawPost.description} key="desc" />
         <meta property="og:title" content={rawPost.title} />
         <meta property="og:description" content={rawPost.description} />
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
       </Head>
       <article className={utilStyles.blogPost}>
         <h1 className={utilStyles.headingXl}>{rawPost.title}</h1>
@@ -47,13 +39,14 @@ export default function PostComponent(post: PostWrapper) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Posts.getSlugs().map(slug => { return { params: { slug } }; });
+  const paths = Posts.getSlugs().map((slug) => {
+    return { params: { slug } };
+  });
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (params && params.slug && typeof params.slug === "string") {
-
+  if (params && params.slug && typeof params.slug === 'string') {
     // get all the info about this blog post
     const rawPost = Posts.getRaw(params.slug);
     const htmlContent = await Posts.process(rawPost);
@@ -62,11 +55,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       props: {
         rawPost: JSON.parse(JSON.stringify(rawPost)),
-        htmlContent
-      }
+        htmlContent,
+      },
     };
-
   } else {
-    throw new Error("f");
+    throw new Error('f');
   }
 };

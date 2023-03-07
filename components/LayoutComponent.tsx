@@ -7,21 +7,12 @@ import utilStyles from '../styles/utils.module.css';
 const name = 'Andrew Watson';
 export const siteTitle = 'Andrew Watson | Programmer';
 
-export default function Layout({
-  children,
-  home
-}: {
-  children: React.ReactNode
-  home?: boolean
-}) {
+export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
+        <meta name="description" content="Learn how to build a personal website using Next.js" />
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
@@ -47,7 +38,6 @@ export default function Layout({
         ) : (
           <>
             <Link href="/">
-
               <Image
                 priority
                 src="/images/profile.png"
@@ -56,7 +46,6 @@ export default function Layout({
                 width={108}
                 alt={name}
               />
-
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/" className={utilStyles.colorInherit}>
@@ -69,9 +58,7 @@ export default function Layout({
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
-          <Link href="/">
-            ← Back to home
-          </Link>
+          <Link href="/">← Back to home</Link>
         </div>
       )}
     </div>

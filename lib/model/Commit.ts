@@ -12,7 +12,7 @@ export default class Commit {
 
   constructor(project: string, date: string | Date, message: string, sha: string, link: string) {
     this.project = project;
-    this.date = (date instanceof Date) ? date.toISOString() : date;
+    this.date = date instanceof Date ? date.toISOString() : date;
     this.message = message;
     this.sha = sha;
     this.link = link;

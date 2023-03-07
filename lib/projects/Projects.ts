@@ -11,8 +11,7 @@ import path from 'path';
  * Represents a GitHub repo which is supplemented with manual log entries in this project.
  */
 export default abstract class Projects {
-
-  static readonly dir = path.join(process.cwd(), "projects");
+  static readonly dir = path.join(process.cwd(), 'projects');
 
   // get all project names
   static getNames(): string[] {
@@ -25,24 +24,22 @@ export default abstract class Projects {
    * Commits are returned in reverse chronological order (newest first).
    */
   static async getCommits(name: string): Promise<Commit[]> {
-
     // TODO: this will have to be adjusted when the repo has more than 100 commits,
     //       because at that point, GitHub will start to paginate them
 
-    type CommitsResponse = Endpoints["GET /repos/{owner}/{repo}/commits"]["response"]["data"];
+    type CommitsResponse = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
     const cacheFileName = `projects/${name}.json`;
-    const cache = new Cache<string,CommitsResponse>(cacheFileName);
+    const cache = new Cache<string, CommitsResponse>(cacheFileName);
     const cached: CommitsResponse | undefined = cache.get(name);
 
     function mapCommits(commits: CommitsResponse, project: string): Commit[] {
-      return commits.map(each => {
+      return commits.map((each) => {
         const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
         const link = `https://github.com/awwsmm/${project}/commit/${each.sha}`;
 
         if (maybeDate) {
           return new Commit(name, maybeDate, each.commit.message, each.sha, link);
         } else {
-
           // The GitHub API can theoretically return commits with no date.
           //   If that ever happens, figure out how to handle it.
           //   see: https://docs.github.com/en/rest/reference/commits#list-commits
@@ -58,12 +55,11 @@ export default abstract class Projects {
     if (cached) {
       console.log(`Using cached commits from caches/${cacheFileName} (delete this file to force an update)`); // eslint-disable-line no-console
       return mapCommits(cached, name);
-
     } else {
       const url = `https://api.github.com/repos/awwsmm/${name}/commits`;
-      const commits: Promise<CommitsResponse> = fetch(url).then(response => response.json());
+      const commits: Promise<CommitsResponse> = fetch(url).then((response) => response.json());
 
-      return commits.then(all => {
+      return commits.then((all) => {
         console.log(`Querying GitHub for commits for "${name}"`); // eslint-disable-line no-console
         try {
           cache.set(name, all);
@@ -97,7 +93,6 @@ export default abstract class Projects {
     }
 
     const fileNames: string[] = fs.readdirSync(logDir);
-    return Promise.all(fileNames.map(each => getLogData(each)));
+    return Promise.all(fileNames.map((each) => getLogData(each)));
   }
-
 }
