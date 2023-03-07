@@ -29,8 +29,8 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
 
   // TODO add routes to get individual blog posts
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return new Promise<void>((resolve, reject) => {
-    // eslint-disable-line @typescript-eslint/no-unused-vars
     Promise.all(info)
       .then((response) => {
         res.statusCode = 200;
