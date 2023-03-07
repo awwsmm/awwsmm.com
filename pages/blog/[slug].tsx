@@ -3,7 +3,7 @@ import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import PostData from '../../lib/model/PostData';
-import Posts from '../../lib/blog/Posts';
+import { Posts } from '../../lib/blog/Posts';
 import utilStyles from '../../styles/utils.module.css';
 
 type PostWrapper = {

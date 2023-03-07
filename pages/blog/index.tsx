@@ -1,17 +1,11 @@
+import { Posts, PostWrapper } from '../../lib/blog/Posts';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import Link from 'next/link';
-import PostData from '../../lib/model/PostData';
-import Posts from '../../lib/blog/Posts';
 import PublicationDate from '../../components/PublicationDateComponent';
 import { siteTitle } from '../../components/LayoutComponent';
 import utilStyles from '../../styles/utils.module.css';
-
-type PostWrapper = {
-  slug: string;
-  post: PostData;
-};
 
 type PropsWrapper = {
   posts: PostWrapper[];
@@ -48,21 +42,8 @@ export default function BlogHomeComponent(props: PropsWrapper) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // get all the info about all blog posts
-  const slugs = Posts.getSlugs();
-  const allPosts = slugs.map((slug) => Posts.getRaw(slug));
-
   // collect all post info into wrapper type
-  const posts: PostWrapper[] = slugs.map((slug) => {
-    const post = allPosts.find((p) => p.slug === slug);
-
-    if (post === undefined) throw new Error('!');
-
-    return {
-      slug,
-      post,
-    };
-  });
+  const posts: PostWrapper[] = await Posts.getPostWrappers();
 
   // sort post wrappers reverse chronologically
   posts.sort((a, b) => (a.post.published < b.post.published ? 1 : -1));

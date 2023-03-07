@@ -12,7 +12,12 @@ import remarkRehype from 'remark-rehype';
 import scala from 'highlight.js/lib/languages/scala';
 import { unified } from 'unified';
 
-export default abstract class Posts {
+export type PostWrapper = {
+  slug: string;
+  post: PostData;
+};
+
+export abstract class Posts {
   static readonly dir = path.join(process.cwd(), 'blog');
 
   // get all blog post slugs
@@ -59,5 +64,25 @@ export default abstract class Posts {
       .process(String(html));
 
     return String(ast);
+  }
+
+  static async getPostWrappers(): Promise<PostWrapper[]> {
+    // get all the info about all blog posts
+    const slugs = Posts.getSlugs();
+    const allPosts = slugs.map((slug) => Posts.getRaw(slug));
+
+    // collect all post info into wrapper type
+    const posts: PostWrapper[] = slugs.map((slug) => {
+      const post = allPosts.find((p) => p.slug === slug);
+
+      if (post === undefined) throw new Error('!');
+
+      return {
+        slug,
+        post,
+      };
+    });
+
+    return posts;
   }
 }

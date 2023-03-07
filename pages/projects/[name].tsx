@@ -7,7 +7,7 @@ import Layout from '../../components/LayoutComponent';
 import LogEntry from '../../lib/model/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
 import { parseISO } from 'date-fns';
-import Projects from '../../lib/projects/Projects';
+import { Projects } from '../../lib/projects/Projects';
 import { remark } from 'remark';
 import utilStyles from '../../styles/utils.module.css';
 
