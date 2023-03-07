@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { parseISO } from 'date-fns';
-import Posts from '../../lib/blog/Posts';
+import { Posts } from '../../lib/blog/Posts';
 
 export default async (_: NextApiRequest, res: NextApiResponse) => {
   const slugs = Posts.getSlugs();

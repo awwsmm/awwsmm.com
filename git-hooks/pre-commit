@@ -2,7 +2,7 @@
 set -e
 
 printf "Formatting with prettier...\n"
-npm run prettier-format && npm run lint
+npm run prettier-format && npm run lint-and-fix
 
 #===============================================================================
 #  update caches for projects

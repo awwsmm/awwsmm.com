@@ -7,8 +7,8 @@ import Link from 'next/link';
 import LogEntry from '../lib/model/LogEntry';
 import { parseISO } from 'date-fns';
 import PostData from '../lib/model/PostData';
-import Posts from '../lib/blog/Posts';
-import Projects from '../lib/projects/Projects';
+import { Posts } from '../lib/blog/Posts';
+import { Projects } from '../lib/projects/Projects';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
@@ -103,64 +103,14 @@ export default function HomeComponent(props: PropsWrapper) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // get all the info about all blog posts
-  const slugs = Posts.getSlugs();
-  const allPosts = slugs.map((slug) => Posts.getRaw(slug));
-
   // collect all post info into wrapper type
-  const posts: PostWrapper[] = slugs.map((slug) => {
-    const post = allPosts.find((p) => p.slug === slug);
-
-    if (post === undefined) throw new Error('!');
-
-    return {
-      slug,
-      post,
-    };
-  });
+  const posts: PostWrapper[] = await Posts.getPostWrappers();
 
   // sort post wrappers reverse chronologically
   posts.sort((a, b) => (a.post.published < b.post.published ? 1 : -1));
 
-  // get all the info about all projects
-  const names = Projects.getNames();
-  const allCommits = await Promise.all(names.map((name) => Projects.getCommits(name)));
-  const allEntries = await Promise.all(names.map((name) => Projects.getLogEntries(name)));
-
-  // remove empty arrays, where a project might have no commits and/or no log entries
-  const allCommitsFiltered = allCommits.filter((arr) => arr.length > 0);
-  const allEntriesFiltered = allEntries.filter((arr) => arr.length > 0);
-
   // collect all project info into wrapper type
-  const projects: ProjectWrapper[] = names.map((name) => {
-    const commits = allCommitsFiltered.find((c) => c[0].project === name) || [];
-    const entries = allEntriesFiltered.find((e) => e[0].project === name) || [];
-
-    // sort commits and entries to find the last updated date
-    commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
-    entries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
-
-    const newestCommit = commits[0]?.date;
-    const newestEntry = entries[0]?.date;
-
-    const epoch = new Date(0).toISOString(); // Jan 1, 1970
-    const lastUpdated = newestCommit
-      ? newestEntry
-        ? parseISO(newestCommit) > parseISO(newestEntry)
-          ? newestCommit
-          : newestEntry
-        : newestCommit
-      : newestEntry
-      ? newestEntry
-      : epoch;
-
-    return {
-      name,
-      commits,
-      entries,
-      lastUpdated,
-    };
-  });
+  const projects: ProjectWrapper[] = await Projects.getProjectWrappers();
 
   // sort projects reverse chronologically by lastUpdated date
   projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));
