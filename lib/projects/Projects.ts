@@ -46,7 +46,7 @@ export default abstract class Projects {
 
           throw new Error(`GitHub commit missing date: ${link}`);
         }
-      })
+      });
     }
 
     // sometimes, we get rate limiting errors from GitHub (60 requests/hour unauthenticated)

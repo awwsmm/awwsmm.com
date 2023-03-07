@@ -1,7 +1,7 @@
 #!/bin/zsh
 set -e
 
-printf "Running pre-commit hook...\n"
+printf "Formatting with prettier...\n"
 npm run prettier-format && npm run lint
 
 #===============================================================================
@@ -25,3 +25,6 @@ commits_json() {
 for project in projects/*/; do
    commits_json $(echo $project | sed 's@projects/@@g' | sed 's@/$@@g')
 done
+
+git add .
+printf "\n"
