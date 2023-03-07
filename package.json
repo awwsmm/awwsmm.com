@@ -8,7 +8,7 @@
     "hook": "npm run unhook && find git-hooks -maxdepth 1 -type f -exec chmod +x {} \\; -exec ln -sf $(pwd)/{} .git/hooks \\;",
     "lint": "eslint . --ext .ts --ext .tsx",
     "lint-and-fix": "eslint . --ext .ts --ext .tsx --fix",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prettier-format": "prettier --config .prettierrc '**/*.{ts,tsx}' --write",
     "sandbox": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'sandbox.ts'",
     "tests": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
     "unhook": "find .git/hooks -type l -exec unlink {} \\;"
