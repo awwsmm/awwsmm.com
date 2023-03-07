@@ -64,7 +64,7 @@ export default function HomeComponent(props: PropsWrapper) {
             return (
               <li className={utilStyles.listItem} key={slug}>
                 <Link href={`/blog/${slug}`}>
-                  <a>{post.title}</a>
+                  {post.title}
                 </Link>
                 <br />
                 <small className={utilStyles.lightText}>
@@ -84,7 +84,7 @@ export default function HomeComponent(props: PropsWrapper) {
             return (
               <li className={utilStyles.listItem} key={name}>
                 <Link href={`/projects/${name}`}>
-                  <a>{name}</a>
+                  {name}
                 </Link>
                 <br />
                 <small className={utilStyles.lightText}>
