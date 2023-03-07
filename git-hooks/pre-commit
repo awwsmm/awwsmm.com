@@ -2,6 +2,7 @@
 set -e
 
 printf "Running pre-commit hook...\n"
+npm run prettier-format && npm run lint
 
 #===============================================================================
 #  update caches for projects
