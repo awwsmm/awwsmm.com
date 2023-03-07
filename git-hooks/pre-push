@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # pipe output (with colors) to .temp file
-printf "Linting before push..."
+printf "Linting before push...\n"
 RESULT=$(script -q .temp npm run lint)
 
 # if .temp file contains "error", fail
@@ -14,7 +14,7 @@ else
   rm .temp
 fi
 
-printf "Building before push..."
+printf "Building before push...\n"
 RESULT=$(script -q .temp npm run build)
 
 # if .temp file contains "error", fail
