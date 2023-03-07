@@ -55,6 +55,8 @@ $ git switch development
 $ npm run dev
 ```
 
+To create a new production deployment, push to the `master` branch. Or, merge `development` into `master` and push.
+
 ## Updating Dependencies
 
 ```sh
