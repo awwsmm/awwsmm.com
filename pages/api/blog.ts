@@ -27,8 +27,6 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
     })
     .sort((a, b) => (parseISO(a.published) < parseISO(b.published) ? 1 : -1));
 
-  // TODO add routes to get individual blog posts
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return new Promise<void>((resolve, reject) => {
     Promise.all(info)
@@ -40,7 +38,6 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
         resolve();
       })
       .catch((error) => {
-        // TODO clean this up
         res.json(error);
         res.status(405).end();
         return resolve(); //in case something goes wrong in the catch block (as vijay) commented

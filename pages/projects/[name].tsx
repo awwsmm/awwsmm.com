@@ -11,8 +11,6 @@ import { Projects } from '../../lib/projects/Projects';
 import { remark } from 'remark';
 import utilStyles from '../../styles/utils.module.css';
 
-// TODO add README.md file for each project, render as "description" above project updates
-
 type LogEntryWrapper = {
   type: string;
   logEntry: LogEntry;

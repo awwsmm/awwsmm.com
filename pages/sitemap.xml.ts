@@ -10,7 +10,7 @@ function generateSiteMap(slugs: string[]): string {
      <url>
        <loc>http://localhost:3000</loc>
      </url>
-     ${slugs // TODO should also include all project pages
+     ${slugs
        .map((slug) => {
          return `
        <url>
