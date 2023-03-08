@@ -31,9 +31,6 @@ export abstract class Projects {
    * Commits are returned in reverse chronological order (newest first).
    */
   static async getCommits(name: string): Promise<Commit[]> {
-    // TODO: this will have to be adjusted when the repo has more than 100 commits,
-    //       because at that point, GitHub will start to paginate them
-
     type CommitsResponse = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
     const cacheFileName = `projects/${name}.json`;
     const cache = new Cache<string, CommitsResponse>(cacheFileName);

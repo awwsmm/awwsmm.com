@@ -62,7 +62,6 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-/* TODO move all component-specific styling into /component CSS files */
 .updateTimestamp {
   font-size: 0.8rem;
   color: #999;
