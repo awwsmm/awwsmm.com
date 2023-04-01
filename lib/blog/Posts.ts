@@ -3,8 +3,6 @@ import matter from 'gray-matter';
 import path from 'path';
 import PostData from '../model/PostData';
 import { rehype } from 'rehype';
-import rehypeDocument from 'rehype-document';
-import rehypeFormat from 'rehype-format';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse';
@@ -49,13 +47,7 @@ export abstract class Posts {
     const { rawContent } = rawPost;
 
     // Use remark-rehype to convert markdown into HTML string
-    const html = await unified()
-      .use(remarkParse)
-      .use(remarkRehype)
-      .use(rehypeDocument)
-      .use(rehypeFormat)
-      .use(rehypeStringify)
-      .process(rawContent);
+    const html = await unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).process(rawContent);
 
     // Use rehype-highlight to generate language-specific AST
     const ast = await rehype()

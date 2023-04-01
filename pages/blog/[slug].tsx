@@ -25,6 +25,7 @@ export default function PostComponent(post: PostWrapper) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+        <link href="/highlight/stackoverflow-dark.min.css" rel="stylesheet" />
       </Head>
       <article className={utilStyles.blogPost}>
         <h1 className={utilStyles.headingXl}>{rawPost.title}</h1>
