@@ -30,65 +30,22 @@ img {
   display: block;
 }
 
-.hljs-string {
-  color:sandybrown;
-}
-
-.hljs-comment {
-  color: grey;
-}
-
-.hljs-keyword {
-  color: plum;
-}
-
-.hljs-built_in {
-  color: mediumspringgreen;
-}
-
-.hljs-title {
-  color: mediumspringgreen;
-}
-
-.hljs-class {
-  color: mediumspringgreen;
-}
-
-.hljs-function {
-  color: khaki;
-}
-
-.hljs-params {
-  color: lightskyblue;
-}
-
-.hljs-number {
-  color: orangered;
-}
-
-.hljs-meta {
-  color: darkgrey;
-}
-
-.hljs-variable {
-  color: red;
-}
-
-.hljs-type {
-  color: blue;
-}
-
 pre {
-  border-radius: 0.5em;
-  padding: 1.4rem;
+  border-radius: 0.3em;
+  padding: 1.1rem;
   line-height: 1.1em;
   --alpha: 0.05;
   --hsl: 231, 40%, 100%;
-  background-color: hsla(var(--hsl), var(--alpha));
+  background-color: #1c1b1b;
   overflow-x: scroll;
+  margin: 1.3em 0 1.3em 0;
 }
 
 code {
   font-size: 0.75em;
   font-family: 'Fira Code', monospace;
+}
+
+pre code.hljs {
+  padding: 0;
 }
