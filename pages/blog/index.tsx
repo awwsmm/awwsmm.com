@@ -1,14 +1,15 @@
-import { Posts, PostWrapper } from '../../lib/blog/Posts';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import Link from 'next/link';
+import PostData from '../../lib/model/post/PostData';
+import PostUtils from '../../lib/utils/PostUtils';
 import PublicationDate from '../../components/PublicationDateComponent';
 import { siteTitle } from '../../components/LayoutComponent';
 import utilStyles from '../../styles/utils.module.css';
 
 type PropsWrapper = {
-  posts: PostWrapper[];
+  posts: PostData[];
 };
 
 export default function BlogHomeComponent(props: PropsWrapper) {
@@ -22,15 +23,13 @@ export default function BlogHomeComponent(props: PropsWrapper) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map((wrapper) => {
-            const { slug, post } = wrapper;
-
+          {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={slug}>
-                <Link href={`/blog/${slug}`}>{post.title}</Link>
+              <li className={utilStyles.listItem} key={postData.slug}>
+                <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
                 <small className={utilStyles.lightText}>
-                  <PublicationDate published={post.published} lastUpdated={post.lastUpdated} />
+                  <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>
             );
@@ -43,10 +42,10 @@ export default function BlogHomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
-  const posts: PostWrapper[] = await Posts.getPostWrappers();
+  const posts: PostData[] = PostUtils.getPosts();
 
   // sort post wrappers reverse chronologically
-  posts.sort((a, b) => (a.post.published < b.post.published ? 1 : -1));
+  posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // send the data to the Home component, above
   return {

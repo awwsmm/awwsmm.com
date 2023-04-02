@@ -1,6 +1,4 @@
-import simpleGit, { DefaultLogFields, ListLogLine, SimpleGit } from 'simple-git';
-
-export type RichCommit = DefaultLogFields & ListLogLine;
+import simpleGit, { SimpleGit } from 'simple-git';
 
 export default class Environment {
   // process.cwd() is the root directory of this project

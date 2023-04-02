@@ -1,18 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { parseISO } from 'date-fns';
-import { Posts } from '../../lib/blog/Posts';
+import PostUtils from '../../lib/utils/PostUtils';
 
 export default async (_: NextApiRequest, res: NextApiResponse) => {
-  const slugs = Posts.getSlugs();
+  const slugs = PostUtils.getSlugs();
 
-  const allInfo = await Promise.all(
-    slugs.map((slug) => {
-      return {
-        slug: slug,
-        post: Posts.getRaw(slug),
-      };
-    })
-  );
+  const allInfo = slugs.map((slug) => {
+    return {
+      slug: slug,
+      post: PostUtils.getPost(slug),
+    };
+  });
 
   const info = allInfo
     .map(({ slug, post }) => {

@@ -1,30 +1,23 @@
-import Cache from '../utils/Cache';
-import Commit from '../model/Commit';
+import Cache from './Cache';
+import Commit from '../model/project/Commit';
 import { Endpoints } from '@octokit/types';
 import fs from 'fs';
-import LogEntry from '../model/LogEntry';
+import LogEntry from '../model/project/LogEntry';
 import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
 import path from 'path';
-import ProjectMetadata from '../model/ProjectMetadata';
-
-export type ProjectWrapper = {
-  name: string;
-  commits: Commit[];
-  entries: LogEntry[];
-  lastUpdated: string;
-  metadata: ProjectMetadata;
-};
+import Project from '../model/project/ProjectData';
+import ProjectMetadata from '../model/project/ProjectMetadata';
 
 /**
- * Represents a GitHub repo which is supplemented with manual log entries in this project.
+ * Helper methods for reading and processing projects.
  */
-export abstract class Projects {
+export default abstract class ProjectUtils {
   static readonly dir = path.join(process.cwd(), 'projects');
 
   // get all project names
   static getNames(): string[] {
-    return fs.readdirSync(Projects.dir);
+    return fs.readdirSync(ProjectUtils.dir);
   }
 
   /**
@@ -78,13 +71,13 @@ export abstract class Projects {
   }
 
   /**
-   * @returns a Promise containing an array of all {@link LogEntry}s for this Project
+   * @returns an array of all {@link LogEntry}s for this Project
    */
-  static async getLogEntries(name: string): Promise<LogEntry[]> {
+  static getLogEntries(name: string): LogEntry[] {
     const logDir: string = path.join(process.cwd(), `projects/${name}/log`);
-    if (!fs.existsSync(logDir)) return Promise.resolve([]);
+    if (!fs.existsSync(logDir)) return [];
 
-    async function getLogData(fileName: string): Promise<LogEntry> {
+    function getLogData(fileName: string): LogEntry {
       const fullPath = path.join(logDir, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -99,61 +92,54 @@ export abstract class Projects {
     }
 
     const fileNames: string[] = fs.readdirSync(logDir);
-    return Promise.all(fileNames.map((each) => getLogData(each)));
+    return fileNames.map((each) => getLogData(each));
   }
 
-  static async getMetadata(name: string): Promise<ProjectMetadata> {
+  static getMetadata(name: string): ProjectMetadata {
     const metadataFile: string = path.join(process.cwd(), `projects/${name}/metadata.json`);
-    if (!fs.existsSync(metadataFile)) return Promise.resolve(new ProjectMetadata(name));
+    if (!fs.existsSync(metadataFile)) return new ProjectMetadata(name);
     const fileContents = fs.readFileSync(metadataFile, 'utf8');
     const metadata: ProjectMetadata = JSON.parse(fileContents);
-    return Promise.resolve(metadata);
+    return metadata;
   }
 
-  static async getProjectWrappers(): Promise<ProjectWrapper[]> {
+  static async getProject(name: string): Promise<Project> {
+    // get all the info about the project
+    const commits = await ProjectUtils.getCommits(name);
+    const logEntries = ProjectUtils.getLogEntries(name);
+    const metadata = ProjectUtils.getMetadata(name);
+
+    // sort commits and entries to find the last updated date
+    commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+    logEntries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+
+    const newestCommit = commits[0]?.date;
+    const newestEntry = logEntries[0]?.date;
+
+    const epoch = new Date(0).toISOString(); // Jan 1, 1970
+    const lastUpdated = newestCommit
+      ? newestEntry
+        ? parseISO(newestCommit) > parseISO(newestEntry)
+          ? newestCommit
+          : newestEntry
+        : newestCommit
+      : newestEntry
+      ? newestEntry
+      : epoch;
+
+    return {
+      name,
+      commits,
+      logEntries,
+      lastUpdated,
+      metadata,
+    };
+  }
+
+  static async getProjects(): Promise<Project[]> {
     // get all the info about all projects
-    const names = Projects.getNames();
-    const allCommits = await Promise.all(names.map((name) => Projects.getCommits(name)));
-    const allEntries = await Promise.all(names.map((name) => Projects.getLogEntries(name)));
-    const allMetadata = await Promise.all(names.map((name) => Projects.getMetadata(name)));
-
-    // remove empty arrays, where a project might have no commits and/or no log entries
-    const allCommitsFiltered = allCommits.filter((arr) => arr.length > 0);
-    const allEntriesFiltered = allEntries.filter((arr) => arr.length > 0);
-
-    // collect all project info into wrapper type
-    const projects: ProjectWrapper[] = names.map((name) => {
-      const commits = allCommitsFiltered.find((c) => c[0].project === name) || [];
-      const entries = allEntriesFiltered.find((e) => e[0].project === name) || [];
-      const metadata = allMetadata.find((e) => e.project === name) || new ProjectMetadata(name);
-
-      // sort commits and entries to find the last updated date
-      commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
-      entries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
-
-      const newestCommit = commits[0]?.date;
-      const newestEntry = entries[0]?.date;
-
-      const epoch = new Date(0).toISOString(); // Jan 1, 1970
-      const lastUpdated = newestCommit
-        ? newestEntry
-          ? parseISO(newestCommit) > parseISO(newestEntry)
-            ? newestCommit
-            : newestEntry
-          : newestCommit
-        : newestEntry
-        ? newestEntry
-        : epoch;
-
-      return {
-        name,
-        commits,
-        entries,
-        lastUpdated,
-        metadata,
-      };
-    });
-
-    return projects;
+    const names = ProjectUtils.getNames();
+    const wrappers = await Promise.all(names.map((name) => ProjectUtils.getProject(name)));
+    return wrappers;
   }
 }

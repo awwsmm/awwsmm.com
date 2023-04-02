@@ -1,15 +1,16 @@
-import { Projects, ProjectWrapper } from '../../lib/projects/Projects';
 import DateComponent from '../../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import Link from 'next/link';
 import { parseISO } from 'date-fns';
+import ProjectData from '../../lib/model/project/ProjectData';
+import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { siteTitle } from '../../components/LayoutComponent';
 import utilStyles from '../../styles/utils.module.css';
 
 type PropsWrapper = {
-  projects: ProjectWrapper[];
+  projects: ProjectData[];
 };
 
 export default function ProjectsHomeComponent(props: PropsWrapper) {
@@ -44,7 +45,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all project info into wrapper type
-  const projects: ProjectWrapper[] = await Projects.getProjectWrappers();
+  const projects: ProjectData[] = await ProjectUtils.getProjects();
 
   // sort projects reverse chronologically by lastUpdated date
   projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));

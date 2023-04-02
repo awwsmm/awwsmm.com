@@ -1,33 +1,20 @@
-import Commit from '../lib/model/Commit';
 import DateComponent from '../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
-import LogEntry from '../lib/model/LogEntry';
 import { parseISO } from 'date-fns';
-import PostData from '../lib/model/PostData';
-import { Posts } from '../lib/blog/Posts';
-import { Projects } from '../lib/projects/Projects';
+import PostData from '../lib/model/post/PostData';
+import PostUtils from '../lib/utils/PostUtils';
+import ProjectData from '../lib/model/project/ProjectData';
+import ProjectUtils from '../lib/utils/ProjectUtils';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
 
-type PostWrapper = {
-  slug: string;
-  post: PostData;
-};
-
-type ProjectWrapper = {
-  name: string;
-  commits: Commit[];
-  entries: LogEntry[];
-  lastUpdated: string;
-};
-
 type PropsWrapper = {
-  posts: PostWrapper[];
-  projects: ProjectWrapper[];
+  posts: PostData[];
+  projects: ProjectData[];
 };
 
 export default function HomeComponent(props: PropsWrapper) {
@@ -65,15 +52,13 @@ export default function HomeComponent(props: PropsWrapper) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map((wrapper) => {
-            const { slug, post } = wrapper;
-
+          {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={slug}>
-                <Link href={`/blog/${slug}`}>{post.title}</Link>
+              <li className={utilStyles.listItem} key={postData.slug}>
+                <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
                 <small className={utilStyles.lightText}>
-                  <PublicationDate published={post.published} lastUpdated={post.lastUpdated} />
+                  <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>
             );
@@ -104,13 +89,13 @@ export default function HomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
-  const posts: PostWrapper[] = await Posts.getPostWrappers();
+  const posts: PostData[] = PostUtils.getPosts();
 
   // sort post wrappers reverse chronologically
-  posts.sort((a, b) => (a.post.published < b.post.published ? 1 : -1));
+  posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // collect all project info into wrapper type
-  const projects: ProjectWrapper[] = await Projects.getProjectWrappers();
+  const projects: ProjectData[] = await ProjectUtils.getProjects();
 
   // sort projects reverse chronologically by lastUpdated date
   projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));

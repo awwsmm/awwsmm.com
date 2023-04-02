@@ -1,5 +1,5 @@
 /**
- * Represents an unprocessed blog post file.
+ * An unprocessed blog post.
  */
 export default class PostData {
   slug: string;

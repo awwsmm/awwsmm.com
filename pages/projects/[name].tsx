@@ -1,37 +1,21 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Commit from '../../lib/model/Commit';
+import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
+import CommitWrapper from '../../lib/wrappers/CommitWrapper';
 import Head from 'next/head';
 import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
-import LogEntry from '../../lib/model/LogEntry';
+import LogEntry from '../../lib/model/project/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
+import LogEntryWrapper from '../../lib/wrappers/LogEntryWrapper';
 import { parseISO } from 'date-fns';
-import ProjectMetadata from '../../lib/model/ProjectMetadata';
-import { Projects } from '../../lib/projects/Projects';
+import ProcessedProjectWrapper from '../../lib/wrappers/ProcessedProjectWrapper';
+import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { remark } from 'remark';
+import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
-type LogEntryWrapper = {
-  type: string;
-  logEntry: LogEntry;
-  contentHtml: string;
-};
-
-type CommitWrapper = {
-  type: string;
-  commit: Commit;
-};
-
-type UpdateWrapper = LogEntryWrapper | CommitWrapper;
-
-type ProjectWrapper = {
-  name: string;
-  updates: UpdateWrapper[];
-  demoUrl: string;
-};
-
-export default function ProjectUpdateComponent(project: ProjectWrapper) {
+export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
   const { name, updates, demoUrl } = project;
 
   return (
@@ -118,7 +102,7 @@ export default function ProjectUpdateComponent(project: ProjectWrapper) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Projects.getNames().map((name) => {
+  const paths = ProjectUtils.getNames().map((name) => {
     return { params: { name } };
   });
   return { paths, fallback: false };
@@ -128,20 +112,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.name && typeof params.name === 'string') {
     // get all the info about this project
     const name: string = params.name;
-    const commits: Commit[] = await Projects.getCommits(name);
-    const logEntries: LogEntry[] = await Projects.getLogEntries(name);
-    const metadata: ProjectMetadata = await Projects.getMetadata(name);
+    const wrapper = await ProjectUtils.getProject(name);
 
     // process the data...
-    const all = (commits as (Commit | LogEntry)[]).concat(logEntries);
-    all.sort((a, b) => (a.date < b.date ? 1 : -1));
+    const commitsAndLogEntries = (wrapper.commits as (Commit | LogEntry)[]).concat(wrapper.logEntries);
+    commitsAndLogEntries.sort((a, b) => (a.date < b.date ? 1 : -1));
 
     const updates: UpdateWrapper[] = await Promise.all(
-      all.map(async (update) => {
+      commitsAndLogEntries.map(async (update) => {
         if (update instanceof LogEntry) {
           // Use remark to convert markdown into HTML string
           const processedContent = await remark().use(html).process(update.body);
-
           const contentHtml = processedContent.toString();
 
           return {
@@ -158,7 +139,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
     );
 
-    const demoUrl = metadata.demo?.url || '';
+    const demoUrl = wrapper.metadata.demo?.url || '';
 
     // send the data to the ProjectUpdateComponent component, above
     return {
