@@ -1,18 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Commit from '../../lib/model/Commit';
+import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from './model/CommitWrapper';
 import Head from 'next/head';
 import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
-import LogEntry from '../../lib/model/LogEntry';
+import LogEntry from '../../lib/model/project/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
 import LogEntryWrapper from './model/LogEntryWrapper';
 import { parseISO } from 'date-fns';
 import ProcessedProjectWrapper from './model/ProcessedProjectWrapper';
 import Projects from '../../lib/projects/Projects';
 import { remark } from 'remark';
-import { UpdateWrapper } from './model/UpdateWrapper';
+import UpdateWrapper from './model/UpdateWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
 export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
@@ -112,7 +112,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.name && typeof params.name === 'string') {
     // get all the info about this project
     const name: string = params.name;
-    const wrapper = await Projects.getProjectWrapper(name);
+    const wrapper = await Projects.getProject(name);
 
     // process the data...
     const commitsAndLogEntries = (wrapper.commits as (Commit | LogEntry)[]).concat(wrapper.logEntries);

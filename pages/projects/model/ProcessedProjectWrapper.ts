@@ -1,4 +1,4 @@
-import { UpdateWrapper } from './UpdateWrapper';
+import UpdateWrapper from './UpdateWrapper';
 
 export default class ProcessedProjectWrapper {
   readonly name: string;

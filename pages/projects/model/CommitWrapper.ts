@@ -1,4 +1,4 @@
-import Commit from '../../../lib/model/Commit';
+import Commit from '../../../lib/model/project/Commit';
 
 export default class CommitWrapper {
   readonly type: string;

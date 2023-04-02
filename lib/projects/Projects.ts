@@ -1,13 +1,13 @@
 import Cache from '../utils/Cache';
-import Commit from '../model/Commit';
+import Commit from '../model/project/Commit';
 import { Endpoints } from '@octokit/types';
 import fs from 'fs';
-import LogEntry from '../model/LogEntry';
+import LogEntry from '../model/project/LogEntry';
 import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
 import path from 'path';
-import ProjectData from '../model/ProjectData';
-import ProjectMetadata from '../model/ProjectMetadata';
+import Project from '../model/project/ProjectData';
+import ProjectMetadata from '../model/project/ProjectMetadata';
 
 /**
  * Represents a GitHub repo which is supplemented with manual log entries in this project.
@@ -71,13 +71,13 @@ export default abstract class Projects {
   }
 
   /**
-   * @returns a Promise containing an array of all {@link LogEntry}s for this Project
+   * @returns an array of all {@link LogEntry}s for this Project
    */
-  static async getLogEntries(name: string): Promise<LogEntry[]> {
+  static getLogEntries(name: string): LogEntry[] {
     const logDir: string = path.join(process.cwd(), `projects/${name}/log`);
-    if (!fs.existsSync(logDir)) return Promise.resolve([]);
+    if (!fs.existsSync(logDir)) return [];
 
-    async function getLogData(fileName: string): Promise<LogEntry> {
+    function getLogData(fileName: string): LogEntry {
       const fullPath = path.join(logDir, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -92,22 +92,22 @@ export default abstract class Projects {
     }
 
     const fileNames: string[] = fs.readdirSync(logDir);
-    return Promise.all(fileNames.map((each) => getLogData(each)));
+    return fileNames.map((each) => getLogData(each));
   }
 
-  static async getMetadata(name: string): Promise<ProjectMetadata> {
+  static getMetadata(name: string): ProjectMetadata {
     const metadataFile: string = path.join(process.cwd(), `projects/${name}/metadata.json`);
-    if (!fs.existsSync(metadataFile)) return Promise.resolve(new ProjectMetadata(name));
+    if (!fs.existsSync(metadataFile)) return new ProjectMetadata(name);
     const fileContents = fs.readFileSync(metadataFile, 'utf8');
     const metadata: ProjectMetadata = JSON.parse(fileContents);
-    return Promise.resolve(metadata);
+    return metadata;
   }
 
-  static async getProjectWrapper(name: string): Promise<ProjectData> {
+  static async getProject(name: string): Promise<Project> {
     // get all the info about the project
     const commits = await Projects.getCommits(name);
-    const logEntries = await Projects.getLogEntries(name);
-    const metadata = await Projects.getMetadata(name);
+    const logEntries = Projects.getLogEntries(name);
+    const metadata = Projects.getMetadata(name);
 
     // sort commits and entries to find the last updated date
     commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
@@ -136,10 +136,10 @@ export default abstract class Projects {
     };
   }
 
-  static async getProjectWrappers(): Promise<ProjectData[]> {
+  static async getProjects(): Promise<Project[]> {
     // get all the info about all projects
     const names = Projects.getNames();
-    const wrappers = await Promise.all(names.map((name) => Projects.getProjectWrapper(name)));
+    const wrappers = await Promise.all(names.map((name) => Projects.getProject(name)));
     return wrappers;
   }
 }

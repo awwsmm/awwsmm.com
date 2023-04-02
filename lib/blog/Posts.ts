@@ -1,7 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import PostData from '../model/PostData';
+import Post from '../model/post/PostData';
 import { rehype } from 'rehype';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
@@ -20,7 +20,7 @@ export default abstract class Posts {
   }
 
   // read a post, given its slug, but do no processing
-  static getRaw(slug: string): PostData {
+  static getPost(slug: string): Post {
     const fullPath = path.join(Posts.dir, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -34,11 +34,11 @@ export default abstract class Posts {
     const lastUpdated: string = matterResult.data.lastUpdated;
     const rawContent = matterResult.content;
 
-    return new PostData(slug, title, description, published, lastUpdated, rawContent);
+    return new Post(slug, title, description, published, lastUpdated, rawContent);
   }
 
   // process an unprocessed post
-  static async process(rawPost: PostData): Promise<string> {
+  static async process(rawPost: Post): Promise<string> {
     const { rawContent } = rawPost;
 
     // Use remark-rehype to convert markdown into HTML string
@@ -53,13 +53,13 @@ export default abstract class Posts {
     return String(ast);
   }
 
-  static async getPostWrappers(): Promise<PostData[]> {
+  static getPosts(): Post[] {
     // get all the info about all blog posts
     const slugs = Posts.getSlugs();
-    const allPosts = slugs.map((slug) => Posts.getRaw(slug));
+    const allPosts = slugs.map((slug) => Posts.getPost(slug));
 
     // collect all post info into wrapper type
-    const posts: PostData[] = slugs.map((slug) => {
+    const posts: Post[] = slugs.map((slug) => {
       const post = allPosts.find((p) => p.slug === slug);
 
       if (post === undefined) throw new Error('!');

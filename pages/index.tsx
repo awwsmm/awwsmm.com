@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
 import { parseISO } from 'date-fns';
-import PostData from '../lib/model/PostData';
+import PostData from '../lib/model/post/PostData';
 import Posts from '../lib/blog/Posts';
-import ProjectData from '../lib/model/ProjectData';
+import ProjectData from '../lib/model/project/ProjectData';
 import Projects from '../lib/projects/Projects';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
@@ -89,13 +89,13 @@ export default function HomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
-  const posts: PostData[] = await Posts.getPostWrappers();
+  const posts: PostData[] = Posts.getPosts();
 
   // sort post wrappers reverse chronologically
   posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // collect all project info into wrapper type
-  const projects: ProjectData[] = await Projects.getProjectWrappers();
+  const projects: ProjectData[] = await Projects.getProjects();
 
   // sort projects reverse chronologically by lastUpdated date
   projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));

@@ -1,4 +1,4 @@
-import LogEntry from '../../../lib/model/LogEntry';
+import LogEntry from '../../../lib/model/project/LogEntry';
 
 export default class LogEntryWrapper {
   readonly type: string;

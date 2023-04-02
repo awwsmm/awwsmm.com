@@ -2,8 +2,8 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import Link from 'next/link';
-import PostData from '../../lib/model/PostData';
-import { Posts } from '../../lib/blog/Posts';
+import PostData from '../../lib/model/post/PostData';
+import Posts from '../../lib/blog/Posts';
 import PublicationDate from '../../components/PublicationDateComponent';
 import { siteTitle } from '../../components/LayoutComponent';
 import utilStyles from '../../styles/utils.module.css';
@@ -42,7 +42,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
-  const posts: PostData[] = await Posts.getPostWrappers();
+  const posts: PostData[] = Posts.getPosts();
 
   // sort post wrappers reverse chronologically
   posts.sort((a, b) => (a.published < b.published ? 1 : -1));
