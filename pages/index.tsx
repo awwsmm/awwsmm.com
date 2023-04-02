@@ -13,11 +13,6 @@ import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
 
-type PostWrapper = {
-  slug: string;
-  post: PostData;
-};
-
 type ProjectWrapper = {
   name: string;
   commits: Commit[];
@@ -26,7 +21,7 @@ type ProjectWrapper = {
 };
 
 type PropsWrapper = {
-  posts: PostWrapper[];
+  posts: PostData[];
   projects: ProjectWrapper[];
 };
 
@@ -65,15 +60,13 @@ export default function HomeComponent(props: PropsWrapper) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {posts.map((wrapper) => {
-            const { slug, post } = wrapper;
-
+          {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={slug}>
-                <Link href={`/blog/${slug}`}>{post.title}</Link>
+              <li className={utilStyles.listItem} key={postData.slug}>
+                <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
                 <small className={utilStyles.lightText}>
-                  <PublicationDate published={post.published} lastUpdated={post.lastUpdated} />
+                  <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>
             );
@@ -104,10 +97,10 @@ export default function HomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
-  const posts: PostWrapper[] = await Posts.getPostWrappers();
+  const posts: PostData[] = await Posts.getPostWrappers();
 
   // sort post wrappers reverse chronologically
-  posts.sort((a, b) => (a.post.published < b.post.published ? 1 : -1));
+  posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // collect all project info into wrapper type
   const projects: ProjectWrapper[] = await Projects.getProjectWrappers();
