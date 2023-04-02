@@ -1,18 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
-import CommitWrapper from './model/CommitWrapper';
+import CommitWrapper from '../../lib/wrappers/CommitWrapper';
 import Head from 'next/head';
 import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
 import LogEntry from '../../lib/model/project/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
-import LogEntryWrapper from './model/LogEntryWrapper';
+import LogEntryWrapper from '../../lib/wrappers/LogEntryWrapper';
 import { parseISO } from 'date-fns';
-import ProcessedProjectWrapper from './model/ProcessedProjectWrapper';
+import ProcessedProjectWrapper from '../../lib/wrappers/ProcessedProjectWrapper';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { remark } from 'remark';
-import UpdateWrapper from './model/UpdateWrapper';
+import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
 export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {

@@ -1,4 +1,4 @@
-import PostData from '../../../lib/model/post/PostData';
+import PostData from '../model/post/PostData';
 
 export default class ProcessedPostWrapper {
   readonly rawPost: PostData;

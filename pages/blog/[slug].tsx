@@ -3,7 +3,7 @@ import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import PostUtils from '../../lib/utils/PostUtils';
-import ProcessedPostWrapper from './model/ProcessedPostWrapper';
+import ProcessedPostWrapper from '../../lib/wrappers/ProcessedPostWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
 export default function PostComponent(post: ProcessedPostWrapper) {
