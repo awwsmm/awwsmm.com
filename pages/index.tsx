@@ -50,7 +50,9 @@ export default function HomeComponent(props: PropsWrapper) {
         </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <Link href="blog">
+          <h2 className={utilStyles.headingLg}>Blog</h2>
+        </Link>
         <ul className={utilStyles.list}>
           {posts.map((postData) => {
             return (
@@ -66,7 +68,9 @@ export default function HomeComponent(props: PropsWrapper) {
         </ul>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Projects</h2>
+        <Link href="projects">
+          <h2 className={utilStyles.headingLg}>Projects</h2>
+        </Link>
         <ul className={utilStyles.list}>
           {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;

@@ -16,7 +16,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
   const { posts } = props;
 
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
