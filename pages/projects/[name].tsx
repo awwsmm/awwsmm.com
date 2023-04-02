@@ -7,6 +7,7 @@ import Layout from '../../components/LayoutComponent';
 import LogEntry from '../../lib/model/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
 import { parseISO } from 'date-fns';
+import ProjectMetadata from '../../lib/model/ProjectMetadata';
 import { Projects } from '../../lib/projects/Projects';
 import { remark } from 'remark';
 import utilStyles from '../../styles/utils.module.css';
@@ -27,34 +28,27 @@ type UpdateWrapper = LogEntryWrapper | CommitWrapper;
 type ProjectWrapper = {
   name: string;
   updates: UpdateWrapper[];
+  demoUrl: string;
 };
 
 export default function ProjectUpdateComponent(project: ProjectWrapper) {
-  const { name, updates } = project;
+  const { name, updates, demoUrl } = project;
 
   return (
     <Layout>
       <Head>
         <title>{name}</title>
-        {/* <link
-          rel="canonical"
-          href={`https://localhost:3000/blog/${postData.name}`}
-          key="canonical"
-        />
-        <meta
-          name="description"
-          content={postData.description}
-          key="desc"
-        />
-        <meta property="og:title" content={postData.title} />
-        <meta property="og:description" content={postData.description} /> */}
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{name}</h1>
         <p>
           View source at <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
         </p>
-        {/* <h2 className={utilStyles.headingMd}>{project.name}</h2> */}
+        {demoUrl !== '' && (
+          <p>
+            Try it out at <a href={demoUrl}>{demoUrl}</a>
+          </p>
+        )}
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>Updates</h2>
           <ul className={utilStyles.list}>
@@ -74,16 +68,15 @@ export default function ProjectUpdateComponent(project: ProjectWrapper) {
                       const latestUpdate = latestGroup[latestGroup.length - 1] as CommitWrapper;
                       const wrapper = update as CommitWrapper;
 
-                      // ...and the time between commits is not too great, add this commit to it
-                      if (
-                        Math.abs(
-                          parseISO(latestUpdate.commit.date).getTime() - parseISO(wrapper.commit.date).getTime()
-                        ) <
-                        1000 * 60 * 60 * 48
-                      ) {
+                      // ...and the time between commits is not too great...
+                      const timeOf = (wrapper: CommitWrapper) => parseISO(wrapper.commit.date).getTime();
+                      const twoDays = 2 * 24 * 60 * 60 * 1000;
+
+                      // ...then add this commit to it.
+                      if (Math.abs(timeOf(latestUpdate) - timeOf(wrapper)) < twoDays) {
                         latestGroup.push(update);
 
-                        // ...otherwise, put this commit in a new commit group by itself
+                        // Otherwise, put this commit in a new commit group by itself
                       } else {
                         acc.push([update]);
                       }
@@ -137,6 +130,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const name: string = params.name;
     const commits: Commit[] = await Projects.getCommits(name);
     const logEntries: LogEntry[] = await Projects.getLogEntries(name);
+    const metadata: ProjectMetadata = await Projects.getMetadata(name);
 
     // process the data...
     const all = (commits as (Commit | LogEntry)[]).concat(logEntries);
@@ -164,11 +158,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
     );
 
+    const demoUrl = metadata.demo?.url || '';
+
     // send the data to the ProjectUpdateComponent component, above
     return {
       props: {
         name,
         updates,
+        demoUrl,
       },
     };
   } else {
