@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
-import Posts from '../../lib/blog/Posts';
+import PostUtils from '../../lib/utils/PostUtils';
 import ProcessedPostWrapper from './model/ProcessedPostWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
@@ -35,7 +35,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Posts.getSlugs().map((slug) => {
+  const paths = PostUtils.getSlugs().map((slug) => {
     return { params: { slug } };
   });
   return { paths, fallback: false };
@@ -44,8 +44,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.slug && typeof params.slug === 'string') {
     // get all the info about this blog post
-    const rawPost = Posts.getPost(params.slug);
-    const htmlContent = await Posts.process(rawPost);
+    const rawPost = PostUtils.getPost(params.slug);
+    const htmlContent = await PostUtils.process(rawPost);
 
     // send the data to the PostComponent component, above
     return {

@@ -3,7 +3,7 @@ import LogEntry from './LogEntry';
 import ProjectMetadata from './ProjectMetadata';
 
 /**
- * Represents unprocessed project information.
+ * Unprocessed project information.
  */
 export default class ProjectData {
   name: string;

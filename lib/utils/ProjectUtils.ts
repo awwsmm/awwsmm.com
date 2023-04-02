@@ -1,4 +1,4 @@
-import Cache from '../utils/Cache';
+import Cache from './Cache';
 import Commit from '../model/project/Commit';
 import { Endpoints } from '@octokit/types';
 import fs from 'fs';
@@ -10,14 +10,14 @@ import Project from '../model/project/ProjectData';
 import ProjectMetadata from '../model/project/ProjectMetadata';
 
 /**
- * Represents a GitHub repo which is supplemented with manual log entries in this project.
+ * Helper methods for reading and processing projects.
  */
-export default abstract class Projects {
+export default abstract class ProjectUtils {
   static readonly dir = path.join(process.cwd(), 'projects');
 
   // get all project names
   static getNames(): string[] {
-    return fs.readdirSync(Projects.dir);
+    return fs.readdirSync(ProjectUtils.dir);
   }
 
   /**
@@ -105,9 +105,9 @@ export default abstract class Projects {
 
   static async getProject(name: string): Promise<Project> {
     // get all the info about the project
-    const commits = await Projects.getCommits(name);
-    const logEntries = Projects.getLogEntries(name);
-    const metadata = Projects.getMetadata(name);
+    const commits = await ProjectUtils.getCommits(name);
+    const logEntries = ProjectUtils.getLogEntries(name);
+    const metadata = ProjectUtils.getMetadata(name);
 
     // sort commits and entries to find the last updated date
     commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
@@ -138,8 +138,8 @@ export default abstract class Projects {
 
   static async getProjects(): Promise<Project[]> {
     // get all the info about all projects
-    const names = Projects.getNames();
-    const wrappers = await Promise.all(names.map((name) => Projects.getProject(name)));
+    const names = ProjectUtils.getNames();
+    const wrappers = await Promise.all(names.map((name) => ProjectUtils.getProject(name)));
     return wrappers;
   }
 }

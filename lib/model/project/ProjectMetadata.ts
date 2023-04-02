@@ -1,3 +1,6 @@
+/**
+ * Metadata read from a project's metadata.json file.
+ */
 export default class ProjectMetadata {
   readonly project: string;
   readonly demo: { url: string } | undefined;

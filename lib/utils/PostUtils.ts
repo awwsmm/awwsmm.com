@@ -10,18 +10,21 @@ import remarkRehype from 'remark-rehype';
 import scala from 'highlight.js/lib/languages/scala';
 import { unified } from 'unified';
 
-export default abstract class Posts {
+/**
+ * Helper methods for reading and processing blog posts.
+ */
+export default abstract class PostUtils {
   static readonly dir = path.join(process.cwd(), 'blog');
 
   // get all blog post slugs
   static getSlugs(): string[] {
-    const fileNames: string[] = fs.readdirSync(Posts.dir);
+    const fileNames: string[] = fs.readdirSync(PostUtils.dir);
     return fileNames.filter((name) => name.endsWith('.md')).map((name) => name.replace(/\.md$/, ''));
   }
 
   // read a post, given its slug, but do no processing
   static getPost(slug: string): Post {
-    const fullPath = path.join(Posts.dir, `${slug}.md`);
+    const fullPath = path.join(PostUtils.dir, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // Use gray-matter to parse the post metadata section
@@ -55,8 +58,8 @@ export default abstract class Posts {
 
   static getPosts(): Post[] {
     // get all the info about all blog posts
-    const slugs = Posts.getSlugs();
-    const allPosts = slugs.map((slug) => Posts.getPost(slug));
+    const slugs = PostUtils.getSlugs();
+    const allPosts = slugs.map((slug) => PostUtils.getPost(slug));
 
     // collect all post info into wrapper type
     const posts: Post[] = slugs.map((slug) => {

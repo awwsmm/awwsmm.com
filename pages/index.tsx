@@ -5,9 +5,9 @@ import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
 import { parseISO } from 'date-fns';
 import PostData from '../lib/model/post/PostData';
-import Posts from '../lib/blog/Posts';
+import PostUtils from '../lib/utils/PostUtils';
 import ProjectData from '../lib/model/project/ProjectData';
-import Projects from '../lib/projects/Projects';
+import ProjectUtils from '../lib/utils/ProjectUtils';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
@@ -89,13 +89,13 @@ export default function HomeComponent(props: PropsWrapper) {
 
 export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
-  const posts: PostData[] = Posts.getPosts();
+  const posts: PostData[] = PostUtils.getPosts();
 
   // sort post wrappers reverse chronologically
   posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // collect all project info into wrapper type
-  const projects: ProjectData[] = await Projects.getProjects();
+  const projects: ProjectData[] = await ProjectUtils.getProjects();
 
   // sort projects reverse chronologically by lastUpdated date
   projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));

@@ -1,5 +1,5 @@
 /**
- * Represents a git commit.
+ * A git commit.
  *
  * @see {@link https://docs.github.com/en/rest/reference/commits#list-commits}
  */

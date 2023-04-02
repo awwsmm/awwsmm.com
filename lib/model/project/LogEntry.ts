@@ -1,3 +1,6 @@
+/**
+ * A log entry from a project's /log.
+ */
 export default class LogEntry {
   readonly project: string;
   readonly title: string;
