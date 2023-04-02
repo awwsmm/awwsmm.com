@@ -2,14 +2,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
-import PostData from '../../lib/model/PostData';
 import { Posts } from '../../lib/blog/Posts';
+import PostWrapper from './model/PostWrapper';
 import utilStyles from '../../styles/utils.module.css';
-
-type PostWrapper = {
-  rawPost: PostData;
-  htmlContent: string;
-};
 
 export default function PostComponent(post: PostWrapper) {
   const { rawPost, htmlContent } = post;

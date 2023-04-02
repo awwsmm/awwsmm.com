@@ -25,7 +25,6 @@ export default function CommitGroupComponent({
       <small className={utilStyles.updateTimestamp}>
         <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>
-      {/* <div className={utilStyles.updateTitle} dangerouslySetInnerHTML={{ __html: htmlTitle }} /> */}
       <div
         className={utilStyles.updateSubtitle}
         dangerouslySetInnerHTML={{ __html: `Commits: ${oldest.sha.slice(0, 7)} ... ${newest.sha.slice(0, 7)}` }}
