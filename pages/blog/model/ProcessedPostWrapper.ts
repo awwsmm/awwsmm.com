@@ -1,6 +1,6 @@
 import PostData from '../../../lib/model/PostData';
 
-export default class PostWrapper {
+export default class ProcessedPostWrapper {
   readonly rawPost: PostData;
   readonly htmlContent: string;
 

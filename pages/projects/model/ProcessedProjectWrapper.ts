@@ -1,6 +1,6 @@
 import { UpdateWrapper } from './UpdateWrapper';
 
-export default class ProjectWrapper {
+export default class ProcessedProjectWrapper {
   readonly name: string;
   readonly updates: UpdateWrapper[];
   readonly demoUrl: string;

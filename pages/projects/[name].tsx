@@ -9,14 +9,13 @@ import LogEntry from '../../lib/model/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
 import LogEntryWrapper from './model/LogEntryWrapper';
 import { parseISO } from 'date-fns';
-import ProjectMetadata from '../../lib/model/ProjectMetadata';
-import { Projects } from '../../lib/projects/Projects';
-import ProjectWrapper from './model/ProjectWrapper';
+import ProcessedProjectWrapper from './model/ProcessedProjectWrapper';
+import Projects from '../../lib/projects/Projects';
 import { remark } from 'remark';
 import { UpdateWrapper } from './model/UpdateWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
-export default function ProjectUpdateComponent(project: ProjectWrapper) {
+export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
   const { name, updates, demoUrl } = project;
 
   return (
@@ -113,16 +112,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.name && typeof params.name === 'string') {
     // get all the info about this project
     const name: string = params.name;
-    const commits: Commit[] = await Projects.getCommits(name);
-    const logEntries: LogEntry[] = await Projects.getLogEntries(name);
-    const metadata: ProjectMetadata = await Projects.getMetadata(name);
+    const wrapper = await Projects.getProjectWrapper(name);
 
     // process the data...
-    const all = (commits as (Commit | LogEntry)[]).concat(logEntries);
-    all.sort((a, b) => (a.date < b.date ? 1 : -1));
+    const commitsAndLogEntries = (wrapper.commits as (Commit | LogEntry)[]).concat(wrapper.logEntries);
+    commitsAndLogEntries.sort((a, b) => (a.date < b.date ? 1 : -1));
 
     const updates: UpdateWrapper[] = await Promise.all(
-      all.map(async (update) => {
+      commitsAndLogEntries.map(async (update) => {
         if (update instanceof LogEntry) {
           // Use remark to convert markdown into HTML string
           const processedContent = await remark().use(html).process(update.body);
@@ -142,10 +139,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
     );
 
-    const demoUrl = metadata.demo?.url || '';
+    const demoUrl = wrapper.metadata.demo?.url || '';
 
     // send the data to the ProjectUpdateComponent component, above
-    // "Props must be returned as a plain object from getStaticProps"
     return {
       props: {
         name,

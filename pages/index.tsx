@@ -1,28 +1,20 @@
-import Commit from '../lib/model/Commit';
 import DateComponent from '../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
-import LogEntry from '../lib/model/LogEntry';
 import { parseISO } from 'date-fns';
 import PostData from '../lib/model/PostData';
-import { Posts } from '../lib/blog/Posts';
-import { Projects } from '../lib/projects/Projects';
+import Posts from '../lib/blog/Posts';
+import ProjectData from '../lib/model/ProjectData';
+import Projects from '../lib/projects/Projects';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
 import utilStyles from '../styles/utils.module.css';
 
-type ProjectWrapper = {
-  name: string;
-  commits: Commit[];
-  entries: LogEntry[];
-  lastUpdated: string;
-};
-
 type PropsWrapper = {
   posts: PostData[];
-  projects: ProjectWrapper[];
+  projects: ProjectData[];
 };
 
 export default function HomeComponent(props: PropsWrapper) {
@@ -103,7 +95,7 @@ export const getStaticProps: GetStaticProps = async () => {
   posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // collect all project info into wrapper type
-  const projects: ProjectWrapper[] = await Projects.getProjectWrappers();
+  const projects: ProjectData[] = await Projects.getProjectWrappers();
 
   // sort projects reverse chronologically by lastUpdated date
   projects.sort((a, b) => (parseISO(a.lastUpdated) < parseISO(b.lastUpdated) ? 1 : -1));

@@ -3,10 +3,10 @@ import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import { Posts } from '../../lib/blog/Posts';
-import PostWrapper from './model/PostWrapper';
+import ProcessedPostWrapper from './model/ProcessedPostWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
-export default function PostComponent(post: PostWrapper) {
+export default function PostComponent(post: ProcessedPostWrapper) {
   const { rawPost, htmlContent } = post;
 
   return (

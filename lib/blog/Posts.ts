@@ -10,7 +10,7 @@ import remarkRehype from 'remark-rehype';
 import scala from 'highlight.js/lib/languages/scala';
 import { unified } from 'unified';
 
-export abstract class Posts {
+export default abstract class Posts {
   static readonly dir = path.join(process.cwd(), 'blog');
 
   // get all blog post slugs
