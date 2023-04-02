@@ -55,9 +55,14 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
           </>
         )}
       </header>
+      {!home && (
+        <div className={styles.backToHomeTop}>
+          <Link href="/">← Back to home</Link>
+        </div>
+      )}
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className={styles.backToHomeBottom}>
           <Link href="/">← Back to home</Link>
         </div>
       )}

@@ -17,7 +17,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
   const { projects } = props;
 
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>

@@ -10,6 +10,10 @@
   align-items: center;
 }
 
-.backToHome {
+.backToHomeTop {
+  margin: 0;
+}
+
+.backToHomeBottom {
   margin: 3rem 0 0;
 }

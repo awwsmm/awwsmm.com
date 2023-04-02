@@ -62,3 +62,8 @@ To create a new production deployment, push to the `master` branch. Or, merge `d
 ```sh
 $ npm run deplock
 ```
+
+## Warnings
+
+- Do not put any non-page files in `/pages`, Vercel will fail to build. Instead, keep all class definitions, etc. in `/lib`.
+- `getStaticProps` must always return a "JSON serializable data type". Do not try to return a class. See: https://github.com/vercel/next.js/issues/11993 / https://stackoverflow.com/a/62671059/2925434.
