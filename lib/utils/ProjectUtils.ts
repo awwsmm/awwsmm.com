@@ -19,61 +19,72 @@ export default abstract class ProjectUtils {
     return fs.readdirSync(ProjectUtils.dir);
   }
 
+  // validate repository name to prevent SSRF attacks
+  // https://owasp.org/www-community/attacks/Server_Side_Request_Forgery
+  // https://github.com/dead-claudia/github-limits#repository-names
+  static isValidRepositoryName(name: string): boolean {
+    return /^[a-zA-Z0-9-_.]{1,100}$/.test(name) && name !== '.' && name !== '..';
+  }
+
   /**
    * @returns a Promise containing an array of all {@link Commit}s from this Project's GitHub repo.
    *
    * Commits are returned in reverse chronological order (newest first).
    */
   static async getCommits(name: string): Promise<Commit[]> {
-    type Success = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
-    type Failure = { message: string; documentation_url: string };
-    type Response = Success | Failure;
+    if (ProjectUtils.isValidRepositoryName(name)) {
+      type Success = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
+      type Failure = { message: string; documentation_url: string };
+      type Response = Success | Failure;
 
-    function mapCommits(commits: Success, project: string): Commit[] {
-      return commits.map((each) => {
-        const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
-        const link = `https://github.com/awwsmm/${project}/commit/${each.sha}`;
+      function mapCommits(commits: Success, project: string): Commit[] {
+        return commits.map((each) => {
+          const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
+          const link = `https://github.com/awwsmm/${project}/commit/${each.sha}`;
 
-        if (maybeDate) {
-          return new Commit(name, maybeDate, each.commit.message, each.sha, link);
-        } else {
-          // The GitHub API can theoretically return commits with no date.
-          //   If that ever happens, figure out how to handle it.
-          //   see: https://docs.github.com/en/rest/reference/commits#list-commits
+          if (maybeDate) {
+            return new Commit(name, maybeDate, each.commit.message, each.sha, link);
+          } else {
+            // The GitHub API can theoretically return commits with no date.
+            //   If that ever happens, figure out how to handle it.
+            //   see: https://docs.github.com/en/rest/reference/commits#list-commits
 
-          throw new Error(`GitHub commit missing date: ${link}`);
-        }
-      });
+            throw new Error(`GitHub commit missing date: ${link}`);
+          }
+        });
+      }
+
+      // sometimes, we get rate limiting errors from GitHub
+      // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
+      // (60 requests/hour unauthenticated, 1000 requests/hour authenticated)
+
+      const input = `https://api.github.com/repos/awwsmm/${name}/commits?per_page=100`;
+
+      const init = {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_PAT}`,
+        },
+      };
+
+      const preamble = Promise.resolve(
+        console.log(`Querying GitHub for commits for "${name}"`) // eslint-disable-line no-console
+      );
+
+      const commits: Promise<Response> = fetch(input, init).then((response) => response.json());
+
+      return preamble
+        .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
+        .then((response) => {
+          if ('message' in response && 'documentation_url' in response) {
+            const failure = response as Failure;
+            throw new Error(`Querying GitHub failed due to: ${failure.message}. ${failure.documentation_url}`);
+          } else {
+            return mapCommits(response as Success, name);
+          }
+        });
+    } else {
+      return Promise.reject(`Repository name is invalid: ${name}`);
     }
-
-    // sometimes, we get rate limiting errors from GitHub
-    // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
-    // (60 requests/hour unauthenticated, 1000 requests/hour authenticated)
-
-    const input = `https://api.github.com/repos/awwsmm/${name}/commits?per_page=100`;
-
-    const init = {
-      headers: {
-        Authorization: `Bearer ${process.env.GITHUB_PAT}`,
-      },
-    };
-
-    const preamble = Promise.resolve(
-      console.log(`Querying GitHub for commits for "${name}"`) // eslint-disable-line no-console
-    );
-
-    const commits: Promise<Response> = fetch(input, init).then((response) => response.json());
-
-    return preamble
-      .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
-      .then((response) => {
-        if ('message' in response && 'documentation_url' in response) {
-          const failure = response as Failure;
-          throw new Error(`Querying GitHub failed due to: ${failure.message}. ${failure.documentation_url}`);
-        } else {
-          return mapCommits(response as Success, name);
-        }
-      });
   }
 
   /**
@@ -110,36 +121,39 @@ export default abstract class ProjectUtils {
   }
 
   static async getProject(name: string): Promise<Project> {
-    // get all the info about the project
-    const commits = await ProjectUtils.getCommits(name);
-    const logEntries = ProjectUtils.getLogEntries(name);
-    const metadata = ProjectUtils.getMetadata(name);
+    return ProjectUtils.getCommits(name).then(
+      commits => {
+        const logEntries = ProjectUtils.getLogEntries(name);
+        const metadata = ProjectUtils.getMetadata(name);
 
-    // sort commits and entries to find the last updated date
-    commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
-    logEntries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+        // sort commits and entries to find the last updated date
+        commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
+        logEntries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
 
-    const newestCommit = commits[0]?.date;
-    const newestEntry = logEntries[0]?.date;
+        const newestCommit = commits[0]?.date;
+        const newestEntry = logEntries[0]?.date;
 
-    const epoch = new Date(0).toISOString(); // Jan 1, 1970
-    const lastUpdated = newestCommit
-      ? newestEntry
-        ? parseISO(newestCommit) > parseISO(newestEntry)
-          ? newestCommit
+        const epoch = new Date(0).toISOString(); // Jan 1, 1970
+        const lastUpdated = newestCommit
+          ? newestEntry
+            ? parseISO(newestCommit) > parseISO(newestEntry)
+              ? newestCommit
+              : newestEntry
+            : newestCommit
           : newestEntry
-        : newestCommit
-      : newestEntry
-      ? newestEntry
-      : epoch;
+            ? newestEntry
+            : epoch;
 
-    return {
-      name,
-      commits,
-      logEntries,
-      lastUpdated,
-      metadata,
-    };
+        return {
+          name,
+          commits,
+          logEntries,
+          lastUpdated,
+          metadata,
+        };
+      },
+    reason => Promise.reject(reason)
+    );
   }
 
   static async getProjects(): Promise<Project[]> {
