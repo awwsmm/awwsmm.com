@@ -109,11 +109,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   );
 
   if (typeof params?.name !== 'string') {
-    throw new Error("[name].tsx getServerSideProps params?.name !== 'string'")
+    throw new Error("[name].tsx getServerSideProps params?.name !== 'string'");
   }
 
   if (!ProjectUtils.isValidRepositoryName(params.name)) {
-    throw new Error(`[name].tsx getServerSideProps invalid repo name: ${params.name}`)
+    throw new Error(`[name].tsx getServerSideProps invalid repo name: ${params.name}`);
   }
 
   // get all the info about this project

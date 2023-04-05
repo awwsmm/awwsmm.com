@@ -122,7 +122,7 @@ export default abstract class ProjectUtils {
 
   static async getProject(name: string): Promise<Project> {
     return ProjectUtils.getCommits(name).then(
-      commits => {
+      (commits) => {
         const logEntries = ProjectUtils.getLogEntries(name);
         const metadata = ProjectUtils.getMetadata(name);
 
@@ -141,8 +141,8 @@ export default abstract class ProjectUtils {
               : newestEntry
             : newestCommit
           : newestEntry
-            ? newestEntry
-            : epoch;
+          ? newestEntry
+          : epoch;
 
         return {
           name,
@@ -152,7 +152,7 @@ export default abstract class ProjectUtils {
           metadata,
         };
       },
-    reason => Promise.reject(reason)
+      (reason) => Promise.reject(reason)
     );
   }
 
