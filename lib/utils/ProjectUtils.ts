@@ -1,4 +1,3 @@
-import Cache from './Cache';
 import Commit from '../model/project/Commit';
 import { Endpoints } from '@octokit/types';
 import fs from 'fs';
@@ -26,12 +25,11 @@ export default abstract class ProjectUtils {
    * Commits are returned in reverse chronological order (newest first).
    */
   static async getCommits(name: string): Promise<Commit[]> {
-    type CommitsResponse = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
-    const cacheFileName = `projects/${name}.json`;
-    const cache = new Cache<string, CommitsResponse>(cacheFileName);
-    const cached: CommitsResponse | undefined = cache.get(name);
+    type Success = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
+    type Failure = { message: string; documentation_url: string };
+    type Response = Success | Failure;
 
-    function mapCommits(commits: CommitsResponse, project: string): Commit[] {
+    function mapCommits(commits: Success, project: string): Commit[] {
       return commits.map((each) => {
         const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
         const link = `https://github.com/awwsmm/${project}/commit/${each.sha}`;
@@ -48,26 +46,34 @@ export default abstract class ProjectUtils {
       });
     }
 
-    // sometimes, we get rate limiting errors from GitHub (60 requests/hour unauthenticated)
+    // sometimes, we get rate limiting errors from GitHub
     // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
+    // (60 requests/hour unauthenticated, 1000 requests/hour authenticated)
 
-    if (cached) {
-      console.log(`Using cached commits from caches/${cacheFileName} (delete this file to force an update)`); // eslint-disable-line no-console
-      return mapCommits(cached, name);
-    } else {
-      const url = `https://api.github.com/repos/awwsmm/${name}/commits`;
-      const commits: Promise<CommitsResponse> = fetch(url).then((response) => response.json());
+    const input = `https://api.github.com/repos/awwsmm/${name}/commits?per_page=100`;
 
-      return commits.then((all) => {
-        console.log(`Querying GitHub for commits for "${name}"`); // eslint-disable-line no-console
-        try {
-          cache.set(name, all);
-          return mapCommits(all, name);
-        } catch (error) {
-          throw new Error(JSON.stringify(all));
+    const init = {
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_PAT}`,
+      },
+    };
+
+    const preamble = Promise.resolve(
+      console.log(`Querying GitHub for commits for "${name}"`) // eslint-disable-line no-console
+    );
+
+    const commits: Promise<Response> = fetch(input, init).then((response) => response.json());
+
+    return preamble
+      .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
+      .then((response) => {
+        if ('message' in response && 'documentation_url' in response) {
+          const failure = response as Failure;
+          throw new Error(`Querying GitHub failed due to: ${failure.message}. ${failure.documentation_url}`);
+        } else {
+          return mapCommits(response as Success, name);
         }
       });
-    }
   }
 
   /**

@@ -1,7 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
 import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
@@ -101,14 +101,13 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = ProjectUtils.getNames().map((name) => {
-    return { params: { name } };
-  });
-  return { paths, fallback: false };
-};
+export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+  // see: https://nextjs.org/docs/going-to-production#caching
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=300' // do not hit GitHub more than once every 5 minutes
+  );
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.name && typeof params.name === 'string') {
     // get all the info about this project
     const name: string = params.name;

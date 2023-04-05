@@ -3,28 +3,3 @@ set -e
 
 printf "Formatting with prettier...\n"
 npm run prettier-format && npm run lint-and-fix
-
-#===============================================================================
-#  update caches for projects
-#===============================================================================
-
-# query GitHub to get the commits for a given project
-github_commits() {
-  curl -s https://api.github.com/repos/awwsmm/$1/commits -H "Accept: application/json" | sed 's/^/    /g'
-}
-
-# format the commits as JSON
-commits_json() {
-  echo "Refreshing cache at caches/projects/$1.json"
-  printf "[\n  [\n    \"$1\",\n" > caches/projects/$1.json
-  github_commits $1 >> caches/projects/$1.json
-  printf "\n  ]\n]" >> caches/projects/$1.json
-}
-
-# for each project directory, cache all commits for that project
-for project in projects/*/; do
-   commits_json $(echo $project | sed 's@projects/@@g' | sed 's@/$@@g')
-done
-
-git add .
-printf "\n"
