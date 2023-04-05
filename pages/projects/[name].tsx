@@ -1,7 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
 import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
@@ -101,55 +101,58 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = ProjectUtils.getNames().map((name) => {
-    return { params: { name } };
-  });
-  return { paths, fallback: false };
-};
+export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
+  // see: https://nextjs.org/docs/going-to-production#caching
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=300' // do not hit GitHub more than once every 5 minutes
+  );
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (params && params.name && typeof params.name === 'string') {
-    // get all the info about this project
-    const name: string = params.name;
-    const wrapper = await ProjectUtils.getProject(name);
-
-    // process the data...
-    const commitsAndLogEntries = (wrapper.commits as (Commit | LogEntry)[]).concat(wrapper.logEntries);
-    commitsAndLogEntries.sort((a, b) => (a.date < b.date ? 1 : -1));
-
-    const updates: UpdateWrapper[] = await Promise.all(
-      commitsAndLogEntries.map(async (update) => {
-        if (update instanceof LogEntry) {
-          // Use remark to convert markdown into HTML string
-          const processedContent = await remark().use(html).process(update.body);
-          const contentHtml = processedContent.toString();
-
-          return {
-            type: 'LogEntry',
-            logEntry: JSON.parse(JSON.stringify(update)),
-            contentHtml,
-          };
-        } else if (update instanceof Commit) {
-          return {
-            type: 'Commit',
-            commit: JSON.parse(JSON.stringify(update)),
-          };
-        } else throw new Error('unexpected type!');
-      })
-    );
-
-    const demoUrl = wrapper.metadata.demo?.url || '';
-
-    // send the data to the ProjectUpdateComponent component, above
-    return {
-      props: {
-        name,
-        updates,
-        demoUrl,
-      },
-    };
-  } else {
-    throw new Error('f');
+  if (typeof params?.name !== 'string') {
+    throw new Error("[name].tsx getServerSideProps params?.name !== 'string'");
   }
+
+  if (!ProjectUtils.isValidRepositoryName(params.name)) {
+    throw new Error(`[name].tsx getServerSideProps invalid repo name: ${params.name}`);
+  }
+
+  // get all the info about this project
+  const name: string = params.name;
+  const wrapper = await ProjectUtils.getProject(name);
+
+  // process the data...
+  const commitsAndLogEntries = (wrapper.commits as (Commit | LogEntry)[]).concat(wrapper.logEntries);
+  commitsAndLogEntries.sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  const updates: UpdateWrapper[] = await Promise.all(
+    commitsAndLogEntries.map(async (update) => {
+      if (update instanceof LogEntry) {
+        // Use remark to convert markdown into HTML string
+        const processedContent = await remark().use(html).process(update.body);
+        const contentHtml = processedContent.toString();
+
+        return {
+          type: 'LogEntry',
+          logEntry: JSON.parse(JSON.stringify(update)),
+          contentHtml,
+        };
+      } else if (update instanceof Commit) {
+        return {
+          type: 'Commit',
+          commit: JSON.parse(JSON.stringify(update)),
+        };
+      } else throw new Error('unexpected type!');
+    })
+  );
+
+  const demoUrl = wrapper.metadata.demo?.url || '';
+
+  // send the data to the ProjectUpdateComponent component, above
+  return {
+    props: {
+      name,
+      updates,
+      demoUrl,
+    },
+  };
 };
