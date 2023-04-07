@@ -103,27 +103,24 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
 
 export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
   // https://vercel.com/docs/concepts/edge-network/regions
-  const vercel_regions = 19
+  const vercel_regions = 19;
 
   // 5000 requests / hour rate limit
   //     https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limiting
   // check rate limit with: curl -u awwsmm:$GITHUB_PAT -I https://api.github.com/meta
-  const github_rate_limit = 5000
+  const github_rate_limit = 5000;
 
   // awwsmm.com, BrainScript, ConwayScalaJS, DuckJump
-  const n_repos = 4
+  const n_repos = 4;
 
   // ~55 second max refresh rate with 19 vercel regions
-  const seconds_per_refresh = Math.ceil(3600.0 / (github_rate_limit / n_repos / vercel_regions))
+  const seconds_per_refresh = Math.ceil(3600.0 / (github_rate_limit / n_repos / vercel_regions));
 
   // cache less frequently to allow multiple deployments per hour, development refreshes, etc.
-  const wiggle_multiplier = 5
+  const wiggle_multiplier = 5;
 
   // see: https://nextjs.org/docs/going-to-production#caching
-  res.setHeader(
-    'Cache-Control',
-    `public, s-maxage=${seconds_per_refresh * wiggle_multiplier}`
-  );
+  res.setHeader('Cache-Control', `public, s-maxage=${seconds_per_refresh * wiggle_multiplier}`);
 
   if (typeof params?.name !== 'string') {
     throw new Error("[name].tsx getServerSideProps params?.name !== 'string'");

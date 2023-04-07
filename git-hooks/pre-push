@@ -2,7 +2,7 @@
 
 # pipe output (with colors) to .temp file
 printf "Linting before push...\n"
-RESULT=$(script -q .temp npm run lint)
+RESULT=$(script -q .temp npm run lint-and-fix)
 
 # if .temp file contains "error", fail
 if grep --quiet error .temp; then
