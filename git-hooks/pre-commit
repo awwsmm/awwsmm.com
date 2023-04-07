@@ -3,3 +3,6 @@ set -e
 
 printf "Formatting with prettier...\n"
 npm run prettier-format && npm run lint-and-fix
+
+git add .
+printf "\n"
