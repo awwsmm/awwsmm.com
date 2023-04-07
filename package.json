@@ -14,6 +14,7 @@
     "unhook": "find .git/hooks -type l -exec unlink {} \\;"
   },
   "dependencies": {
+    "@octokit/graphql": "^5.0.5",
     "@octokit/types": "^9.0.0",
     "date-fns": "^2.29.3",
     "gray-matter": "^4.0.3",
