@@ -84,13 +84,11 @@ export default abstract class ProjectUtils {
       },
     };
 
-    const preamble = Promise.resolve(
-      console.log(`Querying GitHub GraphQL API for commits for "${name}"`) // eslint-disable-line no-console
-    );
-
     const commits: Promise<Response> = graphql.defaults(init)(input);
 
-    return preamble
+    const fresh: Promise<{ commits: Commit[]; message: string }> = Promise.resolve(
+      console.log(`Querying GitHub GraphQL API for commits for "${name}"`) // eslint-disable-line no-console
+    )
       .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
       .then((response) => {
         if ('message' in response && 'documentation_url' in response) {
@@ -99,7 +97,32 @@ export default abstract class ProjectUtils {
         } else {
           return mapCommits(response as Success, name);
         }
+      })
+      .then((commits) => {
+        if (process.env.FS_WRITE_ACCESS) {
+          fs.writeFileSync(`${ProjectUtils.dir}/${name}/cache.json`, JSON.stringify(commits, null, 2));
+        }
+        return { commits, message: 'fetched from GitHub' };
       });
+
+    const millis = 500;
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const cached: Promise<{ commits: Commit[]; message: string }> = new Promise((resolve, reject) =>
+      setTimeout(() => {
+        const fileContents = fs.readFileSync(`${ProjectUtils.dir}/${name}/cache.json`, 'utf8');
+        const commits: Commit[] = (JSON.parse(fileContents) as Commit[]).map(
+          ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link)
+        );
+
+        return resolve({ commits, message: 'read from cache' });
+      }, millis)
+    );
+
+    return Promise.race([fresh, cached]).then(({ commits, message }) => {
+      console.log(`Returning commits ${message} for ${name}`); // eslint-disable-line no-console
+      return commits;
+    });
   }
 
   /**
