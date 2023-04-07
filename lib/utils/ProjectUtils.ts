@@ -99,7 +99,9 @@ export default abstract class ProjectUtils {
         }
       })
       .then((commits) => {
-        fs.writeFileSync(`${ProjectUtils.dir}/${name}/cache.json`, JSON.stringify(commits, null, 2));
+        if (process.env.FS_WRITE_ACCESS) {
+          fs.writeFileSync(`${ProjectUtils.dir}/${name}/cache.json`, JSON.stringify(commits, null, 2));
+        }
         return { commits, message: 'fetched from GitHub' };
       });
 
