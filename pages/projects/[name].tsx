@@ -131,42 +131,36 @@ export const getServerSideProps: GetServerSideProps = async ({ params, res }) =>
   }
 
   // get all the info about this project
-  const name: string = params.name;
-  const wrapper = await ProjectUtils.getProject(name);
+  return ProjectUtils.getProject(params.name).then(async (projectData) => {
+    // process the data...
+    const commitsAndLogEntries = (projectData.commits as (Commit | LogEntry)[]).concat(projectData.logEntries);
+    commitsAndLogEntries.sort((a, b) => (a.date < b.date ? 1 : -1));
 
-  // process the data...
-  const commitsAndLogEntries = (wrapper.commits as (Commit | LogEntry)[]).concat(wrapper.logEntries);
-  commitsAndLogEntries.sort((a, b) => (a.date < b.date ? 1 : -1));
+    const updates: UpdateWrapper[] = await Promise.all(
+      commitsAndLogEntries.map(async (update) => {
+        if (update instanceof LogEntry) {
+          const processedContent = remark().use(html).process(update.body);
+          const contentHtml = processedContent.then((vfile) => vfile.toString());
+          return {
+            type: 'LogEntry',
+            logEntry: JSON.parse(JSON.stringify(update)),
+            contentHtml: await contentHtml,
+          };
+        } else if (update instanceof Commit) {
+          return Promise.resolve({
+            type: 'Commit',
+            commit: JSON.parse(JSON.stringify(update)),
+          });
+        } else throw new Error('unexpected type!');
+      })
+    );
 
-  const updates: UpdateWrapper[] = await Promise.all(
-    commitsAndLogEntries.map(async (update) => {
-      if (update instanceof LogEntry) {
-        // Use remark to convert markdown into HTML string
-        const processedContent = await remark().use(html).process(update.body);
-        const contentHtml = processedContent.toString();
-
-        return {
-          type: 'LogEntry',
-          logEntry: JSON.parse(JSON.stringify(update)),
-          contentHtml,
-        };
-      } else if (update instanceof Commit) {
-        return {
-          type: 'Commit',
-          commit: JSON.parse(JSON.stringify(update)),
-        };
-      } else throw new Error('unexpected type!');
-    })
-  );
-
-  const demoUrl = wrapper.metadata.demo?.url || '';
-
-  // send the data to the ProjectUpdateComponent component, above
-  return {
-    props: {
-      name,
-      updates,
-      demoUrl,
-    },
-  };
+    return {
+      props: {
+        name: params.name,
+        updates,
+        demoUrl: projectData.metadata.demo?.url || '',
+      },
+    };
+  });
 };
