@@ -1,6 +1,7 @@
+import { graphql, GraphqlResponseError } from '@octokit/graphql';
 import Commit from '../model/project/Commit';
-import { Endpoints } from '@octokit/types';
 import fs from 'fs';
+import type { GraphQlQueryResponseData } from '@octokit/graphql';
 import LogEntry from '../model/project/LogEntry';
 import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
@@ -32,59 +33,73 @@ export default abstract class ProjectUtils {
    * Commits are returned in reverse chronological order (newest first).
    */
   static async getCommits(name: string): Promise<Commit[]> {
-    if (ProjectUtils.isValidRepositoryName(name)) {
-      type Success = Endpoints['GET /repos/{owner}/{repo}/commits']['response']['data'];
-      type Failure = { message: string; documentation_url: string };
-      type Response = Success | Failure;
+    // to pull the GraphQL schema from the REST API, use curl
+    // curl -H "Authorization: bearer $GITHUB_PAT" https://api.github.com/graphql > graphql.json
 
-      function mapCommits(commits: Success, project: string): Commit[] {
-        return commits.map((each) => {
-          const maybeDate = each.commit.committer?.date ?? each.commit.author?.date;
-          const link = `https://github.com/awwsmm/${project}/commit/${each.sha}`;
+    // to look at a particular node of the schema, use jq
+    // cat graphql.json | jq '.data.__schema.types[961]' > repository.json
 
-          if (maybeDate) {
-            return new Commit(name, maybeDate, each.commit.message, each.sha, link);
-          } else {
-            // The GitHub API can theoretically return commits with no date.
-            //   If that ever happens, figure out how to handle it.
-            //   see: https://docs.github.com/en/rest/reference/commits#list-commits
+    // to get e.g. only the field names, do
+    // cat graphql.json | jq '.data.__schema.types[961].fields[] | {name: .name}' > repository-field-names.json
 
-            throw new Error(`GitHub commit missing date: ${link}`);
-          }
-        });
-      }
-
-      // sometimes, we get rate limiting errors from GitHub
-      // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
-      // (60 requests/hour unauthenticated, 1000 requests/hour authenticated)
-
-      const input = `https://api.github.com/repos/awwsmm/${name}/commits?per_page=100`;
-
-      const init = {
-        headers: {
-          Authorization: `Bearer ${process.env.GITHUB_PAT}`,
-        },
-      };
-
-      const preamble = Promise.resolve(
-        console.log(`Querying GitHub for commits for "${name}"`) // eslint-disable-line no-console
-      );
-
-      const commits: Promise<Response> = fetch(input, init).then((response) => response.json());
-
-      return preamble
-        .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
-        .then((response) => {
-          if ('message' in response && 'documentation_url' in response) {
-            const failure = response as Failure;
-            throw new Error(`Querying GitHub failed due to: ${failure.message}. ${failure.documentation_url}`);
-          } else {
-            return mapCommits(response as Success, name);
-          }
-        });
-    } else {
+    if (!ProjectUtils.isValidRepositoryName(name)) {
       return Promise.reject(`Repository name is invalid: ${name}`);
     }
+
+    type Success = GraphQlQueryResponseData; // { message: string, committedDate: string, oid: string }[];
+    type Failure = GraphqlResponseError<GraphQlQueryResponseData>;
+    type Response = Success | Failure;
+
+    function mapCommits(response: Success, project: string): Commit[] {
+      const commits: { node: { message: string; committedDate: string; oid: string } }[] =
+        response.repository.defaultBranchRef.target.history.edges;
+
+      return commits.map((each) => {
+        const link = `https://github.com/awwsmm/${project}/commit/${each.node.oid}`;
+        return new Commit(name, each.node.committedDate, each.node.message, each.node.oid, link);
+      });
+    }
+
+    // sometimes, we get rate limiting errors from GitHub
+    // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
+    // (60 requests/hour unauthenticated, 1000 requests/hour authenticated)
+
+    const input = `{
+      repository(owner: "awwsmm", name: "${name}") {
+        defaultBranchRef {
+          target {
+            ... on Commit {
+              history(first:100) {
+                edges {
+                  node {
+                    ... on Commit {
+                      message
+                      committedDate
+                      oid
+      } } } } } } } } }`;
+
+    const init = {
+      headers: {
+        authorization: `token ${process.env.GITHUB_PAT}`,
+      },
+    };
+
+    const preamble = Promise.resolve(
+      console.log(`Querying GitHub GraphQL API for commits for "${name}"`) // eslint-disable-line no-console
+    );
+
+    const commits: Promise<Response> = graphql.defaults(init)(input);
+
+    return preamble
+      .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
+      .then((response) => {
+        if ('message' in response && 'documentation_url' in response) {
+          const failure = response as Failure;
+          throw new Error(`Querying GitHub GraphQL API failed due to: ${failure.message}. ${failure.message}`);
+        } else {
+          return mapCommits(response as Success, name);
+        }
+      });
   }
 
   /**
