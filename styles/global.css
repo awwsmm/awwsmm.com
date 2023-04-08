@@ -34,8 +34,6 @@ pre {
   border-radius: 0.3em;
   padding: 1.1rem;
   line-height: 1.1em;
-  --alpha: 0.05;
-  --hsl: 231, 40%, 100%;
   background-color: #1c1b1b;
   overflow-x: scroll;
   margin: 1.3em 0 1.3em 0;

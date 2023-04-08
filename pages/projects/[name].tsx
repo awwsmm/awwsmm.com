@@ -59,14 +59,12 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
                       // ...then add this commit to it.
                       if (Math.abs(timeOf(latestUpdate) - timeOf(wrapper)) < twoDays) {
                         latestGroup.push(update);
-
-                        // Otherwise, put this commit in a new commit group by itself
                       } else {
+                        // Otherwise, put this commit in a new commit group by itself
                         acc.push([update]);
                       }
-
-                      // if the latest group wasn't a commit group, create a new commit group
                     } else {
+                      // if the latest group wasn't a commit group, create a new commit group
                       acc.push([update]);
                     }
                   }
