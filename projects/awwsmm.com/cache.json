@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-07T23:42:06Z",
+    "message": "query GitHub and write the response to a cache.json file, fall back to cache.json if GitHub request takes too long, make this timeout tunable (#84)\n\n* query GitHub and write the response to a cache.json file, fall back to cache.json if GitHub request takes too long, make this timeout tunable\r\n\r\n* only write new cache files when running locally",
+    "sha": "927db29fb8cdfb53402d8a7aeff047503ec36ff1",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/927db29fb8cdfb53402d8a7aeff047503ec36ff1"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-07T15:41:18Z",
     "message": "use GitHub's GraphQL API to minimise data returned from GitHub (#82)",
     "sha": "f6260bbc9bd1d181fbf3f613a73008f1cfe53e4c",
@@ -691,12 +698,5 @@
     "message": "attempt 3",
     "sha": "38e6f566d1a60c9995e88b960f4c16bbc3808f20",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/38e6f566d1a60c9995e88b960f4c16bbc3808f20"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-03-28T12:51:57Z",
-    "message": "attempt 2",
-    "sha": "75e71cbb696dab05e01a16ebe3c2589ed8d6ed4f",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/75e71cbb696dab05e01a16ebe3c2589ed8d6ed4f"
   }
 ]
