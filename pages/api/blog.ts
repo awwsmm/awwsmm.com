@@ -25,8 +25,7 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
     })
     .sort((a, b) => (parseISO(a.published) < parseISO(b.published) ? 1 : -1));
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve) => {
     Promise.all(info)
       .then((response) => {
         res.statusCode = 200;
