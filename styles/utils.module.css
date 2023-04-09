@@ -25,6 +25,14 @@
   line-height: 1.5;
 }
 
+.disclaimer {
+  font-size: 60%;
+  text-align: center;
+  border: 0.1rem solid grey;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+}
+
 .borderCircle {
   border-radius: 9999px;
 }

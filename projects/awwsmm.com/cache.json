@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-08T15:53:33Z",
+    "message": "make project updates a little less ugly (#86)",
+    "sha": "d6448f174f4215a7bcca0c7fc468882c8bdfb9e0",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d6448f174f4215a7bcca0c7fc468882c8bdfb9e0"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-07T23:42:06Z",
     "message": "query GitHub and write the response to a cache.json file, fall back to cache.json if GitHub request takes too long, make this timeout tunable (#84)\n\n* query GitHub and write the response to a cache.json file, fall back to cache.json if GitHub request takes too long, make this timeout tunable\r\n\r\n* only write new cache files when running locally",
     "sha": "927db29fb8cdfb53402d8a7aeff047503ec36ff1",
@@ -691,12 +698,5 @@
     "message": "add docx version of CV",
     "sha": "219f376b182a250a51b1d5383dee8fbe66ba5689",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/219f376b182a250a51b1d5383dee8fbe66ba5689"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-03-28T13:14:16Z",
-    "message": "attempt 3",
-    "sha": "38e6f566d1a60c9995e88b960f4c16bbc3808f20",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/38e6f566d1a60c9995e88b960f4c16bbc3808f20"
   }
 ]

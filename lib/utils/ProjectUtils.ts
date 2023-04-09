@@ -27,12 +27,7 @@ export default abstract class ProjectUtils {
     return /^[a-zA-Z0-9-_.]{1,100}$/.test(name) && name !== '.' && name !== '..';
   }
 
-  /**
-   * @returns a Promise containing an array of all {@link Commit}s from this Project's GitHub repo.
-   *
-   * Commits are returned in reverse chronological order (newest first).
-   */
-  static async getCommits(name: string): Promise<Commit[]> {
+  static async writeToCache(name: string): Promise<void> {
     // to pull the GraphQL schema from the REST API, use curl
     // curl -H "Authorization: bearer $GITHUB_PAT" https://api.github.com/graphql > graphql.json
 
@@ -43,14 +38,19 @@ export default abstract class ProjectUtils {
     // cat graphql.json | jq '.data.__schema.types[961].fields[] | {name: .name}' > repository-field-names.json
 
     if (!ProjectUtils.isValidRepositoryName(name)) {
-      return Promise.reject(`Repository name is invalid: ${name}`);
+      return Promise.reject(`repository name is invalid: ${name}`);
     }
 
-    type Success = GraphQlQueryResponseData; // { message: string, committedDate: string, oid: string }[];
-    type Failure = GraphqlResponseError<GraphQlQueryResponseData>;
-    type Response = Success | Failure;
+    if (!process.env.FS_WRITE_ACCESS) {
+      return Promise.reject(`will not write to ${name}/cache.json in production`);
+    }
 
-    function mapCommits(response: Success, project: string): Commit[] {
+    type RateLimit = { rateLimit: { remaining: string; resetAt: string } };
+    type ResponseSuccess = GraphQlQueryResponseData & RateLimit;
+    type ResponseFailure = GraphqlResponseError<GraphQlQueryResponseData> & RateLimit;
+    type ResponseType = ResponseSuccess | ResponseFailure;
+
+    function mapCommits(response: ResponseSuccess, project: string): Commit[] {
       const commits: { node: { message: string; committedDate: string; oid: string } }[] =
         response.repository.defaultBranchRef.target.history.edges;
 
@@ -60,11 +60,11 @@ export default abstract class ProjectUtils {
       });
     }
 
-    // sometimes, we get rate limiting errors from GitHub
-    // https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
-    // (60 requests/hour unauthenticated, 1000 requests/hour authenticated)
-
     const input = `{
+      rateLimit {
+        remaining
+        resetAt
+      }
       repository(owner: "awwsmm", name: "${name}") {
         defaultBranchRef {
           target {
@@ -84,45 +84,46 @@ export default abstract class ProjectUtils {
       },
     };
 
-    const commits: Promise<Response> = graphql.defaults(init)(input);
-
-    const fresh: Promise<{ commits: Commit[]; message: string }> = Promise.resolve(
+    return Promise.resolve(
       console.log(`Querying GitHub GraphQL API for commits for "${name}"`) // eslint-disable-line no-console
     )
-      .then((_) => commits) // eslint-disable-line @typescript-eslint/no-unused-vars
+      .then<ResponseType>(() => graphql.defaults(init)(input))
       .then((response) => {
+        const { remaining, resetAt } = response.rateLimit;
+        console.log(`${remaining} remaining API calls, resetting at ${resetAt}`); // eslint-disable-line no-console
+
         if ('message' in response && 'documentation_url' in response) {
-          const failure = response as Failure;
-          throw new Error(`Querying GitHub GraphQL API failed due to: ${failure.message}. ${failure.message}`);
+          const failure = response as ResponseFailure;
+          return Promise.reject(`querying GitHub GraphQL API failed due to: ${failure.message}. ${failure.message}`);
         } else {
-          return mapCommits(response as Success, name);
+          return Promise.resolve(mapCommits(response as ResponseSuccess, name));
         }
       })
       .then((commits) => {
-        if (process.env.FS_WRITE_ACCESS) {
-          fs.writeFileSync(`${ProjectUtils.dir}/${name}/cache.json`, JSON.stringify(commits, null, 2));
-        }
-        return { commits, message: 'fetched from GitHub' };
+        fs.writeFileSync(`${ProjectUtils.dir}/${name}/cache.json`, JSON.stringify(commits, null, 2));
       });
+  }
 
-    const millis = 500;
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const cached: Promise<{ commits: Commit[]; message: string }> = new Promise((resolve, reject) =>
-      setTimeout(() => {
-        const fileContents = fs.readFileSync(`${ProjectUtils.dir}/${name}/cache.json`, 'utf8');
-        const commits: Commit[] = (JSON.parse(fileContents) as Commit[]).map(
-          ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link)
-        );
-
-        return resolve({ commits, message: 'read from cache' });
-      }, millis)
+  static readFromCache(name: string): Commit[] {
+    const fileContents = fs.readFileSync(`${ProjectUtils.dir}/${name}/cache.json`, 'utf8');
+    return (JSON.parse(fileContents) as Commit[]).map(
+      ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link)
     );
+  }
 
-    return Promise.race([fresh, cached]).then(({ commits, message }) => {
-      console.log(`Returning commits ${message} for ${name}`); // eslint-disable-line no-console
-      return commits;
-    });
+  /**
+   * @returns a Promise containing an array of all {@link Commit}s from this Project's GitHub repo.
+   *
+   * Commits are returned in reverse chronological order (newest first).
+   */
+  static async getCommits(name: string): Promise<Commit[]> {
+    return ProjectUtils.writeToCache(name).then(
+      () => ProjectUtils.readFromCache(name),
+      (message) => {
+        console.log(`Reading from cache: ${message}`); // eslint-disable-line no-console
+        return ProjectUtils.readFromCache(name);
+      }
+    );
   }
 
   /**

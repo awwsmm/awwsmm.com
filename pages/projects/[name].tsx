@@ -1,7 +1,7 @@
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
@@ -25,9 +25,6 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
       </Head>
       <article>
         <h1 className={utilStyles.headingXl}>{name}</h1>
-        <p>
-          View source at <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
-        </p>
         {demoUrl !== '' && (
           <p>
             Try it out at <a href={demoUrl}>{demoUrl}</a>
@@ -35,6 +32,11 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
         )}
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>Updates</h2>
+          <p className={utilStyles.disclaimer}>
+            For the most up-to-date commit history, see
+            <br />
+            <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
+          </p>
           <ul className={utilStyles.list}>
             {updates
               .reduce((acc, update) => {
@@ -93,39 +95,35 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
                 } else throw new Error('unknown project update type');
               })}
           </ul>
+          {updates.filter((each) => each.type == 'Commit').length == 100 && (
+            <p className={utilStyles.disclaimer}>
+              See the complete commit history at
+              <br />
+              <a
+                href={`https://github.com/awwsmm/${name}/commits/master`}
+              >{`https://github.com/awwsmm/${name}/commits/master`}</a>
+            </p>
+          )}
         </section>
       </article>
     </Layout>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, res }) => {
-  // https://vercel.com/docs/concepts/edge-network/regions
-  const vercel_regions = 19;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = ProjectUtils.getNames().map((name) => {
+    return { params: { name } };
+  });
+  return { paths, fallback: false };
+};
 
-  // 5000 requests / hour rate limit
-  //     https://docs.github.com/en/rest/overview/resources-in-the-rest-api?apiVersion=2022-11-28#rate-limiting
-  // check rate limit with: curl -u awwsmm:$GITHUB_PAT -I https://api.github.com/meta
-  const github_rate_limit = 5000;
-
-  // awwsmm.com, BrainScript, ConwayScalaJS, DuckJump
-  const n_repos = 4;
-
-  // ~55 second max refresh rate with 19 vercel regions
-  const seconds_per_refresh = Math.ceil(3600.0 / (github_rate_limit / n_repos / vercel_regions));
-
-  // cache less frequently to allow multiple deployments per hour, development refreshes, etc.
-  const wiggle_multiplier = 5;
-
-  // see: https://nextjs.org/docs/going-to-production#caching
-  res.setHeader('Cache-Control', `public, s-maxage=${seconds_per_refresh * wiggle_multiplier}`);
-
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (typeof params?.name !== 'string') {
-    throw new Error("[name].tsx getServerSideProps params?.name !== 'string'");
+    throw new Error("[name].tsx getStaticProps params?.name !== 'string'");
   }
 
   if (!ProjectUtils.isValidRepositoryName(params.name)) {
-    throw new Error(`[name].tsx getServerSideProps invalid repo name: ${params.name}`);
+    throw new Error(`[name].tsx getStaticProps invalid repo name: ${params.name}`);
   }
 
   // get all the info about this project
