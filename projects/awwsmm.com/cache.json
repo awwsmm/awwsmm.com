@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-09T16:50:10Z",
+    "message": "move project pages back to static rendering, add 'see more' links to the top and bottom of commit histories, write to cache locally and read from cache remotely (#88)",
+    "sha": "34ee82581280b28da6041b4966da0d423665b885",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/34ee82581280b28da6041b4966da0d423665b885"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-08T15:53:33Z",
     "message": "make project updates a little less ugly (#86)",
     "sha": "d6448f174f4215a7bcca0c7fc468882c8bdfb9e0",
@@ -691,12 +698,5 @@
     "message": "Delete CNAME",
     "sha": "fe1c244ebe5de9c6076c99358348245e06217bdb",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/fe1c244ebe5de9c6076c99358348245e06217bdb"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-06-21T17:11:16Z",
-    "message": "add docx version of CV",
-    "sha": "219f376b182a250a51b1d5383dee8fbe66ba5689",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/219f376b182a250a51b1d5383dee8fbe66ba5689"
   }
 ]
