@@ -1,4 +1,5 @@
 @import "../public/fonts/fira-code.css";
+@import "../public/highlight/stackoverflow-dark.min.css";
 
 html,
 body {
