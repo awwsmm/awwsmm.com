@@ -1,6 +1,48 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-10T13:35:36Z",
+    "message": "software-development-is-about-compromise (#95)",
+    "sha": "d6f9309fce056d8aef741fbf7dc4e5e7f9f8c12f",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d6f9309fce056d8aef741fbf7dc4e5e7f9f8c12f"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-10T01:46:07Z",
+    "message": "Bump @typescript-eslint/eslint-plugin from 5.56.0 to 5.57.1 (#93)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 5.56.0 to 5.57.1.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.57.1/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "69f2d974f16efd2689fe8af016cdb6345be3cf97",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/69f2d974f16efd2689fe8af016cdb6345be3cf97"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-10T01:45:12Z",
+    "message": "Bump npm-check-updates from 16.10.0 to 16.10.7 (#92)\n\nBumps [npm-check-updates](https://github.com/raineorshine/npm-check-updates) from 16.10.0 to 16.10.7.\r\n- [Release notes](https://github.com/raineorshine/npm-check-updates/releases)\r\n- [Changelog](https://github.com/raineorshine/npm-check-updates/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/raineorshine/npm-check-updates/compare/v16.10.0...v16.10.7)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: npm-check-updates\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "6f59aa42ff9d1f406971cf53487c510227ce907b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/6f59aa42ff9d1f406971cf53487c510227ce907b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-10T01:44:06Z",
+    "message": "Bump @types/react from 18.0.32 to 18.0.33 (#91)\n\nBumps [@types/react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/react) from 18.0.32 to 18.0.33.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/react)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/react\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "26788fd73ecff414760505b8902fb82c62779b1c",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/26788fd73ecff414760505b8902fb82c62779b1c"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-10T01:43:06Z",
+    "message": "Bump next from 13.2.4 to 13.3.0 (#90)\n\nBumps [next](https://github.com/vercel/next.js) from 13.2.4 to 13.3.0.\r\n- [Release notes](https://github.com/vercel/next.js/releases)\r\n- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)\r\n- [Commits](https://github.com/vercel/next.js/compare/v13.2.4...v13.3.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: next\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "2728dc1d609629b7d915c5a0de62d2d4524dc2d4",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/2728dc1d609629b7d915c5a0de62d2d4524dc2d4"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-10T01:25:26Z",
+    "message": "Bump eslint from 8.37.0 to 8.38.0 (#89)\n\nBumps [eslint](https://github.com/eslint/eslint) from 8.37.0 to 8.38.0.\r\n- [Release notes](https://github.com/eslint/eslint/releases)\r\n- [Changelog](https://github.com/eslint/eslint/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/eslint/eslint/compare/v8.37.0...v8.38.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: eslint\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "d8db9915ed0b0aa1823970e96347342b9d2f48b8",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d8db9915ed0b0aa1823970e96347342b9d2f48b8"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-09T16:50:10Z",
     "message": "move project pages back to static rendering, add 'see more' links to the top and bottom of commit histories, write to cache locally and read from cache remotely (#88)",
     "sha": "34ee82581280b28da6041b4966da0d423665b885",
@@ -656,47 +698,5 @@
     "message": "attempting to deploy to Vercel",
     "sha": "ec96618d38c71134f4a9ed14d6ae6d7a2b5c9e59",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/ec96618d38c71134f4a9ed14d6ae6d7a2b5c9e59"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-07-25T21:36:08Z",
-    "message": "Create CNAME",
-    "sha": "bcc43fccc9adbf85bca8f9d01d19955547df7333",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/bcc43fccc9adbf85bca8f9d01d19955547df7333"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-07-25T21:35:54Z",
-    "message": "Delete CNAME",
-    "sha": "851bab5ae7c32d54da7a5108bb1cb9cef9b30d2f",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/851bab5ae7c32d54da7a5108bb1cb9cef9b30d2f"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-07-25T13:56:14Z",
-    "message": "Update CNAME",
-    "sha": "838f4a4324cde0f5e92dedd2863b71fe29244f0b",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/838f4a4324cde0f5e92dedd2863b71fe29244f0b"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-07-25T13:55:22Z",
-    "message": "Update CNAME",
-    "sha": "fc0230e876367923d487a7860963a13c5c5bcfa6",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/fc0230e876367923d487a7860963a13c5c5bcfa6"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-07-25T13:41:44Z",
-    "message": "Create CNAME",
-    "sha": "93897abac8bd6f731807bf43acd4d8bba2a1a05e",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/93897abac8bd6f731807bf43acd4d8bba2a1a05e"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2021-07-25T13:41:29Z",
-    "message": "Delete CNAME",
-    "sha": "fe1c244ebe5de9c6076c99358348245e06217bdb",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/fe1c244ebe5de9c6076c99358348245e06217bdb"
   }
 ]

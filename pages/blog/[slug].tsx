@@ -19,7 +19,6 @@ export default function PostComponent(post: ProcessedPostWrapper) {
         <meta property="og:description" content={rawPost.description} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
         <link href="/highlight/stackoverflow-dark.min.css" rel="stylesheet" />
       </Head>
       <article className={utilStyles.blogPost}>
