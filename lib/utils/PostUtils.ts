@@ -2,13 +2,6 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import Post from '../model/post/PostData';
-import { rehype } from 'rehype';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeStringify from 'rehype-stringify';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import scala from 'highlight.js/lib/languages/scala';
-import { unified } from 'unified';
 
 /**
  * Helper methods for reading and processing blog posts.
@@ -38,22 +31,6 @@ export default abstract class PostUtils {
     const rawContent = matterResult.content;
 
     return new Post(slug, title, description, published, lastUpdated, rawContent);
-  }
-
-  // process an unprocessed post
-  static async process(rawPost: Post): Promise<string> {
-    const { rawContent } = rawPost;
-
-    // Use remark-rehype to convert markdown into HTML string
-    const html = await unified().use(remarkParse).use(remarkRehype).use(rehypeStringify).process(rawContent);
-
-    // Use rehype-highlight to generate language-specific AST
-    const ast = await rehype()
-      .data('settings', { fragment: true })
-      .use(rehypeHighlight, { languages: { scala } })
-      .process(String(html));
-
-    return String(ast);
   }
 
   static getPosts(): Post[] {

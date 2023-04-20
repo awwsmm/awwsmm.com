@@ -3,15 +3,14 @@ import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
 import Head from 'next/head';
-import html from 'remark-html';
 import Layout from '../../components/LayoutComponent';
 import LogEntry from '../../lib/model/project/LogEntry';
 import LogEntryComponent from '../../components/LogEntryComponent';
 import LogEntryWrapper from '../../lib/wrappers/LogEntryWrapper';
+import MarkdownUtils from '../../lib/utils/MarkdownUtils';
 import { parseISO } from 'date-fns';
 import ProcessedProjectWrapper from '../../lib/wrappers/ProcessedProjectWrapper';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
-import { remark } from 'remark';
 import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
 import utilStyles from '../../styles/utils.module.css';
 
@@ -32,7 +31,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
         )}
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>Updates</h2>
-          <p className={utilStyles.disclaimer}>
+          <p className="disclaimer">
             For the most up-to-date commit history, see
             <br />
             <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
@@ -96,7 +95,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
               })}
           </ul>
           {updates.filter((each) => each.type == 'Commit').length == 100 && (
-            <p className={utilStyles.disclaimer}>
+            <p className="disclaimer">
               See the complete commit history at
               <br />
               <a
@@ -135,8 +134,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const updates: UpdateWrapper[] = await Promise.all(
       commitsAndLogEntries.map(async (update) => {
         if (update instanceof LogEntry) {
-          const processedContent = remark().use(html).process(update.body);
-          const contentHtml = processedContent.then((vfile) => vfile.toString());
+          const contentHtml = MarkdownUtils.process(update.body);
           return {
             type: 'LogEntry',
             logEntry: JSON.parse(JSON.stringify(update)),
