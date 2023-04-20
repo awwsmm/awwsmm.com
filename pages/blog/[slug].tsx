@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
+import MarkdownUtils from '../../lib/utils/MarkdownUtils';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProcessedPostWrapper from '../../lib/wrappers/ProcessedPostWrapper';
 import utilStyles from '../../styles/utils.module.css';
@@ -41,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && params.slug && typeof params.slug === 'string') {
     // get all the info about this blog post
     const rawPost = PostUtils.getPost(params.slug);
-    const htmlContent = await PostUtils.process(rawPost);
+    const htmlContent = await MarkdownUtils.process(rawPost.rawContent);
 
     // send the data to the PostComponent component, above
     return {

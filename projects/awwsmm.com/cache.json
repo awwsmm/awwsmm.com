@@ -1,6 +1,55 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-17T11:34:48Z",
+    "message": "Bump @types/react from 18.0.33 to 18.0.35 (#102)\n\nBumps [@types/react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/react) from 18.0.33 to 18.0.35.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/react)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/react\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "84e113c1f6dd30ded7bb1fbf1273e285549b807a",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/84e113c1f6dd30ded7bb1fbf1273e285549b807a"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-17T11:26:59Z",
+    "message": "Bump @typescript-eslint/eslint-plugin from 5.57.1 to 5.58.0 (#101)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 5.57.1 to 5.58.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.58.0/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "3e719d38cecce548e9ed6cb13f2bae63c9e39708",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/3e719d38cecce548e9ed6cb13f2bae63c9e39708"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-17T11:23:08Z",
+    "message": "Bump eslint-config-prettier from 8.7.0 to 8.8.0 (#100)\n\nBumps [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) from 8.7.0 to 8.8.0.\r\n- [Release notes](https://github.com/prettier/eslint-config-prettier/releases)\r\n- [Changelog](https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/prettier/eslint-config-prettier/compare/v8.7.0...v8.8.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: eslint-config-prettier\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "e95cb6e487b6d5fa584b377ff66a0eda456a66ea",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/e95cb6e487b6d5fa584b377ff66a0eda456a66ea"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-17T11:16:46Z",
+    "message": "Bump typescript from 5.0.2 to 5.0.4 (#99)\n\nBumps [typescript](https://github.com/Microsoft/TypeScript) from 5.0.2 to 5.0.4.\r\n- [Release notes](https://github.com/Microsoft/TypeScript/releases)\r\n- [Commits](https://github.com/Microsoft/TypeScript/compare/v5.0.2...v5.0.4)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: typescript\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "f32c70ce1e977098cd7d6a92af2a2b971078e67b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/f32c70ce1e977098cd7d6a92af2a2b971078e67b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-17T11:15:55Z",
+    "message": "Bump @typescript-eslint/parser from 5.57.1 to 5.58.0 (#98)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.57.1 to 5.58.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.58.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "b8fce48d0b6af32d1535da1f5e78b8f93bb15b19",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/b8fce48d0b6af32d1535da1f5e78b8f93bb15b19"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-12T00:29:20Z",
+    "message": "move link rel stylesheet highlight stackoverflow to global css (#97)",
+    "sha": "4e299243767ba429eb2768a2791a8b981bcfd8ff",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/4e299243767ba429eb2768a2791a8b981bcfd8ff"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-12T00:12:28Z",
+    "message": "use locally-hosted Fira Code font, instead of Google-hosted one (#96)",
+    "sha": "978c26e0a355cc48a70caad3298c5898346b141b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/978c26e0a355cc48a70caad3298c5898346b141b"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-10T13:35:36Z",
     "message": "software-development-is-about-compromise (#95)",
     "sha": "d6f9309fce056d8aef741fbf7dc4e5e7f9f8c12f",
@@ -649,54 +698,5 @@
     "message": "testing git hook 2",
     "sha": "d4a1371915c3a120f6a67a69a661538458734b3d",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/d4a1371915c3a120f6a67a69a661538458734b3d"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T17:03:18Z",
-    "message": "testing git hook",
-    "sha": "9948cc7e0b3635721f339a41e0558429686ba8f4",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/9948cc7e0b3635721f339a41e0558429686ba8f4"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T13:13:46Z",
-    "message": "fix linter error... should add a git hook for this (or wrap in an npm publish command)",
-    "sha": "59e6992727047bf9c8657a5e80c6a7889f573c1e",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/59e6992727047bf9c8657a5e80c6a7889f573c1e"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T13:10:38Z",
-    "message": "fix date string rendering when start and end date is the same",
-    "sha": "8a788e16232c20e3204c3ab59616f594f91864e4",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/8a788e16232c20e3204c3ab59616f594f91864e4"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T12:48:08Z",
-    "message": "add 'view source' link to each project page",
-    "sha": "bcbbb8a97e830d3c6c39819f976c03019e5ffba0",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/bcbbb8a97e830d3c6c39819f976c03019e5ffba0"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T12:23:06Z",
-    "message": "add .gitkeep files so git doesn't ignore empty directories",
-    "sha": "d69e6f22cb89449197d203f8d1e59ad3e798dc5c",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d69e6f22cb89449197d203f8d1e59ad3e798dc5c"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T12:14:52Z",
-    "message": "fix path issue in sitemap.xml.ts",
-    "sha": "cdf541fcf3c49f0d55037002e82b67feb0789c8a",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/cdf541fcf3c49f0d55037002e82b67feb0789c8a"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T12:11:54Z",
-    "message": "attempting to deploy to Vercel",
-    "sha": "ec96618d38c71134f4a9ed14d6ae6d7a2b5c9e59",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/ec96618d38c71134f4a9ed14d6ae6d7a2b5c9e59"
   }
 ]
