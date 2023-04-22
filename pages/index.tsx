@@ -56,7 +56,7 @@ export default function HomeComponent(props: PropsWrapper) {
         <ul className={utilStyles.list}>
           {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={postData.slug}>
+              <li className="utils-listItem" key={postData.slug}>
                 <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
                 <small className="utils-lightText">
@@ -76,7 +76,7 @@ export default function HomeComponent(props: PropsWrapper) {
             const { name, lastUpdated } = wrapper;
 
             return (
-              <li className={utilStyles.listItem} key={name}>
+              <li className="utils-listItem" key={name}>
                 <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
                 <small className="utils-lightText">

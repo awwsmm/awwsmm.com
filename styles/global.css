@@ -195,3 +195,7 @@ pre code.hljs {
 .utils-lightText {
   color: #666;
 }
+
+.utils-listItem {
+  margin: 0 0 1.25rem;
+}

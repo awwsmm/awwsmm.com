@@ -1,5 +1,4 @@
 import DateComponent from './DateComponent';
-import utilStyles from '../styles/utils.module.css';
 
 // add more here as necessary
 function htmlEscape(str: string): string {
@@ -21,7 +20,7 @@ export default function CommitGroupComponent({
   const oldest = commits[commits.length - 1];
 
   return (
-    <li className={utilStyles.listItem}>
+    <li className="utils-listItem">
       <small className="utils-updateTimestamp">
         <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>

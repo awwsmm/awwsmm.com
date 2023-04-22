@@ -1,5 +1,4 @@
 import DateComponent from './DateComponent';
-import utilStyles from '../styles/utils.module.css';
 
 export default function LogEntryComponent({
   date,
@@ -13,7 +12,7 @@ export default function LogEntryComponent({
   contentHtml: string;
 }) {
   return (
-    <li className={utilStyles.listItem}>
+    <li className="utils-listItem">
       <small className="utils-updateTimestamp">
         <DateComponent startStr={date} endStr={date} />
       </small>

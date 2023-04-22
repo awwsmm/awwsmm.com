@@ -25,7 +25,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
         <ul className={utilStyles.list}>
           {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={postData.slug}>
+              <li className="utils-listItem" key={postData.slug}>
                 <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
                 <small className="utils-lightText">

@@ -28,7 +28,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
             const { name, lastUpdated } = wrapper;
 
             return (
-              <li className={utilStyles.listItem} key={name}>
+              <li className="utils-listItem" key={name}>
                 <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
                 <small className="utils-lightText">
