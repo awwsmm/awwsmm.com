@@ -157,3 +157,8 @@ pre code.hljs {
 .utils-lastUpdated:before {
   content: "Updated: ";
 }
+
+.utils-published {
+  color: #CCC;
+  display: block;
+}
