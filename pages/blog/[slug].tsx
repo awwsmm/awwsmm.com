@@ -22,7 +22,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
       <article className="utils-blogPost">
         <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className={utilStyles.headingMd}>{rawPost.description}</h2>
-        <div className={utilStyles.lightText}>
+        <div className="utils-lightText">
           <DateComponent startStr={rawPost.published} endStr={rawPost.lastUpdated} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />

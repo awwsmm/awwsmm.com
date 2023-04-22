@@ -191,3 +191,7 @@ pre code.hljs {
 .utils-updateBody h3 {
   margin-top: 2.5rem;
 }
+
+.utils-lightText {
+  color: #666;
+}

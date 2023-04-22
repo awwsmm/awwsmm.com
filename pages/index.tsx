@@ -59,7 +59,7 @@ export default function HomeComponent(props: PropsWrapper) {
               <li className={utilStyles.listItem} key={postData.slug}>
                 <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>
@@ -79,7 +79,7 @@ export default function HomeComponent(props: PropsWrapper) {
               <li className={utilStyles.listItem} key={name}>
                 <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
                 </small>
               </li>

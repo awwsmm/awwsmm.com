@@ -31,7 +31,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
               <li className={utilStyles.listItem} key={name}>
                 <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
                 </small>
               </li>

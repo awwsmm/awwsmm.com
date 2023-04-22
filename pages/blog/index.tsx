@@ -28,7 +28,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
               <li className={utilStyles.listItem} key={postData.slug}>
                 <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>
