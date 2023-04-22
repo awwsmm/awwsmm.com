@@ -51,7 +51,7 @@ export default function HomeComponent(props: PropsWrapper) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <Link href="blog">
-          <h2 className={utilStyles.headingLg}>Blog</h2>
+          <h2 className="utils-headingLg">Blog</h2>
         </Link>
         <ul className={utilStyles.list}>
           {posts.map((postData) => {
@@ -69,7 +69,7 @@ export default function HomeComponent(props: PropsWrapper) {
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <Link href="projects">
-          <h2 className={utilStyles.headingLg}>Projects</h2>
+          <h2 className="utils-headingLg">Projects</h2>
         </Link>
         <ul className={utilStyles.list}>
           {projects.map((wrapper) => {

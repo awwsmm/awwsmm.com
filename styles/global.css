@@ -132,3 +132,9 @@ pre code.hljs {
   letter-spacing: -0.05rem;
   margin: 1rem 0;
 }
+
+.utils-headingLg {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+}

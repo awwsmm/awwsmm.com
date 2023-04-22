@@ -30,7 +30,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
           </p>
         )}
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>Updates</h2>
+          <h2 className="utils-headingLg">Updates</h2>
           <p className="disclaimer">
             For the most up-to-date commit history, see
             <br />

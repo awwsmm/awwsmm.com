@@ -21,7 +21,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
         <title>{siteTitle}</title>
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className="utils-headingLg">Blog</h2>
         <ul className={utilStyles.list}>
           {posts.map((postData) => {
             return (

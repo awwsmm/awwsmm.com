@@ -22,7 +22,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
         <title>{siteTitle}</title>
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Projects</h2>
+        <h2 className="utils-headingLg">Projects</h2>
         <ul className={utilStyles.list}>
           {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;
