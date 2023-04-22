@@ -1,3 +1,13 @@
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  RedditIcon,
+  RedditShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from 'next-share';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import DateComponent from '../../components/DateComponent';
 import Head from 'next/head';
@@ -26,6 +36,28 @@ export default function PostComponent(post: ProcessedPostWrapper) {
         </div>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </article>
+      <div className="socialShareButtons">
+        <div className="socialShareButton">
+          <LinkedinShareButton url={`https://www.awwsmm.com/blog/${rawPost.slug}`}>
+            <LinkedinIcon size={32} round />
+          </LinkedinShareButton>
+        </div>
+        <div className="socialShareButton">
+          <RedditShareButton url={`https://www.awwsmm.com/blog/${rawPost.slug}`}>
+            <RedditIcon size={32} round />
+          </RedditShareButton>
+        </div>
+        <div className="socialShareButton">
+          <WhatsappShareButton url={`https://www.awwsmm.com/blog/${rawPost.slug}`} separator=":: ">
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+        </div>
+        <div className="socialShareButton">
+          <FacebookShareButton url={`https://www.awwsmm.com/blog/${rawPost.slug}`} hashtag={'#awwsmm'}>
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+        </div>
+      </div>
     </Layout>
   );
 }
