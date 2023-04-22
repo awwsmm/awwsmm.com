@@ -22,7 +22,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className="utils-headingLg">Blog</h2>
-        <ul className={utilStyles.list}>
+        <ul className="utils-list">
           {posts.map((postData) => {
             return (
               <li className="utils-listItem" key={postData.slug}>

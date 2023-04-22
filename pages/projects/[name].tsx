@@ -36,7 +36,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
             <br />
             <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
           </p>
-          <ul className={utilStyles.list}>
+          <ul className="utils-list">
             {updates
               .reduce((acc, update) => {
                 // each log entry gets its own group

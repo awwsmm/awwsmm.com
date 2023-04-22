@@ -199,3 +199,9 @@ pre code.hljs {
 .utils-listItem {
   margin: 0 0 1.25rem;
 }
+
+.utils-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
