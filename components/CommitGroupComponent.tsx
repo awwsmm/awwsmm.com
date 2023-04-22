@@ -8,7 +8,7 @@ function htmlEscape(str: string): string {
 
 function link(commit: { link: string; sha: string; message: string }): string {
   const li = `<li class="commitMessage">`;
-  const a = `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">`;
+  const a = `<a href="${commit.link}" target="_blank" class="utils-sha">`;
   return `${li}${a}${commit.sha.slice(0, 7)}</a> | ${htmlEscape(commit.message)}</li>`;
 }
 

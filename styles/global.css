@@ -138,3 +138,7 @@ pre code.hljs {
   line-height: 1.4;
   margin: 1rem 0;
 }
+
+.utils-sha {
+  font-family: 'Fira Code', Courier, monospace;
+}
