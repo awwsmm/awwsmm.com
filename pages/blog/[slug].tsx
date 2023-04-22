@@ -19,7 +19,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
         <meta property="og:title" content={rawPost.title} />
         <meta property="og:description" content={rawPost.description} />
       </Head>
-      <article className={utilStyles.blogPost}>
+      <article className="utils-blogPost">
         <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className={utilStyles.headingMd}>{rawPost.description}</h2>
         <div className={utilStyles.lightText}>

@@ -162,3 +162,14 @@ pre code.hljs {
   color: #CCC;
   display: block;
 }
+
+.utils-blogPost img {
+  border: 1px solid white;
+}
+
+.utils-blogPost blockquote {
+  font-style: italic;
+  border-left: 2px solid white;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
