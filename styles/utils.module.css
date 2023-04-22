@@ -56,13 +56,3 @@
   color: #CCC;
   display: block;
 }
-
-.lastUpdated {
-  color: #666;
-  display: block;
-  font-size: 0.8rem;
-}
-
-.lastUpdated:before {
-  content: "Updated: ";
-}

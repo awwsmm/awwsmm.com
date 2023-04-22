@@ -19,7 +19,7 @@ export default function PublicationDate({ published, lastUpdated }: { published:
         <span className={utilStyles.published}>
           <time dateTime={published}>{start}</time>
         </span>
-        <span className={utilStyles.lastUpdated}>
+        <span className="utils-lastUpdated">
           <time dateTime={lastUpdated}>{end}</time>
         </span>
       </div>

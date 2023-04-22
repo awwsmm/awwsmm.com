@@ -147,3 +147,13 @@ pre code.hljs {
   font-size: 0.8rem;
   color: #999;
 }
+
+.utils-lastUpdated {
+  color: #666;
+  display: block;
+  font-size: 0.8rem;
+}
+
+.utils-lastUpdated:before {
+  content: "Updated: ";
+}
