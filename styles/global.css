@@ -205,3 +205,12 @@ pre code.hljs {
   padding: 0;
   margin: 0;
 }
+
+.utils-padding1px {
+  padding-top: 1px;
+}
+
+.utils-headingMd {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}

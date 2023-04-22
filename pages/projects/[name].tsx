@@ -12,7 +12,6 @@ import { parseISO } from 'date-fns';
 import ProcessedProjectWrapper from '../../lib/wrappers/ProcessedProjectWrapper';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
-import utilStyles from '../../styles/utils.module.css';
 
 export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
   const { name, updates, demoUrl } = project;
@@ -29,7 +28,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
             Try it out at <a href={demoUrl}>{demoUrl}</a>
           </p>
         )}
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <section className="utils-headingMd utils-padding1px">
           <h2 className="utils-headingLg">Updates</h2>
           <p className="disclaimer">
             For the most up-to-date commit history, see

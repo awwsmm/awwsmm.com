@@ -5,7 +5,6 @@ import Layout from '../../components/LayoutComponent';
 import MarkdownUtils from '../../lib/utils/MarkdownUtils';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProcessedPostWrapper from '../../lib/wrappers/ProcessedPostWrapper';
-import utilStyles from '../../styles/utils.module.css';
 
 export default function PostComponent(post: ProcessedPostWrapper) {
   const { rawPost, htmlContent } = post;
@@ -21,7 +20,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
       </Head>
       <article className="utils-blogPost">
         <h1 className="utils-headingXl">{rawPost.title}</h1>
-        <h2 className={utilStyles.headingMd}>{rawPost.description}</h2>
+        <h2 className="utils-headingMd">{rawPost.description}</h2>
         <div className="utils-lightText">
           <DateComponent startStr={rawPost.published} endStr={rawPost.lastUpdated} />
         </div>
