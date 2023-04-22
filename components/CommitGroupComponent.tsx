@@ -22,7 +22,7 @@ export default function CommitGroupComponent({
 
   return (
     <li className={utilStyles.listItem}>
-      <small className={utilStyles.updateTimestamp}>
+      <small className="utils-updateTimestamp">
         <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>
       <div

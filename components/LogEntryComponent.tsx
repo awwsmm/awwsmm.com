@@ -14,7 +14,7 @@ export default function LogEntryComponent({
 }) {
   return (
     <li className={utilStyles.listItem}>
-      <small className={utilStyles.updateTimestamp}>
+      <small className="utils-updateTimestamp">
         <DateComponent startStr={date} endStr={date} />
       </small>
       <div className={utilStyles.updateTitle} dangerouslySetInnerHTML={{ __html: title }} />

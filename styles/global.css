@@ -142,3 +142,8 @@ pre code.hljs {
 .utils-sha {
   font-family: 'Fira Code', Courier, monospace;
 }
+
+.utils-updateTimestamp {
+  font-size: 0.8rem;
+  color: #999;
+}
