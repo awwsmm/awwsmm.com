@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-20T00:43:50Z",
+    "message": "align some CSS between blog posts and log entries, more cleanup to be done (#104)",
+    "sha": "8d5c08f846bda031f34031387fad807f10b9c5d6",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/8d5c08f846bda031f34031387fad807f10b9c5d6"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-17T11:34:48Z",
     "message": "Bump @types/react from 18.0.33 to 18.0.35 (#102)\n\nBumps [@types/react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/react) from 18.0.33 to 18.0.35.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/react)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/react\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "84e113c1f6dd30ded7bb1fbf1273e285549b807a",
@@ -691,12 +698,5 @@
     "message": "git hook testing + some more gitignore stuff",
     "sha": "2710f1c401fc5527ebc374ff18d77ca6ee1da948",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/2710f1c401fc5527ebc374ff18d77ca6ee1da948"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T17:04:18Z",
-    "message": "testing git hook 2",
-    "sha": "d4a1371915c3a120f6a67a69a661538458734b3d",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d4a1371915c3a120f6a67a69a661538458734b3d"
   }
 ]

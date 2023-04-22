@@ -82,3 +82,23 @@ pre code.hljs {
   border-radius: 0.3rem;
   padding: 0.5rem;
 }
+
+.layout-container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
+.layout-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.layout-backToHomeTop {
+  margin: 0;
+}
+
+.layout-backToHomeBottom {
+  margin: 3rem 0 0;
+}

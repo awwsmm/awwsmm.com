@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 
 const name = 'Andrew Watson';
@@ -9,7 +8,7 @@ export const siteTitle = 'Andrew Watson | Programmer';
 
 export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
   return (
-    <div className={styles.container}>
+    <div className="layout-container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Learn how to build a personal website using Next.js" />
@@ -22,7 +21,7 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className="layout-header">
         {home ? (
           <>
             <Image
@@ -56,13 +55,13 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
         )}
       </header>
       {!home && (
-        <div className={styles.backToHomeTop}>
+        <div className="layout-backToHomeTop">
           <Link href="/">← Back to home</Link>
         </div>
       )}
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHomeBottom}>
+        <div className="layout-backToHomeBottom">
           <Link href="/">← Back to home</Link>
         </div>
       )}
