@@ -12,7 +12,6 @@ import { parseISO } from 'date-fns';
 import ProcessedProjectWrapper from '../../lib/wrappers/ProcessedProjectWrapper';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
-import utilStyles from '../../styles/utils.module.css';
 
 export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
   const { name, updates, demoUrl } = project;
@@ -23,20 +22,20 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
         <title>{name}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{name}</h1>
+        <h1 className="utils-headingXl">{name}</h1>
         {demoUrl !== '' && (
           <p>
             Try it out at <a href={demoUrl}>{demoUrl}</a>
           </p>
         )}
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>Updates</h2>
+        <section className="utils-headingMd utils-padding1px">
+          <h2 className="utils-headingLg">Updates</h2>
           <p className="disclaimer">
             For the most up-to-date commit history, see
             <br />
             <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
           </p>
-          <ul className={utilStyles.list}>
+          <ul className="utils-list">
             {updates
               .reduce((acc, update) => {
                 // each log entry gets its own group

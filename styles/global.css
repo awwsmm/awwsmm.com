@@ -82,3 +82,135 @@ pre code.hljs {
   border-radius: 0.3rem;
   padding: 0.5rem;
 }
+
+.layout-container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
+.layout-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.layout-backToHomeTop {
+  margin: 0;
+}
+
+.layout-backToHomeBottom {
+  margin: 3rem 0 0;
+}
+
+.utils-borderCircle {
+  border-radius: 9999px;
+}
+
+.utils-heading2Xl {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+
+.utils-colorInherit {
+  color: inherit;
+}
+
+.utils-headingLg {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+
+.utils-headingXl {
+  font-size: 2rem;
+  line-height: 1.3;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+
+.utils-headingLg {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+}
+
+.utils-sha {
+  font-family: 'Fira Code', Courier, monospace;
+}
+
+.utils-updateTimestamp {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.utils-lastUpdated {
+  color: #666;
+  display: block;
+  font-size: 0.8rem;
+}
+
+.utils-lastUpdated:before {
+  content: "Updated: ";
+}
+
+.utils-published {
+  color: #CCC;
+  display: block;
+}
+
+.utils-blogPost img {
+  border: 1px solid white;
+}
+
+.utils-blogPost blockquote {
+  font-style: italic;
+  border-left: 2px solid white;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+.utils-updateTitle {
+  font-size: 1.2rem;
+}
+
+.utils-updateSubtitle {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.utils-updateBody {
+  margin: 1rem 0 2rem 0;
+  font-size: 1.0rem;
+}
+
+.utils-updateBody h3 {
+  margin-top: 2.5rem;
+}
+
+.utils-lightText {
+  color: #666;
+}
+
+.utils-listItem {
+  margin: 0 0 1.25rem;
+}
+
+.utils-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.utils-padding1px {
+  padding-top: 1px;
+}
+
+.utils-headingMd {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}

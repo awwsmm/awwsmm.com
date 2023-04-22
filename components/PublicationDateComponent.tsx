@@ -1,5 +1,4 @@
 import { format, parseISO } from 'date-fns';
-import utilStyles from '../styles/utils.module.css';
 
 export default function PublicationDate({ published, lastUpdated }: { published: string; lastUpdated: string }) {
   const formatStr = 'LLLL d, yyyy';
@@ -8,7 +7,7 @@ export default function PublicationDate({ published, lastUpdated }: { published:
   if (start == end) {
     return (
       <div>
-        <span className={utilStyles.published}>
+        <span className="utils-published">
           <time dateTime={published}>{start}</time>
         </span>
       </div>
@@ -16,10 +15,10 @@ export default function PublicationDate({ published, lastUpdated }: { published:
   } else {
     return (
       <div>
-        <span className={utilStyles.published}>
+        <span className="utils-published">
           <time dateTime={published}>{start}</time>
         </span>
-        <span className={utilStyles.lastUpdated}>
+        <span className="utils-lastUpdated">
           <time dateTime={lastUpdated}>{end}</time>
         </span>
       </div>

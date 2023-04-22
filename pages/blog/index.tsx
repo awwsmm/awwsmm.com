@@ -6,7 +6,6 @@ import PostData from '../../lib/model/post/PostData';
 import PostUtils from '../../lib/utils/PostUtils';
 import PublicationDate from '../../components/PublicationDateComponent';
 import { siteTitle } from '../../components/LayoutComponent';
-import utilStyles from '../../styles/utils.module.css';
 
 type PropsWrapper = {
   posts: PostData[];
@@ -20,15 +19,15 @@ export default function BlogHomeComponent(props: PropsWrapper) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
+      <section className="utils-headingMd utils-padding1px">
+        <h2 className="utils-headingLg">Blog</h2>
+        <ul className="utils-list">
           {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={postData.slug}>
+              <li className="utils-listItem" key={postData.slug}>
                 <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>

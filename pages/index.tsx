@@ -10,7 +10,6 @@ import ProjectData from '../lib/model/project/ProjectData';
 import ProjectUtils from '../lib/utils/ProjectUtils';
 import PublicationDate from '../components/PublicationDateComponent';
 import { siteTitle } from '../components/LayoutComponent';
-import utilStyles from '../styles/utils.module.css';
 
 type PropsWrapper = {
   posts: PostData[];
@@ -25,7 +24,7 @@ export default function HomeComponent(props: PropsWrapper) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section className="utils-headingMd">
         <p>Hi! I'm Andrew. Welcome to my corner of the Internet.</p>
         <p>
           I'm a Scala developer who is learning Rust. This website is written in TypeScript using Next.js. Here's my{' '}
@@ -49,17 +48,17 @@ export default function HomeComponent(props: PropsWrapper) {
           <Link href="/projects/awwsmm.com">its project page</Link> to see what's been happening lately.
         </p>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+      <section className="utils-headingMd utils-padding1px">
         <Link href="blog">
-          <h2 className={utilStyles.headingLg}>Blog</h2>
+          <h2 className="utils-headingLg">Blog</h2>
         </Link>
-        <ul className={utilStyles.list}>
+        <ul className="utils-list">
           {posts.map((postData) => {
             return (
-              <li className={utilStyles.listItem} key={postData.slug}>
+              <li className="utils-listItem" key={postData.slug}>
                 <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
                 </small>
               </li>
@@ -67,19 +66,19 @@ export default function HomeComponent(props: PropsWrapper) {
           })}
         </ul>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+      <section className="utils-headingMd utils-padding1px">
         <Link href="projects">
-          <h2 className={utilStyles.headingLg}>Projects</h2>
+          <h2 className="utils-headingLg">Projects</h2>
         </Link>
-        <ul className={utilStyles.list}>
+        <ul className="utils-list">
           {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;
 
             return (
-              <li className={utilStyles.listItem} key={name}>
+              <li className="utils-listItem" key={name}>
                 <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
                 </small>
               </li>

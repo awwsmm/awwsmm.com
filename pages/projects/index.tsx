@@ -7,7 +7,6 @@ import { parseISO } from 'date-fns';
 import ProjectData from '../../lib/model/project/ProjectData';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { siteTitle } from '../../components/LayoutComponent';
-import utilStyles from '../../styles/utils.module.css';
 
 type PropsWrapper = {
   projects: ProjectData[];
@@ -21,17 +20,17 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Projects</h2>
-        <ul className={utilStyles.list}>
+      <section className="utils-headingMd utils-padding1px">
+        <h2 className="utils-headingLg">Projects</h2>
+        <ul className="utils-list">
           {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;
 
             return (
-              <li className={utilStyles.listItem} key={name}>
+              <li className="utils-listItem" key={name}>
                 <Link href={`/projects/${name}`}>{name}</Link>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className="utils-lightText">
                   Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
                 </small>
               </li>

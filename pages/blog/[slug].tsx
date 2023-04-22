@@ -5,7 +5,6 @@ import Layout from '../../components/LayoutComponent';
 import MarkdownUtils from '../../lib/utils/MarkdownUtils';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProcessedPostWrapper from '../../lib/wrappers/ProcessedPostWrapper';
-import utilStyles from '../../styles/utils.module.css';
 
 export default function PostComponent(post: ProcessedPostWrapper) {
   const { rawPost, htmlContent } = post;
@@ -19,10 +18,10 @@ export default function PostComponent(post: ProcessedPostWrapper) {
         <meta property="og:title" content={rawPost.title} />
         <meta property="og:description" content={rawPost.description} />
       </Head>
-      <article className={utilStyles.blogPost}>
-        <h1 className={utilStyles.headingXl}>{rawPost.title}</h1>
-        <h2 className={utilStyles.headingMd}>{rawPost.description}</h2>
-        <div className={utilStyles.lightText}>
+      <article className="utils-blogPost">
+        <h1 className="utils-headingXl">{rawPost.title}</h1>
+        <h2 className="utils-headingMd">{rawPost.description}</h2>
+        <div className="utils-lightText">
           <DateComponent startStr={rawPost.published} endStr={rawPost.lastUpdated} />
         </div>
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />

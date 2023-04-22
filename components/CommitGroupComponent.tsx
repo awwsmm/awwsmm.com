@@ -1,5 +1,4 @@
 import DateComponent from './DateComponent';
-import utilStyles from '../styles/utils.module.css';
 
 // add more here as necessary
 function htmlEscape(str: string): string {
@@ -8,7 +7,7 @@ function htmlEscape(str: string): string {
 
 function link(commit: { link: string; sha: string; message: string }): string {
   const li = `<li class="commitMessage">`;
-  const a = `<a href="${commit.link}" target="_blank" class="${utilStyles.sha}">`;
+  const a = `<a href="${commit.link}" target="_blank" class="utils-sha">`;
   return `${li}${a}${commit.sha.slice(0, 7)}</a> | ${htmlEscape(commit.message)}</li>`;
 }
 
@@ -21,16 +20,16 @@ export default function CommitGroupComponent({
   const oldest = commits[commits.length - 1];
 
   return (
-    <li className={utilStyles.listItem}>
-      <small className={utilStyles.updateTimestamp}>
+    <li className="utils-listItem">
+      <small className="utils-updateTimestamp">
         <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>
       <div
-        className={utilStyles.updateSubtitle}
+        className="utils-updateSubtitle"
         dangerouslySetInnerHTML={{ __html: `Commits: ${oldest.sha.slice(0, 7)} ... ${newest.sha.slice(0, 7)}` }}
       />
       <div
-        className={utilStyles.updateBody}
+        className="utils-updateBody"
         dangerouslySetInnerHTML={{ __html: `<ul>${commits.map((each) => link(each)).join('\n')}</ul>` }}
       />
     </li>
