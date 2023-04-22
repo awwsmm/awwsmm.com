@@ -23,7 +23,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
         <title>{name}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{name}</h1>
+        <h1 className="utils-headingXl">{name}</h1>
         {demoUrl !== '' && (
           <p>
             Try it out at <a href={demoUrl}>{demoUrl}</a>

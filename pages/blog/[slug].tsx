@@ -20,7 +20,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
         <meta property="og:description" content={rawPost.description} />
       </Head>
       <article className={utilStyles.blogPost}>
-        <h1 className={utilStyles.headingXl}>{rawPost.title}</h1>
+        <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className={utilStyles.headingMd}>{rawPost.description}</h2>
         <div className={utilStyles.lightText}>
           <DateComponent startStr={rawPost.published} endStr={rawPost.lastUpdated} />
