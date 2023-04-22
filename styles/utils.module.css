@@ -22,21 +22,3 @@
 .lightText {
   color: #666;
 }
-
-.updateTitle {
-  font-size: 1.2rem;
-}
-
-.updateSubtitle {
-  font-size: 0.8rem;
-  color: #999;
-}
-
-.updateBody {
-  margin: 1rem 0 2rem 0;
-  font-size: 1.0rem;
-}
-
-.updateBody h3 {
-  margin-top: 2.5rem;
-}

@@ -173,3 +173,21 @@ pre code.hljs {
   margin-left: 1rem;
   padding-left: 1rem;
 }
+
+.utils-updateTitle {
+  font-size: 1.2rem;
+}
+
+.utils-updateSubtitle {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.utils-updateBody {
+  margin: 1rem 0 2rem 0;
+  font-size: 1.0rem;
+}
+
+.utils-updateBody h3 {
+  margin-top: 2.5rem;
+}

@@ -26,11 +26,11 @@ export default function CommitGroupComponent({
         <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>
       <div
-        className={utilStyles.updateSubtitle}
+        className="utils-updateSubtitle"
         dangerouslySetInnerHTML={{ __html: `Commits: ${oldest.sha.slice(0, 7)} ... ${newest.sha.slice(0, 7)}` }}
       />
       <div
-        className={utilStyles.updateBody}
+        className="utils-updateBody"
         dangerouslySetInnerHTML={{ __html: `<ul>${commits.map((each) => link(each)).join('\n')}</ul>` }}
       />
     </li>

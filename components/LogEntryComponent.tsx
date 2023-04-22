@@ -17,9 +17,9 @@ export default function LogEntryComponent({
       <small className="utils-updateTimestamp">
         <DateComponent startStr={date} endStr={date} />
       </small>
-      <div className={utilStyles.updateTitle} dangerouslySetInnerHTML={{ __html: title }} />
-      <div className={utilStyles.updateSubtitle} dangerouslySetInnerHTML={{ __html: description }} />
-      <div className={utilStyles.updateBody} dangerouslySetInnerHTML={{ __html: contentHtml }} />
+      <div className="utils-updateTitle" dangerouslySetInnerHTML={{ __html: title }} />
+      <div className="utils-updateSubtitle" dangerouslySetInnerHTML={{ __html: description }} />
+      <div className="utils-updateBody" dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </li>
   );
 }
