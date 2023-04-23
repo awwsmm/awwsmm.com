@@ -1,6 +1,9 @@
+import bf from 'highlight.js/lib/languages/brainfuck';
+import lisp from 'highlight.js/lib/languages/lisp';
 import { rehype } from 'rehype';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeStringify from 'rehype-stringify';
+import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import scala from 'highlight.js/lib/languages/scala';
@@ -14,6 +17,7 @@ export default abstract class MarkdownUtils {
     // Use remark-rehype to convert markdown into HTML string
     const html = await unified()
       .use(remarkParse) // create Markdown AST (mdast)
+      .use(remarkGfm) // use GitHub-flavoured Markdown
       .use(remarkRehype, { allowDangerousHtml: true }) // convert mast to HTML AST (hast)
       .use(rehypeStringify, { allowDangerousHtml: true }) // convert hast into HTML
       .process(markdown)
@@ -22,7 +26,7 @@ export default abstract class MarkdownUtils {
     // Use rehype-highlight to generate language-specific AST
     const processed = await rehype()
       .data('settings', { fragment: true })
-      .use(rehypeHighlight, { languages: { scala } })
+      .use(rehypeHighlight, { languages: { scala, bf, lisp } })
       .process(html)
       .then((vfile) => String(vfile));
 
