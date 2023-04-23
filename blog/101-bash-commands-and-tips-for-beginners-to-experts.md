@@ -1,9 +1,11 @@
 ---
 title: '101 Bash Commands and Tips for Beginners to Experts'
 description: 'A tour of the shell, from the simple and easy to the fun-but-mostly-useless.'
-published: '2019-09-25'
-lastUpdated: '2019-01-13'
+published: '2019-01-13'
+lastUpdated: '2019-09-25'
 ---
+
+> Originally posted on [Dev.To](https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je)
 
 > __Update 25 Sep 2019:__ This article is now available in Japanese, thanks to the hard work of [ラナ・クアール](https://twitter.com/rana_kualu). Please check out their work by following the link below. If you're aware of translations of this article to other languages, please let me know and I'll post them here.
 

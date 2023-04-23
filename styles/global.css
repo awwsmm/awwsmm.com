@@ -199,6 +199,11 @@ pre code.hljs {
   padding-left: 1rem;
 }
 
+/* blockquotes are italic by default, so italic text inside a blockquote should be "un-italic" */
+.utils-blogPost blockquote em {
+  font-style: normal;
+}
+
 /* begin: do not italicise code in <em>s, <pre>s, etc. */
 
 .utils-blogPost blockquote pre {
@@ -269,4 +274,31 @@ em code {
 
 .socialShareButton button {
   display: flex;
+}
+
+/* begin: style for tables in processed markdown */
+.processedMarkdown table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.processedMarkdown th {
+  border: 1px solid #666;
+  padding: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  background-color: #333;
+}
+
+.processedMarkdown td {
+  border: 1px solid #666;
+  padding: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+/* end: style for tables in processed markdown */
+
+/* center-align images horizontally */
+.processedMarkdown p img {
+  margin: auto;
 }
