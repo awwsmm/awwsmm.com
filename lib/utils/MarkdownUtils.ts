@@ -13,9 +13,9 @@ export default abstract class MarkdownUtils {
   static async process(markdown: string): Promise<string> {
     // Use remark-rehype to convert markdown into HTML string
     const html = await unified()
-      .use(remarkParse) // create Markdown AST (mast)
-      .use(remarkRehype) // convert mast to HTML AST (hast)
-      .use(rehypeStringify) // convert hast into HTML
+      .use(remarkParse) // create Markdown AST (mdast)
+      .use(remarkRehype, { allowDangerousHtml: true }) // convert mast to HTML AST (hast)
+      .use(rehypeStringify, { allowDangerousHtml: true }) // convert hast into HTML
       .process(markdown)
       .then((vfile) => String(vfile));
 
