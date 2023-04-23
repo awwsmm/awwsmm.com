@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-22T16:16:28Z",
+    "message": "Add share button to share my blog posts (#107)",
+    "sha": "540cefdd7bf136ca91c9ab01b3b832d88dfb05b3",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/540cefdd7bf136ca91c9ab01b3b832d88dfb05b3"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-22T15:33:09Z",
     "message": "105 simplify css (#106)\n\n* incorporate layout.module.css into global.css\r\n\r\n* remove utils.module.css from LayoutComponent.tsx\r\n\r\n* move headingXl to global.css\r\n\r\n* move headingLg to global.css\r\n\r\n* remove unused styles from utils.module.css\r\n\r\n* move sha to global.css\r\n\r\n* move updateTimestamp to global.css\r\n\r\n* move lastUpdated to global.css\r\n\r\n* move published to global.css\r\n\r\n* move blogPost to global.css\r\n\r\n* move update{Body,Title,Subtitle} to global.css\r\n\r\n* move lightText to global.css\r\n\r\n* move listItem to global.css\r\n\r\n* move list to global.css\r\n\r\n* move remainder of styles to global.css",
     "sha": "276e7487f2db603cf946119fccff4f4d51146358",
@@ -691,12 +698,5 @@
     "message": "make Commits always have defined dates (object construction will fail otherwise)",
     "sha": "2b7c742d264a5571efb76c10b88fe8cc71d742e1",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/2b7c742d264a5571efb76c10b88fe8cc71d742e1"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-02T20:54:35Z",
-    "message": "added Git Hooks blog post, plus very rough syntax highlighting",
-    "sha": "b2e504f52e4df0ddf77c662903e39b4aaf12f242",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/b2e504f52e4df0ddf77c662903e39b4aaf12f242"
   }
 ]

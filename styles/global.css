@@ -19,14 +19,18 @@ body {
   box-sizing: border-box;
 }
 
-a {
+/* begin: style links with href targets, but not <a name=""></a> anchors */
+
+a[href] {
   color: hsla(231, 90%, 80%, 1);
   text-decoration: none;
 }
 
-a:hover {
+a[href]:hover {
   text-decoration: underline;
 }
+
+/* end: style links with href targets, but not <a name=""></a> anchors */
 
 img {
   max-width: 100%;
@@ -51,7 +55,9 @@ pre code.hljs {
   padding: 0;
 }
 
-.processedMarkdown :not(pre) code {
+/* begin: style for inline code _only_ -- NOT <code> inside of <pre> */
+
+.processedMarkdown :not(pre) > code {
   --alpha: 1.0;
   --hsl: 231, 40%, 20%;
   background: hsla(var(--hsl), var(--alpha));
@@ -64,13 +70,34 @@ pre code.hljs {
   font-size: 85%;
 }
 
-.processedMarkdown h2 {
+/* end: style for inline code _only_ -- NOT <code> inside of <pre> */
+
+.processedMarkdown h1 {
+  font-size: 2.0rem;
   margin-top: 3.0rem;
 }
 
+.processedMarkdown h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+
 .processedMarkdown h3 {
+  font-size: 1.25rem;
   margin-top: 2.0rem;
 }
+
+/* begin: collapse margins when <h1> is immediately followed by <h2> (ditto for <h2><h3>) */
+
+.processedMarkdown h1+h2 {
+  margin-top: -2.0rem;
+}
+
+.processedMarkdown h2+h3 {
+  margin-top: -1.5rem;
+}
+
+/* end: collapse margins when <h1> is immediately followed by <h2> (ditto for <h2><h3>) */
 
 .commitMessage {
   font-size: 0.8rem;
@@ -165,12 +192,28 @@ pre code.hljs {
   border: 1px solid white;
 }
 
-.utils-blogPost blockquote {
+.utils-blogPost blockquote  {
   font-style: italic;
   border-left: 2px solid white;
   margin-left: 1rem;
   padding-left: 1rem;
 }
+
+/* begin: do not italicise code in <em>s, <pre>s, etc. */
+
+.utils-blogPost blockquote pre {
+  font-style: normal;
+}
+
+.utils-blogPost blockquote code {
+  font-style: normal;
+}
+
+em code {
+  font-style: normal;
+}
+
+/* end: do not italicise code in <em>s, <pre>s, etc. */
 
 .utils-updateTitle {
   font-size: 1.2rem;
