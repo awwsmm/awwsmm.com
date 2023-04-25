@@ -1,6 +1,55 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-24T22:30:22Z",
+    "message": "Bump prettier from 2.8.7 to 2.8.8 (#120)\n\nBumps [prettier](https://github.com/prettier/prettier) from 2.8.7 to 2.8.8.\r\n- [Release notes](https://github.com/prettier/prettier/releases)\r\n- [Changelog](https://github.com/prettier/prettier/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/prettier/prettier/compare/2.8.7...2.8.8)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: prettier\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "d146ca0357ac82c57546bbc3804238764be96e46",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d146ca0357ac82c57546bbc3804238764be96e46"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-24T22:28:29Z",
+    "message": "Bump @typescript-eslint/eslint-plugin from 5.58.0 to 5.59.1 (#124)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 5.58.0 to 5.59.1.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.1/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "5277ecca9d916e4fc3d43c49bf6ad42e61a40dde",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/5277ecca9d916e4fc3d43c49bf6ad42e61a40dde"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-24T22:24:45Z",
+    "message": "Bump @types/node from 18.15.11 to 18.16.0 (#121)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.15.11 to 18.16.0.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "28dca6668bb9981348dde1e4988407165e845c0a",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/28dca6668bb9981348dde1e4988407165e845c0a"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-24T22:20:13Z",
+    "message": "Bump next from 13.3.0 to 13.3.1 (#119)\n\nBumps [next](https://github.com/vercel/next.js) from 13.3.0 to 13.3.1.\r\n- [Release notes](https://github.com/vercel/next.js/releases)\r\n- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)\r\n- [Commits](https://github.com/vercel/next.js/compare/v13.3.0...v13.3.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: next\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "26d91a248b4ba2dd1617a29324c4db834d1951a1",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/26d91a248b4ba2dd1617a29324c4db834d1951a1"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-24T22:15:39Z",
+    "message": "Bump @typescript-eslint/parser from 5.58.0 to 5.59.0 (#117)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.58.0 to 5.59.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "d2e5b49c10ccb40e12eedd682ddafea34c07f53f",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d2e5b49c10ccb40e12eedd682ddafea34c07f53f"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-24T22:15:07Z",
+    "message": "add vercel analytics (#123)",
+    "sha": "f599298058d9d13fd8255e108b90ca277ea56dcd",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/f599298058d9d13fd8255e108b90ca277ea56dcd"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-23T22:51:55Z",
+    "message": "113-port-20-intriguing-unusual-and-goofy-programming-languages-from-devto (#114)",
+    "sha": "2ee7ab50b2668933533ea45acc9004182aa481a7",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/2ee7ab50b2668933533ea45acc9004182aa481a7"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-23T20:43:03Z",
     "message": "ported 101-bash-commands-and-tips-for-beginners-to-experts from Dev.to (#112)",
     "sha": "c8ba82359c6076a4cd4cad5584592846965d720c",
@@ -649,54 +698,5 @@
     "message": "hopefully actual fix",
     "sha": "d5cf8fbc05891ac9d8d7067b5cb1fb195dc2cf99",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/d5cf8fbc05891ac9d8d7067b5cb1fb195dc2cf99"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T09:18:41Z",
-    "message": "attempt 3",
-    "sha": "9d60ec2a525687c6ba3d6732c0274dec99bbc019",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/9d60ec2a525687c6ba3d6732c0274dec99bbc019"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T09:10:04Z",
-    "message": "attempt 2 at bugfix",
-    "sha": "d0e8f0a8f8793d78040b188f582162b9c128abe0",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d0e8f0a8f8793d78040b188f582162b9c128abe0"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T09:00:28Z",
-    "message": "bugfix to prevent HTML tags in commit messages from being rendered",
-    "sha": "9ca6a73c26e51e0bc9b630e7e506443bcced0218",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/9ca6a73c26e51e0bc9b630e7e506443bcced0218"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T08:53:28Z",
-    "message": "linting",
-    "sha": "d94b993956e441665f17bb79695eac468ba0b0d0",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d94b993956e441665f17bb79695eac468ba0b0d0"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T08:50:43Z",
-    "message": "- rename /pages/blog/[id].tsx to [slug].tsx\n- refactor /lib/blog.ts into /lib/plog/Post.ts and fix everywhere\n- (actually) fix component 'key's\n- small refactoring in CommitGroup htmlBody generation",
-    "sha": "e31fdc8274f2e131fd3f8b0ec508f90930b3144d",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/e31fdc8274f2e131fd3f8b0ec508f90930b3144d"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-05T19:41:01Z",
-    "message": "add missing keys to <li> tags",
-    "sha": "2093d154ddcaf597f6e55a1a0d636568906fa462",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/2093d154ddcaf597f6e55a1a0d636568906fa462"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-05T19:27:11Z",
-    "message": "- add project field to ProjectUpdate interface\n- make CommitGroup.commits field readonly to improve immutability\n- require defined date for Commit construction\n- require at least one Commit per CommitGroup so start/end dates are defined\n- move all ProjectUpdate methods to fields for easy serialisation\n- don't query GitHub when in development mode",
-    "sha": "cb8eb7b1b2c902a4d66cd454152e3dc3641fb4ff",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/cb8eb7b1b2c902a4d66cd454152e3dc3641fb4ff"
   }
 ]
