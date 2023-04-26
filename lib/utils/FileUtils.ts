@@ -10,7 +10,7 @@ export default abstract class FileUtils {
    * @param paths path relative to the root directory of this repo
    * @returns a normalized path to the given file or directory
    */
-  static getPathTo(...paths: string[]): string {
+  private static getPathTo(...paths: string[]): string {
     return path.join(process.cwd(), ...paths);
   }
 
