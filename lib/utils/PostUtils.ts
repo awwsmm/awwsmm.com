@@ -1,24 +1,21 @@
-import fs from 'fs';
+import FileUtils from './FileUtils';
 import matter from 'gray-matter';
-import path from 'path';
 import Post from '../model/post/PostData';
 
 /**
  * Helper methods for reading and processing blog posts.
  */
 export default abstract class PostUtils {
-  static readonly dir = path.join(process.cwd(), 'blog');
+  static readonly dir = 'blog';
 
   // get all blog post slugs
   static getSlugs(): string[] {
-    const fileNames: string[] = fs.readdirSync(PostUtils.dir);
-    return fileNames.filter((name) => name.endsWith('.md')).map((name) => name.replace(/\.md$/, ''));
+    return FileUtils.getSlugs(PostUtils.dir, '.md');
   }
 
   // read a post, given its slug, but do no processing
   static getPost(slug: string): Post {
-    const fullPath = path.join(PostUtils.dir, `${slug}.md`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = FileUtils.readFileAt(PostUtils.dir, `${slug}.md`);
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);

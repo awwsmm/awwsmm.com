@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-25T00:35:29Z",
+    "message": "Port Managing Your Python Project with Git and PyBuilder fom Dev.To (#126)",
+    "sha": "7bc9cd1ca8937ffcae9970a7c855e730ef32ca36",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/7bc9cd1ca8937ffcae9970a7c855e730ef32ca36"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-24T22:30:22Z",
     "message": "Bump prettier from 2.8.7 to 2.8.8 (#120)\n\nBumps [prettier](https://github.com/prettier/prettier) from 2.8.7 to 2.8.8.\r\n- [Release notes](https://github.com/prettier/prettier/releases)\r\n- [Changelog](https://github.com/prettier/prettier/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/prettier/prettier/compare/2.8.7...2.8.8)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: prettier\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "d146ca0357ac82c57546bbc3804238764be96e46",
@@ -691,12 +698,5 @@
     "message": "awwsmm.com log entry",
     "sha": "3acb76c1f6c6d1b4cdb76939496e251220aa29ea",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/3acb76c1f6c6d1b4cdb76939496e251220aa29ea"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T09:25:29Z",
-    "message": "hopefully actual fix",
-    "sha": "d5cf8fbc05891ac9d8d7067b5cb1fb195dc2cf99",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d5cf8fbc05891ac9d8d7067b5cb1fb195dc2cf99"
   }
 ]
