@@ -1,11 +1,10 @@
 import { graphql, GraphqlResponseError } from '@octokit/graphql';
 import Commit from '../model/project/Commit';
-import fs from 'fs';
+import FileUtils from './FileUtils';
 import type { GraphQlQueryResponseData } from '@octokit/graphql';
 import LogEntry from '../model/project/LogEntry';
 import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
-import path from 'path';
 import Project from '../model/project/ProjectData';
 import ProjectMetadata from '../model/project/ProjectMetadata';
 
@@ -13,11 +12,11 @@ import ProjectMetadata from '../model/project/ProjectMetadata';
  * Helper methods for reading and processing projects.
  */
 export default abstract class ProjectUtils {
-  static readonly dir = path.join(process.cwd(), 'projects');
+  static readonly dir = 'projects';
 
   // get all project names
   static getNames(): string[] {
-    return fs.readdirSync(ProjectUtils.dir);
+    return FileUtils.getChildrenOf(ProjectUtils.dir);
   }
 
   // validate repository name to prevent SSRF attacks
@@ -25,6 +24,10 @@ export default abstract class ProjectUtils {
   // https://github.com/dead-claudia/github-limits#repository-names
   static isValidRepositoryName(name: string): boolean {
     return /^[a-zA-Z0-9-_.]{1,100}$/.test(name) && name !== '.' && name !== '..';
+  }
+
+  static cacheFilePaths(name: string): string[] {
+    return [ProjectUtils.dir, name, 'cache.json'];
   }
 
   static async writeToCache(name: string): Promise<void> {
@@ -100,12 +103,12 @@ export default abstract class ProjectUtils {
         }
       })
       .then((commits) => {
-        fs.writeFileSync(`${ProjectUtils.dir}/${name}/cache.json`, JSON.stringify(commits, null, 2));
+        FileUtils.writeToFile(JSON.stringify(commits, null, 2), ...ProjectUtils.cacheFilePaths(name));
       });
   }
 
   static readFromCache(name: string): Commit[] {
-    const fileContents = fs.readFileSync(`${ProjectUtils.dir}/${name}/cache.json`, 'utf8');
+    const fileContents = FileUtils.readFileAt(...ProjectUtils.cacheFilePaths(name));
     return (JSON.parse(fileContents) as Commit[]).map(
       ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link)
     );
@@ -130,12 +133,11 @@ export default abstract class ProjectUtils {
    * @returns an array of all {@link LogEntry}s for this Project
    */
   static getLogEntries(name: string): LogEntry[] {
-    const logDir: string = path.join(process.cwd(), `projects/${name}/log`);
-    if (!fs.existsSync(logDir)) return [];
+    const logDir = [ProjectUtils.dir, name, 'log'];
+    if (!FileUtils.exists(...logDir)) return [];
 
     function getLogData(fileName: string): LogEntry {
-      const fullPath = path.join(logDir, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const fileContents = FileUtils.readFileAt(...logDir, fileName);
 
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents);
@@ -147,14 +149,14 @@ export default abstract class ProjectUtils {
       return new LogEntry(name, title, description, date, matterResult.content);
     }
 
-    const fileNames: string[] = fs.readdirSync(logDir);
+    const fileNames = FileUtils.getChildrenOf(...logDir);
     return fileNames.map((each) => getLogData(each));
   }
 
   static getMetadata(name: string): ProjectMetadata {
-    const metadataFile: string = path.join(process.cwd(), `projects/${name}/metadata.json`);
-    if (!fs.existsSync(metadataFile)) return new ProjectMetadata(name);
-    const fileContents = fs.readFileSync(metadataFile, 'utf8');
+    const metadataFile = [ProjectUtils.dir, name, 'metadata.json'];
+    if (!FileUtils.exists(...metadataFile)) return new ProjectMetadata(name);
+    const fileContents = FileUtils.readFileAt(...metadataFile);
     const metadata: ProjectMetadata = JSON.parse(fileContents);
     return metadata;
   }
