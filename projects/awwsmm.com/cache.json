@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-04-26T01:52:06Z",
+    "message": "127 move all file handling stuff into a fileutils class (#128)\n\n* Move all file-handling stuff into a FileUtils class\r\n\r\n* make getPathTo private",
+    "sha": "b056a83a98912e51d1924dccbbf13df28ec89212",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/b056a83a98912e51d1924dccbbf13df28ec89212"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-25T00:35:29Z",
     "message": "Port Managing Your Python Project with Git and PyBuilder fom Dev.To (#126)",
     "sha": "7bc9cd1ca8937ffcae9970a7c855e730ef32ca36",
@@ -691,12 +698,5 @@
     "message": "figured out issues with 'fs' and (de)serialisation in [slug].tsx",
     "sha": "d4a9a360c38398cdd41825aa0fe193e8176cb4fd",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/d4a9a360c38398cdd41825aa0fe193e8176cb4fd"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-06T20:09:17Z",
-    "message": "awwsmm.com log entry",
-    "sha": "3acb76c1f6c6d1b4cdb76939496e251220aa29ea",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/3acb76c1f6c6d1b4cdb76939496e251220aa29ea"
   }
 ]

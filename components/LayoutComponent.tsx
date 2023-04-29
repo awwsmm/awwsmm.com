@@ -5,7 +5,17 @@ import Link from 'next/link';
 const name = 'Andrew Watson';
 export const siteTitle = 'Andrew Watson | Programmer';
 
-export default function Layout({ children, home }: { children: React.ReactNode; home?: boolean }) {
+export default function Layout({
+  children,
+  home,
+  parentName,
+  parentPath,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+  parentName?: string;
+  parentPath?: string;
+}) {
   return (
     <div className="layout-container">
       <Head>
@@ -55,13 +65,13 @@ export default function Layout({ children, home }: { children: React.ReactNode; 
       </header>
       {!home && (
         <div className="layout-backToHomeTop">
-          <Link href="/">← Back to home</Link>
+          <Link href={parentPath || '/'}>← Back to {parentName || 'home'}</Link>
         </div>
       )}
       <main>{children}</main>
       {!home && (
         <div className="layout-backToHomeBottom">
-          <Link href="/">← Back to home</Link>
+          <Link href={parentPath || '/'}>← Back to {parentName || 'home'}</Link>
         </div>
       )}
     </div>

@@ -10,7 +10,7 @@ export default abstract class PostUtils {
 
   // get all blog post slugs
   static getSlugs(): string[] {
-    return FileUtils.getSlugs(PostUtils.dir, '.md');
+    return FileUtils.getSlugs('.md', PostUtils.dir);
   }
 
   // read a post, given its slug, but do no processing
