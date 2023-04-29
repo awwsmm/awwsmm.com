@@ -48,17 +48,21 @@ export default abstract class FileUtils {
    * @returns the names of all immediate children (files and directories) of the given directory
    */
   static getChildrenOf(...paths: string[]): string[] {
-    return fs.readdirSync(FileUtils.getPathTo(...paths));
+    if (FileUtils.exists(...paths)) {
+      return fs.readdirSync(FileUtils.getPathTo(...paths));
+    } else {
+      return [];
+    }
   }
 
   /**
    * Returns an array of slugs for files in a given directory.
-   * @param directory path relative to the root directory of this repo
-   * @param extension optional extension including leading dot (ex. ".md")
+   * @param extension extension including leading dot (ex. ".md")
+   * @param paths path to the directory
    * @returns the names of all files in the given directory with the given extension, with that extension removed.
    */
-  static getSlugs(directory: string, extension: string): string[] {
-    const fileNames = FileUtils.getChildrenOf(directory);
+  static getSlugs(extension: string, ...paths: string[]): string[] {
+    const fileNames = FileUtils.getChildrenOf(...paths);
     const regex = new RegExp(`\\${extension}$`);
     return fileNames.filter((name) => name.endsWith(extension)).map((name) => name.replace(regex, ''));
   }

@@ -129,28 +129,33 @@ export default abstract class ProjectUtils {
     );
   }
 
+  static getLogEntrySlugs(name: string): string[] {
+    const logDir = [ProjectUtils.dir, name, 'log'];
+    return FileUtils.getSlugs('.md', ...logDir);
+  }
+
+  static getLogData(name: string, fileSlug: string): LogEntry {
+    const logDir = [ProjectUtils.dir, name, 'log'];
+    const fileContents = FileUtils.readFileAt(...logDir, `${fileSlug}.md`);
+
+    // Use gray-matter to parse the post metadata section
+    const matterResult = matter(fileContents);
+
+    // Combine everything into a LogEntry
+    const date: Date = parseISO(matterResult.data.date);
+    const title: string = matterResult.data.title;
+    const description: string = matterResult.data.description;
+    return new LogEntry(name, fileSlug, title, description, date, matterResult.content);
+  }
+
   /**
    * @returns an array of all {@link LogEntry}s for this Project
    */
   static getLogEntries(name: string): LogEntry[] {
     const logDir = [ProjectUtils.dir, name, 'log'];
     if (!FileUtils.exists(...logDir)) return [];
-
-    function getLogData(fileName: string): LogEntry {
-      const fileContents = FileUtils.readFileAt(...logDir, fileName);
-
-      // Use gray-matter to parse the post metadata section
-      const matterResult = matter(fileContents);
-
-      // Combine everything into a LogEntry
-      const date: Date = parseISO(matterResult.data.date);
-      const title: string = matterResult.data.title;
-      const description: string = matterResult.data.description;
-      return new LogEntry(name, title, description, date, matterResult.content);
-    }
-
-    const fileNames = FileUtils.getChildrenOf(...logDir);
-    return fileNames.map((each) => getLogData(each));
+    const slugs = ProjectUtils.getLogEntrySlugs(name);
+    return slugs.map((slug) => ProjectUtils.getLogData(name, slug));
   }
 
   static getMetadata(name: string): ProjectMetadata {
