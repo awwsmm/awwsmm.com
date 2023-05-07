@@ -1,6 +1,48 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-05-01T02:21:09Z",
+    "message": "Bump @types/node from 18.16.0 to 18.16.3 (#135)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.16.0 to 18.16.3.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "eab6d4b8282875b498fbc59ef840508872447d7b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/eab6d4b8282875b498fbc59ef840508872447d7b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-01T02:05:22Z",
+    "message": "Bump @types/chai from 4.3.4 to 4.3.5 (#134)\n\nBumps [@types/chai](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/chai) from 4.3.4 to 4.3.5.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/chai)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/chai\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "eaa0a0c02f766d48471573cd81e4f709b10b3090",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/eaa0a0c02f766d48471573cd81e4f709b10b3090"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-01T02:02:39Z",
+    "message": "Bump @octokit/types from 9.0.0 to 9.2.0 (#133)\n\nBumps [@octokit/types](https://github.com/octokit/types.ts) from 9.0.0 to 9.2.0.\r\n- [Release notes](https://github.com/octokit/types.ts/releases)\r\n- [Commits](https://github.com/octokit/types.ts/compare/v9.0.0...v9.2.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@octokit/types\"\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "34411c762de325cd8d413cc86b19937c0fc552e8",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/34411c762de325cd8d413cc86b19937c0fc552e8"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-01T01:48:32Z",
+    "message": "Bump @typescript-eslint/parser from 5.59.0 to 5.59.1 (#132)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.59.0 to 5.59.1.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.1/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "58eecaa7411b01ffd60b5ffc9b41456dfc627aab",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/58eecaa7411b01ffd60b5ffc9b41456dfc627aab"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-01T01:43:31Z",
+    "message": "Bump date-fns from 2.29.3 to 2.30.0 (#131)\n\nBumps [date-fns](https://github.com/date-fns/date-fns) from 2.29.3 to 2.30.0.\r\n- [Release notes](https://github.com/date-fns/date-fns/releases)\r\n- [Changelog](https://github.com/date-fns/date-fns/blob/v2.30.0/CHANGELOG.md)\r\n- [Commits](https://github.com/date-fns/date-fns/compare/v2.29.3...v2.30.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: date-fns\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "cd5208d53506e59024cbb3e5cc5a50781b891df5",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/cd5208d53506e59024cbb3e5cc5a50781b891df5"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-04-29T02:37:55Z",
+    "message": "Collapse log entries in project pages if they're at the bottom of the history (#130)",
+    "sha": "e95822a7342eacaf62683d1066e271af5e5d768b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/e95822a7342eacaf62683d1066e271af5e5d768b"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-04-26T01:52:06Z",
     "message": "127 move all file handling stuff into a fileutils class (#128)\n\n* Move all file-handling stuff into a FileUtils class\r\n\r\n* make getPathTo private",
     "sha": "b056a83a98912e51d1924dccbbf13df28ec89212",
@@ -656,47 +698,5 @@
     "message": "Merge pull request #15 from awwsmm/development\n\nautomatically date blog posts using git history",
     "sha": "b6eea85256fe54f34013f17aca4e892aba0778dd",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/b6eea85256fe54f34013f17aca4e892aba0778dd"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-14T18:54:39Z",
-    "message": "automatically date blog posts using git history",
-    "sha": "bc222b37913ec2cdd7ff5f152dfaca06d33ec9f3",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/bc222b37913ec2cdd7ff5f152dfaca06d33ec9f3"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-09T12:55:49Z",
-    "message": "order blog posts on index page reverse chronologically",
-    "sha": "88c420835d35a008de808b7cef04980a15b029bc",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/88c420835d35a008de808b7cef04980a15b029bc"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-09T12:46:01Z",
-    "message": "new blog post about nominal, structural, and duck typing",
-    "sha": "9368f247c7f24c858be4b39931ffe4981f4fac65",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/9368f247c7f24c858be4b39931ffe4981f4fac65"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-08T20:18:49Z",
-    "message": "Merge pull request #1 from awwsmm/development\n\nprojects display on home page in reverse chronological order by last …",
-    "sha": "6bbe3077123f8f8e5636c3f644a88b286ef7a47e",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/6bbe3077123f8f8e5636c3f644a88b286ef7a47e"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-08T20:15:44Z",
-    "message": "projects display on home page in reverse chronological order by last updated; fix some css on project pages; log entries 'break' groups of commits on project pages",
-    "sha": "0a882cf5062e4c0ac4505ed609ca77f14b35a76a",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/0a882cf5062e4c0ac4505ed609ca77f14b35a76a"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-07T22:41:52Z",
-    "message": "figured out issues with 'fs' and (de)serialisation in [slug].tsx",
-    "sha": "d4a9a360c38398cdd41825aa0fe193e8176cb4fd",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d4a9a360c38398cdd41825aa0fe193e8176cb4fd"
   }
 ]
