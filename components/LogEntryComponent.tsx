@@ -1,48 +1,34 @@
 import DateComponent from './DateComponent';
+import { SocialButtons } from './SocialButtons';
 
 export function LogEntryComponent({
-  date,
-  title,
-  description,
-  contentHtml,
-}: {
-  date: string;
-  title: string;
-  description: string;
-  contentHtml: string;
-}) {
-  return (
-    <li className="utils-listItem">
-      <small className="utils-updateTimestamp">
-        <DateComponent startStr={date} endStr={date} />
-      </small>
-      <div className="utils-updateTitle" dangerouslySetInnerHTML={{ __html: title }} />
-      <div className="utils-updateSubtitle" dangerouslySetInnerHTML={{ __html: description }} />
-      <div className="utils-updateBody" dangerouslySetInnerHTML={{ __html: contentHtml }} />
-    </li>
-  );
-}
-
-export function LogEntryComponentCollapsed({
+  standalone,
   url,
   date,
   title,
   description,
+  body,
 }: {
+  standalone: boolean;
   url: string;
   date: string;
   title: string;
   description: string;
+  body: string | undefined;
 }) {
+  function titleJSX(div: JSX.Element) {
+    return standalone ? div : <a href={url}>{div}</a>;
+  }
+
   return (
     <li className="utils-listItem">
       <small className="utils-updateTimestamp">
         <DateComponent startStr={date} endStr={date} />
       </small>
-      <a href={url}>
-        <div className="utils-updateTitle" dangerouslySetInnerHTML={{ __html: title }} />
-      </a>
+      {titleJSX(<div className="utils-updateTitle" dangerouslySetInnerHTML={{ __html: title }} />)}
       <div className="utils-updateSubtitle" dangerouslySetInnerHTML={{ __html: description }} />
+      {body && <div className="utils-updateBody" dangerouslySetInnerHTML={{ __html: body }} />}
+      {standalone && <SocialButtons url={url} />}
     </li>
   );
 }

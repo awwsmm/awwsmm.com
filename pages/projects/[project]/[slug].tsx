@@ -19,11 +19,13 @@ export default function Component(wrapper: LogEntryWrapper) {
         <section className="utils-headingMd utils-padding1px">
           <ul className="utils-list">
             <LogEntryComponent
-              key={`standalone-log-entry-${logEntry.date}`}
+              key={`${logEntry.project}-log-entry-${logEntry.date}`}
+              standalone={true}
+              url={`${logEntry.project}/${logEntry.slug}`}
               date={logEntry.date}
               title={logEntry.title}
               description={logEntry.description}
-              contentHtml={contentHtml}
+              body={contentHtml}
             />
           </ul>
         </section>
