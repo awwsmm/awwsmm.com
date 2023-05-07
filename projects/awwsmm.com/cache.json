@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-05-07T12:43:04Z",
+    "message": "136-awwsmmcom-log-entry-slow-and-steady-wins-the-race (#137)\n\n* 136-awwsmmcom-log-entry-slow-and-steady-wins-the-race\r\n\r\n* some typos, small changes",
+    "sha": "061a35c5f5143c190181e0fac2e40a0d8c838a24",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/061a35c5f5143c190181e0fac2e40a0d8c838a24"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-05-01T02:21:09Z",
     "message": "Bump @types/node from 18.16.0 to 18.16.3 (#135)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.16.0 to 18.16.3.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "eab6d4b8282875b498fbc59ef840508872447d7b",
@@ -691,12 +698,5 @@
     "message": "add What's Wrong This Time? Part I blog post; update some CSS; fix some caching issues",
     "sha": "94130448ecd949839142eb65c5b32e4ef131503e",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/94130448ecd949839142eb65c5b32e4ef131503e"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-14T19:01:11Z",
-    "message": "Merge pull request #15 from awwsmm/development\n\nautomatically date blog posts using git history",
-    "sha": "b6eea85256fe54f34013f17aca4e892aba0778dd",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/b6eea85256fe54f34013f17aca4e892aba0778dd"
   }
 ]

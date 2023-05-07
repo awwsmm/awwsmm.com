@@ -1,11 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { LogEntryComponent, LogEntryComponentCollapsed } from '../../components/LogEntryComponent';
 import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import LogEntry from '../../lib/model/project/LogEntry';
+import { LogEntryComponent } from '../../components/LogEntryComponent';
 import LogEntryWrapper from '../../lib/wrappers/LogEntryWrapper';
 import MarkdownUtils from '../../lib/utils/MarkdownUtils';
 import { parseISO } from 'date-fns';
@@ -90,22 +90,26 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
                 const { logEntry, contentHtml } = updates[0] as LogEntryWrapper;
                 if (collapsed) {
                   return (
-                    <LogEntryComponentCollapsed
+                    <LogEntryComponent
+                      key={`${name}-log-entry-${logEntry.date}`}
+                      standalone={false}
                       url={`${name}/${logEntry.slug}`}
-                      key={`log-entry-${logEntry.date}`}
                       date={logEntry.date}
                       title={logEntry.title}
                       description={logEntry.description}
+                      body={undefined}
                     />
                   );
                 } else {
                   return (
                     <LogEntryComponent
-                      key={`log-entry-${logEntry.date}`}
+                      key={`${name}-log-entry-${logEntry.date}`}
+                      standalone={false}
+                      url={`${name}/${logEntry.slug}`}
                       date={logEntry.date}
                       title={logEntry.title}
                       description={logEntry.description}
-                      contentHtml={contentHtml}
+                      body={contentHtml}
                     />
                   );
                 }
