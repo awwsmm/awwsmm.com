@@ -9,7 +9,9 @@ import {
   WhatsappShareButton,
 } from 'next-share';
 
-export function SocialButtons({ url }: { url: string }) {
+export function SocialButtons({ path }: { path: string }) {
+  const url = `https://www.awwsmm.com/${path}`;
+
   return (
     <div className="socialShareButtons">
       <div className="socialShareButton">
@@ -23,12 +25,12 @@ export function SocialButtons({ url }: { url: string }) {
         </RedditShareButton>
       </div>
       <div className="socialShareButton">
-        <WhatsappShareButton url={url}>
+        <WhatsappShareButton url={url} separator=":: ">
           <WhatsappIcon size={32} round />
         </WhatsappShareButton>
       </div>
       <div className="socialShareButton">
-        <FacebookShareButton url={url}>
+        <FacebookShareButton url={url} hashtag={'#awwsmm'}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
       </div>

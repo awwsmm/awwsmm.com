@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-05-07T23:43:29Z",
+    "message": "138-clean-up-layoutcomponent-create-socialbuttons-component (#139)",
+    "sha": "61248d3aa3cacd3426e30e2c9a1ee49b367310fc",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/61248d3aa3cacd3426e30e2c9a1ee49b367310fc"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-05-07T12:43:04Z",
     "message": "136-awwsmmcom-log-entry-slow-and-steady-wins-the-race (#137)\n\n* 136-awwsmmcom-log-entry-slow-and-steady-wins-the-race\r\n\r\n* some typos, small changes",
     "sha": "061a35c5f5143c190181e0fac2e40a0d8c838a24",
@@ -691,12 +698,5 @@
     "message": "Merge branch 'development'",
     "sha": "e69863aea271a4931ea9539ea427d27bb1faf7c1",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/e69863aea271a4931ea9539ea427d27bb1faf7c1"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-16T17:28:39Z",
-    "message": "add What's Wrong This Time? Part I blog post; update some CSS; fix some caching issues",
-    "sha": "94130448ecd949839142eb65c5b32e4ef131503e",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/94130448ecd949839142eb65c5b32e4ef131503e"
   }
 ]

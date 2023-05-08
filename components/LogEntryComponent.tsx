@@ -28,7 +28,7 @@ export function LogEntryComponent({
       {titleJSX(<div className="utils-updateTitle" dangerouslySetInnerHTML={{ __html: title }} />)}
       <div className="utils-updateSubtitle" dangerouslySetInnerHTML={{ __html: description }} />
       {body && <div className="utils-updateBody" dangerouslySetInnerHTML={{ __html: body }} />}
-      {standalone && <SocialButtons url={url} />}
+      {standalone && <SocialButtons path={`projects/${url}`} />}
     </li>
   );
 }
