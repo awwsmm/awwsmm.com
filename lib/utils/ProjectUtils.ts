@@ -142,10 +142,11 @@ export default abstract class ProjectUtils {
     const matterResult = matter(fileContents);
 
     // Combine everything into a LogEntry
-    const date: Date = parseISO(matterResult.data.date);
+    const date: Date = parseISO(fileSlug);
     const title: string = matterResult.data.title;
     const description: string = matterResult.data.description;
-    return new LogEntry(name, fileSlug, title, description, date, matterResult.content);
+    const tags: string[] = matterResult.data.tags || [];
+    return new LogEntry(name, fileSlug, title, description, date, matterResult.content, tags);
   }
 
   /**

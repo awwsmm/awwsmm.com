@@ -3,6 +3,7 @@ title: '20 Intriguing, Unusual, and Goofy Programming Languages'
 description: 'A collection of esoteric and thought-provoking programming languages.'
 published: '2019-11-16'
 lastUpdated: '2019-11-16'
+tags: ['esolangs', 'language-design']
 ---
 
 > Originally posted on [Dev.To](https://dev.to/awwsmm/20-intriguing-unusual-and-goofy-programming-languages-238f)

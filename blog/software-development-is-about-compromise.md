@@ -3,6 +3,7 @@ title: 'Software Development is About Compromise'
 description: 'A Case Study in Building a Website using Next.js'
 published: '2023-04-09'
 lastUpdated: '2023-04-09'
+tags: ['software-development', 'nextjs']
 ---
 
 ## Trade-Offs in Software Development

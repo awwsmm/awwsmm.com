@@ -3,6 +3,7 @@ title: 'Managing Your Python Project with Git and PyBuilder'
 description: 'Maintain control of your code!'
 published: '2018-09-25'
 lastUpdated: '2018-09-25'
+tags: ['git', 'python']
 ---
 
 > Originally posted on [Dev.To](https://dev.to/awwsmm/managing-your-python-project-with-git-and-pybuilder-21if)

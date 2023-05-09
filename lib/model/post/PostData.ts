@@ -8,6 +8,7 @@ export default class PostData {
   published: string;
   lastUpdated: string;
   rawContent: string;
+  tags: string[];
 
   constructor(
     slug: string,
@@ -15,7 +16,8 @@ export default class PostData {
     description: string,
     published: string,
     lastUpdated: string,
-    rawContent: string
+    rawContent: string,
+    tags: string[]
   ) {
     this.slug = slug;
     this.title = title;
@@ -23,5 +25,6 @@ export default class PostData {
     this.published = published;
     this.lastUpdated = lastUpdated;
     this.rawContent = rawContent;
+    this.tags = tags;
   }
 }

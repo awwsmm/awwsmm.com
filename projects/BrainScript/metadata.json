@@ -2,5 +2,9 @@
   "project": "BrainScript",
   "demo": {
     "url": "https://npm.runkit.com/brainscript"
-  }
+  },
+  "tags": [
+    "typescript",
+    "esolangs"
+  ]
 }

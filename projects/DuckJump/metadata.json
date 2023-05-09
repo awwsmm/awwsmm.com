@@ -2,5 +2,9 @@
   "project": "DuckJump",
   "demo": {
     "url": "https://duck.awwsmm.com/"
-  }
+  },
+  "tags": [
+    "gamedev",
+    "scala"
+  ]
 }

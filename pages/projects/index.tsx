@@ -1,11 +1,10 @@
-import DateComponent from '../../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
-import Link from 'next/link';
 import { parseISO } from 'date-fns';
 import ProjectData from '../../lib/model/project/ProjectData';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
+import { PublicationListItem } from '../../components/PublicationListItem';
 import { siteTitle } from '../../components/LayoutComponent';
 
 type PropsWrapper = {
@@ -27,13 +26,14 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
             const { name, lastUpdated } = wrapper;
 
             return (
-              <li className="utils-listItem" key={name}>
-                <Link href={`/projects/${name}`}>{name}</Link>
-                <br />
-                <small className="utils-lightText">
-                  Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
-                </small>
-              </li>
+              <PublicationListItem
+                key={name}
+                published={lastUpdated}
+                updated={lastUpdated}
+                link={`/projects/${name}`}
+                title={name}
+                tags={wrapper.metadata.tags}
+              />
             );
           })}
         </ul>

@@ -3,6 +3,7 @@ title: 'Eliminate Unnecessary Builds With Git Hooks'
 description: 'Writing Git Commit Hooks in Bash, Java, and Scala'
 published: '2022-01-02'
 lastUpdated: '2022-01-14'
+tags: ['git']
 ---
 
 ## Writing a Git Hook in Bash

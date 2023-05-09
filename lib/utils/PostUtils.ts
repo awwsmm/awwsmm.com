@@ -26,8 +26,9 @@ export default abstract class PostUtils {
     const published: string = matterResult.data.published;
     const lastUpdated: string = matterResult.data.lastUpdated;
     const rawContent = matterResult.content;
+    const tags = matterResult.data.tags || [];
 
-    return new Post(slug, title, description, published, lastUpdated, rawContent);
+    return new Post(slug, title, description, published, lastUpdated, rawContent, tags);
   }
 
   static getPosts(): Post[] {
@@ -48,6 +49,7 @@ export default abstract class PostUtils {
         published: post.published,
         lastUpdated: post.lastUpdated,
         rawContent: post.rawContent,
+        tags: post.tags,
       };
     });
 
