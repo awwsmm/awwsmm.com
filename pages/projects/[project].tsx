@@ -65,6 +65,16 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
 
   const reducedUpdatesWithMetadata = upatesWithMetadata.reverse();
 
+  function disclaimer() {
+    return (
+      <p className="disclaimer">
+        See the complete commit history at
+        <br />
+        <a href={`https://github.com/awwsmm/${name}/commits/master`}>{`github.com/awwsmm/${name}`}</a>
+      </p>
+    );
+  }
+
   return (
     <Layout>
       <Head>
@@ -79,11 +89,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
         )}
         <section className="utils-headingMd utils-padding1px">
           <h2 className="utils-headingLg">Updates</h2>
-          <p className="disclaimer">
-            For the most up-to-date commit history, see
-            <br />
-            <a href={'https://github.com/awwsmm/' + name}>{'https://github.com/awwsmm/' + name}</a>
-          </p>
+          {disclaimer()}
           <ul className="utils-list">
             {reducedUpdatesWithMetadata.map(({ updates, collapsed }) => {
               if (updates[0].type === 'LogEntry') {
@@ -124,15 +130,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
               } else throw new Error('unknown project update type');
             })}
           </ul>
-          {updates.filter((each) => each.type == 'Commit').length == 100 && (
-            <p className="disclaimer">
-              See the complete commit history at
-              <br />
-              <a
-                href={`https://github.com/awwsmm/${name}/commits/master`}
-              >{`https://github.com/awwsmm/${name}/commits/master`}</a>
-            </p>
-          )}
+          {updates.filter((each) => each.type == 'Commit').length == 100 && disclaimer()}
         </section>
       </article>
     </Layout>
