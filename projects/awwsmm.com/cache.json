@@ -1,6 +1,48 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-05-09T14:33:02Z",
+    "message": "Bump next from 13.3.1 to 13.4.1 (#142)\n\n* Bump next from 13.3.1 to 13.4.1\r\n\r\nBumps [next](https://github.com/vercel/next.js) from 13.3.1 to 13.4.1.\r\n- [Release notes](https://github.com/vercel/next.js/releases)\r\n- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)\r\n- [Commits](https://github.com/vercel/next.js/compare/v13.3.1...v13.4.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: next\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n* force node version, see https://stackoverflow.com/a/70269965/2925434\r\n\r\n---------\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Andrew William Watson <aww@awwsmm.com>",
+    "sha": "1d873d3e2c9ebb07fc4f99dd4843000d71f06945",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/1d873d3e2c9ebb07fc4f99dd4843000d71f06945"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-09T13:27:20Z",
+    "message": "Bump @octokit/types from 9.2.0 to 9.2.1 (#145)\n\nBumps [@octokit/types](https://github.com/octokit/types.ts) from 9.2.0 to 9.2.1.\r\n- [Release notes](https://github.com/octokit/types.ts/releases)\r\n- [Commits](https://github.com/octokit/types.ts/compare/v9.2.0...v9.2.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@octokit/types\"\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "7f925070ca5a005de939b2343cc16e5a8a6cedef",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/7f925070ca5a005de939b2343cc16e5a8a6cedef"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-09T13:22:51Z",
+    "message": "Bump eslint from 8.38.0 to 8.40.0 (#146)\n\nBumps [eslint](https://github.com/eslint/eslint) from 8.38.0 to 8.40.0.\r\n- [Release notes](https://github.com/eslint/eslint/releases)\r\n- [Changelog](https://github.com/eslint/eslint/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/eslint/eslint/compare/v8.38.0...v8.40.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: eslint\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "e6237183b34e0d989f89a90bee09d7f54083bf4b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/e6237183b34e0d989f89a90bee09d7f54083bf4b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-09T13:19:03Z",
+    "message": "Bump @typescript-eslint/eslint-plugin from 5.59.1 to 5.59.5 (#153)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 5.59.1 to 5.59.5.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.5/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "3699f42f5873b605769ff05b906855321819c07d",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/3699f42f5873b605769ff05b906855321819c07d"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-09T13:07:29Z",
+    "message": "Bump @types/react from 18.0.35 to 18.2.6 (#143)\n\nBumps [@types/react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/react) from 18.0.35 to 18.2.6.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/react)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/react\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "f1682ef3e32653b0d4ffb3a71c83cd92283fd69b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/f1682ef3e32653b0d4ffb3a71c83cd92283fd69b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-09T12:57:36Z",
+    "message": "add (hash)tag labels (#151)",
+    "sha": "f5c4ca2b8d433cd1aaf1c1240d4bb8119731dc09",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/f5c4ca2b8d433cd1aaf1c1240d4bb8119731dc09"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-05-08T00:07:14Z",
     "message": "140-socialbutton-bug-fixes (#141)",
     "sha": "d366904cbb43d2c655a0444df7996fd52333bcc5",
@@ -656,47 +698,5 @@
     "message": "What's Wrong This Time? Part III",
     "sha": "4733a337d554a6fc14f5e8fd7a00559203e29cd6",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/4733a337d554a6fc14f5e8fd7a00559203e29cd6"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-05T22:08:52Z",
-    "message": "Merge pull request #19 from awwsmm/development\n\nadd README-DEV, add hooks to source control, add ncu to update dependencies easily, fix vulns",
-    "sha": "4281812447b58b08bcd613530e4d8db2b1855be6",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/4281812447b58b08bcd613530e4d8db2b1855be6"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-05T22:05:47Z",
-    "message": "add README-DEV, add hooks to source control, add ncu to update dependencies easily, fix vulns",
-    "sha": "f086de0ed58ead036acee622a119aab70e8f445b",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/f086de0ed58ead036acee622a119aab70e8f445b"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-24T14:27:34Z",
-    "message": "Merge branch 'development'",
-    "sha": "8d79d6c747eedec6cc2297e5fb094b4c9dc992f1",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/8d79d6c747eedec6cc2297e5fb094b4c9dc992f1"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-24T10:53:26Z",
-    "message": "greatly simplify SlugFactory by breaking out caching into Cache.ts and envivonment-detection into Environment.ts",
-    "sha": "cb38f6411859de4586f945eaae6231ebcd87a78f",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/cb38f6411859de4586f945eaae6231ebcd87a78f"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-23T19:18:24Z",
-    "message": "Merge branch 'development'",
-    "sha": "2b0c33ad157fbacef3cca66eb32f33a5fd38f4c5",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/2b0c33ad157fbacef3cca66eb32f33a5fd38f4c5"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-23T19:17:02Z",
-    "message": "add What's Wrong This Time? Part II blog post",
-    "sha": "067933596a09eae9287eb3ddb58d67c64a9c2677",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/067933596a09eae9287eb3ddb58d67c64a9c2677"
   }
 ]
