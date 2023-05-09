@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-05-08T00:07:14Z",
+    "message": "140-socialbutton-bug-fixes (#141)",
+    "sha": "d366904cbb43d2c655a0444df7996fd52333bcc5",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d366904cbb43d2c655a0444df7996fd52333bcc5"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-05-07T23:43:29Z",
     "message": "138-clean-up-layoutcomponent-create-socialbuttons-component (#139)",
     "sha": "61248d3aa3cacd3426e30e2c9a1ee49b367310fc",
@@ -691,12 +698,5 @@
     "message": "add What's Wrong This Time? Part II blog post",
     "sha": "067933596a09eae9287eb3ddb58d67c64a9c2677",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/067933596a09eae9287eb3ddb58d67c64a9c2677"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-01-16T17:35:13Z",
-    "message": "Merge branch 'development'",
-    "sha": "e69863aea271a4931ea9539ea427d27bb1faf7c1",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/e69863aea271a4931ea9539ea427d27bb1faf7c1"
   }
 ]

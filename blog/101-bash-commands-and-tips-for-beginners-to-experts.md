@@ -3,6 +3,7 @@ title: '101 Bash Commands and Tips for Beginners to Experts'
 description: 'A tour of the shell, from the simple and easy to the fun-but-mostly-useless.'
 published: '2019-01-13'
 lastUpdated: '2019-09-25'
+tags: ['shells']
 ---
 
 > Originally posted on [Dev.To](https://dev.to/awwsmm/101-bash-commands-and-tips-for-beginners-to-experts-30je)

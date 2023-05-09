@@ -1,4 +1,3 @@
-import DateComponent from '../components/DateComponent';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
@@ -8,7 +7,7 @@ import PostData from '../lib/model/post/PostData';
 import PostUtils from '../lib/utils/PostUtils';
 import ProjectData from '../lib/model/project/ProjectData';
 import ProjectUtils from '../lib/utils/ProjectUtils';
-import PublicationDate from '../components/PublicationDateComponent';
+import { PublicationListItem } from '../components/PublicationListItem';
 import { siteTitle } from '../components/LayoutComponent';
 
 type PropsWrapper = {
@@ -55,13 +54,14 @@ export default function HomeComponent(props: PropsWrapper) {
         <ul className="utils-list">
           {posts.map((postData) => {
             return (
-              <li className="utils-listItem" key={postData.slug}>
-                <Link href={`/blog/${postData.slug}`}>{postData.title}</Link>
-                <br />
-                <small className="utils-lightText">
-                  <PublicationDate published={postData.published} lastUpdated={postData.lastUpdated} />
-                </small>
-              </li>
+              <PublicationListItem
+                key={postData.slug}
+                published={postData.published}
+                updated={postData.lastUpdated}
+                link={`/blog/${postData.slug}`}
+                title={postData.title}
+                tags={postData.tags}
+              />
             );
           })}
         </ul>
@@ -75,13 +75,14 @@ export default function HomeComponent(props: PropsWrapper) {
             const { name, lastUpdated } = wrapper;
 
             return (
-              <li className="utils-listItem" key={name}>
-                <Link href={`/projects/${name}`}>{name}</Link>
-                <br />
-                <small className="utils-lightText">
-                  Last Update: <DateComponent startStr={lastUpdated} endStr={lastUpdated} />
-                </small>
-              </li>
+              <PublicationListItem
+                key={name}
+                published={lastUpdated}
+                updated={lastUpdated}
+                link={`/projects/${name}`}
+                title={name}
+                tags={wrapper.metadata.tags}
+              />
             );
           })}
         </ul>

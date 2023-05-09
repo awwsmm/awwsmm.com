@@ -98,6 +98,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
                       title={logEntry.title}
                       description={logEntry.description}
                       body={undefined}
+                      tags={logEntry.tags}
                     />
                   );
                 } else {
@@ -110,6 +111,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
                       title={logEntry.title}
                       description={logEntry.description}
                       body={contentHtml}
+                      tags={logEntry.tags}
                     />
                   );
                 }

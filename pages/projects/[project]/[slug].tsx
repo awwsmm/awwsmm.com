@@ -26,6 +26,7 @@ export default function Component(wrapper: LogEntryWrapper) {
               title={logEntry.title}
               description={logEntry.description}
               body={contentHtml}
+              tags={logEntry.tags}
             />
           </ul>
         </section>
