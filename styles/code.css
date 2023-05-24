@@ -1,0 +1,59 @@
+/* ---------- begin: style for code blocks ---------- */
+/*  hljs code blocks are <pre><code>...</code></pre>  */
+/*  hljs inline code is <code>...</code>              */
+/*  <code> has class hljs if a language is specified  */
+/*         has no class if language unspecified       */
+/* -------------------------------------------------- */
+
+pre {
+  /* pad the outer class so overflow doesn't occur right at the edge */
+  padding: 1rem;
+  /* default from stackoverflow-dark.min.css */
+  background: #1c1b1b;
+  border-radius: 0.4rem;
+  margin: 1.3rem 0 1.3rem 0;
+}
+
+/* in public/highlight/*.min.css, defaults are set for these */
+pre code.hljs {
+  /* default */
+  display: block;
+  /* default */
+  overflow-x: auto;
+  /* overriding padding: 1em; */
+  padding: 0;
+  /* overriding default */
+  background: inherit;
+}
+
+/* apply these same settings to code blocks with no language as well */
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  background: inherit;
+}
+
+/* these settings are not being overridden and so apply to all code blocks */
+pre code {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  line-height: 1.0rem;
+}
+
+/* end: style for code blocks */
+
+/* begin: style for inline code _only_ -- NOT <code> inside of <pre> */
+
+:not(pre)>code {
+  background: hsla(var(--primary-hue), 40%, 20%, 1.0);
+  color: var(--default-text-color-hsl);
+  margin: 0 0.1rem 0 0.1rem;
+  padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+  border-radius: 0.2rem;
+  position: relative;
+  top: -0.1rem;
+  font-size: 85%;
+}
+
+/* end: style for inline code _only_ -- NOT <code> inside of <pre> */

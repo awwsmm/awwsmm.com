@@ -1,10 +1,10 @@
+import { ContentChip } from '../../components/ContentChip';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import { parseISO } from 'date-fns';
 import ProjectData from '../../lib/model/project/ProjectData';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
-import { PublicationListItem } from '../../components/PublicationListItem';
 import { siteTitle } from '../../components/LayoutComponent';
 
 type PropsWrapper = {
@@ -24,16 +24,15 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
         <ul className="utils-list">
           {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;
-
             return (
-              <PublicationListItem
-                key={name}
-                published={lastUpdated}
-                updated={lastUpdated}
-                link={`/projects/${name}`}
-                title={name}
-                tags={wrapper.metadata.tags}
-              />
+              <li className="publication" key={`/projects/${name}`}>
+                <ContentChip
+                  published={lastUpdated}
+                  title={name}
+                  url={`/projects/${name}`}
+                  hashtags={wrapper.metadata.tags}
+                />
+              </li>
             );
           })}
         </ul>

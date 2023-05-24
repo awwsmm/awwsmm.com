@@ -1,0 +1,14 @@
+.socialShareButtons {
+  text-align: right;
+  margin-top: 2rem;
+}
+
+.socialShareButton {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.socialShareButton button {
+  /* center the buttons vertically */
+  display: flex;
+}

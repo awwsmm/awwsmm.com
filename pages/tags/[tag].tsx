@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { ContentChip } from '../../components/ContentChip';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
-import Link from 'next/link';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
 
@@ -15,11 +15,8 @@ export default function TagPage({ tag, urls }: { tag: string; urls: string[][] }
         <h2 className="utils-headingLg">#{tag}</h2>
         <ul className="utils-list">
           {Array.from(urls, ([type, url, title]) => (
-            <li className="publication">
-              <div className="publication-supertitle">
-                <span className="publication-supertitle-text">a {type}</span>
-              </div>
-              <Link href={url}>{title}</Link>
+            <li className="publication" key={`#${tag}@${url}`}>
+              <ContentChip supertitle={`a ${type}`} title={title} url={url} />
             </li>
           ))}
         </ul>
