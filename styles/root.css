@@ -1,0 +1,9 @@
+:root {
+  /* blue hue used throughout the site */
+  --primary-hue: 231;
+  --accent: var(--primary-hue), 90%, 80%;
+  --default-text-color-hsl: 0, 0%, 80%;
+
+  /* other than here, always use rem: https: //theodorusclarence.com/blog/btb-rem-em */
+  font-size: 18px;
+}

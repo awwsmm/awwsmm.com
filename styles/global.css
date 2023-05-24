@@ -1,25 +1,22 @@
 @import "../public/fonts/fira-code.css";
 @import "../public/highlight/stackoverflow-dark.min.css";
-
-:root {
-  --accent: 231, 90%, 80%;
-  --text-color: 0, 0%, 80%;
-}
+@import "./code.css";
+@import "./root.css";
+@import "./social-share-buttons.css";
+@import "./hashtags.css";
+@import "./content-chip.css";
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* see: https: //github.com/necolas/normalize.css/issues/665 about fonts */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
-  font-size: 18px;
-  --hsl: 231, 40%, 5%;
-  background-color: hsla(var(--hsl), 1.0);
-  color: hsl(var(--text-color));
+  background-color: hsl(var(--primary-hue), 40%, 5%);
+  color: hsl(var(--default-text-color-hsl));
 }
 
 * {
+  /* see: https: //developer.mozilla.org/en-US/docs/Web/CSS/box-sizing */
   box-sizing: border-box;
 }
 
@@ -40,41 +37,6 @@ img {
   max-width: 100%;
   display: block;
 }
-
-pre {
-  border-radius: 0.3em;
-  padding: 1.1rem;
-  line-height: 1.1em;
-  background-color: #1c1b1b;
-  overflow-x: scroll;
-  margin: 1.3em 0 1.3em 0;
-}
-
-code {
-  font-size: 0.75em;
-  font-family: 'Fira Code', monospace;
-}
-
-pre code.hljs {
-  padding: 0;
-}
-
-/* begin: style for inline code _only_ -- NOT <code> inside of <pre> */
-
-.processedMarkdown :not(pre)>code {
-  --alpha: 1.0;
-  --hsl: 231, 40%, 20%;
-  background: hsla(var(--hsl), var(--alpha));
-  color: #ccc;
-  margin: 0 0.1rem 0 0.1rem;
-  padding: 0.1rem 0.3rem 0.1rem 0.3rem;
-  border-radius: 0.2rem;
-  position: relative;
-  top: -0.1rem;
-  font-size: 85%;
-}
-
-/* end: style for inline code _only_ -- NOT <code> inside of <pre> */
 
 .processedMarkdown h1 {
   font-size: 2.0rem;
@@ -265,21 +227,6 @@ em code {
   line-height: 1.5;
 }
 
-.socialShareButtons {
-  text-align: right;
-  margin-top: 2rem;
-}
-
-.socialShareButton {
-  display: inline-block;
-  margin: 0.5rem;
-  margin-left: 0;
-}
-
-.socialShareButton button {
-  display: flex;
-}
-
 /* begin: style for tables in processed markdown */
 .processedMarkdown table {
   margin: auto;
@@ -308,27 +255,15 @@ em code {
   margin: auto;
 }
 
-.hashtags {
-  margin-top: -0.5em;
-}
-
-.hashtag {
-  font-size: 0.75rem;
-}
-
-.hashtag a {
-  color: hsla(var(--accent), 0.6);
-}
-
 .publication-supertitle-text {
   font-size: 0.75rem;
-  color: hsla(var(--text-color), 0.6);
+  color: hsla(var(--default-text-color-hsl), 0.6);
 }
 
 .new-publication-first-published {
   font-size: 0.75rem;
   text-decoration: line-through;
-  color: hsla(var(--text-color), 0.3);
+  color: hsla(var(--default-text-color-hsl), 0.3);
   padding-left: 0.5rem;
 }
 

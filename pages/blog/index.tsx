@@ -1,9 +1,9 @@
+import { ContentChip } from '../../components/ContentChip';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../../components/LayoutComponent';
 import PostData from '../../lib/model/post/PostData';
 import PostUtils from '../../lib/utils/PostUtils';
-import { PublicationListItem } from '../../components/PublicationListItem';
 import { siteTitle } from '../../components/LayoutComponent';
 
 type PropsWrapper = {
@@ -23,14 +23,16 @@ export default function BlogHomeComponent(props: PropsWrapper) {
         <ul className="utils-list">
           {posts.map((postData) => {
             return (
-              <PublicationListItem
-                key={postData.slug}
-                published={postData.published}
-                updated={postData.lastUpdated}
-                link={`/blog/${postData.slug}`}
-                title={postData.title}
-                tags={postData.tags}
-              />
+              <li className="publication" key={`/blog/${postData.slug}`}>
+                <ContentChip
+                  published={postData.published}
+                  updated={postData.published != postData.lastUpdated ? postData.lastUpdated : undefined}
+                  title={postData.title}
+                  subtitle={postData.description}
+                  url={`/blog/${postData.slug}`}
+                  hashtags={postData.tags}
+                />
+              </li>
             );
           })}
         </ul>

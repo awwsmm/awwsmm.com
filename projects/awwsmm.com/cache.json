@@ -1,6 +1,48 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-05-22T13:32:22Z",
+    "message": "Bump @typescript-eslint/parser from 5.59.1 to 5.59.6 (#163)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.59.1 to 5.59.6.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.6/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "53d8b30c6cefa4e1a21bc1b8a2f3edbf97629619",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/53d8b30c6cefa4e1a21bc1b8a2f3edbf97629619"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-22T13:29:28Z",
+    "message": "Bump @octokit/types from 9.2.1 to 9.2.3 (#162)\n\nBumps [@octokit/types](https://github.com/octokit/types.ts) from 9.2.1 to 9.2.3.\r\n- [Release notes](https://github.com/octokit/types.ts/releases)\r\n- [Commits](https://github.com/octokit/types.ts/compare/v9.2.1...v9.2.3)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@octokit/types\"\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "a7f922926f1c591aa9c3a69f1bd4d5875c2f68e5",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/a7f922926f1c591aa9c3a69f1bd4d5875c2f68e5"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-22T13:22:32Z",
+    "message": "Bump @types/node from 18.16.3 to 20.2.3 (#161)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.16.3 to 20.2.3.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-major\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "36317c5552392ccf57e9c4b6d65526020289ef92",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/36317c5552392ccf57e9c4b6d65526020289ef92"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-22T13:19:31Z",
+    "message": "Bump @vercel/analytics from 1.0.0 to 1.0.1 (#160)\n\nBumps [@vercel/analytics](https://github.com/vercel/analytics/tree/HEAD/packages/web) from 1.0.0 to 1.0.1.\r\n- [Release notes](https://github.com/vercel/analytics/releases)\r\n- [Commits](https://github.com/vercel/analytics/commits/1.0.1/packages/web)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@vercel/analytics\"\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "29c506bdeb763490191e36b480971e5ee435e941",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/29c506bdeb763490191e36b480971e5ee435e941"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-22T13:08:30Z",
+    "message": "Bump simple-git from 3.17.0 to 3.18.0 (#156)\n\nBumps [simple-git](https://github.com/steveukx/git-js/tree/HEAD/simple-git) from 3.17.0 to 3.18.0.\r\n- [Release notes](https://github.com/steveukx/git-js/releases)\r\n- [Changelog](https://github.com/steveukx/git-js/blob/main/simple-git/CHANGELOG.md)\r\n- [Commits](https://github.com/steveukx/git-js/commits/simple-git@3.18.0/simple-git)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: simple-git\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "ae8992ec1bb94eafc8bc38c6324e5223b643bf94",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/ae8992ec1bb94eafc8bc38c6324e5223b643bf94"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-05-09T14:53:57Z",
+    "message": "pull project disclaimer out into a method which returns JSX (#155)",
+    "sha": "eb4f5db26b7c57443be7012fe4572c3baa3d4509",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/eb4f5db26b7c57443be7012fe4572c3baa3d4509"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-05-09T14:33:02Z",
     "message": "Bump next from 13.3.1 to 13.4.1 (#142)\n\n* Bump next from 13.3.1 to 13.4.1\r\n\r\nBumps [next](https://github.com/vercel/next.js) from 13.3.1 to 13.4.1.\r\n- [Release notes](https://github.com/vercel/next.js/releases)\r\n- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)\r\n- [Commits](https://github.com/vercel/next.js/compare/v13.3.1...v13.4.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: next\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n* force node version, see https://stackoverflow.com/a/70269965/2925434\r\n\r\n---------\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Andrew William Watson <aww@awwsmm.com>",
     "sha": "1d873d3e2c9ebb07fc4f99dd4843000d71f06945",
@@ -656,47 +698,5 @@
     "message": "multi-line strings blog post, nicer code block styles, bug fixes",
     "sha": "d8453f470258cd44bd0b779b67fb0e83e24ef1ef",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/d8453f470258cd44bd0b779b67fb0e83e24ef1ef"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-11T11:35:27Z",
-    "message": "Merge pull request #26 from awwsmm/development\n\nbig refactor to focus on using JSON-serializable model classes",
-    "sha": "29071c8030e87df66908618004e3971cb87caf83",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/29071c8030e87df66908618004e3971cb87caf83"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-11T11:33:58Z",
-    "message": "big refactor to focus on using JSON-serializable model classes",
-    "sha": "e6216078f922871397e524e3a1f788095b20e759",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/e6216078f922871397e524e3a1f788095b20e759"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-09T13:14:54Z",
-    "message": "Merge pull request #21 from awwsmm/development\n\nmajor cache refactor, improvements",
-    "sha": "abfe288e86f3fdf48a0c7b0613b5e5cdf200edf8",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/abfe288e86f3fdf48a0c7b0613b5e5cdf200edf8"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-09T13:10:45Z",
-    "message": "- added project-specific caches for commits, to prevent redundant GitHub API queries\n- fixed bug with CommitGroups displaying the first commit twice (missing else clause)\n- added a pre-commit hook to update the caches, eliminating the complex workflow\n- changed styling of 'published' and 'lastUpdated' dates for blog posts on index page",
-    "sha": "569a6368f7bd115a13aa219b398b4bf23eab04ad",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/569a6368f7bd115a13aa219b398b4bf23eab04ad"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-06T21:44:19Z",
-    "message": "Merge pull request #20 from awwsmm/development\n\nWhat's Wrong This Time? Part III",
-    "sha": "af35817e7b3ee6762efb5344378d5cbc95acf829",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/af35817e7b3ee6762efb5344378d5cbc95acf829"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2022-03-06T21:42:15Z",
-    "message": "What's Wrong This Time? Part III",
-    "sha": "4733a337d554a6fc14f5e8fd7a00559203e29cd6",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/4733a337d554a6fc14f5e8fd7a00559203e29cd6"
   }
-]
+];

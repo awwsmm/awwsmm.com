@@ -1,0 +1,23 @@
+@import "./root.css";
+
+.content-chip-supertitle {
+  margin-bottom: -0.3rem;
+}
+
+.content-chip-supertitle-bright {
+  font-size: 0.75rem;
+  color: hsla(var(--default-text-color-hsl), 0.6);
+}
+
+.content-chip-supertitle-dark {
+  font-size: 0.75rem;
+  text-decoration: line-through;
+  color: hsla(var(--default-text-color-hsl), 0.3);
+  padding-left: 0.4rem;
+}
+
+.content-chip-subtitle {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 0.1rem;
+}

@@ -6,7 +6,6 @@ export function Hashtags({ tags }: { tags: string[] }) {
       {tags.map((tag) => (
         <span className="hashtag" key={tag}>
           <a href={`/tags/${tag}`}>#{tag}</a>
-          &nbsp;
         </span>
       ))}
     </div>

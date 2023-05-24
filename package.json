@@ -6,9 +6,10 @@
     "deplock": "rm package-lock.json && rm -rf node_modules && npm install",
     "dev": "next dev",
     "hook": "npm run unhook && find git-hooks -maxdepth 1 -type f -exec chmod +x {} \\; -exec ln -sf $(pwd)/{} .git/hooks \\;",
-    "lint": "eslint . --ext .ts --ext .tsx",
-    "lint-and-fix": "eslint . --ext .ts --ext .tsx --fix",
-    "prettier-format": "prettier --config .prettierrc '**/*.{ts,tsx}' --write",
+    "lint": "eslint $(npm run --silent list-new-and-changed-tsx-files)",
+    "lint-and-fix": "eslint --fix $(npm run --silent list-new-and-changed-tsx-files)",
+    "list-new-and-changed-tsx-files": "git diff --name-only --cached --diff-filter=d '*.tsx'",
+    "prettier-format": "prettier --config .prettierrc --write $(npm run --silent list-new-and-changed-tsx-files)",
     "sandbox": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'sandbox.ts'",
     "tests": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
     "unhook": "find .git/hooks -type l -exec unlink {} \\;"

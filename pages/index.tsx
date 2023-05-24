@@ -1,3 +1,4 @@
+import { ContentChip } from '../components/ContentChip';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '../components/LayoutComponent';
@@ -7,7 +8,6 @@ import PostData from '../lib/model/post/PostData';
 import PostUtils from '../lib/utils/PostUtils';
 import ProjectData from '../lib/model/project/ProjectData';
 import ProjectUtils from '../lib/utils/ProjectUtils';
-import { PublicationListItem } from '../components/PublicationListItem';
 import { siteTitle } from '../components/LayoutComponent';
 
 type PropsWrapper = {
@@ -54,14 +54,15 @@ export default function HomeComponent(props: PropsWrapper) {
         <ul className="utils-list">
           {posts.map((postData) => {
             return (
-              <PublicationListItem
-                key={postData.slug}
-                published={postData.published}
-                updated={postData.lastUpdated}
-                link={`/blog/${postData.slug}`}
-                title={postData.title}
-                tags={postData.tags}
-              />
+              <li className="publication" key={`/blog/${postData.slug}`}>
+                <ContentChip
+                  published={postData.published}
+                  updated={postData.published != postData.lastUpdated ? postData.lastUpdated : undefined}
+                  title={postData.title}
+                  url={`/blog/${postData.slug}`}
+                  hashtags={postData.tags}
+                />
+              </li>
             );
           })}
         </ul>
@@ -73,16 +74,15 @@ export default function HomeComponent(props: PropsWrapper) {
         <ul className="utils-list">
           {projects.map((wrapper) => {
             const { name, lastUpdated } = wrapper;
-
             return (
-              <PublicationListItem
-                key={name}
-                published={lastUpdated}
-                updated={lastUpdated}
-                link={`/projects/${name}`}
-                title={name}
-                tags={wrapper.metadata.tags}
-              />
+              <li className="publication" key={`/projects/${name}`}>
+                <ContentChip
+                  published={lastUpdated}
+                  title={name}
+                  url={`/projects/${name}`}
+                  hashtags={wrapper.metadata.tags}
+                />
+              </li>
             );
           })}
         </ul>
