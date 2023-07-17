@@ -2,8 +2,11 @@
 set -e
 
 # don't reformat files which haven't been staged for commit
-printf "Formatting with prettier...\n"
-npm run prettier-format && npm run lint-and-fix
+if [[ $(npm run --silent list-new-and-changed-tsx-files) ]]; then
+  printf "Formatting...\n"
+  npm run prettier-format
+  npm run lint-and-fix
+fi
 
 # don't add files which haven't already been staged for commit
 # also (--diff-filter=d) don't try to add files which have been deleted
