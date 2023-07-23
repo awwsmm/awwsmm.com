@@ -1,19 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
-import Layout from '../../../components/LayoutComponent';
+import ContentPage from '../../../components/ContentPage';
 import { LogEntryComponent } from '../../../components/LogEntryComponent';
 import LogEntryWrapper from '../../../lib/wrappers/LogEntryWrapper';
 import MarkdownUtils from '../../../lib/utils/MarkdownUtils';
 import ProjectUtils from '../../../lib/utils/ProjectUtils';
+import { usePathname } from 'next/navigation';
 
 export default function Component(wrapper: LogEntryWrapper) {
   const { contentHtml, logEntry } = wrapper;
 
   return (
-    <Layout parentName={logEntry.project} parentPath={`/projects/${logEntry.project}`}>
-      <Head>
-        <title>{logEntry.project}</title>
-      </Head>
+    <ContentPage title={logEntry.title} path={usePathname()} description={logEntry.description}>
       <article>
         <h1 className="utils-headingXl">{logEntry.project}</h1>
         <section className="utils-headingMd utils-padding1px">
@@ -31,7 +28,7 @@ export default function Component(wrapper: LogEntryWrapper) {
           </ul>
         </section>
       </article>
-    </Layout>
+    </ContentPage>
   );
 }
 
@@ -42,7 +39,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         project,
         slug,
       },
-    }))
+    })),
   );
 
   return {

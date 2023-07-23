@@ -274,3 +274,30 @@ em code {
 li.publication {
   margin: 0 0 1.25rem;
 }
+
+.breadcrumb {
+  font-size: 0.75rem;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-header-my-name {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.page-header-image {
+  border-radius: 9999px;
+}
+
+.content-page-container {
+  max-width: 40rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
