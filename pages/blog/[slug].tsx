@@ -1,25 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import DateComponent from '../../components/DateComponent';
 import { Hashtags } from '../../components/Hashtags';
-import Head from 'next/head';
-import Layout from '../../components/LayoutComponent';
 import MarkdownUtils from '../../lib/utils/MarkdownUtils';
+import Page from '../../components/Page';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProcessedPostWrapper from '../../lib/wrappers/ProcessedPostWrapper';
-import { SocialButtons } from '../../components/SocialButtons';
+import { usePathname } from 'next/navigation';
 
 export default function PostComponent(post: ProcessedPostWrapper) {
   const { rawPost, htmlContent } = post;
 
   return (
-    <Layout>
-      <Head>
-        <title>{rawPost.title}</title>
-        <link rel="canonical" href={`https://www.awwsmm.com/blog/${rawPost.slug}`} key="canonical" />
-        <meta name="description" content={rawPost.description} key="desc" />
-        <meta property="og:title" content={rawPost.title} />
-        <meta property="og:description" content={rawPost.description} />
-      </Head>
+    <Page title={rawPost.title} path={usePathname()} description={rawPost.description} socialButtons>
       <article className="utils-blogPost">
         <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className="utils-headingMd">{rawPost.description}</h2>
@@ -29,8 +21,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
         <Hashtags tags={rawPost.tags} />
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </article>
-      <SocialButtons path={`blog/${rawPost.slug}`} />
-    </Layout>
+    </Page>
   );
 }
 

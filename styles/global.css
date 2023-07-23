@@ -2,9 +2,10 @@
 @import "../public/highlight/stackoverflow-dark.min.css";
 @import "./code.css";
 @import "./root.css";
-@import "./social-share-buttons.css";
+@import "./social-buttons.css";
 @import "./hashtags.css";
 @import "./content-chip.css";
+@import "./page-header.css";
 
 html,
 body {
@@ -80,42 +81,6 @@ img {
   padding: 0.5rem;
 }
 
-.layout-container {
-  max-width: 40rem;
-  padding: 0 1rem;
-  margin: 3rem auto 6rem;
-}
-
-.layout-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.layout-backToHomeTop {
-  margin: 0;
-}
-
-.layout-backToHomeBottom {
-  margin: 3rem 0 0;
-}
-
-.utils-borderCircle {
-  border-radius: 9999px;
-}
-
-.utils-heading2Xl {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  margin: 1rem 0;
-}
-
-.utils-colorInherit {
-  color: inherit;
-}
-
 .utils-headingLg {
   font-size: 1.5rem;
   line-height: 1.4;
@@ -134,24 +99,9 @@ img {
   font-family: 'Fira Code', Courier, monospace;
 }
 
-.utils-updateTimestamp {
+.commit-group-timestamp {
   font-size: 0.8rem;
   color: #999;
-}
-
-.utils-lastUpdated {
-  color: #666;
-  display: block;
-  font-size: 0.8rem;
-}
-
-.utils-lastUpdated:before {
-  content: "Updated: ";
-}
-
-.utils-published {
-  color: #CCC;
-  display: block;
 }
 
 .utils-blogPost img {
@@ -208,7 +158,7 @@ em code {
   color: #666;
 }
 
-.utils-listItem {
+.commit-group {
   margin: 0 0 1.25rem;
 }
 
@@ -277,23 +227,6 @@ li.publication {
 
 .breadcrumb {
   font-size: 0.75rem;
-}
-
-.page-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.page-header-my-name {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin: 1rem 0;
-  font-weight: bold;
-}
-
-.page-header-image {
-  border-radius: 9999px;
 }
 
 .content-page-container {

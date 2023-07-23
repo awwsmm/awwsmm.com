@@ -1,16 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ContentChip } from '../../components/ContentChip';
-import Head from 'next/head';
-import Layout from '../../components/LayoutComponent';
+import Page from '../../components/Page';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
+import { usePathname } from 'next/navigation';
 
 export default function TagPage({ tag, urls }: { tag: string; urls: string[][] }) {
   return (
-    <Layout>
-      <Head>
-        <title>{tag}</title>
-      </Head>
+    <Page
+      title="Tags"
+      path={usePathname()}
+      description="Topics covered in Andrew Watson's blog posts and programming projects"
+    >
       <section className="utils-headingMd utils-padding1px">
         <h2 className="utils-headingLg">#{tag}</h2>
         <ul className="utils-list">
@@ -21,7 +22,7 @@ export default function TagPage({ tag, urls }: { tag: string; urls: string[][] }
           ))}
         </ul>
       </section>
-    </Layout>
+    </Page>
   );
 }
 

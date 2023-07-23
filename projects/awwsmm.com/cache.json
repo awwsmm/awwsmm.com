@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-07-23T22:16:02Z",
+    "message": "add ContentPage, replacement for LayoutComponent (#214)",
+    "sha": "824a14c57961bf76e70bc34a06100caeb2f3b779",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/824a14c57961bf76e70bc34a06100caeb2f3b779"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-07-17T13:15:30Z",
     "message": "Bump @octokit/types from 10.0.0 to 11.1.0 (#211)\n\nBumps [@octokit/types](https://github.com/octokit/types.ts) from 10.0.0 to 11.1.0.\r\n- [Release notes](https://github.com/octokit/types.ts/releases)\r\n- [Commits](https://github.com/octokit/types.ts/compare/v10.0.0...v11.1.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@octokit/types\"\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-major\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "b51daad7a84dfbfb59e06ee03172ed964930a2da",
@@ -691,12 +698,5 @@
     "message": "Bump @typescript-eslint/parser from 5.56.0 to 5.57.0 (#70)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.56.0 to 5.57.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.57.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "747248f2af09bbf281273e19806f3c01fdddc493",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/747248f2af09bbf281273e19806f3c01fdddc493"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-03T17:21:00Z",
-    "message": "Bump @types/node from 18.15.10 to 18.15.11 (#69)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.15.10 to 18.15.11.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "54f3313d47c11792be473f51da6b866507746c3d",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/54f3313d47c11792be473f51da6b866507746c3d"
   }
 ]

@@ -20,8 +20,8 @@ export default function CommitGroupComponent({
   const oldest = commits[commits.length - 1];
 
   return (
-    <li className="utils-listItem">
-      <small className="utils-updateTimestamp">
+    <li className="commit-group">
+      <small className="commit-group-timestamp">
         <DateComponent startStr={oldest.date} endStr={newest.date} />
       </small>
       <div

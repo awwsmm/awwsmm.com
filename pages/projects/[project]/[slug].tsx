@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import ContentPage from '../../../components/ContentPage';
 import { LogEntryComponent } from '../../../components/LogEntryComponent';
 import LogEntryWrapper from '../../../lib/wrappers/LogEntryWrapper';
 import MarkdownUtils from '../../../lib/utils/MarkdownUtils';
+import Page from '../../../components/Page';
 import ProjectUtils from '../../../lib/utils/ProjectUtils';
 import { usePathname } from 'next/navigation';
 
@@ -10,7 +10,7 @@ export default function Component(wrapper: LogEntryWrapper) {
   const { contentHtml, logEntry } = wrapper;
 
   return (
-    <ContentPage title={logEntry.title} path={usePathname()} description={logEntry.description}>
+    <Page title={logEntry.title} path={usePathname()} description={logEntry.description}>
       <article>
         <h1 className="utils-headingXl">{logEntry.project}</h1>
         <section className="utils-headingMd utils-padding1px">
@@ -28,7 +28,7 @@ export default function Component(wrapper: LogEntryWrapper) {
           </ul>
         </section>
       </article>
-    </ContentPage>
+    </Page>
   );
 }
 

@@ -2,16 +2,16 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Commit from '../../lib/model/project/Commit';
 import CommitGroupComponent from '../../components/CommitGroupComponent';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
-import Head from 'next/head';
-import Layout from '../../components/LayoutComponent';
 import LogEntry from '../../lib/model/project/LogEntry';
 import { LogEntryComponent } from '../../components/LogEntryComponent';
 import LogEntryWrapper from '../../lib/wrappers/LogEntryWrapper';
 import MarkdownUtils from '../../lib/utils/MarkdownUtils';
+import Page from '../../components/Page';
 import { parseISO } from 'date-fns';
 import ProcessedProjectWrapper from '../../lib/wrappers/ProcessedProjectWrapper';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
 import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
+import { usePathname } from 'next/navigation';
 
 export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
   const { name, updates, demoUrl } = project;
@@ -76,10 +76,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
   }
 
   return (
-    <Layout>
-      <Head>
-        <title>{name}</title>
-      </Head>
+    <Page title={name} path={usePathname()} description={`Project page for ${name}`}>
       <article>
         <h1 className="utils-headingXl">{name}</h1>
         {demoUrl !== '' && (
@@ -133,7 +130,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
           {updates.filter((each) => each.type == 'Commit').length == 100 && disclaimer()}
         </section>
       </article>
-    </Layout>
+    </Page>
   );
 }
 
@@ -174,7 +171,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             commit: JSON.parse(JSON.stringify(update)),
           });
         } else throw new Error('unexpected type!');
-      })
+      }),
     );
 
     return {

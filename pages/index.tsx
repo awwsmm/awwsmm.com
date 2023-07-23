@@ -1,14 +1,13 @@
 import { ContentChip } from '../components/ContentChip';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import Layout from '../components/LayoutComponent';
 import Link from 'next/link';
+import Page from '../components/Page';
 import { parseISO } from 'date-fns';
 import PostData from '../lib/model/post/PostData';
 import PostUtils from '../lib/utils/PostUtils';
 import ProjectData from '../lib/model/project/ProjectData';
 import ProjectUtils from '../lib/utils/ProjectUtils';
-import { siteTitle } from '../components/LayoutComponent';
+import { usePathname } from 'next/navigation';
 
 type PropsWrapper = {
   posts: PostData[];
@@ -19,10 +18,12 @@ export default function HomeComponent(props: PropsWrapper) {
   const { posts, projects } = props;
 
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <Page
+      isHomePage
+      title="Andrew Watson"
+      path={usePathname()}
+      description="Andrew Watson's Programming Projects and Blog Posts"
+    >
       <section className="utils-headingMd">
         <p>Hi! I'm Andrew. Welcome to my corner of the Internet.</p>
         <p>
@@ -87,7 +88,7 @@ export default function HomeComponent(props: PropsWrapper) {
           })}
         </ul>
       </section>
-    </Layout>
+    </Page>
   );
 }
 
