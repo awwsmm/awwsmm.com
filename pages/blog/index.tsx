@@ -1,10 +1,9 @@
 import { ContentChip } from '../../components/ContentChip';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import Layout from '../../components/LayoutComponent';
+import Page from '../../components/Page';
 import PostData from '../../lib/model/post/PostData';
 import PostUtils from '../../lib/utils/PostUtils';
-import { siteTitle } from '../../components/LayoutComponent';
+import { usePathname } from 'next/navigation';
 
 type PropsWrapper = {
   posts: PostData[];
@@ -14,10 +13,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
   const { posts } = props;
 
   return (
-    <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <Page title="Blog" path={usePathname()} description="Blog posts on programming written by Andrew Watson">
       <section className="utils-headingMd utils-padding1px">
         <h2 className="utils-headingLg">Blog</h2>
         <ul className="utils-list">
@@ -37,7 +33,7 @@ export default function BlogHomeComponent(props: PropsWrapper) {
           })}
         </ul>
       </section>
-    </Layout>
+    </Page>
   );
 }
 

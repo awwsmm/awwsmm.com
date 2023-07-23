@@ -1,0 +1,24 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-header-my-name {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.page-header-my-name-home {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  margin: 1rem 0;
+}
+
+.page-header-image {
+  border-radius: 9999px;
+}

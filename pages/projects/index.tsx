@@ -1,11 +1,10 @@
 import { ContentChip } from '../../components/ContentChip';
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import Layout from '../../components/LayoutComponent';
+import Page from '../../components/Page';
 import { parseISO } from 'date-fns';
 import ProjectData from '../../lib/model/project/ProjectData';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
-import { siteTitle } from '../../components/LayoutComponent';
+import { usePathname } from 'next/navigation';
 
 type PropsWrapper = {
   projects: ProjectData[];
@@ -15,10 +14,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
   const { projects } = props;
 
   return (
-    <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
+    <Page title="Projects" path={usePathname()} description="A list of Andrew Watson's ongoing programming projects">
       <section className="utils-headingMd utils-padding1px">
         <h2 className="utils-headingLg">Projects</h2>
         <ul className="utils-list">
@@ -37,7 +33,7 @@ export default function ProjectsHomeComponent(props: PropsWrapper) {
           })}
         </ul>
       </section>
-    </Layout>
+    </Page>
   );
 }
 

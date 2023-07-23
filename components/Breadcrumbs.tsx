@@ -5,6 +5,8 @@ export default function Breadcrumbs({ path }: { path: string }) {
   const indices = Array.from(steps.keys());
   const paths = indices.map((index) => '/' + steps.slice(1, index + 1).join('/'));
 
+  const spacer = ' / ';
+
   return (
     <>
       {indices
@@ -16,8 +18,7 @@ export default function Breadcrumbs({ path }: { path: string }) {
         .reduce((a, b) => [
           a,
           <span className="breadcrumb-spacer" key="spacer">
-            {' '}
-            /{' '}
+            {spacer}
           </span>,
           b,
         ])}

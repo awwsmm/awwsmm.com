@@ -1,17 +1,22 @@
 import Breadcrumbs from './Breadcrumbs';
 import Head from 'next/head';
 import PageHeader from './PageHeader';
+import { SocialButtons } from './SocialButtons';
 
-export default function ContentPage({
+export default function Page({
   children,
   title,
   path,
   description,
+  socialButtons,
+  isHomePage,
 }: {
   children: React.ReactNode;
   title: string;
   path: string;
   description: string;
+  socialButtons?: boolean;
+  isHomePage?: boolean;
 }) {
   if (!title) throw new Error('title undefined');
   if (!path) throw new Error('path undefined');
@@ -47,10 +52,11 @@ export default function ContentPage({
           <meta name="description" content={description} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <PageHeader></PageHeader>
-        <Breadcrumbs path={path}></Breadcrumbs>
+        <PageHeader isHomePage={isHomePage}></PageHeader>
+        {isHomePage || <Breadcrumbs path={path}></Breadcrumbs>}
         <main>{children}</main>
-        <Breadcrumbs path={path}></Breadcrumbs>
+        {socialButtons && <SocialButtons path={path} />}
+        {isHomePage || <Breadcrumbs path={path}></Breadcrumbs>}
       </div>
     </>
   );
