@@ -74,7 +74,7 @@ function check_title_length(title: string) {
 
   // eslint-disable-next-line no-console
   if (title.length > 40) console.log('warning: title is getting long (> 40 chars)');
-  if (title.length > 60) throw new Error('title is too long (> 60 characters');
+  if (title.length > 70) throw new Error('title is too long (> 70 characters');
 }
 
 function check_description_length(description: string) {
