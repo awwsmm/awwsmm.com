@@ -3,6 +3,7 @@ import { ContentChip } from '../../components/ContentChip';
 import Page from '../../components/Page';
 import PostUtils from '../../lib/utils/PostUtils';
 import ProjectUtils from '../../lib/utils/ProjectUtils';
+import TagUtils from '../../lib/utils/TagUtils';
 import { usePathname } from 'next/navigation';
 
 export default function TagPage({ tag, urls }: { tag: string; urls: string[][] }) {
@@ -27,23 +28,8 @@ export default function TagPage({ tag, urls }: { tag: string; urls: string[][] }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // get all project names
-  const projectNames = ProjectUtils.getNames();
-
-  // get all hashtags from all projects
-  const projectMetadata = projectNames.flatMap((project) => ProjectUtils.getMetadata(project));
-  const projectTags = projectMetadata.flatMap((meta) => meta.tags);
-
-  // get all hashtags from all project log entries
-  const logEntries = projectNames.flatMap((project) => ProjectUtils.getLogEntries(project));
-  const logEntryTags = logEntries.flatMap((entry) => entry.tags);
-
-  // get all hashtags from all blog posts
-  const posts = PostUtils.getPosts();
-  const postTags = posts.flatMap((post) => post.tags);
-
   // get all unique tags
-  const tags = Array.from(new Set(logEntryTags.concat(postTags).concat(projectTags)));
+  const tags = TagUtils.getTags().map((data) => data.name);
 
   // define a [tag].tsx page for each tag
   const paths = tags.map((tag) => ({

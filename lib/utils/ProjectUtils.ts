@@ -134,9 +134,13 @@ export default abstract class ProjectUtils {
     return FileUtils.getSlugs('.md', ...logDir);
   }
 
-  static getLogData(name: string, fileSlug: string): LogEntry {
-    const logDir = [ProjectUtils.dir, name, 'log'];
-    const fileContents = FileUtils.readFileAt(...logDir, `${fileSlug}.md`);
+  static getLogFilePath(projectName: string, fileSlug: string): string[] {
+    return [ProjectUtils.dir, projectName, 'log', `${fileSlug}.md`];
+  }
+
+  static getLogData(projectName: string, fileSlug: string): LogEntry {
+    const logFilePath = ProjectUtils.getLogFilePath(projectName, fileSlug);
+    const fileContents = FileUtils.readFileAt(...logFilePath);
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
@@ -146,7 +150,7 @@ export default abstract class ProjectUtils {
     const title: string = matterResult.data.title;
     const description: string = matterResult.data.description;
     const tags: string[] = matterResult.data.tags || [];
-    return new LogEntry(name, fileSlug, title, description, date, matterResult.content, tags);
+    return new LogEntry(projectName, fileSlug, title, description, date, matterResult.content, tags);
   }
 
   /**
@@ -159,9 +163,13 @@ export default abstract class ProjectUtils {
     return slugs.map((slug) => ProjectUtils.getLogData(name, slug));
   }
 
-  static getMetadata(name: string): ProjectMetadata {
-    const metadataFile = [ProjectUtils.dir, name, 'metadata.json'];
-    if (!FileUtils.exists(...metadataFile)) return new ProjectMetadata(name);
+  static getMetadataFilePath(projectName: string): string[] {
+    return [ProjectUtils.dir, projectName, 'metadata.json'];
+  }
+
+  static getMetadata(projectName: string): ProjectMetadata {
+    const metadataFile = ProjectUtils.getMetadataFilePath(projectName);
+    if (!FileUtils.exists(...metadataFile)) return new ProjectMetadata(projectName);
     const fileContents = FileUtils.readFileAt(...metadataFile);
     const metadata: ProjectMetadata = JSON.parse(fileContents);
     return metadata;
