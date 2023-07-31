@@ -13,9 +13,13 @@ export default abstract class PostUtils {
     return FileUtils.getSlugs('.md', PostUtils.dir);
   }
 
+  static getFilePath(slug: string) {
+    return [PostUtils.dir, `${slug}.md`];
+  }
+
   // read a post, given its slug, but do no processing
   static getPost(slug: string): Post {
-    const fileContents = FileUtils.readFileAt(PostUtils.dir, `${slug}.md`);
+    const fileContents = FileUtils.readFileAt(...PostUtils.getFilePath(slug));
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);

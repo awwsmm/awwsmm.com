@@ -1,0 +1,72 @@
+[
+  {
+    "name": "esolangs",
+    "description": {
+      "short": "esoteric (programming) languages",
+      "long": "esoteric (programming) languages"
+    }
+  },
+  {
+    "name": "gamedev",
+    "description": {
+      "short": "video game development",
+      "long": "video game development"
+    }
+  },
+  {
+    "name": "git",
+    "description": {
+      "short": "a distributed version control system",
+      "long": "a distributed version control system"
+    }
+  },
+  {
+    "name": "language-design",
+    "description": {
+      "short": "programming language design trade-offs, syntax, and more",
+      "long": "programming language design trade-offs, syntax, and more"
+    }
+  },
+  {
+    "name": "nextjs",
+    "description": {
+      "short": "the React framework which powers this website",
+      "long": "the React framework which powers this website"
+    }
+  },
+  {
+    "name": "python",
+    "description": {
+      "short": "a dynamically-typed, whitespace-sensitive programming language",
+      "long": "a dynamically-typed, whitespace-sensitive programming language"
+    }
+  },
+  {
+    "name": "scala",
+    "description": {
+      "short": "a functional, object-oriented, JVM-targeted programming language",
+      "long": "a functional, object-oriented, JVM-targeted programming language"
+    }
+  },
+  {
+    "name": "shells",
+    "description": {
+      "short": "command-line interfaces like bash, zsh, PowerShell, and more",
+      "long": "command-line interfaces like bash, zsh, PowerShell, and more"
+    }
+  },
+  {
+    "name": "software-development",
+    "description": {
+      "short": "the act of designing, creating, and testing software through programming",
+      "long": "the act of designing, creating, and testing software through programming"
+    }
+  },
+  {
+    "name": "typescript",
+    "description": {
+      "short": "a strongly-typed programming language which transpiles to JavaScript",
+      "long": "a strongly-typed programming language which transpiles to JavaScript"
+    }
+  }
+]
