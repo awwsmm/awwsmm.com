@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Commit from '../../lib/model/project/Commit';
-import CommitGroupComponent from '../../components/CommitGroupComponent';
+import CommitGroup from '../../components/CommitGroup';
 import CommitWrapper from '../../lib/wrappers/CommitWrapper';
 import LogEntry from '../../lib/model/project/LogEntry';
 import { LogEntryComponent } from '../../components/LogEntryComponent';
@@ -123,7 +123,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
                 const commits = wrappers.map((each) => each.commit);
                 const newest = commits[0].sha.slice(0, 7);
                 const oldest = commits[commits.length - 1].sha.slice(0, 7);
-                return <CommitGroupComponent key={`github-commits-${oldest}-${newest}`} commits={commits} />;
+                return <CommitGroup key={`github-commits-${oldest}-${newest}`} commits={commits} />;
               } else throw new Error('unknown project update type');
             })}
           </ul>

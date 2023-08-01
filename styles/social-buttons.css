@@ -1,14 +1,14 @@
-.socialButtons {
+.social-buttons-container {
   text-align: right;
   margin-top: 2rem;
 }
 
-.socialButton {
+.social-buttons-button {
   display: inline-block;
   margin: 0.5rem 0.5rem 0.5rem 0;
 }
 
-.socialButton button {
+.social-buttons-button button {
   /* center the buttons vertically */
   display: flex;
 }

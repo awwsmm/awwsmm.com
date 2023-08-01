@@ -1,6 +1,6 @@
+import { format, parseISO } from 'date-fns';
 import { Hashtags } from './Hashtags';
 import Link from 'next/link';
-import PublicationDate from './PublicationDate';
 import { SocialButtons } from './SocialButtons';
 
 export function LogEntryComponent({
@@ -24,13 +24,20 @@ export function LogEntryComponent({
     return standalone ? div : <Link href={url}>{div}</Link>;
   }
 
+  const formatStr = 'yyyy-MM-dd';
+  const start = format(parseISO(date), formatStr);
+
   return (
     <li className="publication">
-      <PublicationDate published={date} lastUpdated={date} />
-      {titleJSX(<div className="utils-updateTitle" dangerouslySetInnerHTML={{ __html: title }} />)}
-      <div className="utils-updateSubtitle" dangerouslySetInnerHTML={{ __html: description }} />
+      <div className="log-entry-date-outer-container">
+        <span className="log-entry-date-inner-container">
+          <time dateTime={date}>{start}</time>
+        </span>
+      </div>
+      {titleJSX(<div className="log-entry-title" dangerouslySetInnerHTML={{ __html: title }} />)}
+      <div className="log-entry-subtitle" dangerouslySetInnerHTML={{ __html: description }} />
       <Hashtags tags={tags} />
-      {body && <div className="utils-updateBody" dangerouslySetInnerHTML={{ __html: body }} />}
+      {body && <div className="log-entry-body" dangerouslySetInnerHTML={{ __html: body }} />}
       {standalone && <SocialButtons path={`projects/${url}`} />}
     </li>
   );

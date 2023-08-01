@@ -1,13 +1,13 @@
-.hashtags {
+.hashtags-container {
   margin-top: -0.6rem;
 }
 
-.hashtag {
+.hashtags-hashtag {
   font-size: 0.75rem;
   margin-right: 0.3rem;
 }
 
 /* override default link color a[href] from global.css */
-.hashtag a[href] {
+.hashtags-hashtag a[href] {
   color: hsla(var(--accent), 0.7);
 }

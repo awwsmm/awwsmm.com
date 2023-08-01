@@ -32,7 +32,7 @@ export function ContentChip({
   const header = published ? header_as_date(published, updated) : header_as_text(supertitle as string);
 
   return (
-    <div className="content-chip">
+    <div className="content-chip-container">
       {header}
       <Link href={url}>{title}</Link>
       {subtitle && <div className="content-chip-subtitle">{subtitle}</div>}
@@ -51,7 +51,7 @@ function header_as_date(published: string, updated?: string) {
   } else {
     return supertitle(
       supertitle_bright(render_time(updated), 'updated'),
-      supertitle_dark(render_time(published), 'published')
+      supertitle_dark(render_time(published), 'published'),
     );
   }
 }

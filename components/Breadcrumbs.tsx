@@ -11,13 +11,13 @@ export default function Breadcrumbs({ path }: { path: string }) {
     <>
       {indices
         .map<React.ReactNode>((i) => (
-          <Link className="breadcrumb" href={paths[i]} key={'step-' + i}>
+          <Link className="breadcrumbs-breadcrumb" href={paths[i]} key={'step-' + i}>
             {steps[i]}
           </Link>
         ))
         .reduce((a, b) => [
           a,
-          <span className="breadcrumb-spacer" key="spacer">
+          <span className="breadcrumbs-spacer" key="spacer">
             {spacer}
           </span>,
           b,

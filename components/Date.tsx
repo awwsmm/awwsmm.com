@@ -1,6 +1,6 @@
 import { format, parseISO } from 'date-fns';
 
-export default function DateComponent({ startStr, endStr }: { startStr: string; endStr: string }) {
+export default function Date({ startStr, endStr }: { startStr: string; endStr: string }) {
   const formatStr = 'LLLL d, yyyy';
   const start = format(parseISO(startStr), formatStr);
   const end = format(parseISO(endStr), formatStr);

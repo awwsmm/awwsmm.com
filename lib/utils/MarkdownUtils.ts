@@ -30,6 +30,6 @@ export default abstract class MarkdownUtils {
       .process(html)
       .then((vfile) => String(vfile));
 
-    return `<div class="processedMarkdown">${processed}</div>`;
+    return `<div class="processed-markdown">${processed}</div>`;
   }
 }

@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import DateComponent from '../../components/DateComponent';
+import Date from '../../components/Date';
 import { Hashtags } from '../../components/Hashtags';
 import MarkdownUtils from '../../lib/utils/MarkdownUtils';
 import Page from '../../components/Page';
@@ -12,12 +12,10 @@ export default function PostComponent(post: ProcessedPostWrapper) {
 
   return (
     <Page title={rawPost.title} path={usePathname()} description={rawPost.description} socialButtons>
-      <article className="utils-blogPost">
+      <article className="utils-blog-post">
         <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className="utils-headingMd">{rawPost.description}</h2>
-        <div className="utils-lightText">
-          <DateComponent startStr={rawPost.published} endStr={rawPost.lastUpdated} />
-        </div>
+        <Date startStr={rawPost.published} endStr={rawPost.lastUpdated} />
         <Hashtags tags={rawPost.tags} />
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
       </article>
