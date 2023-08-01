@@ -88,7 +88,7 @@ export default abstract class ProjectUtils {
     };
 
     return Promise.resolve(
-      console.log(`Querying GitHub GraphQL API for commits for "${name}"`) // eslint-disable-line no-console
+      console.log(`Querying GitHub GraphQL API for commits for "${name}"`), // eslint-disable-line no-console
     )
       .then<ResponseType>(() => graphql.defaults(init)(input))
       .then((response) => {
@@ -110,7 +110,7 @@ export default abstract class ProjectUtils {
   static readFromCache(name: string): Commit[] {
     const fileContents = FileUtils.readFileAt(...ProjectUtils.cacheFilePaths(name));
     return (JSON.parse(fileContents) as Commit[]).map(
-      ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link)
+      ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link),
     );
   }
 
@@ -125,7 +125,7 @@ export default abstract class ProjectUtils {
       (message) => {
         console.log(`Reading from cache: ${message}`); // eslint-disable-line no-console
         return ProjectUtils.readFromCache(name);
-      }
+      },
     );
   }
 
@@ -207,7 +207,7 @@ export default abstract class ProjectUtils {
           metadata,
         };
       },
-      (reason) => Promise.reject(reason)
+      (reason) => Promise.reject(reason),
     );
   }
 

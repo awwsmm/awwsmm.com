@@ -17,7 +17,7 @@ export default class PostData {
     published: string,
     lastUpdated: string,
     rawContent: string,
-    tags: string[]
+    tags: string[],
   ) {
     this.slug = slug;
     this.title = title;

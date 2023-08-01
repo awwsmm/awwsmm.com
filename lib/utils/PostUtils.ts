@@ -13,7 +13,7 @@ export default abstract class PostUtils {
     return FileUtils.getSlugs('.md', PostUtils.dir);
   }
 
-  static getFilePath(slug: string) {
+  static getFilePath(slug: string): string[] {
     return [PostUtils.dir, `${slug}.md`];
   }
 

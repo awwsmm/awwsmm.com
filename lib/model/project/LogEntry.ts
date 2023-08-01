@@ -17,7 +17,7 @@ export default class LogEntry {
     description: string,
     date: Date,
     body: string,
-    tags: string[]
+    tags: string[],
   );
   constructor(
     project: string,
@@ -26,7 +26,7 @@ export default class LogEntry {
     description: string,
     date: string | Date,
     body: string,
-    tags: string[]
+    tags: string[],
   ) {
     this.project = project;
     this.slug = slug;
