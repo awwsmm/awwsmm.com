@@ -1,0 +1,26 @@
+.log-entry-title {
+  font-size: 1.2rem;
+}
+
+.log-entry-subtitle {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.log-entry-body {
+  margin: 1rem 0 2rem 0;
+  font-size: 1.0rem;
+}
+
+.log-entry-body h3 {
+  margin-top: 2.5rem;
+}
+
+.log-entry-date-inner-container {
+  font-size: 0.75rem;
+  color: hsla(var(--default-text-color-hsl), 0.6);
+}
+
+.log-entry-date-outer-container {
+  margin-bottom: -0.3rem;
+}

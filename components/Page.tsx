@@ -28,7 +28,7 @@ export default function Page({
 
   return (
     <>
-      <div className="content-page-container">
+      <div className="page-container">
         <Head>
           {/* og tags are used by social media bots, meta tags are used by search engines */}
           {/* see: https://webmasters.stackexchange.com/a/118057 */}

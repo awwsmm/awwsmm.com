@@ -1,6 +1,34 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-07-31T15:54:59Z",
+    "message": "Bump @types/node from 20.4.4 to 20.4.5 (#226)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.4.4 to 20.4.5.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "675fa4bcc1bbd3745117210540d31187623f4b4b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/675fa4bcc1bbd3745117210540d31187623f4b4b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-07-31T15:50:58Z",
+    "message": "Bump @typescript-eslint/parser from 6.0.0 to 6.2.0 (#225)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 6.0.0 to 6.2.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v6.2.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "67f4885e55a1644ebd630964b21d600d118f6dba",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/67f4885e55a1644ebd630964b21d600d118f6dba"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-07-31T15:30:25Z",
+    "message": "Bump npm-check-updates from 16.10.16 to 16.10.17 (#224)\n\nBumps [npm-check-updates](https://github.com/raineorshine/npm-check-updates) from 16.10.16 to 16.10.17.\r\n- [Release notes](https://github.com/raineorshine/npm-check-updates/releases)\r\n- [Changelog](https://github.com/raineorshine/npm-check-updates/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/raineorshine/npm-check-updates/compare/v16.10.16...v16.10.17)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: npm-check-updates\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "7c92424e12fb12704b36aeb5c5db7d069bcfc203",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/7c92424e12fb12704b36aeb5c5db7d069bcfc203"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-07-31T15:26:18Z",
+    "message": "add tags index page (#228)",
+    "sha": "eadfe27bb5ea9dd926873302407a1eaf83a1faa7",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/eadfe27bb5ea9dd926873302407a1eaf83a1faa7"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-07-31T10:45:02Z",
     "message": "Bump @typescript-eslint/eslint-plugin from 6.1.0 to 6.2.0 (#223)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 6.1.0 to 6.2.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v6.2.0/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "75f692da236dbeb3d2f2e4dbcf1912976f775101",
@@ -670,33 +698,5 @@
     "message": "Bump eslint from 8.37.0 to 8.38.0 (#89)\n\nBumps [eslint](https://github.com/eslint/eslint) from 8.37.0 to 8.38.0.\r\n- [Release notes](https://github.com/eslint/eslint/releases)\r\n- [Changelog](https://github.com/eslint/eslint/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/eslint/eslint/compare/v8.37.0...v8.38.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: eslint\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "d8db9915ed0b0aa1823970e96347342b9d2f48b8",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/d8db9915ed0b0aa1823970e96347342b9d2f48b8"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-09T16:50:10Z",
-    "message": "move project pages back to static rendering, add 'see more' links to the top and bottom of commit histories, write to cache locally and read from cache remotely (#88)",
-    "sha": "34ee82581280b28da6041b4966da0d423665b885",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/34ee82581280b28da6041b4966da0d423665b885"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-08T15:53:33Z",
-    "message": "make project updates a little less ugly (#86)",
-    "sha": "d6448f174f4215a7bcca0c7fc468882c8bdfb9e0",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d6448f174f4215a7bcca0c7fc468882c8bdfb9e0"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-07T23:42:06Z",
-    "message": "query GitHub and write the response to a cache.json file, fall back to cache.json if GitHub request takes too long, make this timeout tunable (#84)\n\n* query GitHub and write the response to a cache.json file, fall back to cache.json if GitHub request takes too long, make this timeout tunable\r\n\r\n* only write new cache files when running locally",
-    "sha": "927db29fb8cdfb53402d8a7aeff047503ec36ff1",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/927db29fb8cdfb53402d8a7aeff047503ec36ff1"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-07T15:41:18Z",
-    "message": "use GitHub's GraphQL API to minimise data returned from GitHub (#82)",
-    "sha": "f6260bbc9bd1d181fbf3f613a73008f1cfe53e4c",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/f6260bbc9bd1d181fbf3f613a73008f1cfe53e4c"
   }
 ]

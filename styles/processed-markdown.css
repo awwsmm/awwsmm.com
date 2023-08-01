@@ -1,0 +1,54 @@
+.processed-markdown h1 {
+  font-size: 2.0rem;
+  margin-top: 3.0rem;
+}
+
+.processed-markdown h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.processed-markdown h3 {
+  font-size: 1.25rem;
+  margin-top: 2.0rem;
+}
+
+/* begin: collapse margins when <h1> is immediately followed by <h2> (ditto for <h2><h3>) */
+
+.processed-markdown h1+h2 {
+  margin-top: -2.0rem;
+}
+
+.processed-markdown h2+h3 {
+  margin-top: -1.5rem;
+}
+
+/* end: collapse margins when <h1> is immediately followed by <h2> (ditto for <h2><h3>) */
+
+/* begin: style for tables in processed markdown */
+.processed-markdown table {
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.processed-markdown th {
+  border: 1px solid #666;
+  padding: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  background-color: #333;
+}
+
+.processed-markdown td {
+  border: 1px solid #666;
+  padding: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+/* end: style for tables in processed markdown */
+
+/* center-align images horizontally */
+.processed-markdown p img {
+  margin: auto;
+}

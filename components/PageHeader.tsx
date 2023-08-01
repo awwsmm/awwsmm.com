@@ -17,7 +17,7 @@ export default function PageHeader({ isHomePage }: { isHomePage?: boolean }) {
 
   return (
     <>
-      <header className="page-header">
+      <header className="page-header-container">
         {isHomePage ? portrait : <Link href="/">{portrait}</Link>}
         {isHomePage ? (
           <h1 className="page-header-my-name-home">{title}</h1>
