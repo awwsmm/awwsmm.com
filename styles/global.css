@@ -44,10 +44,12 @@ img {
   display: block;
 }
 
+/* used in commit histories on project pages */
 .disclaimer {
   font-size: 60%;
   text-align: center;
-  border: 0.1rem solid grey;
+  border: 0.1rem solid;
+  border-color: var(--project-commit-history-disclaimer-border-color);
   border-radius: 0.3rem;
   padding: 0.5rem;
 }
@@ -66,29 +68,31 @@ img {
   margin: 1rem 0;
 }
 
-.utils-blog-post img {
-  border: 1px solid white;
+.processed-markdown img {
+  border: 1px solid;
+  border-color: var(--processed-markdown-img-border-color);
 }
 
-.utils-blog-post blockquote {
+.processed-markdown blockquote {
   font-style: italic;
-  border-left: 2px solid white;
+  border-left: 2px solid;
+  border-left-color: var(--processed-markdown-blockquote-border-left-color);
   margin-left: 1rem;
   padding-left: 1rem;
 }
 
 /* blockquotes are italic by default, so italic text inside a blockquote should be "un-italic" */
-.utils-blog-post blockquote em {
+.processed-markdown blockquote em {
   font-style: normal;
 }
 
 /* begin: do not italicise code in <em>s, <pre>s, etc. */
 
-.utils-blog-post blockquote pre {
+.processed-markdown blockquote pre {
   font-style: normal;
 }
 
-.utils-blog-post blockquote code {
+.processed-markdown blockquote code {
   font-style: normal;
 }
 

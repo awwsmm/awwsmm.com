@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-08-01T11:52:30Z",
+    "message": "fix bug in LogEntry date display, clean up CSS and components (#230)",
+    "sha": "463d3e807b7c1423c6740cfbba16ccd708f971fd",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/463d3e807b7c1423c6740cfbba16ccd708f971fd"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-07-31T15:54:59Z",
     "message": "Bump @types/node from 20.4.4 to 20.4.5 (#226)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.4.4 to 20.4.5.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "675fa4bcc1bbd3745117210540d31187623f4b4b",
@@ -691,12 +698,5 @@
     "message": "Bump next from 13.2.4 to 13.3.0 (#90)\n\nBumps [next](https://github.com/vercel/next.js) from 13.2.4 to 13.3.0.\r\n- [Release notes](https://github.com/vercel/next.js/releases)\r\n- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)\r\n- [Commits](https://github.com/vercel/next.js/compare/v13.2.4...v13.3.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: next\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "2728dc1d609629b7d915c5a0de62d2d4524dc2d4",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/2728dc1d609629b7d915c5a0de62d2d4524dc2d4"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-10T01:25:26Z",
-    "message": "Bump eslint from 8.37.0 to 8.38.0 (#89)\n\nBumps [eslint](https://github.com/eslint/eslint) from 8.37.0 to 8.38.0.\r\n- [Release notes](https://github.com/eslint/eslint/releases)\r\n- [Changelog](https://github.com/eslint/eslint/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/eslint/eslint/compare/v8.37.0...v8.38.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: eslint\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "d8db9915ed0b0aa1823970e96347342b9d2f48b8",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d8db9915ed0b0aa1823970e96347342b9d2f48b8"
   }
 ]

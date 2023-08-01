@@ -31,16 +31,20 @@
   border-collapse: collapse;
 }
 
+/* used in 20-intriguing-unusual-and-goofy-programming-languages.md */
 .processed-markdown th {
-  border: 1px solid #666;
+  border: 1px solid;
+  border-color: var(--processed-markdown-table-border-color);
   padding: 0.5rem;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
-  background-color: #333;
+  background-color: var(--processed-markdown-th-bg-color);
 }
 
+/* used in 20-intriguing-unusual-and-goofy-programming-languages.md */
 .processed-markdown td {
-  border: 1px solid #666;
+  border: 1px solid;
+  border-color: var(--processed-markdown-table-border-color);
   padding: 0.5rem;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
