@@ -5,11 +5,12 @@
 /*         has no class if language unspecified       */
 /* -------------------------------------------------- */
 
+/* used in elegant-multi-line-shell-strings */
 pre {
   /* pad the outer class so overflow doesn't occur right at the edge */
   padding: 1rem;
   /* default from stackoverflow-dark.min.css */
-  background: #1c1b1b;
+  background: var(--pre-bg-color);
   border-radius: 0.4rem;
   margin: 1.3rem 0 1.3rem 0;
 }

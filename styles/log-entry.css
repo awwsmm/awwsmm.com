@@ -4,7 +4,7 @@
 
 .log-entry-subtitle {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--log-entry-subtitle-color);
 }
 
 .log-entry-body {

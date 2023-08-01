@@ -21,6 +21,6 @@
 
 .content-chip-subtitle {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--content-chip-subtitle-color);
   margin-bottom: 0.1rem;
 }

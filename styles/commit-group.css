@@ -4,12 +4,12 @@
 
 .commit-group-timestamp {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--commit-group-timestamp-color);
 }
 
 .commit-group-commit-range {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--commit-group-commit-range-color);
 }
 
 .commit-group-commit-list {

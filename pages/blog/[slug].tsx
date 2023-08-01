@@ -12,7 +12,7 @@ export default function PostComponent(post: ProcessedPostWrapper) {
 
   return (
     <Page title={rawPost.title} path={usePathname()} description={rawPost.description} socialButtons>
-      <article className="utils-blog-post">
+      <article>
         <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className="utils-headingMd">{rawPost.description}</h2>
         <Date startStr={rawPost.published} endStr={rawPost.lastUpdated} />
