@@ -56,3 +56,31 @@
 .processed-markdown p img {
   margin: auto;
 }
+
+.processed-markdown img {
+  border: 1px solid;
+  border-color: var(--processed-markdown-img-border-color);
+}
+
+.processed-markdown blockquote {
+  font-style: italic;
+  border-left: 2px solid;
+  border-left-color: var(--processed-markdown-blockquote-border-left-color);
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+/* blockquotes are italic by default, so italic text inside a blockquote should be "un-italic" */
+.processed-markdown blockquote em {
+  font-style: normal;
+}
+
+/* begin: do not italicise code in <em>s, <pre>s, etc. */
+
+.processed-markdown blockquote pre {
+  font-style: normal;
+}
+
+.processed-markdown blockquote code {
+  font-style: normal;
+}
