@@ -39,8 +39,9 @@ export default function PageHeader({ isHomePage }: { isHomePage?: boolean }) {
       switchLegend.innerHTML = 'dark mode';
     }
 
-    function switchTheme(e: Event) {
-      if (e.target?.checked) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function switchTheme(e: any) {
+      if (e.target.checked) {
         lightMode();
       } else {
         darkMode();
