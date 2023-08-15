@@ -1,7 +1,8 @@
 :root,
-:root[data-theme="light"] {
+:root[data-theme="dark"] {
   /* blue hue used throughout the site */
   --primary-hue: 231;
+  --primary-background-color: hsl(var(--primary-hue), 40%, 5%);
   --accent: var(--primary-hue), 90%, 80%;
   --default-text-color-hsl: 0, 0%, 80%;
 
@@ -33,30 +34,39 @@
 
   /* other than here, always use rem: https: //theodorusclarence.com/blog/btb-rem-em */
   font-size: 18px;
+
+  --inline-code-background-color: hsla(var(--primary-hue), 40%, 20%, 1.0);
+
+  --pre-code-block-text-color: inherit;
 }
 
-:root[data-theme="dark"] {
-  --primary-hue: 105;
-  --accent: var(--primary-hue), 90%, 80%;
-  --default-text-color-hsl: 0, 0%, 80%;
+:root[data-theme="light"] {
+  --primary-hue: 231;
+  --primary-background-color: hsl(var(--primary-hue), 40%, 95%);
+  --accent: var(--primary-hue), 90%, 30%;
+  --default-text-color-hsl: 0, 0%, 0%;
 
   --processed-markdown-table-border-color: #666;
-  --processed-markdown-th-bg-color: #333;
+  --processed-markdown-th-bg-color: #999;
 
-  --log-entry-subtitle-color: #999;
+  --log-entry-subtitle-color: #333;
 
-  --content-chip-subtitle-color: #999;
+  --content-chip-subtitle-color: #333;
 
-  --commit-group-timestamp-color: #999;
-  --commit-group-commit-range-color: #999;
+  --commit-group-timestamp-color: #333;
+  --commit-group-commit-range-color: #333;
 
   --pre-bg-color: #1c1b1b;
 
-  --processed-markdown-blockquote-border-left-color: #fff;
+  --processed-markdown-blockquote-border-left-color: #000;
 
   --processed-markdown-img-border-color: #fff;
 
   --project-commit-history-disclaimer-border-color: #999;
 
   font-size: 18px;
+
+  --inline-code-background-color: hsla(var(--primary-hue), 40%, 20%, 0.1);
+
+  --pre-code-block-text-color: var(--primary-background-color);
 }

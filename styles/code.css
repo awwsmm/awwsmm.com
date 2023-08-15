@@ -40,6 +40,7 @@ pre code {
   font-family: 'Fira Code', monospace;
   font-size: 0.75rem;
   line-height: 1.0rem;
+  color: var(--pre-code-block-text-color);
 }
 
 /* end: style for code blocks */
@@ -47,7 +48,7 @@ pre code {
 /* begin: style for inline code _only_ -- NOT <code> inside of <pre> */
 
 :not(pre)>code {
-  background: hsla(var(--primary-hue), 40%, 20%, 1.0);
+  background: var(--inline-code-background-color);
   color: var(--default-text-color-hsl);
   margin: 0 0.1rem 0 0.1rem;
   padding: 0.1rem 0.3rem 0.1rem 0.3rem;
