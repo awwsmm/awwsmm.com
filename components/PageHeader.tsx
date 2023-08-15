@@ -22,7 +22,8 @@ export default function PageHeader({ isHomePage }: { isHomePage?: boolean }) {
     const currentTheme = localStorage.getItem('theme') ?? defaultTheme;
     document.documentElement.setAttribute('data-theme', currentTheme);
 
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]') as Element;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]') as any;
     const switchLegend = document.getElementById('theme-switch-legend') as Element;
 
     toggleSwitch.checked = currentTheme === 'light';
