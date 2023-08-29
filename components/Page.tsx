@@ -73,7 +73,7 @@ function check_title_length(title: string) {
   // - https://ahrefs.com/blog/open-graph-meta-tags/
 
   // eslint-disable-next-line no-console
-  if (title.length > 40) console.log('warning: title is getting long (> 40 chars)');
+  if (title.length > 40) console.warn('warning: title is getting long (> 40 chars)');
   if (title.length > 70) throw new Error('title is too long (> 70 characters');
 }
 
@@ -86,6 +86,6 @@ function check_description_length(description: string) {
   // "Facebook will display only about 300 characters of description."
 
   // eslint-disable-next-line no-console
-  if (description.length > 150) console.log('warning: description is getting long (> 150 chars)');
+  if (description.length > 150) console.warn('warning: description is getting long (> 150 chars)');
   if (description.length > 300) throw new Error('description is too long (> 300 characters');
 }

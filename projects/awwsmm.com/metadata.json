@@ -1,5 +1,8 @@
 {
   "project": "awwsmm.com",
+  "repo": {
+    "url": "https://github.com/awwsmm/awwsmm.com"
+  },
   "tags": [
     "typescript",
     "nextjs"

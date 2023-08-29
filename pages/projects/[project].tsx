@@ -14,7 +14,7 @@ import { UpdateWrapper } from '../../lib/wrappers/UpdateWrapper';
 import { usePathname } from 'next/navigation';
 
 export default function ProjectUpdateComponent(project: ProcessedProjectWrapper) {
-  const { name, updates, demoUrl } = project;
+  const { name, updates, demoUrl, repoUrl } = project;
 
   const reducedUpdates = updates.reduce((acc, update) => {
     // each log entry gets its own group
@@ -70,7 +70,7 @@ export default function ProjectUpdateComponent(project: ProcessedProjectWrapper)
       <p className="disclaimer">
         See the complete commit history at
         <br />
-        <a href={`https://github.com/awwsmm/${name}/commits/master`}>{`github.com/awwsmm/${name}`}</a>
+        <a href={`${repoUrl}/commits/master`}>{`${repoUrl.replace('https://', '')}`}</a>
       </p>
     );
   }
@@ -179,6 +179,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         name: params.project,
         updates,
         demoUrl: projectData.metadata.demo?.url || '',
+        repoUrl: projectData.metadata.repo?.url || '',
       },
     };
   });

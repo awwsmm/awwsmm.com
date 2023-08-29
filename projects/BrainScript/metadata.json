@@ -3,6 +3,9 @@
   "demo": {
     "url": "https://npm.runkit.com/brainscript"
   },
+  "repo": {
+    "url": "https://github.com/awwsmm/BrainScript"
+  },
   "tags": [
     "typescript",
     "esolangs"

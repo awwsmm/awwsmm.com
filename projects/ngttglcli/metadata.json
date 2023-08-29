@@ -1,0 +1,9 @@
+{
+  "project": "ngttglcli",
+  "repo": {
+    "url": "https://gitlab.com/awwsmm/ngttglcli"
+  },
+  "tags": [
+    "rust"
+  ]
+}

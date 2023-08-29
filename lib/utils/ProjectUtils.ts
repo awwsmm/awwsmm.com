@@ -30,7 +30,7 @@ export default abstract class ProjectUtils {
     return [ProjectUtils.dir, name, 'cache.json'];
   }
 
-  static async writeToCache(name: string): Promise<void> {
+  static async getGitHubCommits(name: string): Promise<Commit[]> {
     // to pull the GraphQL schema from the REST API, use curl
     // curl -H "Authorization: bearer $GITHUB_PAT" https://api.github.com/graphql > graphql.json
 
@@ -39,14 +39,6 @@ export default abstract class ProjectUtils {
 
     // to get e.g. only the field names, do
     // cat graphql.json | jq '.data.__schema.types[961].fields[] | {name: .name}' > repository-field-names.json
-
-    if (!ProjectUtils.isValidRepositoryName(name)) {
-      return Promise.reject(`repository name is invalid: ${name}`);
-    }
-
-    if (!process.env.FS_WRITE_ACCESS) {
-      return Promise.reject(`will not write to ${name}/cache.json in production`);
-    }
 
     type RateLimit = { rateLimit: { remaining: string; resetAt: string } };
     type ResponseSuccess = GraphQlQueryResponseData & RateLimit;
@@ -101,17 +93,94 @@ export default abstract class ProjectUtils {
         } else {
           return Promise.resolve(mapCommits(response as ResponseSuccess, name));
         }
-      })
-      .then((commits) => {
+      });
+  }
+
+  static async getGitLabCommits(name: string): Promise<Commit[]> {
+    // get a user's ID from their name with
+    //   curl --header "PRIVATE-TOKEN: $GITLAB_PAT" "https://gitlab.com/api/v4/users?username=awwsmm"
+    // see: https://docs.gitlab.com/ee/api/users.html
+
+    // get a user's projects (and those projects' IDs) from their ID with
+    //   curl --header "PRIVATE-TOKEN: $GITLAB_PAT" "https://gitlab.com/api/v4/users/$USER_ID/projects"
+    // see: https://docs.gitlab.com/ee/api/projects.html#list-user-projects
+
+    // get a project's commits with
+    //   curl --header "PRIVATE-TOKEN: $GITLAB_PAT" https://gitlab.com/api/v4/projects/$PROJECT_ID/repository/commits
+    // see: https://docs.gitlab.com/ee/api/commits.html#list-repository-commits
+
+    type Project = { name: string; id: number };
+    type GitLabCommit = { id: string; author_name: string; committed_date: string; message: string; web_url: string };
+
+    const init = {
+      headers: {
+        authorization: `token ${process.env.GITLAB_PAT}`,
+      },
+    };
+
+    const API = 'https://gitlab.com/api/v4';
+    const USER_ID = '2846941';
+
+    async function mapProjects(projects: Project[]): Promise<Commit[]> {
+      const project = projects.find((project) => project.name == name);
+
+      if (project === undefined) {
+        // eslint-disable-next-line no-console
+        console.error(`Cannot find project ${name}`);
+        return [];
+      } else {
+        return fetch(`${API}/projects/${project.id}/repository/commits`, init)
+          .then((res) => res.json())
+          .then((res) => res as GitLabCommit[])
+          .then((commits) =>
+            commits.map((each) => new Commit(name, each.committed_date, each.message, each.id, each.web_url)),
+          );
+      }
+    }
+
+    return fetch(`${API}/users/${USER_ID}/projects`, init)
+      .then((res) => res.json())
+      .then((res) => res as Project[])
+      .then((projects) => mapProjects(projects));
+  }
+
+  static async writeToCache(name: string, url: string | undefined): Promise<void> {
+    if (!ProjectUtils.isValidRepositoryName(name)) {
+      return Promise.reject(`repository name is invalid: ${name}`);
+    }
+
+    if (!process.env.FS_WRITE_ACCESS) {
+      return Promise.reject(`will not write to ${name}/cache.json in production`);
+    }
+
+    if (url === undefined) {
+      return Promise.resolve();
+    } else if (url.includes('github.com/awwsmm')) {
+      return ProjectUtils.getGitHubCommits(name).then((commits) => {
         FileUtils.writeToFile(JSON.stringify(commits, null, 2), ...ProjectUtils.cacheFilePaths(name));
       });
+    } else if (url.includes('gitlab.com/awwsmm')) {
+      return ProjectUtils.getGitLabCommits(name).then((commits) => {
+        FileUtils.writeToFile(JSON.stringify(commits, null, 2), ...ProjectUtils.cacheFilePaths(name));
+      });
+    } else {
+      // eslint-disable-next-line no-console
+      console.error(`Cannot get commits for repo at url ${url}`);
+      return Promise.resolve();
+    }
   }
 
   static readFromCache(name: string): Commit[] {
     const fileContents = FileUtils.readFileAt(...ProjectUtils.cacheFilePaths(name));
-    return (JSON.parse(fileContents) as Commit[]).map(
-      ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link),
-    );
+    try {
+      return (JSON.parse(fileContents) as Commit[]).map(
+        ({ project, date, message, sha, link }) => new Commit(project, date, message, sha, link),
+      );
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(`Could not read commits from cache for ${name}`);
+      return [];
+    }
   }
 
   /**
@@ -119,8 +188,8 @@ export default abstract class ProjectUtils {
    *
    * Commits are returned in reverse chronological order (newest first).
    */
-  static async getCommits(name: string): Promise<Commit[]> {
-    return ProjectUtils.writeToCache(name).then(
+  static async getCommits(name: string, url: string | undefined): Promise<Commit[]> {
+    return ProjectUtils.writeToCache(name, url).then(
       () => ProjectUtils.readFromCache(name),
       (message) => {
         console.log(`Reading from cache: ${message}`); // eslint-disable-line no-console
@@ -176,11 +245,11 @@ export default abstract class ProjectUtils {
   }
 
   static async getProject(name: string): Promise<Project> {
-    return ProjectUtils.getCommits(name).then(
-      (commits) => {
-        const logEntries = ProjectUtils.getLogEntries(name);
-        const metadata = ProjectUtils.getMetadata(name);
+    const logEntries = ProjectUtils.getLogEntries(name);
+    const metadata = ProjectUtils.getMetadata(name);
 
+    return ProjectUtils.getCommits(name, metadata.repo?.url).then(
+      (commits) => {
         // sort commits and entries to find the last updated date
         commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
         logEntries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));

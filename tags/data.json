@@ -42,6 +42,13 @@
     }
   },
   {
+    "name": "rust",
+    "description": {
+      "short": "a highly-performant, but highly-expressive, memory-safe programming language",
+      "long": "a highly-performant, but highly-expressive, memory-safe programming language"
+    }
+  },
+  {
     "name": "scala",
     "description": {
       "short": "a functional, object-oriented, JVM-targeted programming language",

@@ -3,6 +3,9 @@
   "demo": {
     "url": "https://duck.awwsmm.com/"
   },
+  "repo": {
+    "url": "https://github.com/awwsmm/DuckJump"
+  },
   "tags": [
     "gamedev",
     "scala"
