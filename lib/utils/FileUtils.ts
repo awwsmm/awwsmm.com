@@ -29,7 +29,14 @@ export default abstract class FileUtils {
    * @returns the contents of the file as a string
    */
   static readFileAt(...paths: string[]): string {
-    return fs.readFileSync(FileUtils.getPathTo(...paths), 'utf8');
+    const path = FileUtils.getPathTo(...paths);
+    try {
+      return fs.readFileSync(path, 'utf8');
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(`Could not read file at ${path}`);
+      return '';
+    }
   }
 
   /**

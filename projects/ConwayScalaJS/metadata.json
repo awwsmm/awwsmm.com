@@ -3,6 +3,9 @@
   "demo": {
     "url": "https://conway.awwsmm.com/"
   },
+  "repo": {
+    "url": "https://github.com/awwsmm/ConwayScalaJS"
+  },
   "tags": [
     "scala"
   ]

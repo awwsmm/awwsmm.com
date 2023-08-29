@@ -1,0 +1,142 @@
+[
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-28T15:18:23.000-04:00",
+    "message": "update README-DEV to prefer using release.sh, rather than performing release steps manually\n",
+    "sha": "0f58fb70f364dc24abc12dc125b3c419ccef8f8a",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/0f58fb70f364dc24abc12dc125b3c419ccef8f8a"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-28T14:16:44.000-04:00",
+    "message": "0.1.3\n",
+    "sha": "46393cb7f86a5009b09cedc72403d3d7203f7712",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/46393cb7f86a5009b09cedc72403d3d7203f7712"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-28T14:05:36.000-04:00",
+    "message": "add windows executable and instructions\n",
+    "sha": "971b1c957fbfb35fa335dbac5582490498a2b088",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/971b1c957fbfb35fa335dbac5582490498a2b088"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-28T01:19:28.000+00:00",
+    "message": "split contributor guide out from README.md, skip coverage check in some sections of code\n",
+    "sha": "ee693d1c620476b61b35de0e44b2a68d4746cc2f",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/ee693d1c620476b61b35de0e44b2a68d4746cc2f"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-26T18:59:30.000+00:00",
+    "message": "Resolve \"increase test coverage to 6.6%\"\n",
+    "sha": "3113f19d038f0f6b449bba13aca9ff7304aac785",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/3113f19d038f0f6b449bba13aca9ff7304aac785"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-26T14:10:29.000+00:00",
+    "message": "Resolve \"add script to perform release process\"\n",
+    "sha": "c7a4be6fb7c3f911aa3df3380c2e5f47b802d933",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/c7a4be6fb7c3f911aa3df3380c2e5f47b802d933"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-24T21:37:13.000+00:00",
+    "message": "add version bump xtask\n",
+    "sha": "c560a9f9d6c9819f5d5bc96f4f4965c4356ec991",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/c560a9f9d6c9819f5d5bc96f4f4965c4356ec991"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-24T18:49:00.000+00:00",
+    "message": "0.1.2\n",
+    "sha": "dd45a230f0cde17cc6ec3342c011a0222b750acb",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/dd45a230f0cde17cc6ec3342c011a0222b750acb"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-24T12:16:41.000-04:00",
+    "message": "0.1.1\n",
+    "sha": "9a5f428336cd4ec60ef47b239faeb17c421bea4d",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/9a5f428336cd4ec60ef47b239faeb17c421bea4d"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-24T13:25:15.000+00:00",
+    "message": "Resolve \"break lib.rs into separate library files\"\n",
+    "sha": "9a23704a1752f4ee619966356334218d58f1c9b1",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/9a23704a1752f4ee619966356334218d58f1c9b1"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-23T11:29:26.000+00:00",
+    "message": "Merge branch 'NGTT-31766-add-version-diff' into 'master'\n\nNgtt 31766 add version diff\n\nSee merge request improving-andrew/ngttglcli!3",
+    "sha": "d5ab152e54d43e76e59e5cf8407c93a054eeeca2",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/d5ab152e54d43e76e59e5cf8407c93a054eeeca2"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-23T11:29:26.000+00:00",
+    "message": "Ngtt 31766 add version diff\n",
+    "sha": "a7bb1613acbd1ccd11599eecc4b73539440ebd4f",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/a7bb1613acbd1ccd11599eecc4b73539440ebd4f"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-14T14:14:35.000+00:00",
+    "message": "Merge branch '16-add-pipeline' into 'master'\n\nadd .gitlab-ci.yml file\n\nCloses #16\n\nSee merge request improving-andrew/ngttglcli!1",
+    "sha": "1b923216bd2448467aa147ccd13dde89a46c1215",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/1b923216bd2448467aa147ccd13dde89a46c1215"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-14T14:14:35.000+00:00",
+    "message": "add .gitlab-ci.yml file\n",
+    "sha": "0f73d92c04fcde85352fb9e68b239df6e8575f15",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/0f73d92c04fcde85352fb9e68b239df6e8575f15"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-13T19:35:07.000-04:00",
+    "message": "add coverage check and formatting check to pre-push hook\n",
+    "sha": "40338f7b32d7630071147a252c9950782d61a38f",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/40338f7b32d7630071147a252c9950782d61a38f"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-13T19:25:01.000-04:00",
+    "message": "add formatting to README-DEV, format everything, add pre-push hook\n",
+    "sha": "2f4a17448464b7c857ea6451fc5e1d89b8149ffb",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/2f4a17448464b7c857ea6451fc5e1d89b8149ffb"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-13T18:23:42.000-04:00",
+    "message": "add xtask coverage\n",
+    "sha": "fa19fe801532b93a235a85891c796b135783c316",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/fa19fe801532b93a235a85891c796b135783c316"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-08-12T22:08:12.000-04:00",
+    "message": "add dummy xtask\n",
+    "sha": "687269fcc64c4fb32ee5a096b18579c1e9d3d40c",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/687269fcc64c4fb32ee5a096b18579c1e9d3d40c"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-07-17T13:15:16.000-04:00",
+    "message": "rearrange README-DEV to better separate One-Time Setup from Publishing\n",
+    "sha": "451041bef30f3401ea406c74c3325db339707b37",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/451041bef30f3401ea406c74c3325db339707b37"
+  },
+  {
+    "project": "ngttglcli",
+    "date": "2023-07-13T12:46:20.000-04:00",
+    "message": "create GitLab Issues for all TODOs, add link to Issues page in README\n",
+    "sha": "05992bbc814350ac7018a650375b62849125e117",
+    "link": "https://gitlab.com/awwsmm/ngttglcli/-/commit/05992bbc814350ac7018a650375b62849125e117"
+  }
+]
