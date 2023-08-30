@@ -1,3 +1,4 @@
+import 'rehype-parse'; // see: https://github.com/orgs/rehypejs/discussions/150
 import bf from 'highlight.js/lib/languages/brainfuck';
 import lisp from 'highlight.js/lib/languages/lisp';
 import { rehype } from 'rehype';
