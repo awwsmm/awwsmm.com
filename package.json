@@ -24,7 +24,7 @@
     "next-share": "^0.25.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rehype": "^12.0.1",
+    "rehype": "^13.0.1",
     "rehype-document": "^6.1.0",
     "rehype-format": "^4.0.1",
     "rehype-highlight": "^6.0.0",
