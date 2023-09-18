@@ -1,6 +1,132 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2023-09-18T13:03:29Z",
+    "message": "Bump @types/chai from 4.3.5 to 4.3.6 (#272)\n\nBumps [@types/chai](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/chai) from 4.3.5 to 4.3.6.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/chai)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/chai\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "4808f031a869c19ec28a72e69ff8239b0d81066b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/4808f031a869c19ec28a72e69ff8239b0d81066b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-18T13:00:27Z",
+    "message": "Bump @types/node from 20.5.9 to 20.6.2 (#269)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.5.9 to 20.6.2.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "9526dda27fa24853f70dbd211c4cc42f4443d0f6",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/9526dda27fa24853f70dbd211c4cc42f4443d0f6"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-18T12:58:13Z",
+    "message": "Bump npm-check-updates from 16.13.2 to 16.14.4 (#270)\n\nBumps [npm-check-updates](https://github.com/raineorshine/npm-check-updates) from 16.13.2 to 16.14.4.\r\n- [Release notes](https://github.com/raineorshine/npm-check-updates/releases)\r\n- [Changelog](https://github.com/raineorshine/npm-check-updates/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/raineorshine/npm-check-updates/compare/v16.13.2...v16.14.4)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: npm-check-updates\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "7dd73895a2943bc616b191b35f39a9e4aa3cd8b8",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/7dd73895a2943bc616b191b35f39a9e4aa3cd8b8"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-18T12:52:01Z",
+    "message": "Bump @typescript-eslint/parser from 6.5.0 to 6.7.0 (#271)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 6.5.0 to 6.7.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v6.7.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "1c77220ab010b667df3bc38aa4fbc83d8ca8d5e6",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/1c77220ab010b667df3bc38aa4fbc83d8ca8d5e6"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-18T12:44:24Z",
+    "message": "Bump rehype-format from 4.0.1 to 5.0.0 (#268)\n\nBumps [rehype-format](https://github.com/rehypejs/rehype-format) from 4.0.1 to 5.0.0.\r\n- [Release notes](https://github.com/rehypejs/rehype-format/releases)\r\n- [Commits](https://github.com/rehypejs/rehype-format/compare/4.0.1...5.0.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: rehype-format\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-major\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "5c44f94710123559e594c15031437e86b7c0a5b8",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/5c44f94710123559e594c15031437e86b7c0a5b8"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-11T22:44:36Z",
+    "message": "Bump @types/react from 18.2.20 to 18.2.21 (#264)\n\nBumps [@types/react](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/react) from 18.2.20 to 18.2.21.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/react)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/react\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "5f5153ad4352ac78a44124f732e9c5b52675834a",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/5f5153ad4352ac78a44124f732e9c5b52675834a"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-11T22:43:42Z",
+    "message": "Bump eslint from 8.47.0 to 8.49.0 (#263)\n\nBumps [eslint](https://github.com/eslint/eslint) from 8.47.0 to 8.49.0.\r\n- [Release notes](https://github.com/eslint/eslint/releases)\r\n- [Changelog](https://github.com/eslint/eslint/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/eslint/eslint/compare/v8.47.0...v8.49.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: eslint\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "d5af7152f4364110eface3326716e1b6aa13e6c1",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d5af7152f4364110eface3326716e1b6aa13e6c1"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-11T22:40:41Z",
+    "message": "Bump @typescript-eslint/eslint-plugin from 6.3.0 to 6.7.0 (#267)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 6.3.0 to 6.7.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v6.7.0/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "bbad028553da9efd1f2902748531e424b9b2e777",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/bbad028553da9efd1f2902748531e424b9b2e777"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-11T22:37:36Z",
+    "message": "Bump rehype-document from 6.1.0 to 7.0.1 (#265)\n\nBumps [rehype-document](https://github.com/rehypejs/rehype-document) from 6.1.0 to 7.0.1.\r\n- [Release notes](https://github.com/rehypejs/rehype-document/releases)\r\n- [Commits](https://github.com/rehypejs/rehype-document/compare/6.1.0...7.0.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: rehype-document\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-major\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "21e082366e1b223d70ceff02c986632b25e8c72b",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/21e082366e1b223d70ceff02c986632b25e8c72b"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-11T22:26:48Z",
+    "message": "Bump rehype-highlight from 6.0.0 to 7.0.0 (#266)\n\nBumps [rehype-highlight](https://github.com/rehypejs/rehype-highlight) from 6.0.0 to 7.0.0.\r\n- [Release notes](https://github.com/rehypejs/rehype-highlight/releases)\r\n- [Commits](https://github.com/rehypejs/rehype-highlight/compare/6.0.0...7.0.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: rehype-highlight\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-major\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "88a744d4230efea2cfc9162aa759b4ba4d919eec",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/88a744d4230efea2cfc9162aa759b4ba4d919eec"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-04T16:33:03Z",
+    "message": "Bump @types/node from 20.5.7 to 20.5.9 (#260)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.5.7 to 20.5.9.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "c221a07ac545bd27dbeaa60c151125bf27ea67fb",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/c221a07ac545bd27dbeaa60c151125bf27ea67fb"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-04T16:21:40Z",
+    "message": "Bump npm-check-updates from 16.12.2 to 16.13.2 (#261)\n\nBumps [npm-check-updates](https://github.com/raineorshine/npm-check-updates) from 16.12.2 to 16.13.2.\r\n- [Release notes](https://github.com/raineorshine/npm-check-updates/releases)\r\n- [Changelog](https://github.com/raineorshine/npm-check-updates/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/raineorshine/npm-check-updates/compare/v16.12.2...v16.13.2)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: npm-check-updates\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "b167981a300666c318dba4092c379839b93b4812",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/b167981a300666c318dba4092c379839b93b4812"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-09-04T16:13:02Z",
+    "message": "Bump prettier from 3.0.1 to 3.0.3 (#257)\n\nBumps [prettier](https://github.com/prettier/prettier) from 3.0.1 to 3.0.3.\r\n- [Release notes](https://github.com/prettier/prettier/releases)\r\n- [Changelog](https://github.com/prettier/prettier/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/prettier/prettier/compare/3.0.1...3.0.3)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: prettier\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "dbde1aa2065fc7d6ca958bf0af1ab01b4b4af705",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/dbde1aa2065fc7d6ca958bf0af1ab01b4b4af705"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-08-29T01:37:11Z",
+    "message": "Bump @typescript-eslint/parser from 6.4.0 to 6.5.0 (#256)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 6.4.0 to 6.5.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v6.5.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "95876dcf58cddba09fbc5d8bf32df088c5e0b3e5",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/95876dcf58cddba09fbc5d8bf32df088c5e0b3e5"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-08-29T01:34:58Z",
+    "message": "Bump chai from 4.3.7 to 4.3.8 (#251)\n\nBumps [chai](https://github.com/chaijs/chai) from 4.3.7 to 4.3.8.\r\n- [Release notes](https://github.com/chaijs/chai/releases)\r\n- [Changelog](https://github.com/chaijs/chai/blob/4.x.x/History.md)\r\n- [Commits](https://github.com/chaijs/chai/compare/v4.3.7...v4.3.8)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: chai\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "7ddc7df69561ad9e3f01e3754cd64f1e61ba5b73",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/7ddc7df69561ad9e3f01e3754cd64f1e61ba5b73"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-08-29T01:31:57Z",
+    "message": "Bump @types/node from 20.5.1 to 20.5.7 (#250)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.5.1 to 20.5.7.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "b24c00c0f26c4aa1a449faedd733e91f88012be2",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/b24c00c0f26c4aa1a449faedd733e91f88012be2"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-08-29T01:26:34Z",
+    "message": "Bump typescript from 5.1.6 to 5.2.2 (#249)\n\nBumps [typescript](https://github.com/Microsoft/TypeScript) from 5.1.6 to 5.2.2.\r\n- [Release notes](https://github.com/Microsoft/TypeScript/releases)\r\n- [Commits](https://github.com/Microsoft/TypeScript/compare/v5.1.6...v5.2.2)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: typescript\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+    "sha": "40297d117cceb487763d1b02625f16d30a4a10a0",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/40297d117cceb487763d1b02625f16d30a4a10a0"
+  },
+  {
+    "project": "awwsmm.com",
+    "date": "2023-08-29T01:17:48Z",
+    "message": "254 add ngttglcli gitlab project (#255)\n\n* // eslint-disable-next-line no-console\r\n\r\n* add new 'rust' tag\r\n\r\n* remove commented-out class",
+    "sha": "d12e6da98fd422445a246707a3028db820b1ba0f",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/d12e6da98fd422445a246707a3028db820b1ba0f"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2023-08-21T15:17:27Z",
     "message": "Bump @types/node from 20.5.0 to 20.5.1 (#248)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.5.0 to 20.5.1.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
     "sha": "d79e50bdb49ea895361898f5ddbabb28dfbc8de3",
@@ -572,131 +698,5 @@
     "message": "add (hash)tag labels (#151)",
     "sha": "f5c4ca2b8d433cd1aaf1c1240d4bb8119731dc09",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/f5c4ca2b8d433cd1aaf1c1240d4bb8119731dc09"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-08T00:07:14Z",
-    "message": "140-socialbutton-bug-fixes (#141)",
-    "sha": "d366904cbb43d2c655a0444df7996fd52333bcc5",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d366904cbb43d2c655a0444df7996fd52333bcc5"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-07T23:43:29Z",
-    "message": "138-clean-up-layoutcomponent-create-socialbuttons-component (#139)",
-    "sha": "61248d3aa3cacd3426e30e2c9a1ee49b367310fc",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/61248d3aa3cacd3426e30e2c9a1ee49b367310fc"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-07T12:43:04Z",
-    "message": "136-awwsmmcom-log-entry-slow-and-steady-wins-the-race (#137)\n\n* 136-awwsmmcom-log-entry-slow-and-steady-wins-the-race\r\n\r\n* some typos, small changes",
-    "sha": "061a35c5f5143c190181e0fac2e40a0d8c838a24",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/061a35c5f5143c190181e0fac2e40a0d8c838a24"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-01T02:21:09Z",
-    "message": "Bump @types/node from 18.16.0 to 18.16.3 (#135)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.16.0 to 18.16.3.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "eab6d4b8282875b498fbc59ef840508872447d7b",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/eab6d4b8282875b498fbc59ef840508872447d7b"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-01T02:05:22Z",
-    "message": "Bump @types/chai from 4.3.4 to 4.3.5 (#134)\n\nBumps [@types/chai](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/chai) from 4.3.4 to 4.3.5.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/chai)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/chai\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "eaa0a0c02f766d48471573cd81e4f709b10b3090",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/eaa0a0c02f766d48471573cd81e4f709b10b3090"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-01T02:02:39Z",
-    "message": "Bump @octokit/types from 9.0.0 to 9.2.0 (#133)\n\nBumps [@octokit/types](https://github.com/octokit/types.ts) from 9.0.0 to 9.2.0.\r\n- [Release notes](https://github.com/octokit/types.ts/releases)\r\n- [Commits](https://github.com/octokit/types.ts/compare/v9.0.0...v9.2.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@octokit/types\"\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "34411c762de325cd8d413cc86b19937c0fc552e8",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/34411c762de325cd8d413cc86b19937c0fc552e8"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-01T01:48:32Z",
-    "message": "Bump @typescript-eslint/parser from 5.59.0 to 5.59.1 (#132)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.59.0 to 5.59.1.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.1/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "58eecaa7411b01ffd60b5ffc9b41456dfc627aab",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/58eecaa7411b01ffd60b5ffc9b41456dfc627aab"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-05-01T01:43:31Z",
-    "message": "Bump date-fns from 2.29.3 to 2.30.0 (#131)\n\nBumps [date-fns](https://github.com/date-fns/date-fns) from 2.29.3 to 2.30.0.\r\n- [Release notes](https://github.com/date-fns/date-fns/releases)\r\n- [Changelog](https://github.com/date-fns/date-fns/blob/v2.30.0/CHANGELOG.md)\r\n- [Commits](https://github.com/date-fns/date-fns/compare/v2.29.3...v2.30.0)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: date-fns\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "cd5208d53506e59024cbb3e5cc5a50781b891df5",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/cd5208d53506e59024cbb3e5cc5a50781b891df5"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-29T02:37:55Z",
-    "message": "Collapse log entries in project pages if they're at the bottom of the history (#130)",
-    "sha": "e95822a7342eacaf62683d1066e271af5e5d768b",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/e95822a7342eacaf62683d1066e271af5e5d768b"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-26T01:52:06Z",
-    "message": "127 move all file handling stuff into a fileutils class (#128)\n\n* Move all file-handling stuff into a FileUtils class\r\n\r\n* make getPathTo private",
-    "sha": "b056a83a98912e51d1924dccbbf13df28ec89212",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/b056a83a98912e51d1924dccbbf13df28ec89212"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-25T00:35:29Z",
-    "message": "Port Managing Your Python Project with Git and PyBuilder fom Dev.To (#126)",
-    "sha": "7bc9cd1ca8937ffcae9970a7c855e730ef32ca36",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/7bc9cd1ca8937ffcae9970a7c855e730ef32ca36"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-24T22:30:22Z",
-    "message": "Bump prettier from 2.8.7 to 2.8.8 (#120)\n\nBumps [prettier](https://github.com/prettier/prettier) from 2.8.7 to 2.8.8.\r\n- [Release notes](https://github.com/prettier/prettier/releases)\r\n- [Changelog](https://github.com/prettier/prettier/blob/main/CHANGELOG.md)\r\n- [Commits](https://github.com/prettier/prettier/compare/2.8.7...2.8.8)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: prettier\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "d146ca0357ac82c57546bbc3804238764be96e46",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d146ca0357ac82c57546bbc3804238764be96e46"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-24T22:28:29Z",
-    "message": "Bump @typescript-eslint/eslint-plugin from 5.58.0 to 5.59.1 (#124)\n\nBumps [@typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/eslint-plugin) from 5.58.0 to 5.59.1.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.1/packages/eslint-plugin)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/eslint-plugin\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "5277ecca9d916e4fc3d43c49bf6ad42e61a40dde",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/5277ecca9d916e4fc3d43c49bf6ad42e61a40dde"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-24T22:24:45Z",
-    "message": "Bump @types/node from 18.15.11 to 18.16.0 (#121)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 18.15.11 to 18.16.0.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "28dca6668bb9981348dde1e4988407165e845c0a",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/28dca6668bb9981348dde1e4988407165e845c0a"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-24T22:20:13Z",
-    "message": "Bump next from 13.3.0 to 13.3.1 (#119)\n\nBumps [next](https://github.com/vercel/next.js) from 13.3.0 to 13.3.1.\r\n- [Release notes](https://github.com/vercel/next.js/releases)\r\n- [Changelog](https://github.com/vercel/next.js/blob/canary/release.js)\r\n- [Commits](https://github.com/vercel/next.js/compare/v13.3.0...v13.3.1)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: next\r\n  dependency-type: direct:production\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "26d91a248b4ba2dd1617a29324c4db834d1951a1",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/26d91a248b4ba2dd1617a29324c4db834d1951a1"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-24T22:15:39Z",
-    "message": "Bump @typescript-eslint/parser from 5.58.0 to 5.59.0 (#117)\n\nBumps [@typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint/tree/HEAD/packages/parser) from 5.58.0 to 5.59.0.\r\n- [Release notes](https://github.com/typescript-eslint/typescript-eslint/releases)\r\n- [Changelog](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/parser/CHANGELOG.md)\r\n- [Commits](https://github.com/typescript-eslint/typescript-eslint/commits/v5.59.0/packages/parser)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@typescript-eslint/parser\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-minor\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "d2e5b49c10ccb40e12eedd682ddafea34c07f53f",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/d2e5b49c10ccb40e12eedd682ddafea34c07f53f"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-24T22:15:07Z",
-    "message": "add vercel analytics (#123)",
-    "sha": "f599298058d9d13fd8255e108b90ca277ea56dcd",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/f599298058d9d13fd8255e108b90ca277ea56dcd"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-04-23T22:51:55Z",
-    "message": "113-port-20-intriguing-unusual-and-goofy-programming-languages-from-devto (#114)",
-    "sha": "2ee7ab50b2668933533ea45acc9004182aa481a7",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/2ee7ab50b2668933533ea45acc9004182aa481a7"
   }
 ]
