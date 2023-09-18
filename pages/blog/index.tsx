@@ -41,8 +41,8 @@ export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
   const posts: PostData[] = PostUtils.getPosts();
 
-  // sort post wrappers reverse chronologically
-  posts.sort((a, b) => (a.published < b.published ? 1 : -1));
+  // sort post wrappers reverse chronologically by lastUpdated date
+  posts.sort((a, b) => (a.lastUpdated < b.lastUpdated ? 1 : -1));
 
   // send the data to the Home component, above
   return {
