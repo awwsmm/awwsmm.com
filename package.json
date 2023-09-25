@@ -33,7 +33,7 @@
     "remark-gfm": "^3.0.1",
     "remark-html": "^16.0.1",
     "remark-parse": "^10.0.2",
-    "remark-rehype": "^10.1.0",
+    "remark-rehype": "^11.0.0",
     "simple-git": "^3.19.1",
     "to-vfile": "^8.0.0"
   },
