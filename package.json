@@ -38,13 +38,13 @@
     "to-vfile": "^8.0.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.6",
+    "@types/chai": "^4.3.8",
     "@types/mocha": "^10.0.1",
     "@types/node": "^20.6.2",
     "@types/react": "^18.2.24",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
-    "chai": "^4.3.8",
+    "chai": "^4.3.10",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-no-loops": "^0.3.0",
