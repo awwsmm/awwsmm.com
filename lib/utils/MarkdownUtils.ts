@@ -6,6 +6,7 @@ import rehypeStringify from 'rehype-stringify';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import rust from 'highlight.js/lib/languages/rust';
 import scala from 'highlight.js/lib/languages/scala';
 import { unified } from 'unified';
 
@@ -26,7 +27,7 @@ export default abstract class MarkdownUtils {
     // Use rehype-highlight to generate language-specific AST
     const processed = await rehype()
       .data('settings', { fragment: true })
-      .use(rehypeHighlight, { languages: { scala, bf, lisp } })
+      .use(rehypeHighlight, { languages: { scala, bf, lisp, rust } })
       .process(html)
       .then((vfile) => String(vfile));
 

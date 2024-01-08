@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2024-01-08T14:51:37Z",
+    "message": "what-this-senior-developer-learned-from-his-first-big-rust-project",
+    "sha": "28369986cdc3339d5e313ab21b80181215afb411",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/28369986cdc3339d5e313ab21b80181215afb411"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2024-01-07T22:33:30Z",
     "message": "upload graph gif",
     "sha": "45efb0ac7861201dbfd4ecbb177ccb3791548fe5",
@@ -691,12 +698,5 @@
     "message": "fix bug in LogEntry date display, clean up CSS and components (#230)",
     "sha": "463d3e807b7c1423c6740cfbba16ccd708f971fd",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/463d3e807b7c1423c6740cfbba16ccd708f971fd"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-07-31T15:54:59Z",
-    "message": "Bump @types/node from 20.4.4 to 20.4.5 (#226)\n\nBumps [@types/node](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/HEAD/types/node) from 20.4.4 to 20.4.5.\r\n- [Release notes](https://github.com/DefinitelyTyped/DefinitelyTyped/releases)\r\n- [Commits](https://github.com/DefinitelyTyped/DefinitelyTyped/commits/HEAD/types/node)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: \"@types/node\"\r\n  dependency-type: direct:development\r\n  update-type: version-update:semver-patch\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
-    "sha": "675fa4bcc1bbd3745117210540d31187623f4b4b",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/675fa4bcc1bbd3745117210540d31187623f4b4b"
   }
 ]
