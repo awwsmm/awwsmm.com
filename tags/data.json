@@ -21,6 +21,13 @@
     }
   },
   {
+    "name": "IoT",
+    "description": {
+      "short": "the Internet of Things",
+      "long": "the Internet of Things"
+    }
+  },
+  {
     "name": "language-design",
     "description": {
       "short": "programming language design trade-offs, syntax, and more",
