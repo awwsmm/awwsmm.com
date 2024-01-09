@@ -10,7 +10,7 @@ import {
 } from 'next-share';
 
 export function SocialButtons({ path }: { path: string }) {
-  const url = `https://www.awwsmm.com/${path}`;
+  const url = `https://www.awwsmm.com/${path}`.replaceAll('//', '/');
 
   return (
     <div className="social-buttons-container">
