@@ -98,7 +98,7 @@ Even some of these are not strictly necessary. We could
 
 `mdns-sd` and `local-ip-address` are critical; they ensure the `Device`s on the network can connect to one another. `rand` is critical for the `Environment`, and appears only in that crate's dependencies. `plotly` is critical to the Web UI, hosted by the `Controller`, which (as of this writing) shows just a live plot and nothing else.
 
-![The live plot in question.](https://raw.githubusercontent.com/awwsmm/awwsmm.com/master/blog/images/graph.gif)
+![The live plot in question.](https://raw.githubusercontent.com/awwsmm/awwsmm.com/master/blog/images/iot-graph.gif)
 
 Finally, for containerization of services, we used [`rust:alpine`](https://hub.docker.com/_/rust) base image in a [multi-stage build](https://docs.docker.com/build/building/multi-stage/). Only a single dependency needed to be installed in the initial stage, [`musl-dev`](https://pkgs.alpinelinux.org/package/edge/main/armv7/musl-dev), which is required by the `local-ip-address` crate.
 
