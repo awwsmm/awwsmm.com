@@ -1,6 +1,13 @@
 [
   {
     "project": "awwsmm.com",
+    "date": "2024-01-08T15:46:14Z",
+    "message": "rust syntax highlighting",
+    "sha": "c2084331fd8362046c38bf59a434e0434b462b3a",
+    "link": "https://github.com/awwsmm/awwsmm.com/commit/c2084331fd8362046c38bf59a434e0434b462b3a"
+  },
+  {
+    "project": "awwsmm.com",
     "date": "2024-01-08T14:51:37Z",
     "message": "what-this-senior-developer-learned-from-his-first-big-rust-project",
     "sha": "28369986cdc3339d5e313ab21b80181215afb411",
@@ -691,12 +698,5 @@
     "message": "clean up CSS in prep for light mode / dark mode switch (#232)",
     "sha": "c44f3ca95f8344f94c05ba69ff79f1aa00aed74d",
     "link": "https://github.com/awwsmm/awwsmm.com/commit/c44f3ca95f8344f94c05ba69ff79f1aa00aed74d"
-  },
-  {
-    "project": "awwsmm.com",
-    "date": "2023-08-01T11:52:30Z",
-    "message": "fix bug in LogEntry date display, clean up CSS and components (#230)",
-    "sha": "463d3e807b7c1423c6740cfbba16ccd708f971fd",
-    "link": "https://github.com/awwsmm/awwsmm.com/commit/463d3e807b7c1423c6740cfbba16ccd708f971fd"
   }
 ]
