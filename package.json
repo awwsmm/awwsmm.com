@@ -44,7 +44,7 @@
     "@types/react": "^18.2.46",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
-    "chai": "^4.3.10",
+    "chai": "^5.0.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-no-loops": "^0.3.0",
