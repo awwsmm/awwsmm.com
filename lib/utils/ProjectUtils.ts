@@ -254,21 +254,28 @@ export default abstract class ProjectUtils {
         commits.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
         logEntries.sort((a, b) => (parseISO(a.date) < parseISO(b.date) ? 1 : -1));
 
-        const newestCommit = commits[0]?.date;
-        const newestEntry = logEntries[0]?.date;
+        const dateOfLatestCommit: string | undefined = commits[0]?.date;
+        const dateOfLatestEntry: string | undefined = logEntries[0]?.date;
 
         const epoch = new Date(0).toISOString(); // Jan 1, 1970
 
-        // prettier-ignore -- doesn't like unindented final two lines
-        const lastUpdated = newestCommit
-          ? newestEntry
-            ? parseISO(newestCommit) > parseISO(newestEntry)
-              ? newestCommit
-              : newestEntry
-            : newestCommit
-          : newestEntry
-          ? newestEntry
-          : epoch;
+        function laterDate(a: string, b: string): string {
+          return parseISO(a) > parseISO(b) ? a : b;
+        }
+
+        function getLastUpdated(dateOfLatestCommit: string | undefined, dateOfLatestEntry: string | undefined): string {
+          if (dateOfLatestCommit && dateOfLatestEntry) {
+            return laterDate(dateOfLatestCommit, dateOfLatestEntry);
+          } else if (dateOfLatestCommit) {
+            return dateOfLatestCommit;
+          } else if (dateOfLatestEntry) {
+            return dateOfLatestEntry;
+          } else {
+            return epoch;
+          }
+        }
+
+        const lastUpdated = getLastUpdated(dateOfLatestCommit, dateOfLatestEntry);
 
         return {
           name,
