@@ -258,6 +258,8 @@ export default abstract class ProjectUtils {
         const newestEntry = logEntries[0]?.date;
 
         const epoch = new Date(0).toISOString(); // Jan 1, 1970
+
+        // prettier-ignore -- doesn't like unindented final two lines
         const lastUpdated = newestCommit
           ? newestEntry
             ? parseISO(newestCommit) > parseISO(newestEntry)
