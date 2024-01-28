@@ -1,6 +1,5 @@
 import FileUtils from './FileUtils';
 import PostUtils from './PostUtils';
-import ProjectUtils from './ProjectUtils';
 import TagData from '../model/tag/TagData';
 
 /**
@@ -36,25 +35,6 @@ export default abstract class TagUtils {
         throw new Error(`Tag "${tag}" in ${filePath.join('/')} not found in list of tags at ${jsonTagFile}`);
       }
     }
-
-    // get all project names
-    const projectNames = ProjectUtils.getNames();
-
-    // validate hashtags in all projects
-    const projectMetadata = projectNames.flatMap((project) => ProjectUtils.getMetadata(project));
-    projectMetadata.forEach((meta) => {
-      meta.tags.forEach((tag) => {
-        validate(tag, ProjectUtils.getMetadataFilePath(meta.project));
-      });
-    });
-
-    // validate hashtags in all project log entries
-    const logEntries = projectNames.flatMap((project) => ProjectUtils.getLogEntries(project));
-    logEntries.forEach((entry) => {
-      entry.tags.forEach((tag) => {
-        validate(tag, ProjectUtils.getLogFilePath(entry.project, entry.slug));
-      });
-    });
 
     // validate hashtags in all blog posts
     const posts = PostUtils.getPosts();

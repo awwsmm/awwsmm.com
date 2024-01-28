@@ -13,11 +13,7 @@ export default function TagsHomeComponent(props: PropsWrapper) {
   const { tags } = props;
 
   return (
-    <Page
-      title="Tags"
-      path={usePathname()}
-      description="A list of topics covered by Andrew Watson's blog posts and programming projects"
-    >
+    <Page title="Tags" path={usePathname()} description="A list of topics covered by Andrew Watson's blog posts">
       <section className="utils-headingMd utils-padding1px">
         <h2 className="utils-headingLg">Tags</h2>
         <ul className="utils-list">
@@ -36,7 +32,7 @@ export default function TagsHomeComponent(props: PropsWrapper) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  // collect all hashtags from all blog posts, projects, log entries
+  // collect all hashtags from all blog posts
   const tags = TagUtils.getTags();
 
   // sort hashtags alphabetically

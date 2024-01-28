@@ -2,17 +2,12 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ContentChip } from '../../components/ContentChip';
 import Page from '../../components/Page';
 import PostUtils from '../../lib/utils/PostUtils';
-import ProjectUtils from '../../lib/utils/ProjectUtils';
 import TagUtils from '../../lib/utils/TagUtils';
 import { usePathname } from 'next/navigation';
 
 export default function TagPage({ tag, urls }: { tag: string; urls: string[][] }) {
   return (
-    <Page
-      title="Tags"
-      path={usePathname()}
-      description="Topics covered in Andrew Watson's blog posts and programming projects"
-    >
+    <Page title="Tags" path={usePathname()} description="Topics covered in Andrew Watson's blog posts">
       <section className="utils-headingMd utils-padding1px">
         <h2 className="utils-headingLg">#{tag}</h2>
         <ul className="utils-list">
@@ -50,21 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (params && typeof params.tag === 'string') {
     // for each tag...
     const tag: string = params.tag;
-    const projectNames = ProjectUtils.getNames();
-
-    // ...get all projects which use this tag ([type, url, title])
-    const projects = projectNames.filter((project) => ProjectUtils.getMetadata(project).tags.includes(tag));
-    const projectInfo = projects.map((project) => ['project', `/projects/${project}`, project]);
-
-    // ...get all project log entries which use this tag ([type, url, title])
-    const logEntries = projectNames.flatMap((project) => ProjectUtils.getLogEntries(project));
-    const logEntryInfo = logEntries
-      .filter((entry) => entry.tags.includes(tag))
-      .map((entry) => [
-        `project log entry (${entry.project})`,
-        `/projects/${entry.project}/${entry.slug}`,
-        entry.title,
-      ]);
 
     // ...get all blog posts which use this tag
     const posts = PostUtils.getPosts();
@@ -73,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       .map((post) => ['blog post', `/blog/${post.slug}`, post.title]);
 
     // concatenate all URLs so they can be linked to on the [tag].tsx page
-    const urls = projectInfo.concat(logEntryInfo).concat(postInfo);
+    const urls = postInfo;
 
     // passed to TagPage, above
     return {

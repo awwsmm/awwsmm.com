@@ -7,10 +7,8 @@
 @import "./content-chip.css";
 @import "./page-header.css";
 @import "./processed-markdown.css";
-@import "./commit-group.css";
 @import "./breadcrumbs.css";
 @import "./page.css";
-@import "./log-entry.css";
 
 html,
 body {
@@ -42,16 +40,6 @@ a[href]:hover {
 img {
   max-width: 100%;
   display: block;
-}
-
-/* used in commit histories on project pages */
-.disclaimer {
-  font-size: 60%;
-  text-align: center;
-  border: 0.1rem solid;
-  border-color: var(--project-commit-history-disclaimer-border-color);
-  border-radius: 0.3rem;
-  padding: 0.5rem;
 }
 
 .utils-headingLg {
