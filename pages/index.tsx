@@ -40,7 +40,7 @@ export default function HomeComponent(props: PropsWrapper) {
             at Dev.to
           </a>{' '}
           or{' '}
-          <a href="https://mas.to/@awwsmm" target="_blank">
+          <a rel="me" href="https://mas.to/@awwsmm" target="_blank">
             on Mastodon
           </a>
           .
