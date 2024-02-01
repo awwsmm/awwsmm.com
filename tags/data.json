@@ -42,6 +42,13 @@
     }
   },
   {
+    "name": "principles",
+    "description": {
+      "short": "software development principles, advice, and rules of thumb",
+      "long": "software development principles, advice, and rules of thumb"
+    }
+  },
+  {
     "name": "python",
     "description": {
       "short": "a dynamically-typed, whitespace-sensitive programming language",
