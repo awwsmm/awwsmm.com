@@ -6,6 +6,8 @@ lastUpdated: '2024-02-01'
 tags: ['scala', 'principles']
 ---
 
+[[edit history]](https://github.com/awwsmm/awwsmm.com/commits/master/blog/make-invalid-states-unrepresentable.md)
+
 Suppose you have a `Person` class in your program, and that a `Person` has an `age`. What type should the `age` be?
 
 ## `age` as a `String`
@@ -86,7 +88,7 @@ This
 - is easier to read
 - fails fast
 
-You _cannot construct_ an instance of the  `Person` class with a `String` `age` now. That is an invalid state. We have made it unrepresentable, using the type system. The compiler will not allow this program to compile.
+You _cannot construct_ an instance of the  `Person` class with a `String` `age` now. That is an invalid state. We have [made it unrepresentable](https://www.cs.rice.edu/~javaplt/411/23-spring/NewReadings/functional_programming_on_Wall_Street.pdf), using the type system. The compiler will not allow this program to compile.
 
 Problem solved, right?
 
@@ -202,6 +204,79 @@ val weight = Weight(81)
 val me = Person(weight, age) // does not compile!
 ```
 
+We could also use [_tagged types_](https://medium.com/iterators/to-tag-a-type-88dc344bb66c). In Scala, the simplest possible example of this looks something like
+
+```scala
+trait AgeTag
+type Age = Int with AgeTag
+
+object Age {
+  def apply(years: Int): Age = {
+    assert(years >= 0 && years < 150)
+    years.asInstanceOf[Age]
+  }
+}
+
+trait WeightTag
+type Weight = Int with WeightTag
+
+object Weight {
+  def apply(kgs: Int): Weight = {
+    assert(kgs >= 0 && kgs < 500)
+    kgs.asInstanceOf[Weight]
+  }
+}
+
+case class Person(age: Age, weight: Weight)
+
+val p0 = Person(42, 42) // does not compile -- an Int is not an Age
+val p1 = Person(Age(42), 42) // does not compile -- an Int is not a Weight	
+val p2 = Person(Age(42), Weight(42)) // compiles!
+val p3 = Person(Weight(42), Weight(42)) // does not compile -- a Weight is not an Age
+```
+
+This makes use of the fact that function application `f()` is syntactic sugar in Scala for an `apply()` method. So `f()` is equivalent to `f.apply()`.
+
+This approach allows us to model the idea that an `Age` / a `Weight` is an `Int`, but an `Int` is not an `Age` / a `Weight`. This means we can treat an `Age` / a `Weight` _as_ an `Int` and add, subtract, or do whatever other `Int`-like things we want to do.
+
+Mixing these two approaches in one example, you can see the difference between newtypes and tagged types. You must extract the "raw value" from a newtype. You do not need to do this with a tagged type
+
+```scala
+// `Age` is a tagged type
+trait AgeTag
+type Age = Int with AgeTag
+
+object Age {
+  def apply(years: Int): Age = {
+    assert(years >= 0 && years < 150)
+    years.asInstanceOf[Age]
+  }
+}
+
+// `Weight` is a newtype
+case class Weight(kgs: Int) {
+  assert(kgs >= 0 && kgs < 500)
+}
+
+// `Age`s can be treated as `Int`s, because they _are_ `Int`s
+assert(40 == Age(10) + Age(30))
+
+// `Weight`s are not `Int`s, they _contain_ `Int`s
+Weight(10) + Weight(30) // does not compile
+
+// To add `Weight`s, we must "unwrap" them
+Weight(10).kgs + Weight(30).kgs
+```
+
+In some languages, the "unwrapping" of newtypes can be done automatically. This can make newtypes as ergonomic as tagged types. For example, in Scala, this could be done with an _implicit conversion_
+
+```scala
+implicit def weightAsInt(weight: Weight): Int = weight.kgs
+
+// `Weight`s are not `Int`s, but they can be _converted_ to `Int`s
+Weight(10) + Weight(30) // this now compiles
+```
+
 ## Further refinements
 
 The important point of the above discussion is that, as much as possible, we want to _make invalid states unrepresentable_.
@@ -237,7 +312,6 @@ case class Person(dateOfBirth: Date, weight: Weight) {
   }
 }
 ```
-
 
 The amount of information provided by `dateOfBirth` is strictly greater than the amount of information provided by `Age`. We can calculate someone's age from their date of birth, but we cannot do the opposite.
 
