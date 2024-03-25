@@ -34,7 +34,7 @@
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
-    "simple-git": "^3.22.0",
+    "simple-git": "^3.23.0",
     "to-vfile": "^8.0.0"
   },
   "devDependencies": {
