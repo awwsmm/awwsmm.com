@@ -1,5 +1,12 @@
 [
   {
+    "name": "bevy",
+    "description": {
+      "short": "an ECS game engine written entirely in Rust",
+      "long": "an ECS game engine written entirely in Rust"
+    }
+  },
+  {
     "name": "esolangs",
     "description": {
       "short": "esoteric (programming) languages",
