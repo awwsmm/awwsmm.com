@@ -35,7 +35,7 @@ pub unsafe fn read<T>(self) -> T {
 
 The `read` function takes a generic type parameter `T` and uses it in two places: in the body of the function, and as a return type. Programmers who are familiar with generics know that an unconstrained `T` is a placeholder that means "any type"; it could be `String` or `bool` or anything else.
 
-> In languages with a global type hierarchy, like Java, a value `t: T` has _some_ operations which can be performed on it, like `.toString()`, because _every_ type `T` in Java extends the base `Object` type. Rust has no such global type hierarchy, and no root `Object` type, so there's not much at all you can do with an instance of an unconstrainted type.
+> In languages with a global type hierarchy, like Java, a value `t: T` has _some_ operations which can be performed on it, like `.toString()`, because _every_ type `T` in Java extends the base `Object` type. Rust has no such global type hierarchy, and no root `Object` type, so there's not much at all you can do with an instance of an unconstrained type.
 
 Going back to the first example, `const DELTA: i8` clearly already _has_ a type, appearing after the colon, `:`. (It is `i8`, an 8-bit signed integer.) So what is it doing sitting between those angle brackets (`<>`) where generic parameters usually sit?
 
@@ -163,7 +163,7 @@ trait IsOdd<const N: i32> {}
 impl<const N: i32> IsOdd<N> for i32 where Assert<{N % 2 == 1}>: IsTrue {}
 ```
 
-> The above `Assert<{N % 2 == 1}>` requires `#![feature(generic_const_exprs)]` and the `nightly` toolchain. See https://github.com/rust-lang/rust/issues/76560 for more info.
+> The above `Assert<{N % 2 == 1}>` requires <span style="white-space: nowrap;">`#![feature(generic_const_exprs)]`</span> and the `nightly` toolchain. See https://github.com/rust-lang/rust/issues/76560 for more info.
 
 Above, `trait IsOdd` is implemented for the `i32` type, but only on values `N` which satisfy `N % 2 == 1`. We can use this trait to get compile-time checks that constant (hard-coded) `i32` values are odd
 
