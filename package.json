@@ -38,7 +38,7 @@
     "to-vfile": "^8.0.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.12",
+    "@types/chai": "^4.3.14",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.12.2",
     "@types/react": "^18.2.73",
