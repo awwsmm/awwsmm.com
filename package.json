@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@octokit/graphql": "^8.0.1",
-    "@octokit/types": "^12.6.0",
+    "@octokit/types": "^13.1.0",
     "@vercel/analytics": "^1.2.2",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
