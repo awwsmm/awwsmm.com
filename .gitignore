@@ -38,3 +38,7 @@ yarn-error.log*
 .vscode
 
 .eslintcache
+
+# RSS
+public/rss.json
+public/rss.xml

@@ -27,8 +27,8 @@ export default abstract class RSSUtils {
       updated: new Date(posts[0].published), // date of most recently-published post
       generator: 'awesome', // optional, default = 'Feed for Node.js'
       feedLinks: {
-        json: 'https://awwsmm.com/feed.json',
-        rss: 'https://awwsmm.com/feed.xml',
+        json: 'https://awwsmm.com/rss.json',
+        rss: 'https://awwsmm.com/rss.xml',
       },
       author: {
         name: 'Andrew William Watson',
