@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import PostUtils from '../lib/utils/PostUtils';
 
-const EXTERNAL_DATA_URL = 'http://localhost:3000/blog';
+const EXTERNAL_DATA_URL = 'https://awwsmm.com/blog';
 
 // NOTE: only "contentful" pages are added here
 //
@@ -17,7 +17,7 @@ function generateSiteMap(slugs: string[]): string {
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <!--We manually set the one URL we know already-->
      <url>
-       <loc>http://localhost:3000</loc>
+       <loc>https://awwsmm.com</loc>
      </url>
      ${slugs
        .map((slug) => {

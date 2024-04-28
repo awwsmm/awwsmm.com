@@ -6,9 +6,13 @@ import PostUtils from './PostUtils';
 
 export default abstract class RSSUtils {
   static async getRSSFeed(): Promise<Feed> {
-    const posts: PostData[] = PostUtils.getPosts().sort((a, b) =>
-      parseISO(a.published) < parseISO(b.published) ? 1 : -1,
-    );
+    const posts: PostData[] = PostUtils.getPosts()
+      .sort((a, b) => (parseISO(a.published) < parseISO(b.published) ? 1 : -1))
+      .filter(
+        (post) =>
+          // only show published posts (not drafts) in feed
+          parseISO(post.published) < new Date(),
+      );
 
     const feed: Feed = new Feed({
       title: 'awwsmm.com',
