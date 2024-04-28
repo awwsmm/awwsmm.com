@@ -1,5 +1,7 @@
 import { ContentChip } from '../../components/ContentChip';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import Page from '../../components/Page';
 import PostData from '../../lib/model/post/PostData';
 import PostUtils from '../../lib/utils/PostUtils';
@@ -15,7 +17,16 @@ export default function BlogHomeComponent(props: PropsWrapper) {
   return (
     <Page title="Blog" path={usePathname()} description="Blog posts on programming written by Andrew Watson">
       <section className="utils-headingMd utils-padding1px">
-        <h2 className="utils-headingLg">Blog</h2>
+        <h2 className="utils-headingLg">
+          <Link href="rss.xml" target="_blank">
+            <Image priority src="/images/rss.png" className="rss-icon" height={20} width={20} alt={'RSS feed'} />
+          </Link>
+          <Link href="rss.json" target="_blank">
+            <Image priority src="/images/json.png" className="rss-icon" height={20} width={20} alt={'JSON feed'} />
+          </Link>
+          Blog
+        </h2>
+
         <ul className="utils-list">
           {posts.map((postData) => {
             return (

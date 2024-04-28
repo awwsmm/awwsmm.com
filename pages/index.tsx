@@ -1,5 +1,6 @@
 import { ContentChip } from '../components/ContentChip';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import Page from '../components/Page';
 import PostData from '../lib/model/post/PostData';
@@ -47,9 +48,16 @@ export default function HomeComponent(props: PropsWrapper) {
         </p>
       </section>
       <section className="utils-headingMd utils-padding1px">
-        <Link href="blog">
-          <h2 className="utils-headingLg">Blog</h2>
-        </Link>
+        <h2 className="utils-headingLg">
+          <Link href="rss.xml" target="_blank">
+            <Image priority src="/images/rss.png" className="rss-icon" height={20} width={20} alt={'RSS feed'} />
+          </Link>
+          <Link href="rss.json" target="_blank">
+            <Image priority src="/images/json.png" className="rss-icon" height={20} width={20} alt={'JSON feed'} />
+          </Link>
+          <Link href="blog">Blog</Link>
+        </h2>
+
         <ul className="utils-list">
           {posts.map((postData) => {
             return (

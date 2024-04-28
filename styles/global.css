@@ -9,6 +9,7 @@
 @import "./processed-markdown.css";
 @import "./breadcrumbs.css";
 @import "./page.css";
+@import "./rss.css";
 
 html,
 body {
