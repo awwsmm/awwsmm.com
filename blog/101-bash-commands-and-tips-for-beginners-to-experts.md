@@ -1695,7 +1695,7 @@ andrew...
 `uniq` can print unique lines (default) or repeated lines:
 
 ```bash
-[ andrew@pc01 man ]$ printf "1\n2\n2" > a && \> printf "1\n3\n2" > b
+[ andrew@pc01 man ]$ printf "1\n2\n2" > a && \> printf "1\n3\n2" > b
 
 [ andrew@pc01 man ]$ uniq a
 1
