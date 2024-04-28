@@ -39,6 +39,7 @@ yarn-error.log*
 
 .eslintcache
 
-# RSS
+# pages which should be getServerSideProps, but aren't
 public/rss.json
 public/rss.xml
+public/sitemap.xml

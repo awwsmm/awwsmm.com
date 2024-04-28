@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import RSSUtils from '../lib/utils/RSSUtils';
 
 function Placeholder(): void {
-  // getServerSideProps will do the heavy lifting
+  // getStaticProps will do the heavy lifting
 }
 
 // When Next builds this page, it also writes to a public/ file
