@@ -42,6 +42,13 @@
     }
   },
   {
+    "name": "mathematics",
+    "description": {
+      "short": "posts more about mathematics than about programming",
+      "long": "posts more about mathematics than about programming"
+    }
+  },
+  {
     "name": "nextjs",
     "description": {
       "short": "the React framework which powers this website",
