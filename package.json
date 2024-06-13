@@ -6,8 +6,8 @@
     "deplock": "rm package-lock.json && rm -rf node_modules && npm install",
     "dev": "next dev",
     "hook": "npm run unhook && find git-hooks -maxdepth 1 -type f -exec chmod +x {} \\; -exec ln -sf $(pwd)/{} .git/hooks \\;",
-    "lint": "eslint '**/*.ts*'",
-    "lint-and-fix": "eslint --fix '**/*.ts*'",
+    "lint": "eslint .",
+    "lint-and-fix": "eslint --fix .",
     "prettier-format": "prettier --config .prettierrc --write '**/*.ts*'",
     "sandbox": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'sandbox.ts'",
     "tests": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
@@ -21,7 +21,7 @@
     "date-fns": "^3.6.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "next": "^14.2.3",
+    "next": "^14.2.4",
     "next-share": "^0.27.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -35,28 +35,33 @@
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
-    "simple-git": "^3.24.0",
+    "simple-git": "^3.25.0",
     "to-vfile": "^8.0.0"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.1.0",
+    "@eslint/js": "^9.4.0",
     "@types/chai": "^4.3.16",
+    "@types/eslint__js": "^8.42.3",
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@typescript-eslint/parser": "^7.13.0",
     "chai": "^5.1.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.4.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-prettier": "^5.1.3",
     "mocha": "^10.4.0",
     "npm-check-updates": "^16.14.20",
-    "prettier": "^3.3.1",
+    "prettier": "^3.3.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.13.0"
   },
   "engines": {
     "node": ">=16.8.0"
-  }
+  },
+  "type": "module"
 }
