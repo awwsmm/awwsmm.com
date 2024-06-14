@@ -11,7 +11,13 @@ export default function PostComponent(post: ProcessedPostWrapper) {
   const { rawPost, htmlContent } = post;
 
   return (
-    <Page title={rawPost.title} path={usePathname()} description={rawPost.description} socialButtons>
+    <Page
+      title={rawPost.title}
+      path={usePathname()}
+      description={rawPost.description}
+      socialButtons
+      canonicalUrl={rawPost.canonicalUrl}
+    >
       <article>
         <h1 className="utils-headingXl">{rawPost.title}</h1>
         <h2 className="utils-headingMd">{rawPost.description}</h2>

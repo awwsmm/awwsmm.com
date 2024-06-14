@@ -9,6 +9,7 @@ export default class PostData {
   lastUpdated: string;
   rawContent: string;
   tags: string[];
+  canonicalUrl: string | undefined;
 
   constructor(
     slug: string,
@@ -18,6 +19,7 @@ export default class PostData {
     lastUpdated: string,
     rawContent: string,
     tags: string[],
+    canonicalUrl: string | undefined,
   ) {
     this.slug = slug;
     this.title = title;
@@ -26,5 +28,6 @@ export default class PostData {
     this.lastUpdated = lastUpdated;
     this.rawContent = rawContent;
     this.tags = tags;
+    this.canonicalUrl = canonicalUrl;
   }
 }

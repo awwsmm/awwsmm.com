@@ -10,6 +10,7 @@ export default function Page({
   description,
   socialButtons,
   isHomePage,
+  canonicalUrl,
 }: {
   children: React.ReactNode;
   title: string;
@@ -17,6 +18,7 @@ export default function Page({
   description: string;
   socialButtons?: boolean;
   isHomePage?: boolean;
+  canonicalUrl?: string;
 }) {
   if (!title) throw new Error('title undefined');
   if (!path) throw new Error('path undefined');
@@ -24,7 +26,7 @@ export default function Page({
   check_title_length(title);
   check_description_length(description);
 
-  const url = `https://www.awwsmm.com/${path}`;
+  const url = `https://www.awwsmm.com${path}`;
 
   return (
     <>
@@ -40,7 +42,7 @@ export default function Page({
           {/* see: https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls */}
           {/* ignore Next.js documentation here: https://nextjs.org/learn/seo/crawling-and-indexing/canonical */}
           {/* ...<link> has no "key" attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attributes */}
-          <link rel="canonical" href={url} />
+          <link rel="canonical" href={canonicalUrl ? canonicalUrl : url} />
           {/* TODO: add images to content; see ahrefs link above for guidelines */}
           {/* <meta property="og:image" content="example.jpg" /> */}
           <meta property="og:type" content="article" />

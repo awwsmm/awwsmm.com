@@ -29,10 +29,11 @@ export default abstract class PostUtils {
     const description: string = matterResult.data.description;
     const published: string = matterResult.data.published;
     const lastUpdated: string = matterResult.data.lastUpdated;
-    const rawContent = matterResult.content;
-    const tags = matterResult.data.tags || [];
+    const rawContent: string = matterResult.content;
+    const tags: string[] = matterResult.data.tags || [];
+    const canonicalUrl: string | undefined = matterResult.data.canonicalUrl;
 
-    return new Post(slug, title, description, published, lastUpdated, rawContent, tags);
+    return new Post(slug, title, description, published, lastUpdated, rawContent, tags, canonicalUrl);
   }
 
   static getPosts(): Post[] {
@@ -54,6 +55,7 @@ export default abstract class PostUtils {
         lastUpdated: post.lastUpdated,
         rawContent: post.rawContent,
         tags: post.tags,
+        canonicalUrl: post.canonicalUrl,
       };
     });
 

@@ -4,6 +4,7 @@ description: 'Use types and let the compiler do the hard work of data validation
 published: '2024-02-01'
 lastUpdated: '2024-02-01'
 tags: ['scala', 'principles']
+canonicalUrl: "https://www.improving.com/thoughts/make-invalid-states-unrepresentable"
 ---
 
 [[edit history]](https://github.com/awwsmm/awwsmm.com/commits/master/blog/make-invalid-states-unrepresentable.md)

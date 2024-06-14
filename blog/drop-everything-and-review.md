@@ -4,6 +4,7 @@ description: 'On prioritizing code review when developing software'
 published: '2024-04-22'
 lastUpdated: '2024-04-22'
 tags: ['principles', 'software-development']
+canonicalUrl: "https://www.improving.com/thoughts/drop-everything-and-review"
 ---
 
 ## The Inner and Outer Development Loops
