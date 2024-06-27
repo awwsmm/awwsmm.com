@@ -2,7 +2,6 @@
 title: "What's Wrong This Time? Part III: The Deep End"
 description: "Debugging a New Feature in a Vercel TypeScript GitHub Repo"
 published: '2022-03-06'
-lastUpdated: '2022-03-06'
 ---
 
 **Part III: The Deep End**

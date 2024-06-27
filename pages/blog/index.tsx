@@ -33,7 +33,6 @@ export default function BlogHomeComponent(props: PropsWrapper) {
               <li className="publication" key={`/blog/${postData.slug}`}>
                 <ContentChip
                   published={postData.published}
-                  updated={postData.published != postData.lastUpdated ? postData.lastUpdated : undefined}
                   title={postData.title}
                   subtitle={postData.description}
                   url={`/blog/${postData.slug}`}
@@ -52,8 +51,8 @@ export const getStaticProps: GetStaticProps = async () => {
   // collect all post info into wrapper type
   const posts: PostData[] = PostUtils.getPosts();
 
-  // sort post wrappers reverse chronologically by lastUpdated date
-  posts.sort((a, b) => (a.lastUpdated < b.lastUpdated ? 1 : -1));
+  // sort post wrappers reverse chronologically by published date
+  posts.sort((a, b) => (a.published < b.published ? 1 : -1));
 
   // send the data to the Home component, above
   return {

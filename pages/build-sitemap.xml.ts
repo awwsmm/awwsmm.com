@@ -23,12 +23,12 @@ function generateSiteMap(posts: PostData[]): string {
         <loc>https://awwsmm.com</loc>
         <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
     </url>${posts
-      .sort((a, b) => (a.lastUpdated < b.lastUpdated ? 1 : -1))
+      .sort((a, b) => (a.published < b.published ? 1 : -1))
       .map((post) => {
         return `
     <url>
         <loc>${`${EXTERNAL_DATA_URL}/${post.slug}`}</loc>
-        <lastmod>${post.lastUpdated}</lastmod>
+        <lastmod>${post.published}</lastmod>
     </url>`;
       })
       .join('')}

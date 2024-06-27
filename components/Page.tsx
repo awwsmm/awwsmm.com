@@ -11,6 +11,7 @@ export default function Page({
   socialButtons,
   isHomePage,
   canonicalUrl,
+  ogImageUrl,
 }: {
   children: React.ReactNode;
   title: string;
@@ -19,6 +20,7 @@ export default function Page({
   socialButtons?: boolean;
   isHomePage?: boolean;
   canonicalUrl?: string;
+  ogImageUrl?: string;
 }) {
   if (!title) throw new Error('title undefined');
   if (!path) throw new Error('path undefined');
@@ -27,6 +29,7 @@ export default function Page({
   check_description_length(description);
 
   const url = `https://www.awwsmm.com${path}`;
+  const imageUrl = `https://www.awwsmm.com${ogImageUrl}`;
 
   return (
     <>
@@ -43,8 +46,8 @@ export default function Page({
           {/* ignore Next.js documentation here: https://nextjs.org/learn/seo/crawling-and-indexing/canonical */}
           {/* ...<link> has no "key" attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attributes */}
           <link rel="canonical" href={canonicalUrl ? canonicalUrl : url} />
-          {/* TODO: add images to content; see ahrefs link above for guidelines */}
-          {/* <meta property="og:image" content="example.jpg" /> */}
+          <meta property="og:image" content={imageUrl} />
+          {/* No og:image:alt? https://yoast.com/developer-blog/why-we-dont-set-the-og-image-alt-tag/ */}
           <meta property="og:type" content="article" />
           {/* TODO: add og tags to all other pages, not just content pages; see ahrefs above */}
           <meta property="og:description" content={description} />

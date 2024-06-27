@@ -2,7 +2,6 @@
 title: "What's Wrong This Time? A Debugging Mystery in Three Parts"
 description: "Debugging a New Feature in a Vercel TypeScript GitHub Repo"
 published: '2022-01-16'
-lastUpdated: '2022-01-23'
 tags: ['git']
 ---
 

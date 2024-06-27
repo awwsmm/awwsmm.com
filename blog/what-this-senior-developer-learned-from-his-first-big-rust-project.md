@@ -2,7 +2,6 @@
 title: "What This Senior Developer Learned From His First Big Rust Project"
 description: "Building a Rust IoT MVP over the Holidays"
 published: '2024-01-08'
-lastUpdated: '2024-01-08'
 tags: ['rust', 'IoT']
 canonicalUrl: "https://www.improving.com/thoughts/what-this-senior-developer-learned-from-his-first-big-rust-project"
 ---

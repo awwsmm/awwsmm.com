@@ -2,7 +2,6 @@
 title: "What's Wrong This Time? Part II: Electric Bugaloo"
 description: "Debugging a New Feature in a Vercel TypeScript GitHub Repo"
 published: '2022-01-23'
-lastUpdated: '2022-03-06'
 ---
 
 **Part II: The Bugs**

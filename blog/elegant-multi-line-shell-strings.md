@@ -2,7 +2,6 @@
 title: 'Elegant Multi-Line Shell Strings'
 description: 'Ergonomic Multi-Line Strings for bash, zsh, and Other Shells'
 published: '2022-03-17'
-lastUpdated: '2022-03-17'
 tags: ['shells']
 ---
 

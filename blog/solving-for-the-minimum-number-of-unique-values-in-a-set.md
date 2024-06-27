@@ -2,7 +2,6 @@
 title: 'Solving for the Minimum Number of Unique Values in a Set'
 description: 'Given only inequality relationships between members of the set'
 published: '2024-04-29'
-lastUpdated: '2024-04-29'
 tags: ['scala', 'mathematics']
 ---
 

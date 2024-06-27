@@ -7,3 +7,20 @@
 #theme-switch-legend {
   font-size: 0.75rem;
 }
+
+.hero-image {
+  border: 1px solid hsl(var(--primary-hue), 40%, 95%);
+  outline: 1px solid hsl(var(--primary-hue), 40%, 5%);
+  /* border-color: hsl(var(--accent)); */
+  margin: 0px 0px 20px 0px;
+}
+
+.commit-history-link {
+  font-size: 0.75rem;
+  vertical-align: text-top;
+  float: right;
+}
+
+.blog-post-fold {
+  margin: 20px 0px 20px 0px;
+}

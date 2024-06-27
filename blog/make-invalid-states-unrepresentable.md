@@ -1,13 +1,12 @@
 ---
 title: 'Make Invalid States Unrepresentable'
-description: 'Use types and let the compiler do the hard work of data validation for you'
+description: 'Let the compiler do the hard work of data validation for you'
 published: '2024-02-01'
-lastUpdated: '2024-02-01'
 tags: ['scala', 'principles']
 canonicalUrl: "https://www.improving.com/thoughts/make-invalid-states-unrepresentable"
+ogImageUrl: "/images/blog/make-invalid-states-unrepresentable.jpg"
+ogImageAltText: "Penrose Triangle optical illusion created out wafer biscuits. Image by Emmanuel Lefebvre from Pixabay."
 ---
-
-[[edit history]](https://github.com/awwsmm/awwsmm.com/commits/master/blog/make-invalid-states-unrepresentable.md)
 
 Suppose you have a `Person` class in your program, and that a `Person` has an `age`. What type should the `age` be?
 

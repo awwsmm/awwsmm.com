@@ -17,7 +17,6 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
       return {
         slug: slug,
         published: post.published,
-        lastUpdated: post.lastUpdated,
         title: post.title,
         description: post.description,
         rawContent: post.rawContent,

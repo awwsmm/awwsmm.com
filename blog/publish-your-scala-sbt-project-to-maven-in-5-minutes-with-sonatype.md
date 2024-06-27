@@ -2,7 +2,6 @@
 title: 'Publish your Scala sbt Project to Maven in 5 Minutes with Sonatype'
 description: 'Quickly and Easily Publish Your Scala Code for Use in Other Projects'
 published: '2021-07-13'
-lastUpdated: '2023-09-18'
 tags: ['scala']
 ---
 

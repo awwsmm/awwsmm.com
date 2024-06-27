@@ -6,28 +6,31 @@ export default class PostData {
   title: string;
   description: string;
   published: string;
-  lastUpdated: string;
   rawContent: string;
   tags: string[];
   canonicalUrl: string | undefined;
+  ogImageUrl: string | undefined;
+  ogImageAltText: string | undefined;
 
   constructor(
     slug: string,
     title: string,
     description: string,
     published: string,
-    lastUpdated: string,
     rawContent: string,
     tags: string[],
     canonicalUrl: string | undefined,
+    ogImageUrl: string | undefined,
+    ogImageAltText: string | undefined,
   ) {
     this.slug = slug;
     this.title = title;
     this.description = description;
     this.published = published;
-    this.lastUpdated = lastUpdated;
     this.rawContent = rawContent;
     this.tags = tags;
     this.canonicalUrl = canonicalUrl;
+    this.ogImageUrl = ogImageUrl;
+    this.ogImageAltText = ogImageAltText;
   }
 }

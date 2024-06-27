@@ -2,7 +2,6 @@
 title: 'What Are Const Generics and How Are They Used in Rust?'
 description: 'Understanding const generics in the Rust programming language with a few examples'
 published: '2024-03-25'
-lastUpdated: '2024-03-25'
 tags: ['rust', 'bevy']
 ---
 
