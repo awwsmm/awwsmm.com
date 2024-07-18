@@ -39,7 +39,7 @@
     "to-vfile": "^8.0.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.1.0",
+    "@eslint/compat": "^1.1.1",
     "@eslint/js": "^9.7.0",
     "@types/chai": "^4.3.16",
     "@types/eslint__js": "^8.42.3",
