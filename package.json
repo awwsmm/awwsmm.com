@@ -53,7 +53,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "mocha": "^10.7.0",
+    "mocha": "^10.7.3",
     "npm-check-updates": "^17.0.3",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
