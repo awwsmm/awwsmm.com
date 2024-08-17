@@ -4,7 +4,7 @@ description: 'Let the compiler do the hard work of data validation for you'
 published: '2024-02-01'
 tags: ['scala', 'principles']
 canonicalUrl: "https://www.improving.com/thoughts/make-invalid-states-unrepresentable"
-ogImageUrl: "/images/blog/make-invalid-states-unrepresentable.jpg"
+ogImageUrl: "/blog/make-invalid-states-unrepresentable/banner.jpg"
 ogImageAltText: "Penrose Triangle optical illusion created out wafer biscuits. Image by Emmanuel Lefebvre from Pixabay."
 ---
 

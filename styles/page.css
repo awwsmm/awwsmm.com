@@ -8,10 +8,12 @@
   font-size: 0.75rem;
 }
 
-.hero-image {
+img {
   border: 1px solid hsl(var(--primary-hue), 40%, 95%);
   outline: 1px solid hsl(var(--primary-hue), 40%, 5%);
-  /* border-color: hsl(var(--accent)); */
+}
+
+.hero-image {
   margin: 0px 0px 20px 0px;
 }
 

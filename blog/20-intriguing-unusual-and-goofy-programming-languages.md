@@ -306,7 +306,7 @@ When the program starts, Piet "reads" the colors of the pixels in the bitmap, st
 
 The transitions between colored areas encode the action of the program. For instance, if we "rotate" the hue by one unit (e.g. from red -> yellow) as we move along the image, that encodes an "add" action. If we also change the "lightness" by one unit (e.g. from red -> dark yellow), that encodes a "subtract" action. Movement into or out of a white area encodes no action, and is the only way to change the color without performing an action (this is useful for loops).
 
-Because the program only depends on transitions between colors, and not the colors themselves, or the direction of movement across the "canvas", programs can be very simple or very "artistic". For example, [here's a program which gets a number from the user, squares it, then prints the square](http://homepages.vub.ac.be/~diddesen/piet/index.html):
+Because the program only depends on transitions between colors, and not the colors themselves, or the direction of movement across the "canvas", programs can be very simple or very "artistic". For example, [here's a program which gets a number from the user, squares it, then prints the square](https://web.archive.org/web/20191119023906/http://homepages.vub.ac.be/~diddesen/piet/index.html):
 
 ![A simple program in Piet](https://thepracticaldev.s3.amazonaws.com/i/i77oznhfqnyu147wxesz.png)
 

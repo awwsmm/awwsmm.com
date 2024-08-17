@@ -53,7 +53,7 @@ While I originally thought of containerizing these applications, running them in
 
 Finally, we had to plan the domain itself. We came up with something quite similar to [this example from Bridgera](https://bridgera.com/wp-content/uploads/2018/10/IoTeBook3.pdf#page=16)
 
-![Diagram of the flow of data through IoT devices, from a sensor, to a control center, to an actuator.](https://raw.githubusercontent.com/awwsmm/awwsmm.com/master/blog/images/iot-flow.png)
+![Diagram of the flow of data through IoT devices, from a sensor, to a control center, to an actuator.](/blog/what-this-senior-developer-learned-from-his-first-big-rust-project/iot-flow.png)
 
 1. a `Sensor` collects data from the `Environment`, and somehow communicates that data to...
 2. a `Controller`, which assesses that data and (optionally) sends a `Command` to...
@@ -98,7 +98,7 @@ Even some of these are not strictly necessary. We could
 
 `mdns-sd` and `local-ip-address` are critical; they ensure the `Device`s on the network can connect to one another. `rand` is critical for the `Environment`, and appears only in that crate's dependencies. `plotly` is critical to the Web UI, hosted by the `Controller`, which (as of this writing) shows just a live plot and nothing else.
 
-![The live plot in question.](https://raw.githubusercontent.com/awwsmm/awwsmm.com/master/blog/images/iot-graph.gif)
+![The live plot in question.](/blog/what-this-senior-developer-learned-from-his-first-big-rust-project/iot-graph.gif)
 
 Finally, for containerization of services, we used [`rust:alpine`](https://hub.docker.com/_/rust) base image in a [multi-stage build](https://docs.docker.com/build/building/multi-stage/). Only a single dependency needed to be installed in the initial stage, [`musl-dev`](https://pkgs.alpinelinux.org/package/edge/main/armv7/musl-dev), which is required by the `local-ip-address` crate.
 

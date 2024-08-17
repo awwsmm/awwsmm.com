@@ -22,7 +22,7 @@ The Middle Development Loop involves getting feedback from developers and other 
 
 This often happens during code review, but feedback can come in many forms: pair programming, mob programming, [synchronous code review](https://glia.engineering/the-case-for-synchronous-code-reviews-51a19b76b7b7), as well as traditional asynchronous code review. The latter is, in many workplaces, the standard: you create a PR, add some reviewers, and go off and do something else while you wait for feedback.
 
-![https://xkcd.com/303/](https://raw.githubusercontent.com/awwsmm/awwsmm.com/master/blog/images/approvals.png)
+![https://xkcd.com/303/](/blog/drop-everything-and-review/approvals.png)
 
 This is usually fine, provided you have lots of tasks to work on and can context switch easily from one to another while waiting for reviews. And while this is often the case, in my experience, the opposite happens just as often: you're building some feature across multiple code bases, or in multiple steps, and you need reviews and approvals at each stage. In this case, each time a review is required, it becomes a blocker.
 
