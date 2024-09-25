@@ -49,7 +49,11 @@ export default function PageHeader({ isHomePage }: { isHomePage?: boolean }) {
       }
     }
 
-    currentTheme == 'light' ? lightMode() : darkMode();
+    if (currentTheme == 'light') {
+      lightMode();
+    } else {
+      darkMode();
+    }
 
     toggleSwitch.addEventListener('change', switchTheme, false);
   });

@@ -34,7 +34,7 @@ export default abstract class FileUtils {
       return fs.readFileSync(path, 'utf8');
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error(`Could not read file at ${path}`);
+      console.error(`Could not read file at ${path} (${error})`);
       return '';
     }
   }
