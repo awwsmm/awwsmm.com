@@ -54,7 +54,7 @@
     "eslint-plugin-no-loops": "^0.4.0",
     "eslint-plugin-prettier": "^5.2.1",
     "mocha": "^10.8.2",
-    "npm-check-updates": "^17.1.11",
+    "npm-check-updates": "^17.1.12",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "typescript": "~5.7.2",
