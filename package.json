@@ -52,7 +52,7 @@
     "eslint": "^9.25.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-no-loops": "^0.4.0",
-    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-prettier": "^5.2.6",
     "mocha": "^11.1.0",
     "npm-check-updates": "^17.1.18",
     "prettier": "^3.5.3",
