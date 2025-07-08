@@ -35,3 +35,10 @@ jobs:
         run: |
           npm run build
           npx jest __tests__/visual --ci --runInBand --detectOpenHandles
+
+      - name: 📤 Upload image diffs (if any)
+        if: always()  # run this even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diff-artifacts
+          path: __tests__/visual/__image_snapshots__/__diff_output__/
