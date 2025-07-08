@@ -50,7 +50,7 @@
     "@types/node": "^24.0.10",
     "@types/puppeteer": "^5.4.7",
     "@types/react": "^18.3.12",
-    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.34.0",
     "chai": "^5.2.0",
     "eslint": "^9.27.0",
