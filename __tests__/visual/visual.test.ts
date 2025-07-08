@@ -67,8 +67,6 @@ beforeAll(async () => {
 it('renders / correctly', async () => {
   await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
 
-  console.log('captured screenshot of /');
-
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
     failureThresholdType: 'percent', // 'pixel' or 'percent'
@@ -83,8 +81,6 @@ it('renders / correctly in light mode', async () => {
 
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
-
-  console.log('captured screenshot of / in light mode');
 
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
@@ -101,8 +97,6 @@ it('renders /blog correctly', async () => {
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
 
-  console.log('captured screenshot of /blog');
-
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
     failureThresholdType: 'percent', // 'pixel' or 'percent'
@@ -117,8 +111,6 @@ it('renders /blog correctly in light mode', async () => {
 
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
-
-  console.log('captured screenshot of /blog in light mode');
 
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
@@ -135,8 +127,6 @@ it('renders /tags correctly', async () => {
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
 
-  console.log('captured screenshot of /tags');
-
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
     failureThresholdType: 'percent', // 'pixel' or 'percent'
@@ -151,8 +141,6 @@ it('renders /tags correctly in light mode', async () => {
 
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
-
-  console.log('captured screenshot of /tags in light mode');
 
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
@@ -173,8 +161,6 @@ it('renders /blog/what-are-const-generics-and-how-are-they-used-in-rust correctl
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
 
-  console.log('captured screenshot of /blog/what-are-const-generics-and-how-are-they-used-in-rust');
-
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
     failureThresholdType: 'percent', // 'pixel' or 'percent'
@@ -191,8 +177,6 @@ it('renders /blog/what-are-const-generics-and-how-are-they-used-in-rust correctl
 
   await page.waitForSelector(sliderSelector, { visible: true });
   await page.click(sliderSelector);
-
-  console.log('captured screenshot of /blog/what-are-const-generics-and-how-are-they-used-in-rust in light mode');
 
   const screenshot = await page.screenshot();
   expect(screenshot).toMatchImageSnapshot({
