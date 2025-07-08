@@ -1,0 +1,38 @@
+name: Visual Regression Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+    paths:
+      - '**.ts'
+      - '**.tsx'
+      - 'package.json'
+      - 'jest.config.*'
+      - 'jest.setup.*'
+      - '__tests__/**'
+  workflow_dispatch:
+
+jobs:
+  visual-tests:
+    # if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run Jest visual tests
+        run: |
+          npm run build
+          npx jest __tests__/visual --ci --runInBand --detectOpenHandles
