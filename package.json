@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.2",
-    "@eslint/js": "^9.30.0",
+    "@eslint/js": "^10.0.1",
     "@types/chai": "^5.2.3",
     "@types/eslint__js": "^8.0.0",
     "@types/mocha": "^10.0.10",
