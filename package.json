@@ -15,7 +15,7 @@
     "update": "ncu"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.6.1",
+    "@vercel/analytics": "^2.0.1",
     "date-fns": "^4.1.0",
     "feed": "^5.2.0",
     "gray-matter": "^4.0.3",
