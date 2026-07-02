@@ -45,7 +45,7 @@
     "@types/node": "^26.0.0",
     "@types/react": "^18.3.12",
     "@typescript-eslint/eslint-plugin": "^8.59.1",
-    "@typescript-eslint/parser": "^8.59.1",
+    "@typescript-eslint/parser": "^8.62.1",
     "chai": "^6.2.2",
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.1.8",
