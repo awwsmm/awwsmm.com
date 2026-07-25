@@ -61,6 +61,9 @@
   "overrides": {
     "serialize-javascript": "^7.0.5",
     "js-yaml": "^4.3.0",
+    "gray-matter": {
+      "js-yaml": "^3.15.0"
+    },
     "postcss": "^8.5.12",
     "sharp": "^0.35.3",
     "brace-expansion": "^5.0.7",
