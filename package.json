@@ -60,7 +60,7 @@
   },
   "overrides": {
     "serialize-javascript": "^7.0.5",
-    "js-yaml": "^4.3.0",
+    "js-yaml": "^4.3.2",
     "gray-matter": {
       "js-yaml": "^3.15.0"
     },
